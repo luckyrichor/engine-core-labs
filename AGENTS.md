@@ -59,6 +59,14 @@ C++ / CMake，不依赖任何引擎，比 `tactical-shooter-ue` 更基础。
 
 进展写在 `docs/progress.md`：**只写已发生的事，不写计划**；失败和返工也要记，那是面试时最有料的部分。汇总到 `workplan-docs/进度总览.md`。
 
+## Docker 运行位置（用户明确要求）
+
+**需要 Docker 时默认跑在 `tx` 服务器上**，不要在 Mac 或 Windows 上起容器。
+
+确有必要在本地跑时，**必须先征得用户同意**，不要自行决定。
+
+tx 上 `ubuntu` 用户不在 `docker` 组，所有 docker 命令要带 `sudo`（免密 sudo 可用）。该机内存只有 7.5G，多个服务同时跑之前先看 `free -h`。
+
 ## 记录规范：新内容写到哪儿
 
 **本仓库的正文只维护 `AGENTS.md` 一份**，`CLAUDE.md` 永远只是几行指路。两份都写正文必然漂移，**不要往 `CLAUDE.md` 里加任何内容**。
