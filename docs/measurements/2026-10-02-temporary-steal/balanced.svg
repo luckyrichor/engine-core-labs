@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="450">
+<rect width="720" height="450" fill="white"/>
+<text x="60" y="25">L1 balanced: temporary-reference-removed-after-test mean tasks/sec</text>
+<path d="M60 50 V370 H680" fill="none" stroke="black"/>
+<polyline points="60.0,260.4 148.6,176.4 325.7,273.8 680.0,281.9" fill="none" stroke="#777" stroke-width="2"/>
+<text x="70" y="405" fill="#777">baseline</text>
+<polyline points="60.0,258.5 148.6,158.5 325.7,70.0 680.0,120.7" fill="none" stroke="#167ac6" stroke-width="2"/>
+<text x="70" y="430" fill="#167ac6">stealing</text>
+<text x="60.0" y="390">1</text>
+<text x="148.57142857142856" y="390">2</text>
+<text x="325.7142857142857" y="390">4</text>
+<text x="680.0" y="390">8</text>
+<text x="2" y="370">0</text>
+<text x="2" y="220.0">312855</text>
+<text x="2" y="70">625711</text>
+</svg>

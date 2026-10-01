@@ -24,4 +24,20 @@ int main() {
     });
     for(auto& t:consumers)t.join();
     if(count!=10000)throw std::runtime_error("lost/duplicated concurrent jobs");
+    // Aggregate count alone misses one duplicate cancelling one lost job.
+    std::vector<std::atomic<int>> seen(10000);
+    std::atomic<bool> producer_done=false;
+    consumers.clear();
+    for(int i=0;i<8;++i) consumers.emplace_back([&, i] {
+        for (;;) {
+            auto job = i==0 ? q.pop() : q.steal();
+            if(job) { (*job)(); continue; }
+            if(producer_done.load()) break;
+            std::this_thread::yield();
+        }
+    });
+    for(int i=0;i<10000;++i) q.push([&, i] { ++seen[i]; });
+    producer_done.store(true);
+    for(auto& t:consumers)t.join();
+    for(auto& entry:seen)if(entry!=1)throw std::runtime_error("job identity lost or duplicated");
 }

@@ -3,6 +3,8 @@ import argparse
 import csv
 import io
 import json
+import hashlib
+import html
 import os
 from pathlib import Path
 import platform
@@ -15,6 +17,7 @@ parser.add_argument("--output", type=Path, default=Path(".local/l1-results"))
 parser.add_argument("--tasks", type=int, default=10000)
 parser.add_argument("--iterations", type=int, default=10000)
 parser.add_argument("--repeats", type=int, default=3)
+parser.add_argument("--implementation-label", default="user-core")
 args = parser.parse_args()
 if args.repeats < 2 or args.repeats > 100:
     parser.error("repeats must be 2..100")
@@ -45,6 +48,10 @@ for distribution in ("balanced", "skewed"):
                 rows.append(row)
 args.output.mkdir(parents=True, exist_ok=True)
 metadata = {"generated_at": subprocess.check_output(["date", "-Is"], text=True).strip(),
+            "implementation_label": args.implementation_label,
+            "source_sha256": {str(p): hashlib.sha256(p.read_bytes()).hexdigest()
+                for p in Path("experiments/l1-job-system").rglob("*")
+                if p.is_file() and p.suffix in {".hpp", ".cpp", ".py"}},
             "machine": platform.node(), "os": platform.platform(), "logical_cpus": os.cpu_count(),
             "lscpu": subprocess.check_output(["lscpu"], text=True),
             "compiler": subprocess.check_output(["c++", "--version"], text=True),
@@ -77,7 +84,7 @@ for distribution in ("balanced", "skewed"):
     maximum = max(float(r["mean_tasks_per_second"]) for r in group)
     parts = ['<svg xmlns="http://www.w3.org/2000/svg" width="720" height="450">',
              '<rect width="720" height="450" fill="white"/>',
-             f'<text x="60" y="25">L1 {distribution}: mean tasks/sec (device.json for device/load)</text>',
+             f'<text x="60" y="25">L1 {distribution}: {html.escape(args.implementation_label)} mean tasks/sec</text>',
              '<path d="M60 50 V370 H680" fill="none" stroke="black"/>']
     for mode, color in (("baseline", "#777"), ("stealing", "#167ac6")):
         points = [(60 + (int(r["threads"])-1)/7*620,

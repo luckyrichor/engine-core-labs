@@ -1,6 +1,6 @@
 # AGENTS.md
 
-最后更新：2026-10-01（北京时间）
+最后更新：2026-10-02（北京时间）
 
 本文件为在本仓库工作的编码 agent 提供指引（Claude Code 读 `CLAUDE.md`、Codex 读 `AGENTS.md`，两者都指向这里）。
 
@@ -10,7 +10,7 @@
 
 三个月求职计划六项目之一（原编号 ⑤），对应岗位 **02**（腾讯《灰境行者》游戏引擎开发，通用向）。总计划见 [workplan-docs](https://github.com/luckyrichor/workplan-docs)。
 
-**当前状态：L1 自动脚手架/测量框架已验证（2026-10-01）；用户 steal() 与曲线未验收。详见 docs/progress.md。**
+**当前状态：L1 脚手架已验证；W6 临时参考实现测量完成并删除。用户 steal() 与最终 L1 仍未验收，临时曲线不能作用户成绩。详见 docs/temporary-core-validation.md。**
 
 ## 分工模式：偏学习 —— 这条最重要
 
