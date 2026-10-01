@@ -19,12 +19,16 @@ public:
         jobs_.pop_front();
         return job;
     }
-    // USER TODO: lock victim queue; remove from its back, return nullopt if empty.
-    // Keep this mutex-based exercise correct before considering a lock-free deque.
+    // Codex reference implementation, retained by user request on 2026-10-02.
+    // USER EXERCISE: replace this body with your own implementation and rerun tests.
     std::optional<Job> steal() {
-        return std::nullopt; // USER IMPLEMENTATION REQUIRED
+        std::lock_guard lock(mutex_);
+        if (jobs_.empty()) return std::nullopt;
+        auto job = std::move(jobs_.back());
+        jobs_.pop_back();
+        return job;
     }
-    static constexpr bool stealing_implemented = false; // user flips after implementation
+    static constexpr bool stealing_implemented = true; // Codex reference, user exercise pending
 private:
     std::mutex mutex_;
     std::deque<Job> jobs_;

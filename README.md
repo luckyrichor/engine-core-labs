@@ -1,10 +1,10 @@
 # engine-core-labs
 
-最后更新：2026-10-01（北京时间）
+最后更新：2026-10-02（北京时间）
 
 游戏引擎**非渲染**通用模块的原理学习与小规模可复现实验：物理、资源流程、内存、CPU 调度。
 
-**状态：L1 自动脚手架/测量框架已验证，用户 steal() 与曲线未验收**（2026-10-01）
+**状态：L1 基本完成，Codex 参考实现验证通过；用户手写替换待办。** 6/6 测试通过，48次采样与曲线见 docs/measurements/2026-10-02-codex-reference/。
 
 ## 对应岗位
 
@@ -26,9 +26,11 @@
 
 本项目采用**偏学习**模式：脚手架（测量框架、benchmark、出图）由 Claude 提供，每个实验**最核心的算法留空由用户实现**。目的是让用户能在面试里讲清楚这几十行代码，而不是拥有一份读过的代码。
 
+2026-10-02 用户要求先保留 Codex 的 `steal()` 参考实现，源代码已标注作者。用户以后手写替换并复验，参考测量不当作用户成绩。
+
 ## 技术栈
 
 C++ / CMake。比 `tactical-shooter-ue` 更基础，不依赖任何引擎。
 
 
-2026-10-01 本地执行：详见 experiments/l1-job-system/README.md、docs/l1-learning.md 与 docs/progress.md。`bash scripts/bootstrap.sh` 重建并测试；steal 契约当前明确 skipped，不能把框架通过称作 L1 实验完成。
+执行说明见 experiments/l1-job-system/README.md、docs/l1-learning.md 与 docs/progress.md。`bash scripts/bootstrap.sh` 重建并测试；当前包含 stealing 契约与 benchmark 验证，没有 skipped 测试。

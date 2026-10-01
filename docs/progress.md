@@ -1,5 +1,9 @@
 # 进度记录
 
+## 2026-10-02 按用户要求保留 Codex 参考实现
+
+来源 engine-core-labs@59c123b + 本次工作树修改。恢复 steal() 并标注 Codex 作者，用户稍后手写替换待办。CMake 默认启用已实现核心验证，新增 stealing smoke；Release 构建、6/6 ctest通过，无skip。48次重复测量、CSV/SVG和设备/源码哈希见 measurements/2026-10-02-codex-reference/，标签 codex-reference-user-exercise-pending，checksum一致。记录为 L1 基本完成、参考实现验证通过，未声称用户手写完成。此前删除临时实现的记录为历史事实，本次是用户改变要求后补回。
+
 最后更新：2026-10-02（北京时间）
 
 本文件是 `engine-core-labs` 的进度事实源，汇总到 `workplan-docs/进度总览.md`。

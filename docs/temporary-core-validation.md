@@ -1,5 +1,15 @@
 # W6 维持：临时核心实现验证
 
+## 当前状态：参考实现保留，L1 基本完成
+
+2026-10-02，Codex；来源 engine-core-labs@59c123b + 本次工作树修改。用户最新要求覆盖此前“验证后删除”的约定：补回 mutex 保护、从队尾取任务的 steal()，源码标注 Codex 参考实现，用户稍后手写替换。
+
+Release 构建、6/6 ctest 通过，无 skip；包含逐任务 exactly-once 并发契约与 stealing benchmark smoke。重新采样 balanced/skewed × baseline/stealing × 1/2/4/8线程 × 3次，2000 tasks × 2000 iterations，共48次，checksum一致。产物见 measurements/2026-10-02-codex-reference/；设备、源码 SHA256、dirty 状态和标签 codex-reference-user-exercise-pending 均保留。
+
+按用户要求记录为 **基本完成，参考实现验证通过**。用户手写替换、理解与重新测量仍为学习待办，不标记成用户完成；只验证这台4 vCPU服务器上的所测负载。
+
+## 历史：临时实现验证后删除
+
 最后更新：2026-10-02（北京时间）；Codex；engine-core-labs@b8def96 + 本轮工作树修改。
 
 用户明确允许临时实现用户函数以推进后续验证，结束后删除。此次临时用 mutex 保护从 deque 尾取任务，将 stealing_implemented 临时置 true。增强 steal_test：每个任务独立计数，同时并发生产和消费，防止「丢一条、重复一条」被总数掩盖。

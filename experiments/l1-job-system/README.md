@@ -1,6 +1,6 @@
 # L1 Job System 脚手架与测量框架
 
-最后更新：2026-10-01；Codex；engine-core-labs@65305d9 + 未提交修改。**核心未完成，L1 未整体验收。**
+最后更新：2026-10-02；Codex；engine-core-labs@59c123b + 本次工作树修改。**L1 基本完成：Codex 参考实现通过，用户手写替换待办。**
 
 从仓库根运行：
 
@@ -12,9 +12,9 @@ python3 experiments/l1-job-system/tools/device.py
 python3 experiments/l1-job-system/tools/measure.py
 ```
 
-已有 mutex deque 的 owner push/pop、固定线程数 pool、future 异常传播、drain/shutdown、balanced/skewed 调度负载和测量工具。steal() 在 include/work_queue.hpp 保留 TODO，由用户手写；实现后将 stealing_implemented 置 true，并配置 `-DUSER_STEAL_IMPLEMENTED=ON` 后重建（去掉拒绝未实现的负向测试）。
+已有 mutex deque 的 owner push/pop、固定线程数 pool、future 异常传播、drain/shutdown、balanced/skewed 调度负载和测量工具。steal() 在 include/work_queue.hpp 现保留 Codex 参考实现，按用户要求标注作者；用户以后自行替换。默认 USER_STEAL_IMPLEMENTED=ON，包含 stealing smoke；如果恢复未实现占位，须将源码标记置 false 并配置 `-DUSER_STEAL_IMPLEMENTED=OFF`，恢复拒绝未实现的负向测试。
 
-当前 steal_test 退出 77（明确 skip），measure.py 在创建任何输出前拒绝运行。benchmark 的 stealing 模式退出 2。baseline smoke 仅验证测量框架能跑，不等同 stealing 实验。本次没有线程数/吞吐关系曲线，也不声称 L1 完成。
+当前 6/6 ctest 通过、无 skip。参考实现的48次采样及线程/吞吐曲线在 docs/measurements/2026-10-02-codex-reference/，标签 codex-reference-user-exercise-pending。历史 temporary-steal 目录保留原始临时验证记录。参考数据不代表用户手写成绩，也不证明每种负载 stealing 都更快。
 
 用户实现后先通过 steal 并发 exactly-once 测试，再运行 measure.py：balanced/skewed × baseline/stealing × 1/2/4/8 线程 × 3 次，排除 warmup，生成 raw.csv、summary.csv（均值/样本标准差）、device.json 与两张 SVG。设备记录包含 git HEAD、未提交状态、CMake 编译配置、实际 CPU/OS/编译器、负载参数。checksum 必须跨运行相同，失败时拒绝出图。不要混用不同机器/编译模式的数据。
 
