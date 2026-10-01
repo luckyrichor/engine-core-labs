@@ -1,6 +1,6 @@
 # 进度记录
 
-最后更新：2026-10-01（北京时间）
+最后更新：2026-10-02（北京时间）
 
 本文件是 `engine-core-labs` 的进度事实源，汇总到 `workplan-docs/进度总览.md`。
 
@@ -27,8 +27,8 @@ W2 复验：2026-10-01 tx，改名后 CMake 构建成功，ctest owner_queue 1/1
 Release CMake 构建通过；ctest **5 passed、1 skipped（user_steal_contract）**。baseline smoke 实跑输出 checksum；stealing benchmark 退出 **2**；measure.py 退出 **1**，报告 contract exit=77 且没有生成输出目录。未产出吞吐曲线、未完成 work stealing 实验，不将 skip 当通过。首轮 benchmark 因 -Werror=misleading-indentation 构建失败，拆开 for 与 wait 后复验通过。
 
 待用户手写 steal()，翻 implemented 标记，重配 -DUSER_STEAL_IMPLEMENTED=ON，先通过核心测试再测曲线。设备/负载将在测量时实际采集；本次设备为 tx 的 4 vCPU VM，不能沿用其数据到 Windows。未提交/推送，不虚构工时。
-# 2026-10-02 W6 维持（Codex）
+## 2026-10-02 W6 维持（Codex）
 
 来源 engine-core-labs@b8def96 + 本轮工作树修改。按用户授权临时实现 steal()，补逐任务 exactly-once 并发生产/消费契约，运行 Release ctest：5/5 passed。随后生成48次测量的CSV/SVG与设备/构建/源码哈希元数据，全部标 temporary-reference-removed-after-test。
 
-测量后立即恢复 work_queue.hpp，确认与开工内容 git diff 为零。恢复后重新构建：5 passed、1 skipped，未实现核心的 benchmark 仍被拒绝。临时产物见 docs/temporary-core-validation.md；本轮维护完成，最终用户核心与L1验收仍待办。没有用临时曲线冒充用户算法完成。无实际工时声明，以下为历史记录。
+测量后立即恢复 work_queue.hpp，确认与开工内容 git diff 为零。恢复后重新构建：5 passed、1 skipped，未实现核心的 benchmark 仍被拒绝。临时产物见 docs/temporary-core-validation.md；本轮维护完成，最终用户核心与L1验收仍待办。没有用临时曲线冒充用户算法完成。无实际工时声明，此前章节为历史记录。
