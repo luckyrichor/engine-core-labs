@@ -1,8 +1,10 @@
 # engine-core-labs
 
+最后更新：2026-10-01（北京时间）
+
 游戏引擎**非渲染**通用模块的原理学习与小规模可复现实验：物理、资源流程、内存、CPU 调度。
 
-**状态：未开工**（2026-09-19）
+**状态：L1 自动脚手架/测量框架已验证，用户 steal() 与曲线未验收**（2026-10-01）
 
 ## 对应岗位
 
@@ -27,3 +29,6 @@
 ## 技术栈
 
 C++ / CMake。比 `tactical-shooter-ue` 更基础，不依赖任何引擎。
+
+
+2026-10-01 本地执行：详见 experiments/l1-job-system/README.md、docs/l1-learning.md 与 docs/progress.md。`bash scripts/bootstrap.sh` 重建并测试；steal 契约当前明确 skipped，不能把框架通过称作 L1 实验完成。

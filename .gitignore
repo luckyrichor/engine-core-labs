@@ -8,3 +8,7 @@ compile_commands.json
 *.so
 *.dylib
 .local/
+
+# Python measurement tools
+__pycache__/
+*.py[cod]
