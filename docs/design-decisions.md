@@ -7,3 +7,8 @@
 提交使用 packaged_task + future，异常到调用者；任务执行不持队列/状态 mutex，pending 归零由 condition_variable 通知。析构 drain 所有提交任务；调用方必须是 pool 外线程，任务不能在自己所属的 pool 上调用 wait/shutdown 或销毁 pool，否则可能自等待/自 join。
 
 测量区分 balanced/skewed 与无 stealing baseline，不把均匀分配下的线程池吞吐冒充 steal 收益。核心标记与 steal_test 都通过后才写 CSV/SVG；当前返回显式阻塞，不绘制预设数据。
+
+
+## 2026-10-07 Codex：W8–W10
+
+用户核心Arena保持TODO；Codex参考仅用于验证，避免把脚手架数据写成用户成绩。pool固定块碎片与stack/arena生命周期不同，报告说明采样点和释放模式；缓冲区所有者不能复制或移动，减少返回指针指向另一对象的风险。

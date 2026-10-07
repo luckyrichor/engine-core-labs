@@ -1,0 +1,6 @@
+add_executable(allocator_tests tests.cpp)
+add_executable(allocator_bench benchmark.cpp)
+foreach(target allocator_tests allocator_bench)
+  target_compile_options(${target} PRIVATE -Wall -Wextra -Werror)
+endforeach()
+add_test(NAME allocator_boundaries COMMAND allocator_tests)

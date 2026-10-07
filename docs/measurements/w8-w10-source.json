@@ -1,0 +1,30 @@
+{
+  "assistant": "Codex",
+  "generated_at_beijing": "2026-10-07T21:06:44.730383+08:00",
+  "baseline_commit": "11c42ae93adfd392703baca3f4410e5b855150e1",
+  "source_state": "baseline plus uncommitted W8-W10 changes at measurement time",
+  "source_sha256": {
+    "CMakeLists.txt": "8eb2f3e018f26a643ed40d47916647ce44380bf1fbc4011e5fc71b50138fe1f1",
+    "experiments/l1-job-system/CMakeLists.txt": "4a4f281c79fd14d4cc8587596a4bb9893620b6952d032e11aa8a25d5e317de4e",
+    "experiments/l1-job-system/benchmark.cpp": "dc003e1fdab936d1652681b3e58c2318d8fe767f82a9b7512db00114ca62fbb8",
+    "experiments/l1-job-system/include/job_system.hpp": "e5e3ad2a0f0b7dc5c24c69a5b7efa6cc14b576752e6ff34952dcaeef7f6a5513",
+    "experiments/l1-job-system/include/work_queue.hpp": "d2f0deb9ebb6c450e180471f6b583e5131ffaf4f11c40a143865c379915d8108",
+    "experiments/l1-job-system/include/workload.hpp": "1ba60c97a52348ddd762391f6cad1d2dde5fb7556ce7d4111c509409cf8e68a1",
+    "experiments/l1-job-system/tests/pool_test.cpp": "764a9c4c15790951d6cb4b6417c51dd38cf1afd14464edad556abf2d0a65c621",
+    "experiments/l1-job-system/tests/queue_test.cpp": "ecd258368b1fd2f203b6aee16b5f80b53697d08e394a60926fbd776692cd97bb",
+    "experiments/l1-job-system/tests/steal_test.cpp": "b316a87fbad127a3d61564828994d53afde989fc9d156586a241ff5168e74ae7",
+    "experiments/l1-job-system/tests/workload_test.cpp": "27044cbaf56ee41b822b1d862b32c02cb5a2ccbdef54222bbcaf9d10eac0cd81",
+    "experiments/l1-job-system/tools/device.py": "22f9fee485311415d3b81f4e37b2f4d53f7f3dd11a558fe5b20c550fbc492672",
+    "experiments/l1-job-system/tools/measure.py": "421c87dcc199e12c15960f5e84150909ed58d3608cdab11e59cda916505609ce",
+    "experiments/l2-allocators/CMakeLists.txt": "ade0bb5710785484e3911a2a1a90a73ea4f76f1511abb6f704071267e9c3351c",
+    "experiments/l2-allocators/allocators.hpp": "40df1aeb6c621be7d872d80a32f6c8e7371239ce8f5ebdb3cade51ab0315014e",
+    "experiments/l2-allocators/benchmark.cpp": "8946e90968c31954bd9623c8d9ef01e9e2487cb0e098bbd94c9476f74c213bf1",
+    "experiments/l2-allocators/reference_arena.hpp": "ba09f3fcbfd72c906905140d56e9f3d686d022f215d2140e7bb2cc6b56d2a583",
+    "experiments/l2-allocators/tests.cpp": "08d07537c89d87d8c6a4f863daa1013429998b289c96ca86cdb7bb0765f2a5e1",
+    "scripts/bootstrap.sh": "1728c70addaba52b2386756f9b222012e97035e6a366f9b550684b8538662769"
+  },
+  "environment": "TX Ubuntu 24.04, AMD EPYC 7K62 virtual 4CPU, 7.5GiB, gcc13.3, CMake3.28, Go1.27.1, uv Python3.12",
+  "artifact_sha256": {
+    "docs/measurements/w8-allocators.csv": "785b07dbe70edc9229f2bdbff5605b21a2127dc714ff65a9100f9cc812f30fc8"
+  }
+}

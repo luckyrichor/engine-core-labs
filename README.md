@@ -4,7 +4,7 @@
 
 游戏引擎**非渲染**通用模块的原理学习与小规模可复现实验：物理、资源流程、内存、CPU 调度。
 
-**状态：L1 基本完成，Codex 参考实现验证通过；用户手写替换待办。** 6/6 测试通过，48次采样与曲线见 docs/measurements/2026-10-02-codex-reference/。
+**状态：L1基本完成；L2工程基本完成，用户Arena核心TODO、参考验证通过。** 2026-10-07 Codex补充：Release 7/7测试通过；L2分配延迟/碎片测量与用户待办见 [L2说明](experiments/l2-allocators/README.md)。用户手写替换与讲解复验仍待办。L1历史48次采样见 docs/measurements/2026-10-02-codex-reference/。
 
 ## 对应岗位
 

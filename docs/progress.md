@@ -36,3 +36,10 @@ Release CMake 构建通过；ctest **5 passed、1 skipped（user_steal_contract�
 来源 engine-core-labs@b8def96 + 本轮工作树修改。按用户授权临时实现 steal()，补逐任务 exactly-once 并发生产/消费契约，运行 Release ctest：5/5 passed。随后生成48次测量的CSV/SVG与设备/构建/源码哈希元数据，全部标 temporary-reference-removed-after-test。
 
 测量后立即恢复 work_queue.hpp，确认与开工内容 git diff 为零。恢复后重新构建：5 passed、1 skipped，未实现核心的 benchmark 仍被拒绝。临时产物见 docs/temporary-core-validation.md；本轮维护完成，最终用户核心与L1验收仍待办。没有用临时曲线冒充用户算法完成。无实际工时声明，此前章节为历史记录。
+
+
+## 2026-10-07 Codex：W8–W10实际执行
+
+W8 L2工程基本完成：64KiB pool/stack、用户Arena核心TODO、独立CodexReferenceArena验证夹具。临时实现用于继续推进后，用户函数为空并显式抛USER_ARENA_TODO；参考不记用户手写完成。实际30轮7680次分配的p50/p95/p99、内部浪费及外部碎片CSV已记录。
+
+W10维护：禁用缓冲区所有者拷贝/移动，补非法释放、耗尽、对齐、1000次回收等边界验证。Release 7/7 CTest；首次ASan/UBSan因ptrace导致LeakSanitizer全部失败，禁用leak检测后7/7通过；没有完成泄漏检测。用户arena手写、理解与替换复验继续待办。来源engine-core-labs@11c42ae + 本轮工作树，精确SHA256见测量元数据。

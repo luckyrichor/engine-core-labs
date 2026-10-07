@@ -1,6 +1,6 @@
 # AGENTS.md
 
-最后更新：2026-10-02（北京时间）
+最后更新：2026-10-07（北京时间）
 
 本文件为在本仓库工作的编码 agent 提供指引（Claude Code 读 `CLAUDE.md`、Codex 读 `AGENTS.md`，两者都指向这里）。
 
@@ -10,7 +10,7 @@
 
 三个月求职计划六项目之一（原编号 ⑤），对应岗位 **02**（腾讯《灰境行者》游戏引擎开发，通用向）。总计划见 [workplan-docs](https://github.com/luckyrichor/workplan-docs)。
 
-**当前状态：按用户 2026-10-02 最新要求保留 Codex 的 steal() 参考实现。L1 基本完成：参考实现 6/6 测试与48次测量通过；用户手写替换仍为学习待办。详见 docs/temporary-core-validation.md。**
+**当前状态：L1基本完成（Codex参考steal保留）；L2工程基本完成（用户Arena核心TODO，独立参考测量通过）。用户手写/理解复验待办；见docs/progress.md。**
 
 ## 分工模式：偏学习 —— 这条最重要
 
