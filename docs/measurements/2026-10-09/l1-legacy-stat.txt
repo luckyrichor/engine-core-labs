@@ -1,0 +1,16 @@
+# started on Fri Oct  9 02:47:54 2026
+
+
+ Performance counter stats for '.local/legacy-profile-build/experiments/l1-job-system/job_benchmark baseline 4 1000000 1000 balanced':
+
+           3929.69 msec task-clock                       #    2.501 CPUs utilized             
+             66765      context-switches                 #   16.990 K/sec                     
+               903      cpu-migrations                   #  229.789 /sec                      
+             59372      page-faults                      #   15.109 K/sec                     
+
+       1.571440182 seconds time elapsed
+
+       3.135885000 seconds user
+       0.872800000 seconds sys
+
+

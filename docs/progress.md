@@ -1,10 +1,24 @@
 # 进度记录
 
+## 2026-10-09 L1 / L2 核心完成与测量修订（Codex）
+
+来源 engine-core-labs@b8be686 + 本轮工作树修改，精确源文件 SHA256 见 measurements/2026-10-09/。用户授权助手完成全部算法，取消此前手写 steal / Arena 待办；已更新 AGENTS、README 与学习说明，旧分工保留为历史。
+
+L1 保留互斥 owner LIFO / thief FIFO，重写 executor 为 worker 独立通知代数、归零通知 drain，移除每任务完成广播和 1ms 轮询；暂停屏障用于预入队阶段。复查时发现 pause 通知若先于 worker 记录代数可能被漏看，等待谓词加入 paused 条件后最终复验通过。增加双策略多生产者、4000 个 ID、20 轮暂停恢复及关闭后拒绝提交测试。
+
+旧版 perf：b8be686、RelWithDebInfo / frame pointer、4 workers / 1000000 × 1000 / balanced，787 CPU 样本、66765 上下文切换。负载调用占 52.10%，kernel spin unlock 占 7.37%，多经 futex wake；只确认开销存在，不能把旧吞吐异常全部归因于广播。普通权限 perf 被 paranoid=4 拒绝，sudo 仅测自身进程；报告读取曾需 -f，未改系统配置。
+
+新 L1 粗 / 微任务各 320 次，每配置 10 轮；同池完整预热，配置顺序轮转，含提交 / 预入队分开，逐 ID exactly-once 和单独串行校验和，记录每次 loadavg / CPU pressure。粗负载实际 10000 × 50000，每轮 0.241–1.031 秒。均衡基线 1/2/4/8 workers 中位数 10590 / 20935 / 37161 / 36958 任务/秒，4/8 的 CV 15.8% / 9.6%，不判四线程优于八线程。集中单队列四线程窃取约基线 3.6 倍。本机四核且有后台负载，结果不外推。
+
+L2 实现 Arena 对齐 bump / reset；Pool 改为块内空闲链表，保留 live bitmap；Stack 记录表预留成本输出。4 分配器含 malloc × 2 模式 × 10 轮 = 80 行，每批 256、50 批预热，每轮至少 2000 批与 100ms。odd 尺寸实际触发 3009 字节对齐浪费；新 p99 是 batch 均摊分位数。相邻时钟中位数 30ns，摊薄后约 0.117ns/op。删除固定池外部碎片结论；VariableHeap 全空间填满后隔块释放，32768 空闲 / 最大 128，256 字节请求失败，合并后成功。单列 first-fit 示例，不当通用分配器性能结论。
+
+最终 Release **8/8**、TSan **8/8**（进程级 setarch -R）、ASan/UBSan **8/8**、LeakSanitizer **8/8**（sudo 测试进程，detect_leaks=1）。TSan 首轮映射冲突，普通用户 LeakSanitizer 全部权限 / ptrace 失败；记录失败及最终解决方式，未改全局 ASLR 或 perf 设置。测量 / sanitizer 顺序执行；一页摘要见 status.md。未将助手代码标成用户手写。
+
 ## 2026-10-02 按用户要求保留 Codex 参考实现
 
 来源 engine-core-labs@59c123b + 本次工作树修改。恢复 steal() 并标注 Codex 作者，用户稍后手写替换待办。CMake 默认启用已实现核心验证，新增 stealing smoke；Release 构建、6/6 ctest通过，无skip。48次重复测量、CSV/SVG和设备/源码哈希见 measurements/2026-10-02-codex-reference/，标签 codex-reference-user-exercise-pending，checksum一致。记录为 L1 基本完成、参考实现验证通过，未声称用户手写完成。此前删除临时实现的记录为历史事实，本次是用户改变要求后补回。
 
-最后更新：2026-10-02（北京时间）
+最后更新：2026-10-09（北京时间）
 
 本文件是 `engine-core-labs` 的进度事实源，汇总到 `workplan-docs/进度总览.md`。
 
@@ -12,7 +26,6 @@
 
 ---
 
-_尚无记录。_
 
 ## 2026-10-01 W2 维持（Codex）
 

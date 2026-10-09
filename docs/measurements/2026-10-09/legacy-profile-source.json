@@ -1,0 +1,20 @@
+{
+  "source_head": "b8be68614fa9beabb31ea67ea8c6804b9dd7dadb",
+  "source_sha256": {
+    "experiments/l1-job-system/benchmark.cpp": "dc003e1fdab936d1652681b3e58c2318d8fe767f82a9b7512db00114ca62fbb8",
+    "experiments/l1-job-system/include/work_queue.hpp": "d2f0deb9ebb6c450e180471f6b583e5131ffaf4f11c40a143865c379915d8108",
+    "experiments/l1-job-system/include/job_system.hpp": "e5e3ad2a0f0b7dc5c24c69a5b7efa6cc14b576752e6ff34952dcaeef7f6a5513",
+    "experiments/l1-job-system/include/workload.hpp": "1ba60c97a52348ddd762391f6cad1d2dde5fb7556ce7d4111c509409cf8e68a1",
+    "experiments/l1-job-system/tests/steal_test.cpp": "b316a87fbad127a3d61564828994d53afde989fc9d156586a241ff5168e74ae7",
+    "experiments/l1-job-system/tests/workload_test.cpp": "27044cbaf56ee41b822b1d862b32c02cb5a2ccbdef54222bbcaf9d10eac0cd81",
+    "experiments/l1-job-system/tests/pool_test.cpp": "764a9c4c15790951d6cb4b6417c51dd38cf1afd14464edad556abf2d0a65c621",
+    "experiments/l1-job-system/tests/queue_test.cpp": "ecd258368b1fd2f203b6aee16b5f80b53697d08e394a60926fbd776692cd97bb"
+  },
+  "build": "RelWithDebInfo, -fno-omit-frame-pointer, GCC 13.3",
+  "command": "job_benchmark baseline 4 1000000 1000 balanced",
+  "record": "sudo perf record -e cpu-clock -F199 -g",
+  "stat": "sudo perf stat -e task-clock,context-switches,cpu-migrations,page-faults",
+  "samples": 787,
+  "scope": "legacy executor only; stat includes process startup, submit/execution, teardown; cannot directly compare against new full-warmup benchmark",
+  "privilege": "unprivileged perf blocked by perf_event_paranoid=4; sudo used only to profile own benchmark; no sysctl changes"
+}

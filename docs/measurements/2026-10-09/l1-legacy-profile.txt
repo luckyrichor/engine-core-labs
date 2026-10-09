@@ -1,0 +1,368 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 787  of event 'cpu-clock'
+# Event count (approx.): 3954773375
+#
+# Overhead  Command        Shared Object         Symbol                                                                                                                                                                                                                                                                                                                                                                                                                
+# ........  .............  ....................  ......................................................................................................................................................................................................................................................................................................................................................................................................................
+#
+    52.10%  job_benchmark  job_benchmark         [.] std::_Function_handler<void (), main::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+            |
+            ---std::_Function_handler<void (), main::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+               std::__future_base::_State_baseV2::_M_do_set(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>*, bool*)
+               0x7deea78a1fb3
+               std::_Function_handler<void (), engine_labs::JobSystem::submit(std::function<void ()>, std::optional<unsigned long>)::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+               engine_labs::JobSystem::run(unsigned long)
+               0x7deea7cecdb4
+               0x7deea789cb84
+               0x7deea7929ecc
+
+     7.37%  job_benchmark  [kernel.kallsyms]     [k] _raw_spin_unlock_irqrestore
+            |
+            ---_raw_spin_unlock_irqrestore
+               |          
+               |--6.86%--try_to_wake_up
+               |          wake_up_q
+               |          futex_wake
+               |          do_futex
+               |          __x64_sys_futex
+               |          x64_sys_call
+               |          do_syscall_64
+               |          entry_SYSCALL_64_after_hwframe
+               |          |          
+               |          |--4.57%--0x7deea78990b7
+               |          |          |          
+               |          |          |--3.43%--main
+               |          |          |          0x7deea782a1ca
+               |          |          |          __libc_start_main
+               |          |          |          _start
+               |          |          |          
+               |          |           --1.14%--engine_labs::JobSystem::run(unsigned long)
+               |          |                     0x7deea7cecdb4
+               |          |                     0x7deea789cb84
+               |          |                     0x7deea7929ecc
+               |          |          
+               |          |--1.14%--pthread_cond_broadcast
+               |          |          engine_labs::JobSystem::run(unsigned long)
+               |          |          0x7deea7cecdb4
+               |          |          0x7deea789cb84
+               |          |          0x7deea7929ecc
+               |          |          
+               |           --0.89%--pthread_cond_clockwait
+               |                     engine_labs::JobSystem::run(unsigned long)
+               |                     0x7deea7cecdb4
+               |                     0x7deea789cb84
+               |                     0x7deea7929ecc
+               |          
+                --0.51%--folio_batch_move_lru
+                          folio_add_lru
+                          folio_add_lru_vma
+                          do_anonymous_page
+                          handle_pte_fault
+                          __handle_mm_fault
+                          handle_mm_fault
+                          do_user_addr_fault
+                          exc_page_fault
+                          asm_exc_page_fault
+
+     3.81%  job_benchmark  job_benchmark         [.] std::_Function_handler<void (), engine_labs::JobSystem::submit(std::function<void ()>, std::optional<unsigned long>)::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+            |
+            ---std::_Function_handler<void (), engine_labs::JobSystem::submit(std::function<void ()>, std::optional<unsigned long>)::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+               |          
+                --3.56%--engine_labs::JobSystem::run(unsigned long)
+                          0x7deea7cecdb4
+                          0x7deea789cb84
+                          0x7deea7929ecc
+
+     2.80%  job_benchmark  libc.so.6             [.] 0x00000000000a9bdb
+            |
+            ---0x7deea78a9bdb
+               |          
+                --2.29%--0x7deea78a9dba
+                          0x7deea78abb70
+                          malloc
+                          _IO_file_doallocate
+                          _IO_doallocbuf
+                          _IO_file_overflow
+                          _IO_file_xsputn
+                          _IO_fwrite
+                          std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+                          std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)
+                          main
+                          0x7deea782a1ca
+                          __libc_start_main
+                          _start
+
+     2.41%  job_benchmark  [kernel.kallsyms]     [k] do_syscall_64
+            |
+            ---do_syscall_64
+               entry_SYSCALL_64_after_hwframe
+               |          
+                --1.65%--0x7deea78a1fda
+                          std::_Function_handler<void (), engine_labs::JobSystem::submit(std::function<void ()>, std::optional<unsigned long>)::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+                          engine_labs::JobSystem::run(unsigned long)
+                          0x7deea7cecdb4
+                          0x7deea789cb84
+                          0x7deea7929ecc
+
+     2.16%  job_benchmark  libc.so.6             [.] 0x00000000000a1fda
+            |
+            ---0x7deea78a1fda
+               std::_Function_handler<void (), engine_labs::JobSystem::submit(std::function<void ()>, std::optional<unsigned long>)::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+               engine_labs::JobSystem::run(unsigned long)
+               0x7deea7cecdb4
+               0x7deea789cb84
+               0x7deea7929ecc
+
+     2.03%  job_benchmark  libc.so.6             [.] pthread_mutex_lock
+            |
+            ---pthread_mutex_lock
+               |          
+               |--0.76%--0x7deea7cecdb4
+               |          0x7deea789cb84
+               |          0x7deea7929ecc
+               |          
+                --0.76%--engine_labs::JobSystem::run(unsigned long)
+                          0x7deea7cecdb4
+                          0x7deea789cb84
+                          0x7deea7929ecc
+
+     1.91%  job_benchmark  [kernel.kallsyms]     [k] finish_task_switch.isra.0
+            |
+            ---finish_task_switch.isra.0
+               __schedule
+               schedule
+               |          
+                --1.65%--futex_wait_queue
+                          __futex_wait
+                          futex_wait
+                          do_futex
+                          __x64_sys_futex
+                          x64_sys_call
+                          do_syscall_64
+                          entry_SYSCALL_64_after_hwframe
+                          |          
+                           --1.52%--0x7deea7899050
+                                     engine_labs::JobSystem::run(unsigned long)
+                                     0x7deea7cecdb4
+                                     0x7deea789cb84
+                                     0x7deea7929ecc
+
+     1.78%  job_benchmark  job_benchmark         [.] main
+            |
+            ---main
+               0x7deea782a1ca
+               __libc_start_main
+               _start
+
+     1.65%  job_benchmark  libc.so.6             [.] pthread_mutex_unlock
+            |
+            ---pthread_mutex_unlock
+               |          
+                --1.14%--engine_labs::JobSystem::run(unsigned long)
+                          0x7deea7cecdb4
+                          0x7deea789cb84
+                          0x7deea7929ecc
+
+     1.52%  job_benchmark  libc.so.6             [.] malloc
+            |
+            ---malloc
+               operator new(unsigned long)
+               |          
+               |--0.76%--std::shared_ptr<std::__future_base::_Task_state_base<void ()> > std::__create_task_state<void (), std::function<void ()>, std::allocator<int> >(std::function<void ()>&&, std::allocator<int> const&)
+               |          main
+               |          0x7deea782a1ca
+               |          __libc_start_main
+               |          _start
+               |          
+                --0.76%--main
+                          0x7deea782a1ca
+                          __libc_start_main
+                          _start
+
+     1.52%  job_benchmark  libc.so.6             [.] 0x00000000000a9d41
+            |
+            ---0x7deea78a9d41
+               0x7deea78abb70
+               malloc
+               _IO_file_doallocate
+               _IO_doallocbuf
+               _IO_file_overflow
+               _IO_file_xsputn
+               _IO_fwrite
+               std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+               std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)
+               main
+               0x7deea782a1ca
+               __libc_start_main
+               _start
+
+     1.14%  job_benchmark  [kernel.kallsyms]     [k] futex_wake
+            |
+            ---futex_wake
+               do_futex
+               __x64_sys_futex
+               x64_sys_call
+               do_syscall_64
+               entry_SYSCALL_64_after_hwframe
+               |          
+                --0.76%--0x7deea78a1fda
+                          std::_Function_handler<void (), engine_labs::JobSystem::submit(std::function<void ()>, std::optional<unsigned long>)::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+                          engine_labs::JobSystem::run(unsigned long)
+                          0x7deea7cecdb4
+                          0x7deea789cb84
+                          0x7deea7929ecc
+
+     1.02%  job_benchmark  job_benchmark         [.] engine_labs::JobSystem::run(unsigned long)
+            |
+            ---engine_labs::JobSystem::run(unsigned long)
+               0x7deea7cecdb4
+               0x7deea789cb84
+               0x7deea7929ecc
+
+     0.76%  job_benchmark  [kernel.kallsyms]     [k] do_user_addr_fault
+            |
+            ---do_user_addr_fault
+               exc_page_fault
+               asm_exc_page_fault
+               |          
+                --0.64%--0x7deea78ac5fa
+                          malloc
+                          operator new(unsigned long)
+
+     0.76%  job_benchmark  libc.so.6             [.] 0x00000000000a9be1
+            |
+            ---0x7deea78a9be1
+               0x7deea78a9dba
+               0x7deea78abb70
+               malloc
+               _IO_file_doallocate
+               _IO_doallocbuf
+               _IO_file_overflow
+               _IO_file_xsputn
+               _IO_fwrite
+               std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+               std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)
+               main
+               0x7deea782a1ca
+               __libc_start_main
+               _start
+
+     0.64%  job_benchmark  [kernel.kallsyms]     [k] __x64_sys_futex
+            |
+            ---__x64_sys_futex
+               |          
+                --0.51%--x64_sys_call
+                          do_syscall_64
+                          entry_SYSCALL_64_after_hwframe
+
+     0.64%  job_benchmark  libc.so.6             [.] 0x00000000000ab3ed
+            |
+            ---0x7deea78ab3ed
+               cfree
+
+     0.51%  job_benchmark  [kernel.kallsyms]     [k] clear_page_rep
+            |
+            ---clear_page_rep
+               get_page_from_freelist
+               __alloc_pages
+               alloc_pages_mpol
+               vma_alloc_folio
+               alloc_anon_folio
+               do_anonymous_page
+               handle_pte_fault
+               __handle_mm_fault
+               handle_mm_fault
+               do_user_addr_fault
+               exc_page_fault
+               asm_exc_page_fault
+               0x7deea78ac5fa
+               malloc
+               operator new(unsigned long)
+
+     0.38%  job_benchmark  [kernel.kallsyms]     [k] x64_sys_call
+     0.38%  job_benchmark  job_benchmark         [.] std::_Function_handler<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> (), std::__future_base::_Task_setter<std::unique_ptr<std::__future_base::_Result<void>, std::__future_base::_Result_base::_Deleter>, std::__future_base::_Task_state<std::function<void ()>, std::allocator<int>, void ()>::_M_run()::{lambda()#1}, void> >::_M_invoke(std::_Any_data const&)
+     0.38%  job_benchmark  job_benchmark         [.] std::_Sp_counted_ptr_inplace<std::packaged_task<void ()>, std::allocator<void>, (__gnu_cxx::_Lock_policy)2>::_M_dispose()
+     0.38%  job_benchmark  libc.so.6             [.] pthread_cond_broadcast
+     0.38%  job_benchmark  libc.so.6             [.] 0x00000000000990b7
+     0.38%  job_benchmark  libc.so.6             [.] 0x00000000000ab349
+     0.25%  job_benchmark  [kernel.kallsyms]     [k] __get_user_nocheck_4
+     0.25%  job_benchmark  [kernel.kallsyms]     [k] __lruvec_stat_mod_folio
+     0.25%  job_benchmark  [kernel.kallsyms]     [k] __pv_queued_spin_lock_slowpath
+     0.25%  job_benchmark  [kernel.kallsyms]     [k] __raw_callee_save___pv_queued_spin_unlock
+     0.25%  job_benchmark  [kernel.kallsyms]     [k] _raw_spin_unlock
+     0.25%  job_benchmark  [kernel.kallsyms]     [k] futex_hash
+     0.25%  job_benchmark  [kernel.kallsyms]     [k] rmqueue
+     0.25%  job_benchmark  job_benchmark         [.] std::_Function_handler<void (), main::{lambda()#1}>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)
+     0.25%  job_benchmark  ld-linux-x86-64.so.2  [.] __tls_get_addr
+     0.25%  job_benchmark  libc.so.6             [.] 0x0000000000099050
+     0.25%  job_benchmark  libc.so.6             [.] 0x00000000000a9bc3
+     0.25%  job_benchmark  libc.so.6             [.] 0x00000000000a9ce6
+     0.25%  job_benchmark  libc.so.6             [.] 0x00000000000a9d75
+     0.25%  job_benchmark  libc.so.6             [.] 0x00000000000ab858
+     0.25%  job_benchmark  libc.so.6             [.] 0x00000000000ab8b5
+     0.25%  job_benchmark  libc.so.6             [.] 0x00000000000ac5fe
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] __rcu_read_unlock
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] _raw_spin_lock
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] blkcg_maybe_throttle_current
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] cgroup_rstat_updated
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] consume_stock
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] down_write_killable
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] free_unref_page_list
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] futex_wake_mark
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] get_page_from_freelist
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] handle_pte_fault
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] hrtimer_cancel
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] mem_cgroup_commit_charge
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] nft_match_eval
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] post_alloc_hook
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] rebalance_domains
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] retbleed_return_thunk
+     0.13%  job_benchmark  [kernel.kallsyms]     [k] rseq_update_cpu_node_id
+     0.13%  job_benchmark  job_benchmark         [.] pthread_mutex_lock@plt
+     0.13%  job_benchmark  job_benchmark         [.] std::_Function_handler<void (), engine_labs::JobSystem::submit(std::function<void ()>, std::optional<unsigned long>)::{lambda()#1}>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)
+     0.13%  job_benchmark  job_benchmark         [.] std::_Sp_counted_ptr_inplace<std::__future_base::_Task_state<std::function<void ()>, std::allocator<int>, void ()>, std::allocator<int>, (__gnu_cxx::_Lock_policy)2>::_M_destroy()
+     0.13%  job_benchmark  job_benchmark         [.] std::__future_base::_Result<void>::~_Result()
+     0.13%  job_benchmark  job_benchmark         [.] std::__future_base::_State_baseV2::_M_complete_async()
+     0.13%  job_benchmark  job_benchmark         [.] std::__future_base::_State_baseV2::_M_do_set(std::function<std::unique_ptr<std::__future_base::_Result_base, std::__future_base::_Result_base::_Deleter> ()>*, bool*)
+     0.13%  job_benchmark  job_benchmark         [.] std::chrono::_V2::steady_clock::now()@plt
+     0.13%  job_benchmark  libc.so.6             [.] cfree
+     0.13%  job_benchmark  libc.so.6             [.] pthread_once
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000986cf
+     0.13%  job_benchmark  libc.so.6             [.] 0x0000000000098e51
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000a1f16
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000a1f78
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000a1fb3
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000a9bb1
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000a9bce
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000a9cf0
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000a9d62
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000a9d8d
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ab109
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ab27e
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ab33e
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ab36c
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ab3e8
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ab6a1
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ab6c4
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ab9c0
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000aba45
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000abb18
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000abb5c
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000abbed
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000abd84
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ac027
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ac069
+     0.13%  job_benchmark  libc.so.6             [.] 0x00000000000ac5fa
+     0.13%  job_benchmark  libstdc++.so.6.0.33   [.] clock_gettime@plt
+     0.13%  job_benchmark  libstdc++.so.6.0.33   [.] operator new(unsigned long)
+     0.13%  job_benchmark  libstdc++.so.6.0.33   [.] std::__future_base::_Result_base::_Result_base()
+     0.13%  job_benchmark  libstdc++.so.6.0.33   [.] std::condition_variable::notify_all()
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

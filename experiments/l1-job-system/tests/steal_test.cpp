@@ -5,10 +5,6 @@
 #include <thread>
 #include <vector>
 int main() {
-    if (!engine_labs::WorkQueue::stealing_implemented) {
-        std::cerr << "USER TODO: steal() remains unimplemented\n";
-        return 77;
-    }
     engine_labs::WorkQueue q;
     int selected=0;
     q.push([&] { selected=1; });q.push([&] { selected=2; });
