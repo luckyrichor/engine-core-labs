@@ -1,0 +1,24 @@
+Internal ctest changing into directory: /home/ubuntu/project/WorkPlan/engine-core-labs/.local/tsan
+Test project /home/ubuntu/project/WorkPlan/engine-core-labs/.local/tsan
+    Start 1: owner_queue
+1/9 Test #1: owner_queue ......................   Passed    0.01 sec
+    Start 2: workload_contract
+2/9 Test #2: workload_contract ................   Passed    0.01 sec
+    Start 3: pool_lifecycle
+3/9 Test #3: pool_lifecycle ...................   Passed    0.21 sec
+    Start 4: steal_contract
+4/9 Test #4: steal_contract ...................   Passed    0.18 sec
+    Start 5: benchmark_baseline_smoke
+5/9 Test #5: benchmark_baseline_smoke .........   Passed    0.02 sec
+    Start 6: benchmark_stealing_smoke
+6/9 Test #6: benchmark_stealing_smoke .........   Passed    0.02 sec
+    Start 7: workload_shape
+7/9 Test #7: workload_shape ...................   Passed    0.04 sec
+    Start 8: allocator_boundaries
+8/9 Test #8: allocator_boundaries .............   Passed    0.01 sec
+    Start 9: variable_fragmentation
+9/9 Test #9: variable_fragmentation ...........   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 9
+
+Total Test time (real) =   0.54 sec

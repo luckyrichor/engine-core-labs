@@ -9,13 +9,17 @@ p.add_argument('--iterations',type=int,default=50000)
 p.add_argument('--repeats',type=int,default=10)
 p.add_argument('--min-seconds',type=float,default=.2)
 p.add_argument('--implementation-label',default='codex-core')
-p.add_argument('--distributions',nargs='+',choices=['balanced','skewed','heterogeneous'],default=['balanced','skewed','heterogeneous'])
+p.add_argument('--distributions',nargs='+',choices=['balanced','skewed','heterogeneous','heterogeneous_random'],default=['balanced','skewed','heterogeneous'])
+p.add_argument('--seed',type=int,default=20261009)
 a=p.parse_args()
 if not 2<=a.repeats<=100 or not 1<=a.tasks<=10000000 or not 1<=a.iterations<=100000000 or not 0<=a.min_seconds<=10:p.error('invalid measurement bounds')
+if not 0<=a.seed<=2**64-a.repeats:p.error('seed range')
+max_iterations=1000000 if any(d.startswith('heterogeneous') for d in a.distributions) else 100000000
+if a.iterations>max_iterations:p.error('iterations exceed distribution bounds')
 exe=str(a.build/'experiments/l1-job-system/job_benchmark')
 subprocess.run(['ctest','--test-dir',str(a.build),'--output-on-failure'],check=True)
-def run(mode,threads,distribution,phase,iterations):
- out=subprocess.check_output([exe,mode,str(threads),str(a.tasks),str(iterations),distribution,phase],text=True)
+def run(mode,threads,distribution,phase,iterations,seed=0):
+ out=subprocess.check_output([exe,mode,str(threads),str(a.tasks),str(iterations),distribution,phase,str(seed)],text=True)
  return next(csv.DictReader(io.StringIO(out)))
 def host():
  pressure=Path('/proc/pressure/cpu')
@@ -29,9 +33,9 @@ if a.min_seconds:
   fastest=min(float(r['seconds']) for r in samples)
   calibration.append({'iterations':iterations,'runs':samples})
   if fastest>=a.min_seconds:break
-  iterations=min(100000000,max(iterations+1,int(iterations*a.min_seconds/max(fastest,.000001)*1.15)))
+  iterations=min(max_iterations,max(iterations+1,int(iterations*a.min_seconds/max(fastest,.000001)*1.15)))
  else:raise SystemExit('calibration did not reach minimum duration')
-expected={d:subprocess.check_output([exe,'reference',str(a.tasks),str(iterations),d],text=True).strip() for d in a.distributions}
+expected={(d,seed):subprocess.check_output([exe,'reference',str(a.tasks),str(iterations),d,str(seed)],text=True).strip() for d in a.distributions for seed in (range(a.seed,a.seed+a.repeats) if d=='heterogeneous_random' else [0])}
 a.output.mkdir(parents=True,exist_ok=True)
 configs=list(itertools.product(a.distributions,('baseline','stealing'),(1,2,4,8),('prequeued','end_to_end')))
 rows=[];observations=[]
@@ -41,8 +45,9 @@ with (a.output/'raw.csv').open('w') as f:
   order=configs[repeat:]+configs[:repeat]
   if repeat%2:order=list(reversed(order))
   for distribution,mode,threads,phase in order:
-   before=host();row=run(mode,threads,distribution,phase,iterations);after=host()
-   if row['checksum']!=expected[distribution] or row['exactly_once']!='true':raise SystemExit('independent checksum / task identity check failed')
+   seed=a.seed+repeat if distribution=='heterogeneous_random' else 0
+   before=host();row=run(mode,threads,distribution,phase,iterations,seed);after=host()
+   if row['checksum']!=expected[(distribution,seed)] or row['exactly_once']!='true':raise SystemExit('independent checksum / task identity check failed')
    row['repeat']=repeat;rows.append(row)
    observations.append({'config':[distribution,mode,threads,phase,repeat],'before':before,'after':after})
    if writer is None:writer=csv.DictWriter(f,fieldnames=list(row));writer.writeheader()
@@ -70,6 +75,6 @@ for distribution,phase in itertools.product(a.distributions,('prequeued','end_to
  for frac in (0,.5,1):parts.append(f'<text x="2" y="{370-frac*310}">{maximum*frac:.0f}</text>')
  parts.append('</svg>');(a.output/f'{distribution}-{phase}.svg').write_text('\n'.join(parts))
 sources=[Path('CMakeLists.txt')]+[q for q in Path('experiments').rglob('*') if q.is_file() and (q.suffix in {'.hpp','.cpp','.py'} or q.name=='CMakeLists.txt')]
-metadata={'generated_at':time.strftime('%Y-%m-%dT%H:%M:%S%z'),'machine':platform.node(),'os':platform.platform(),'logical_cpus':os.cpu_count(),'lscpu':subprocess.check_output(['lscpu'],text=True),'compiler':subprocess.check_output(['c++','--version'],text=True),'requested':vars(a)|{'build':str(a.build),'output':str(a.output)},'actual_tasks':a.tasks,'actual_iterations':iterations,'independent_checksum':expected,'calibration':calibration,'observations':observations,'source_head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'uncommitted':subprocess.check_output(['git','status','--short'],text=True),'load_interpretation':'loadavg is a lagging host average, not a measurement of background work; proc_stat and children CPU are interval evidence, not per-thread attribution', 'source_sha256':{str(q):hashlib.sha256(q.read_bytes()).hexdigest() for q in sources},'executable_sha256':hashlib.sha256(Path(exe).read_bytes()).hexdigest(),'build_cache':(a.build/'CMakeCache.txt').read_text(),'method':'full workload warmup on same pool; rotated/reversed order; prequeued excludes submission, includes resume/work/future drain; end_to_end includes submission; atomic per-ID exactly-once counts; independently computed sequential sum; SD is not a confidence interval'}
+metadata={'generated_at':time.strftime('%Y-%m-%dT%H:%M:%S%z'),'machine':platform.node(),'os':platform.platform(),'logical_cpus':os.cpu_count(),'lscpu':subprocess.check_output(['lscpu'],text=True),'compiler':subprocess.check_output(['c++','--version'],text=True),'requested':vars(a)|{'build':str(a.build),'output':str(a.output)},'actual_tasks':a.tasks,'actual_iterations':iterations,'independent_checksum':{f'{d}/{seed}':v for (d,seed),v in expected.items()},'calibration':calibration,'observations':observations,'source_head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'uncommitted':subprocess.check_output(['git','status','--short'],text=True),'load_interpretation':'loadavg is a lagging host average, not a measurement of background work; proc_stat and children CPU are interval evidence, not per-thread attribution', 'source_sha256':{str(q):hashlib.sha256(q.read_bytes()).hexdigest() for q in sources},'executable_sha256':hashlib.sha256(Path(exe).read_bytes()).hexdigest(),'build_cache':(a.build/'CMakeCache.txt').read_text(),'method':'full workload warmup on same pool; rotated/reversed order; prequeued excludes submission, includes resume/work/future drain; end_to_end includes submission; atomic per-ID exactly-once counts; independently computed sequential sum; SD is not a confidence interval'}
 (a.output/'device.json').write_text(json.dumps(metadata,indent=2))
 print(f'Saved {len(rows)} runs to {a.output}')
