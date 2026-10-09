@@ -30,13 +30,15 @@ void measure(const char* name,const char* pattern,int repeat,A& allocator,Releas
  if(checksum!=batches*32640)throw std::runtime_error("checksum mismatch");
  std::sort(alloc_times.begin(),alloc_times.end());std::sort(free_times.begin(),free_times.end());
  auto q=[](const auto& values,double fraction){return values[static_cast<std::size_t>(fraction*(values.size()-1))];};
- std::cout<<name<<','<<pattern<<','<<repeat<<','<<batch<<','<<batches<<','<<batches*batch<<','<<q(alloc_times,.5)<<','<<q(alloc_times,.95)<<','<<q(alloc_times,.99)<<','<<q(free_times,.5)<<','<<payload<<',';
+ std::cout<<name<<','<<pattern<<','<<repeat<<','<<batch<<','<<batches<<','<<batches*batch<<','<<q(alloc_times,.5)<<','<<q(alloc_times,.95)<<','<<q(alloc_times,.99)<<',' ;
+ if(std::string(name)!="arena")std::cout<<q(free_times,.5);
+ std::cout<<','<<q(free_times,.5)*batch<<','<<(std::string(name)=="arena"?1:batch)<<','<<(std::string(name)=="arena"?"unresolved_single_reset":"batch_mean")<<','<<payload<<',';
  if(std::string(name)!="malloc")std::cout<<reserved-payload;
  std::cout<<',';if(std::string(name)!="malloc")std::cout<<metadata;std::cout<<','<<checksum<<'\n';
 }
 int main(){
  try{
-  std::cout<<"allocator,pattern,repeat,batch,batches,allocations,alloc_batch_p50_ns_per_op,alloc_batch_p95_ns_per_op,alloc_batch_p99_ns_per_op,reclaim_batch_p50_ns_per_op,payload_bytes,internal_waste_bytes,bookkeeping_reserved_bytes,checksum\n";
+  std::cout<<"allocator,pattern,repeat,batch,batches,allocations,alloc_batch_p50_ns_per_op,alloc_batch_p95_ns_per_op,alloc_batch_p99_ns_per_op,reclaim_batch_p50_ns_per_op,reclaim_region_p50_ns,reclaim_operations,reclaim_interpretation,payload_bytes,internal_waste_bytes,bookkeeping_reserved_bytes,checksum\n";
   // Rotated order across repeats; object construction/reserves outside timing.
   for(int repeat=0;repeat<10;++repeat)for(const char* pattern:{"aligned","odd"})for(int offset=0;offset<4;++offset){
    int mode=(repeat+offset)%4;

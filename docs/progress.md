@@ -1,5 +1,15 @@
 # 进度记录
 
+## 2026-10-09 后续评审：成本偏斜与尾部观测（Codex）
+
+来源 engine-core-labs@2ea3b9a + 本轮工作树修改，精确SHA256见 measurements/2026-10-09-review/。新增任务数均分、79/10000重任务做100倍迭代的heterogeneous fixture；显式按ID%workers分配，避免预热轮转偏移影响分布。160次、十轮，逐ID和独立串行结果均通过；每轮0.431–1.699秒，四线程预入队stealing中位数22605对baseline10262，约2.2倍，只限定本分布与机器。
+
+L2新增100行逐次计时（每行102400样本）、clock+write控制、40000个原始窗口最大值。全部payload与窗口汇总核对通过；aligned的control/Pool/Stack/Arena插桩p50/p99/p99.9跨轮中位数均30/41/50ns，不能解析纳秒增量差异，不能排名。control最大值53390ns，提示孤立停顿不能直接归因分配器。Arena一次reset不再除以256称单次成本，留空均摊字段并标未解析。
+
+补旧微任务分析：balanced baseline端到端从1到8线程约1325815降至283080任务/秒，提交中位数6.015增至33.692ms；不单独归因唤醒。该组8.54秒、距粗任务结束18.83秒，loadavg保留历史活动，不可称后台争用量；CV并非每点超过20%。malloc实际多种小尺寸、每批持有256块再释放，纠正“单尺寸/逐次立即释放”描述；“均快于malloc”也仅为具体场景观察。
+
+Release8/8、TSan8/8及heterogeneous smoke、ASan/UBSan/启用泄漏检测8/8；新tail通道在ASan/UBSan/LeakSanitizer下完成100行无诊断。最终源文件SHA256与测量记录一致，旧CSV保留原版本；完整六项处置见review-2026-10-09.md，数据索引见新目录README。
+
 ## 2026-10-09 L1 / L2 核心完成与测量修订（Codex）
 
 来源 engine-core-labs@b8be686 + 本轮工作树修改，精确源文件 SHA256 见 measurements/2026-10-09/。用户授权助手完成全部算法，取消此前手写 steal / Arena 待办；已更新 AGENTS、README 与学习说明，旧分工保留为历史。

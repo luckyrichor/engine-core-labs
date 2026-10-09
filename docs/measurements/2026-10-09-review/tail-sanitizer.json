@@ -1,0 +1,10 @@
+{
+  "command": "sudo env ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 .local/asan/experiments/l2-allocators/allocator_tail",
+  "rows": 100,
+  "samples_per_row": 102400,
+  "payload_checksums": "verified",
+  "result": "completed with no sanitizer diagnostics",
+  "stdout_sha256": "f486bd2bca9e037897252b586ea4eed7a7486a7761a7be731f1d8c30bc92e38a",
+  "binary_sha256": "1ebb4d242950a7c77485b02bfc53a98f336c0e739df6991d1a1fc9906d07c315",
+  "scope": "sanitized results are validation only, not performance evidence"
+}

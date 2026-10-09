@@ -1,0 +1,5076 @@
+{
+  "generated_at": "2026-10-09T04:16:47-0400",
+  "machine": "VM-0-15-ubuntu",
+  "os": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+  "logical_cpus": 4,
+  "lscpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  4\nOn-line CPU(s) list:                     0-3\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 7K62 48-Core Processor\nCPU family:                              23\nModel:                                   49\nThread(s) per core:                      1\nCore(s) per socket:                      4\nSocket(s):                               1\nStepping:                                0\nBogoMIPS:                                5190.24\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm rep_good nopl cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext ibpb vmmcall fsgsbase bmi1 avx2 smep bmi2 rdseed adx smap clflushopt sha_ni xsaveopt xsavec xgetbv1 arat\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               128 KiB (4 instances)\nL1i cache:                               128 KiB (4 instances)\nL2 cache:                                16 MiB (4 instances)\nL3 cache:                                16 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-3\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Mitigation; untrained return thunk; SMT disabled\nVulnerability Spec rstack overflow:      Vulnerable\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected\n",
+  "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "requested": {
+    "build": "build",
+    "output": "docs/measurements/2026-10-09-review/heterogeneous",
+    "tasks": 10000,
+    "iterations": 50000,
+    "repeats": 10,
+    "min_seconds": 0.2,
+    "implementation_label": "codex-core",
+    "distributions": [
+      "heterogeneous"
+    ]
+  },
+  "actual_tasks": 10000,
+  "actual_iterations": 50000,
+  "independent_checksum": {
+    "heterogeneous": "4725625947294151521"
+  },
+  "calibration": [
+    {
+      "iterations": 50000,
+      "runs": [
+        {
+          "mode": "stealing",
+          "threads": "1",
+          "tasks": "10000",
+          "iterations": "50000",
+          "distribution": "balanced",
+          "phase": "prequeued",
+          "seconds": "0.934487",
+          "submit_seconds": "0.00200938",
+          "tasks_per_second": "10701.1",
+          "checksum": "2447969072293711489",
+          "exactly_once": "true"
+        },
+        {
+          "mode": "stealing",
+          "threads": "2",
+          "tasks": "10000",
+          "iterations": "50000",
+          "distribution": "balanced",
+          "phase": "prequeued",
+          "seconds": "0.473195",
+          "submit_seconds": "0.00221579",
+          "tasks_per_second": "21132.9",
+          "checksum": "2447969072293711489",
+          "exactly_once": "true"
+        },
+        {
+          "mode": "stealing",
+          "threads": "4",
+          "tasks": "10000",
+          "iterations": "50000",
+          "distribution": "balanced",
+          "phase": "prequeued",
+          "seconds": "0.252318",
+          "submit_seconds": "0.0021411",
+          "tasks_per_second": "39632.5",
+          "checksum": "2447969072293711489",
+          "exactly_once": "true"
+        },
+        {
+          "mode": "stealing",
+          "threads": "8",
+          "tasks": "10000",
+          "iterations": "50000",
+          "distribution": "balanced",
+          "phase": "prequeued",
+          "seconds": "0.241738",
+          "submit_seconds": "0.00202311",
+          "tasks_per_second": "41367",
+          "checksum": "2447969072293711489",
+          "exactly_once": "true"
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        0
+      ],
+      "before": {
+        "time": 1791533477.7749176,
+        "loadavg": [
+          0.27685546875,
+          0.13134765625,
+          0.1015625
+        ],
+        "cpu_pressure": "some avg10=3.64 avg60=0.71 avg300=0.15 total=1368370889\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1501565 3555 980362 170968931 51199 0 178748 0 0 0",
+        "children_cpu_s": 9.487346
+      },
+      "after": {
+        "time": 1791533481.1085262,
+        "loadavg": [
+          0.27685546875,
+          0.13134765625,
+          0.1015625
+        ],
+        "cpu_pressure": "some avg10=2.44 avg60=0.67 avg300=0.15 total=1368374298\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1501918 3555 980378 170969889 51199 0 178756 0 0 0",
+        "children_cpu_s": 12.823018
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        0
+      ],
+      "before": {
+        "time": 1791533481.108819,
+        "loadavg": [
+          0.27685546875,
+          0.13134765625,
+          0.1015625
+        ],
+        "cpu_pressure": "some avg10=2.44 avg60=0.67 avg300=0.15 total=1368374298\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1501918 3555 980378 170969889 51199 0 178756 0 0 0",
+        "children_cpu_s": 12.823018
+      },
+      "after": {
+        "time": 1791533484.4616995,
+        "loadavg": [
+          0.3349609375,
+          0.14599609375,
+          0.1064453125
+        ],
+        "cpu_pressure": "some avg10=1.99 avg60=0.64 avg300=0.15 total=1368380873\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1502272 3555 980391 170970856 51200 0 178762 0 0 0",
+        "children_cpu_s": 16.179886
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        0
+      ],
+      "before": {
+        "time": 1791533484.461934,
+        "loadavg": [
+          0.3349609375,
+          0.14599609375,
+          0.1064453125
+        ],
+        "cpu_pressure": "some avg10=1.99 avg60=0.64 avg300=0.15 total=1368380873\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1502272 3555 980391 170970856 51200 0 178762 0 0 0",
+        "children_cpu_s": 16.179886
+      },
+      "after": {
+        "time": 1791533486.8764083,
+        "loadavg": [
+          0.3349609375,
+          0.14599609375,
+          0.1064453125
+        ],
+        "cpu_pressure": "some avg10=1.34 avg60=0.60 avg300=0.14 total=1368386325\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1502618 3555 980398 170971466 51200 0 178768 0 0 0",
+        "children_cpu_s": 19.554111000000002
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        0
+      ],
+      "before": {
+        "time": 1791533486.8766565,
+        "loadavg": [
+          0.3349609375,
+          0.14599609375,
+          0.1064453125
+        ],
+        "cpu_pressure": "some avg10=1.34 avg60=0.60 avg300=0.14 total=1368386325\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1502618 3555 980398 170971466 51200 0 178768 0 0 0",
+        "children_cpu_s": 19.554111000000002
+      },
+      "after": {
+        "time": 1791533489.2835186,
+        "loadavg": [
+          0.46875,
+          0.17724609375,
+          0.11669921875
+        ],
+        "cpu_pressure": "some avg10=1.09 avg60=0.58 avg300=0.14 total=1368403552\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1502965 3555 980410 170972069 51200 0 178776 0 0 0",
+        "children_cpu_s": 22.908835
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        0
+      ],
+      "before": {
+        "time": 1791533489.2838283,
+        "loadavg": [
+          0.46875,
+          0.17724609375,
+          0.11669921875
+        ],
+        "cpu_pressure": "some avg10=1.09 avg60=0.58 avg300=0.14 total=1368403552\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1502965 3555 980410 170972069 51200 0 178776 0 0 0",
+        "children_cpu_s": 22.908835
+      },
+      "after": {
+        "time": 1791533491.2708216,
+        "loadavg": [
+          0.46875,
+          0.17724609375,
+          0.11669921875
+        ],
+        "cpu_pressure": "some avg10=1.26 avg60=0.63 avg300=0.16 total=1368459868\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1503319 3555 980418 170972498 51200 0 178778 0 0 0",
+        "children_cpu_s": 26.36622
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        0
+      ],
+      "before": {
+        "time": 1791533491.2710903,
+        "loadavg": [
+          0.46875,
+          0.17724609375,
+          0.11669921875
+        ],
+        "cpu_pressure": "some avg10=1.26 avg60=0.63 avg300=0.16 total=1368459868\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1503319 3555 980418 170972498 51200 0 178778 0 0 0",
+        "children_cpu_s": 26.36622
+      },
+      "after": {
+        "time": 1791533493.260059,
+        "loadavg": [
+          0.51171875,
+          0.19091796875,
+          0.12158203125
+        ],
+        "cpu_pressure": "some avg10=1.39 avg60=0.67 avg300=0.17 total=1368502104\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1503675 3555 980428 170972922 51200 0 178780 0 0 0",
+        "children_cpu_s": 29.851959
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        0
+      ],
+      "before": {
+        "time": 1791533493.2602975,
+        "loadavg": [
+          0.51171875,
+          0.19091796875,
+          0.12158203125
+        ],
+        "cpu_pressure": "some avg10=1.39 avg60=0.67 avg300=0.17 total=1368502104\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1503675 3555 980428 170972922 51200 0 178780 0 0 0",
+        "children_cpu_s": 29.851959
+      },
+      "after": {
+        "time": 1791533495.2328682,
+        "loadavg": [
+          0.51171875,
+          0.19091796875,
+          0.12158203125
+        ],
+        "cpu_pressure": "some avg10=4.22 avg60=1.21 avg300=0.28 total=1368841797\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1504025 3555 980437 170973349 51200 0 178782 0 0 0",
+        "children_cpu_s": 33.282462
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        0
+      ],
+      "before": {
+        "time": 1791533495.2330801,
+        "loadavg": [
+          0.51171875,
+          0.19091796875,
+          0.12158203125
+        ],
+        "cpu_pressure": "some avg10=4.22 avg60=1.21 avg300=0.28 total=1368841797\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1504025 3555 980437 170973349 51200 0 178782 0 0 0",
+        "children_cpu_s": 33.282462
+      },
+      "after": {
+        "time": 1791533497.0680704,
+        "loadavg": [
+          0.51171875,
+          0.19091796875,
+          0.12158203125
+        ],
+        "cpu_pressure": "some avg10=5.45 avg60=1.53 avg300=0.36 total=1369080212\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1504381 3555 980442 170973719 51200 0 178784 0 0 0",
+        "children_cpu_s": 36.774717
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        0
+      ],
+      "before": {
+        "time": 1791533497.0683281,
+        "loadavg": [
+          0.51171875,
+          0.19091796875,
+          0.12158203125
+        ],
+        "cpu_pressure": "some avg10=5.45 avg60=1.53 avg300=0.36 total=1369080212\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1504381 3555 980442 170973719 51200 0 178784 0 0 0",
+        "children_cpu_s": 36.774717
+      },
+      "after": {
+        "time": 1791533500.4141934,
+        "loadavg": [
+          0.55126953125,
+          0.20458984375,
+          0.12646484375
+        ],
+        "cpu_pressure": "some avg10=4.46 avg60=1.48 avg300=0.35 total=1369085990\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1504734 3555 980458 170974682 51200 0 178792 0 0 0",
+        "children_cpu_s": 40.123034000000004
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        0
+      ],
+      "before": {
+        "time": 1791533500.4144838,
+        "loadavg": [
+          0.55126953125,
+          0.20458984375,
+          0.12646484375
+        ],
+        "cpu_pressure": "some avg10=4.46 avg60=1.48 avg300=0.35 total=1369085990\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1504734 3555 980458 170974682 51200 0 178792 0 0 0",
+        "children_cpu_s": 40.123034000000004
+      },
+      "after": {
+        "time": 1791533503.7501836,
+        "loadavg": [
+          0.58740234375,
+          0.21826171875,
+          0.13134765625
+        ],
+        "cpu_pressure": "some avg10=2.99 avg60=1.38 avg300=0.35 total=1369089034\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1505079 3555 980470 170975652 51201 0 178798 0 0 0",
+        "children_cpu_s": 43.463247
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        0
+      ],
+      "before": {
+        "time": 1791533503.7504275,
+        "loadavg": [
+          0.58740234375,
+          0.21826171875,
+          0.13134765625
+        ],
+        "cpu_pressure": "some avg10=2.99 avg60=1.38 avg300=0.35 total=1369089034\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1505079 3555 980470 170975652 51201 0 178798 0 0 0",
+        "children_cpu_s": 43.463247
+      },
+      "after": {
+        "time": 1791533505.4537199,
+        "loadavg": [
+          0.58740234375,
+          0.21826171875,
+          0.13134765625
+        ],
+        "cpu_pressure": "some avg10=2.44 avg60=1.34 avg300=0.35 total=1369094035\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1505427 3555 980477 170975976 51201 0 178807 0 0 0",
+        "children_cpu_s": 46.870394999999995
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        0
+      ],
+      "before": {
+        "time": 1791533505.453917,
+        "loadavg": [
+          0.58740234375,
+          0.21826171875,
+          0.13134765625
+        ],
+        "cpu_pressure": "some avg10=2.44 avg60=1.34 avg300=0.35 total=1369094035\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1505427 3555 980477 170975976 51201 0 178807 0 0 0",
+        "children_cpu_s": 46.870394999999995
+      },
+      "after": {
+        "time": 1791533507.1407402,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.00 avg60=1.29 avg300=0.34 total=1369096118\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1505770 3555 980483 170976297 51201 0 178818 0 0 0",
+        "children_cpu_s": 50.243398
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        0
+      ],
+      "before": {
+        "time": 1791533507.1409652,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.00 avg60=1.29 avg300=0.34 total=1369096118\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1505770 3555 980483 170976297 51201 0 178818 0 0 0",
+        "children_cpu_s": 50.243398
+      },
+      "after": {
+        "time": 1791533508.0182476,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.00 avg60=1.29 avg300=0.34 total=1369107984\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1506114 3555 980485 170976304 51201 0 178818 0 0 0",
+        "children_cpu_s": 53.67535
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        0
+      ],
+      "before": {
+        "time": 1791533508.018495,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.00 avg60=1.29 avg300=0.34 total=1369107984\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1506114 3555 980485 170976304 51201 0 178818 0 0 0",
+        "children_cpu_s": 53.67535
+      },
+      "after": {
+        "time": 1791533508.9374013,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.18 avg60=1.35 avg300=0.36 total=1369172343\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1506471 3555 980490 170976308 51201 0 178818 0 0 0",
+        "children_cpu_s": 57.162910000000004
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        0
+      ],
+      "before": {
+        "time": 1791533508.9376798,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.18 avg60=1.35 avg300=0.36 total=1369172343\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1506471 3555 980490 170976308 51201 0 178818 0 0 0",
+        "children_cpu_s": 57.162910000000004
+      },
+      "after": {
+        "time": 1791533509.8806381,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.18 avg60=1.35 avg300=0.36 total=1369932918\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1506834 3555 980499 170976313 51201 0 178819 0 0 0",
+        "children_cpu_s": 60.680456
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        0
+      ],
+      "before": {
+        "time": 1791533509.8808339,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.18 avg60=1.35 avg300=0.36 total=1369932918\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1506834 3555 980499 170976313 51201 0 178819 0 0 0",
+        "children_cpu_s": 60.680456
+      },
+      "after": {
+        "time": 1791533510.7877586,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.18 avg60=1.35 avg300=0.36 total=1370718467\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1507188 3555 980504 170976316 51201 0 178819 0 0 0",
+        "children_cpu_s": 64.140106
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        1
+      ],
+      "before": {
+        "time": 1791533510.7881076,
+        "loadavg": [
+          0.70068359375,
+          0.248046875,
+          0.1416015625
+        ],
+        "cpu_pressure": "some avg10=2.18 avg60=1.35 avg300=0.36 total=1370718467\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1507188 3555 980504 170976316 51201 0 178819 0 0 0",
+        "children_cpu_s": 64.140106
+      },
+      "after": {
+        "time": 1791533514.1302886,
+        "loadavg": [
+          0.72509765625,
+          0.2607421875,
+          0.146484375
+        ],
+        "cpu_pressure": "some avg10=12.59 avg60=3.63 avg300=0.87 total=1370723188\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1507542 3555 980520 170977274 51202 0 178828 0 0 0",
+        "children_cpu_s": 67.484308
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        1
+      ],
+      "before": {
+        "time": 1791533514.13049,
+        "loadavg": [
+          0.72509765625,
+          0.2607421875,
+          0.146484375
+        ],
+        "cpu_pressure": "some avg10=12.59 avg60=3.63 avg300=0.87 total=1370723188\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1507542 3555 980520 170977274 51202 0 178828 0 0 0",
+        "children_cpu_s": 67.484308
+      },
+      "after": {
+        "time": 1791533515.061301,
+        "loadavg": [
+          0.72509765625,
+          0.2607421875,
+          0.146484375
+        ],
+        "cpu_pressure": "some avg10=15.38 avg60=4.43 avg300=1.05 total=1371478817\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1507905 3555 980524 170977278 51202 0 178828 0 0 0",
+        "children_cpu_s": 71.04801099999999
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        1
+      ],
+      "before": {
+        "time": 1791533515.061493,
+        "loadavg": [
+          0.72509765625,
+          0.2607421875,
+          0.146484375
+        ],
+        "cpu_pressure": "some avg10=15.38 avg60=4.43 avg300=1.05 total=1371478817\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1507905 3555 980524 170977278 51202 0 178828 0 0 0",
+        "children_cpu_s": 71.04801099999999
+      },
+      "after": {
+        "time": 1791533515.9458177,
+        "loadavg": [
+          0.72509765625,
+          0.2607421875,
+          0.146484375
+        ],
+        "cpu_pressure": "some avg10=15.38 avg60=4.43 avg300=1.05 total=1372266747\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1508254 3555 980525 170977283 51202 0 178829 0 0 0",
+        "children_cpu_s": 74.525566
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        1
+      ],
+      "before": {
+        "time": 1791533515.946039,
+        "loadavg": [
+          0.72509765625,
+          0.2607421875,
+          0.146484375
+        ],
+        "cpu_pressure": "some avg10=15.38 avg60=4.43 avg300=1.05 total=1372266747\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1508254 3555 980525 170977283 51202 0 178829 0 0 0",
+        "children_cpu_s": 74.525566
+      },
+      "after": {
+        "time": 1791533516.8458974,
+        "loadavg": [
+          0.72509765625,
+          0.2607421875,
+          0.146484375
+        ],
+        "cpu_pressure": "some avg10=22.01 avg60=5.99 avg300=1.40 total=1372331071\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1508603 3555 980529 170977289 51202 0 178829 0 0 0",
+        "children_cpu_s": 77.93945
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        1
+      ],
+      "before": {
+        "time": 1791533516.8461022,
+        "loadavg": [
+          0.72509765625,
+          0.2607421875,
+          0.146484375
+        ],
+        "cpu_pressure": "some avg10=22.01 avg60=5.99 avg300=1.40 total=1372331071\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1508603 3555 980529 170977289 51202 0 178829 0 0 0",
+        "children_cpu_s": 77.93945
+      },
+      "after": {
+        "time": 1791533517.7288394,
+        "loadavg": [
+          0.98779296875,
+          0.3232421875,
+          0.16748046875
+        ],
+        "cpu_pressure": "some avg10=22.01 avg60=5.99 avg300=1.40 total=1372341708\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1508949 3555 980531 170977294 51202 0 178829 0 0 0",
+        "children_cpu_s": 81.39593599999999
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        1
+      ],
+      "before": {
+        "time": 1791533517.7290497,
+        "loadavg": [
+          0.98779296875,
+          0.3232421875,
+          0.16748046875
+        ],
+        "cpu_pressure": "some avg10=22.01 avg60=5.99 avg300=1.40 total=1372341708\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1508949 3555 980531 170977294 51202 0 178829 0 0 0",
+        "children_cpu_s": 81.39593599999999
+      },
+      "after": {
+        "time": 1791533519.4149845,
+        "loadavg": [
+          0.98779296875,
+          0.3232421875,
+          0.16748046875
+        ],
+        "cpu_pressure": "some avg10=18.02 avg60=5.79 avg300=1.39 total=1372349349\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1509295 3555 980542 170977608 51202 0 178836 0 0 0",
+        "children_cpu_s": 84.772766
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        1
+      ],
+      "before": {
+        "time": 1791533519.415216,
+        "loadavg": [
+          0.98779296875,
+          0.3232421875,
+          0.16748046875
+        ],
+        "cpu_pressure": "some avg10=18.02 avg60=5.79 avg300=1.39 total=1372349349\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1509295 3555 980542 170977608 51202 0 178836 0 0 0",
+        "children_cpu_s": 84.772766
+      },
+      "after": {
+        "time": 1791533521.0999818,
+        "loadavg": [
+          0.98779296875,
+          0.3232421875,
+          0.16748046875
+        ],
+        "cpu_pressure": "some avg10=14.76 avg60=5.60 avg300=1.38 total=1372355817\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1509639 3555 980550 170977926 51202 0 178849 0 0 0",
+        "children_cpu_s": 88.145474
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        1
+      ],
+      "before": {
+        "time": 1791533521.1001825,
+        "loadavg": [
+          0.98779296875,
+          0.3232421875,
+          0.16748046875
+        ],
+        "cpu_pressure": "some avg10=14.76 avg60=5.60 avg300=1.38 total=1372355817\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1509639 3555 980550 170977926 51202 0 178849 0 0 0",
+        "children_cpu_s": 88.145474
+      },
+      "after": {
+        "time": 1791533524.4240615,
+        "loadavg": [
+          0.9892578125,
+          0.3349609375,
+          0.17236328125
+        ],
+        "cpu_pressure": "some avg10=12.08 avg60=5.42 avg300=1.37 total=1372357864\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1509986 3555 980562 170978892 51203 0 178855 0 0 0",
+        "children_cpu_s": 91.474842
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        1
+      ],
+      "before": {
+        "time": 1791533524.4244397,
+        "loadavg": [
+          0.9892578125,
+          0.3349609375,
+          0.17236328125
+        ],
+        "cpu_pressure": "some avg10=12.08 avg60=5.42 avg300=1.37 total=1372357864\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1509986 3555 980562 170978892 51203 0 178855 0 0 0",
+        "children_cpu_s": 91.474842
+      },
+      "after": {
+        "time": 1791533527.7891235,
+        "loadavg": [
+          0.990234375,
+          0.34619140625,
+          0.17724609375
+        ],
+        "cpu_pressure": "some avg10=8.10 avg60=5.07 avg300=1.35 total=1372368041\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1510344 3555 980578 170979858 51203 0 178862 0 0 0",
+        "children_cpu_s": 94.84170900000001
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        1
+      ],
+      "before": {
+        "time": 1791533527.789346,
+        "loadavg": [
+          0.990234375,
+          0.34619140625,
+          0.17724609375
+        ],
+        "cpu_pressure": "some avg10=8.10 avg60=5.07 avg300=1.35 total=1372368041\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1510344 3555 980578 170979858 51203 0 178862 0 0 0",
+        "children_cpu_s": 94.84170900000001
+      },
+      "after": {
+        "time": 1791533529.7143445,
+        "loadavg": [
+          0.990234375,
+          0.34619140625,
+          0.17724609375
+        ],
+        "cpu_pressure": "some avg10=9.89 avg60=5.49 avg300=1.47 total=1372816612\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1510706 3555 980588 170980252 51203 0 178867 0 0 0",
+        "children_cpu_s": 98.37322400000001
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        1
+      ],
+      "before": {
+        "time": 1791533529.714541,
+        "loadavg": [
+          0.990234375,
+          0.34619140625,
+          0.17724609375
+        ],
+        "cpu_pressure": "some avg10=9.89 avg60=5.49 avg300=1.47 total=1372816612\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1510706 3555 980588 170980252 51203 0 178867 0 0 0",
+        "children_cpu_s": 98.37322400000001
+      },
+      "after": {
+        "time": 1791533531.5809731,
+        "loadavg": [
+          0.990234375,
+          0.34619140625,
+          0.17724609375
+        ],
+        "cpu_pressure": "some avg10=12.45 avg60=6.10 avg300=1.62 total=1373237274\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1511060 3555 980599 170980631 51203 0 178870 0 0 0",
+        "children_cpu_s": 101.82385099999999
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        1
+      ],
+      "before": {
+        "time": 1791533531.58118,
+        "loadavg": [
+          0.990234375,
+          0.34619140625,
+          0.17724609375
+        ],
+        "cpu_pressure": "some avg10=12.45 avg60=6.10 avg300=1.62 total=1373237274\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1511060 3555 980599 170980631 51203 0 178870 0 0 0",
+        "children_cpu_s": 101.82385099999999
+      },
+      "after": {
+        "time": 1791533533.5280294,
+        "loadavg": [
+          0.9912109375,
+          0.357421875,
+          0.18212890625
+        ],
+        "cpu_pressure": "some avg10=10.19 avg60=5.90 avg300=1.61 total=1373254683\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1511415 3555 980608 170981042 51204 0 178873 0 0 0",
+        "children_cpu_s": 105.264414
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        1
+      ],
+      "before": {
+        "time": 1791533533.5283034,
+        "loadavg": [
+          0.9912109375,
+          0.357421875,
+          0.18212890625
+        ],
+        "cpu_pressure": "some avg10=10.19 avg60=5.90 avg300=1.61 total=1373254683\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1511415 3555 980609 170981042 51204 0 178873 0 0 0",
+        "children_cpu_s": 105.264414
+      },
+      "after": {
+        "time": 1791533535.4751236,
+        "loadavg": [
+          0.9912109375,
+          0.357421875,
+          0.18212890625
+        ],
+        "cpu_pressure": "some avg10=8.34 avg60=5.70 avg300=1.60 total=1373267937\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1511768 3555 980614 170981460 51204 0 178876 0 0 0",
+        "children_cpu_s": 108.71325700000001
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        1
+      ],
+      "before": {
+        "time": 1791533535.4753544,
+        "loadavg": [
+          0.9912109375,
+          0.357421875,
+          0.18212890625
+        ],
+        "cpu_pressure": "some avg10=8.34 avg60=5.70 avg300=1.60 total=1373267937\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1511768 3555 980614 170981460 51204 0 178876 0 0 0",
+        "children_cpu_s": 108.71325700000001
+      },
+      "after": {
+        "time": 1791533537.8925545,
+        "loadavg": [
+          1.072265625,
+          0.384765625,
+          0.19189453125
+        ],
+        "cpu_pressure": "some avg10=6.83 avg60=5.52 avg300=1.59 total=1373271458\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1512113 3555 980620 170982073 51204 0 178883 0 0 0",
+        "children_cpu_s": 112.087938
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        1
+      ],
+      "before": {
+        "time": 1791533537.8927636,
+        "loadavg": [
+          1.072265625,
+          0.384765625,
+          0.19189453125
+        ],
+        "cpu_pressure": "some avg10=6.83 avg60=5.52 avg300=1.59 total=1373271458\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1512113 3555 980620 170982073 51204 0 178883 0 0 0",
+        "children_cpu_s": 112.087938
+      },
+      "after": {
+        "time": 1791533540.298427,
+        "loadavg": [
+          1.072265625,
+          0.384765625,
+          0.19189453125
+        ],
+        "cpu_pressure": "some avg10=5.59 avg60=5.34 avg300=1.58 total=1373285062\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1512466 3555 980637 170982662 51204 0 178890 0 0 0",
+        "children_cpu_s": 115.43586
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        1
+      ],
+      "before": {
+        "time": 1791533540.2986608,
+        "loadavg": [
+          1.072265625,
+          0.384765625,
+          0.19189453125
+        ],
+        "cpu_pressure": "some avg10=5.59 avg60=5.34 avg300=1.58 total=1373285062\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1512466 3555 980637 170982662 51204 0 178890 0 0 0",
+        "children_cpu_s": 115.43586
+      },
+      "after": {
+        "time": 1791533543.6449397,
+        "loadavg": [
+          1.06640625,
+          0.39501953125,
+          0.1962890625
+        ],
+        "cpu_pressure": "some avg10=3.75 avg60=4.99 avg300=1.55 total=1373292086\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1512817 3555 980651 170983627 51205 0 178896 0 0 0",
+        "children_cpu_s": 118.786348
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        2
+      ],
+      "before": {
+        "time": 1791533543.6452959,
+        "loadavg": [
+          1.06640625,
+          0.39501953125,
+          0.1962890625
+        ],
+        "cpu_pressure": "some avg10=3.75 avg60=4.99 avg300=1.55 total=1373292086\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1512817 3555 980651 170983627 51205 0 178896 0 0 0",
+        "children_cpu_s": 118.786348
+      },
+      "after": {
+        "time": 1791533546.0781515,
+        "loadavg": [
+          1.06640625,
+          0.39501953125,
+          0.1962890625
+        ],
+        "cpu_pressure": "some avg10=3.07 avg60=4.83 avg300=1.54 total=1373305804\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1513167 3555 980659 170984238 51205 0 178902 0 0 0",
+        "children_cpu_s": 122.176245
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        2
+      ],
+      "before": {
+        "time": 1791533546.0783963,
+        "loadavg": [
+          1.06640625,
+          0.39501953125,
+          0.1962890625
+        ],
+        "cpu_pressure": "some avg10=3.07 avg60=4.83 avg300=1.54 total=1373305804\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1513167 3555 980659 170984238 51205 0 178902 0 0 0",
+        "children_cpu_s": 122.176245
+      },
+      "after": {
+        "time": 1791533548.4836433,
+        "loadavg": [
+          1.06103515625,
+          0.4052734375,
+          0.20068359375
+        ],
+        "cpu_pressure": "some avg10=2.51 avg60=4.67 avg300=1.53 total=1373314699\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1513513 3555 980672 170984837 51205 0 178909 0 0 0",
+        "children_cpu_s": 125.534056
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        2
+      ],
+      "before": {
+        "time": 1791533548.4838345,
+        "loadavg": [
+          1.06103515625,
+          0.4052734375,
+          0.20068359375
+        ],
+        "cpu_pressure": "some avg10=2.51 avg60=4.67 avg300=1.53 total=1373314699\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1513513 3555 980672 170984837 51205 0 178909 0 0 0",
+        "children_cpu_s": 125.534056
+      },
+      "after": {
+        "time": 1791533550.4547877,
+        "loadavg": [
+          1.06103515625,
+          0.4052734375,
+          0.20068359375
+        ],
+        "cpu_pressure": "some avg10=2.06 avg60=4.52 avg300=1.52 total=1373327734\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1513866 3555 980681 170985261 51205 0 178911 0 0 0",
+        "children_cpu_s": 128.975914
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        2
+      ],
+      "before": {
+        "time": 1791533550.4550369,
+        "loadavg": [
+          1.06103515625,
+          0.4052734375,
+          0.20068359375
+        ],
+        "cpu_pressure": "some avg10=2.06 avg60=4.52 avg300=1.52 total=1373327734\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1513866 3555 980681 170985261 51205 0 178911 0 0 0",
+        "children_cpu_s": 128.975914
+      },
+      "after": {
+        "time": 1791533552.4167356,
+        "loadavg": [
+          1.0556640625,
+          0.41552734375,
+          0.205078125
+        ],
+        "cpu_pressure": "some avg10=1.68 avg60=4.37 avg300=1.51 total=1373343778\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1514221 3555 980689 170985678 51206 0 178914 0 0 0",
+        "children_cpu_s": 132.429181
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        2
+      ],
+      "before": {
+        "time": 1791533552.4169555,
+        "loadavg": [
+          1.0556640625,
+          0.41552734375,
+          0.205078125
+        ],
+        "cpu_pressure": "some avg10=1.68 avg60=4.37 avg300=1.51 total=1373343778\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1514221 3555 980689 170985678 51206 0 178914 0 0 0",
+        "children_cpu_s": 132.429181
+      },
+      "after": {
+        "time": 1791533554.3216465,
+        "loadavg": [
+          1.0556640625,
+          0.41552734375,
+          0.205078125
+        ],
+        "cpu_pressure": "some avg10=2.83 avg60=4.49 avg300=1.56 total=1373668401\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1514577 3555 980695 170986075 51206 0 178917 0 0 0",
+        "children_cpu_s": 135.91153400000002
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        2
+      ],
+      "before": {
+        "time": 1791533554.3218944,
+        "loadavg": [
+          1.0556640625,
+          0.41552734375,
+          0.205078125
+        ],
+        "cpu_pressure": "some avg10=2.83 avg60=4.49 avg300=1.56 total=1373668401\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1514577 3555 980695 170986075 51206 0 178917 0 0 0",
+        "children_cpu_s": 135.91153400000002
+      },
+      "after": {
+        "time": 1791533556.157944,
+        "loadavg": [
+          1.0556640625,
+          0.41552734375,
+          0.205078125
+        ],
+        "cpu_pressure": "some avg10=4.67 avg60=4.77 avg300=1.63 total=1373907553\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1514929 3555 980700 170986448 51206 0 178920 0 0 0",
+        "children_cpu_s": 139.36253299999998
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        2
+      ],
+      "before": {
+        "time": 1791533556.1581771,
+        "loadavg": [
+          1.0556640625,
+          0.41552734375,
+          0.205078125
+        ],
+        "cpu_pressure": "some avg10=4.67 avg60=4.77 avg300=1.63 total=1373907553\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1514929 3555 980700 170986448 51206 0 178920 0 0 0",
+        "children_cpu_s": 139.36253299999998
+      },
+      "after": {
+        "time": 1791533559.4895122,
+        "loadavg": [
+          1.05078125,
+          0.42529296875,
+          0.20947265625
+        ],
+        "cpu_pressure": "some avg10=4.17 avg60=4.68 avg300=1.66 total=1373912454\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1515273 3555 980712 170987419 51206 0 178925 0 0 0",
+        "children_cpu_s": 142.696418
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        2
+      ],
+      "before": {
+        "time": 1791533559.4897597,
+        "loadavg": [
+          1.05078125,
+          0.42529296875,
+          0.20947265625
+        ],
+        "cpu_pressure": "some avg10=4.17 avg60=4.68 avg300=1.66 total=1373912454\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1515273 3555 980712 170987419 51206 0 178925 0 0 0",
+        "children_cpu_s": 142.696418
+      },
+      "after": {
+        "time": 1791533562.8281956,
+        "loadavg": [
+          1.04638671875,
+          0.43505859375,
+          0.2138671875
+        ],
+        "cpu_pressure": "some avg10=3.41 avg60=4.53 avg300=1.65 total=1373922221\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1515625 3555 980724 170988385 51206 0 178931 0 0 0",
+        "children_cpu_s": 146.039818
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        2
+      ],
+      "before": {
+        "time": 1791533562.8284352,
+        "loadavg": [
+          1.04638671875,
+          0.43505859375,
+          0.2138671875
+        ],
+        "cpu_pressure": "some avg10=3.41 avg60=4.53 avg300=1.65 total=1373922221\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1515625 3555 980724 170988385 51206 0 178931 0 0 0",
+        "children_cpu_s": 146.039818
+      },
+      "after": {
+        "time": 1791533564.5273998,
+        "loadavg": [
+          1.04638671875,
+          0.43505859375,
+          0.2138671875
+        ],
+        "cpu_pressure": "some avg10=2.79 avg60=4.38 avg300=1.64 total=1373934432\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1515972 3555 980733 170988704 51206 0 178939 0 0 0",
+        "children_cpu_s": 149.425065
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        2
+      ],
+      "before": {
+        "time": 1791533564.5276403,
+        "loadavg": [
+          1.04638671875,
+          0.43505859375,
+          0.2138671875
+        ],
+        "cpu_pressure": "some avg10=2.79 avg60=4.38 avg300=1.64 total=1373934432\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1515972 3555 980733 170988704 51206 0 178939 0 0 0",
+        "children_cpu_s": 149.425065
+      },
+      "after": {
+        "time": 1791533566.2240567,
+        "loadavg": [
+          1.04638671875,
+          0.43505859375,
+          0.2138671875
+        ],
+        "cpu_pressure": "some avg10=2.28 avg60=4.24 avg300=1.62 total=1373935389\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1516313 3555 980738 170989036 51206 0 178947 0 0 0",
+        "children_cpu_s": 152.826842
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        2
+      ],
+      "before": {
+        "time": 1791533566.2243075,
+        "loadavg": [
+          1.04638671875,
+          0.43505859375,
+          0.2138671875
+        ],
+        "cpu_pressure": "some avg10=2.28 avg60=4.24 avg300=1.62 total=1373935389\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1516313 3555 980738 170989036 51206 0 178947 0 0 0",
+        "children_cpu_s": 152.826842
+      },
+      "after": {
+        "time": 1791533567.135191,
+        "loadavg": [
+          1.04638671875,
+          0.43505859375,
+          0.2138671875
+        ],
+        "cpu_pressure": "some avg10=2.23 avg60=4.16 avg300=1.63 total=1373990286\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1516668 3555 980743 170989040 51206 0 178947 0 0 0",
+        "children_cpu_s": 156.30439399999997
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        2
+      ],
+      "before": {
+        "time": 1791533567.135422,
+        "loadavg": [
+          1.04638671875,
+          0.43505859375,
+          0.2138671875
+        ],
+        "cpu_pressure": "some avg10=2.23 avg60=4.16 avg300=1.63 total=1373990286\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1516668 3555 980743 170989040 51206 0 178947 0 0 0",
+        "children_cpu_s": 156.30439399999997
+      },
+      "after": {
+        "time": 1791533568.0196853,
+        "loadavg": [
+          1.36328125,
+          0.51123046875,
+          0.23974609375
+        ],
+        "cpu_pressure": "some avg10=2.23 avg60=4.16 avg300=1.63 total=1374001588\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1517015 3555 980744 170989045 51206 0 178947 0 0 0",
+        "children_cpu_s": 159.776791
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        2
+      ],
+      "before": {
+        "time": 1791533568.019884,
+        "loadavg": [
+          1.36328125,
+          0.51123046875,
+          0.23974609375
+        ],
+        "cpu_pressure": "some avg10=2.23 avg60=4.16 avg300=1.63 total=1374001588\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1517015 3555 980744 170989045 51206 0 178947 0 0 0",
+        "children_cpu_s": 159.776791
+      },
+      "after": {
+        "time": 1791533568.94712,
+        "loadavg": [
+          1.36328125,
+          0.51123046875,
+          0.23974609375
+        ],
+        "cpu_pressure": "some avg10=8.53 avg60=5.24 avg300=1.87 total=1374775683\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1517376 3555 980750 170989050 51206 0 178948 0 0 0",
+        "children_cpu_s": 163.302899
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        2
+      ],
+      "before": {
+        "time": 1791533568.9473536,
+        "loadavg": [
+          1.36328125,
+          0.51123046875,
+          0.23974609375
+        ],
+        "cpu_pressure": "some avg10=8.53 avg60=5.24 avg300=1.87 total=1374775683\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1517376 3555 980750 170989050 51206 0 178948 0 0 0",
+        "children_cpu_s": 163.302899
+      },
+      "after": {
+        "time": 1791533569.8431158,
+        "loadavg": [
+          1.36328125,
+          0.51123046875,
+          0.23974609375
+        ],
+        "cpu_pressure": "some avg10=8.53 avg60=5.24 avg300=1.87 total=1375575750\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1517727 3555 980753 170989053 51206 0 178948 0 0 0",
+        "children_cpu_s": 166.788784
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        2
+      ],
+      "before": {
+        "time": 1791533569.8433592,
+        "loadavg": [
+          1.36328125,
+          0.51123046875,
+          0.23974609375
+        ],
+        "cpu_pressure": "some avg10=8.53 avg60=5.24 avg300=1.87 total=1375575750\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1517727 3555 980753 170989053 51206 0 178948 0 0 0",
+        "children_cpu_s": 166.788784
+      },
+      "after": {
+        "time": 1791533573.1895013,
+        "loadavg": [
+          1.49462890625,
+          0.552734375,
+          0.2548828125
+        ],
+        "cpu_pressure": "some avg10=11.80 avg60=6.20 avg300=2.12 total=1375584918\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1518086 3555 980773 170990006 51207 0 178956 0 0 0",
+        "children_cpu_s": 170.136049
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        2
+      ],
+      "before": {
+        "time": 1791533573.1897388,
+        "loadavg": [
+          1.49462890625,
+          0.552734375,
+          0.2548828125
+        ],
+        "cpu_pressure": "some avg10=11.80 avg60=6.20 avg300=2.12 total=1375584918\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1518086 3555 980773 170990006 51207 0 178956 0 0 0",
+        "children_cpu_s": 170.136049
+      },
+      "after": {
+        "time": 1791533576.53835,
+        "loadavg": [
+          1.49462890625,
+          0.552734375,
+          0.2548828125
+        ],
+        "cpu_pressure": "some avg10=9.66 avg60=5.99 avg300=2.11 total=1375586525\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1518433 3555 980782 170990985 51208 0 178963 0 0 0",
+        "children_cpu_s": 173.487675
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        3
+      ],
+      "before": {
+        "time": 1791533576.5386193,
+        "loadavg": [
+          1.49462890625,
+          0.552734375,
+          0.2548828125
+        ],
+        "cpu_pressure": "some avg10=9.66 avg60=5.99 avg300=2.11 total=1375586525\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1518433 3555 980782 170990985 51208 0 178963 0 0 0",
+        "children_cpu_s": 173.487675
+      },
+      "after": {
+        "time": 1791533578.9483254,
+        "loadavg": [
+          1.45458984375,
+          0.560546875,
+          0.25927734375
+        ],
+        "cpu_pressure": "some avg10=6.48 avg60=5.61 avg300=2.08 total=1375596568\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1518780 3555 980790 170991591 51208 0 178970 0 0 0",
+        "children_cpu_s": 176.842101
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        3
+      ],
+      "before": {
+        "time": 1791533578.9485164,
+        "loadavg": [
+          1.45458984375,
+          0.560546875,
+          0.25927734375
+        ],
+        "cpu_pressure": "some avg10=6.48 avg60=5.61 avg300=2.08 total=1375596568\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1518780 3555 980790 170991591 51208 0 178970 0 0 0",
+        "children_cpu_s": 176.842101
+      },
+      "after": {
+        "time": 1791533582.286771,
+        "loadavg": [
+          1.41796875,
+          0.56787109375,
+          0.263671875
+        ],
+        "cpu_pressure": "some avg10=5.30 avg60=5.42 avg300=2.06 total=1375603553\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1519134 3555 980809 170992547 51208 0 178976 0 0 0",
+        "children_cpu_s": 180.18563799999998
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        3
+      ],
+      "before": {
+        "time": 1791533582.287026,
+        "loadavg": [
+          1.41796875,
+          0.56787109375,
+          0.263671875
+        ],
+        "cpu_pressure": "some avg10=5.30 avg60=5.42 avg300=2.06 total=1375603553\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1519134 3555 980809 170992547 51208 0 178976 0 0 0",
+        "children_cpu_s": 180.18563799999998
+      },
+      "after": {
+        "time": 1791533585.6278694,
+        "loadavg": [
+          1.41796875,
+          0.56787109375,
+          0.263671875
+        ],
+        "cpu_pressure": "some avg10=3.55 avg60=5.07 avg300=2.04 total=1375611753\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1519486 3555 980823 170993508 51208 0 178984 0 0 0",
+        "children_cpu_s": 183.52847599999998
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        3
+      ],
+      "before": {
+        "time": 1791533585.6281383,
+        "loadavg": [
+          1.41796875,
+          0.56787109375,
+          0.263671875
+        ],
+        "cpu_pressure": "some avg10=3.55 avg60=5.07 avg300=2.04 total=1375611753\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1519486 3555 980823 170993508 51208 0 178984 0 0 0",
+        "children_cpu_s": 183.52847599999998
+      },
+      "after": {
+        "time": 1791533586.5720234,
+        "loadavg": [
+          1.41796875,
+          0.56787109375,
+          0.263671875
+        ],
+        "cpu_pressure": "some avg10=3.55 avg60=5.07 avg300=2.04 total=1376483890\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1519854 3555 980826 170993513 51208 0 178984 0 0 0",
+        "children_cpu_s": 187.214693
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        3
+      ],
+      "before": {
+        "time": 1791533586.5722146,
+        "loadavg": [
+          1.41796875,
+          0.56787109375,
+          0.263671875
+        ],
+        "cpu_pressure": "some avg10=3.55 avg60=5.07 avg300=2.04 total=1376483890\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1519854 3555 980826 170993513 51208 0 178984 0 0 0",
+        "children_cpu_s": 187.214693
+      },
+      "after": {
+        "time": 1791533587.4899437,
+        "loadavg": [
+          1.9453125,
+          0.69140625,
+          0.3056640625
+        ],
+        "cpu_pressure": "some avg10=13.60 avg60=6.84 avg300=2.43 total=1377345372\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1520210 3555 980832 170993518 51208 0 178984 0 0 0",
+        "children_cpu_s": 190.701499
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        3
+      ],
+      "before": {
+        "time": 1791533587.4901676,
+        "loadavg": [
+          1.9453125,
+          0.69140625,
+          0.3056640625
+        ],
+        "cpu_pressure": "some avg10=13.60 avg60=6.84 avg300=2.43 total=1377345372\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1520210 3555 980832 170993518 51208 0 178984 0 0 0",
+        "children_cpu_s": 190.701499
+      },
+      "after": {
+        "time": 1791533588.3887568,
+        "loadavg": [
+          1.9453125,
+          0.69140625,
+          0.3056640625
+        ],
+        "cpu_pressure": "some avg10=13.60 avg60=6.84 avg300=2.43 total=1377369832\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1520561 3555 980835 170993523 51208 0 178984 0 0 0",
+        "children_cpu_s": 194.208358
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        3
+      ],
+      "before": {
+        "time": 1791533588.389011,
+        "loadavg": [
+          1.9453125,
+          0.69140625,
+          0.3056640625
+        ],
+        "cpu_pressure": "some avg10=13.60 avg60=6.84 avg300=2.43 total=1377369832\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1520561 3555 980835 170993523 51208 0 178984 0 0 0",
+        "children_cpu_s": 194.208358
+      },
+      "after": {
+        "time": 1791533589.2781484,
+        "loadavg": [
+          1.9453125,
+          0.69140625,
+          0.3056640625
+        ],
+        "cpu_pressure": "some avg10=16.20 avg60=7.53 avg300=2.60 total=1377386349\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1520909 3555 980837 170993528 51208 0 178984 0 0 0",
+        "children_cpu_s": 197.676322
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        3
+      ],
+      "before": {
+        "time": 1791533589.2784004,
+        "loadavg": [
+          1.9453125,
+          0.69140625,
+          0.3056640625
+        ],
+        "cpu_pressure": "some avg10=16.20 avg60=7.53 avg300=2.60 total=1377386349\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1520909 3555 980837 170993528 51208 0 178984 0 0 0",
+        "children_cpu_s": 197.676322
+      },
+      "after": {
+        "time": 1791533590.9808557,
+        "loadavg": [
+          1.9453125,
+          0.69140625,
+          0.3056640625
+        ],
+        "cpu_pressure": "some avg10=13.27 avg60=7.28 avg300=2.58 total=1377399264\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1521257 3555 980849 170993848 51208 0 178992 0 0 0",
+        "children_cpu_s": 201.079397
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        3
+      ],
+      "before": {
+        "time": 1791533590.981081,
+        "loadavg": [
+          1.9453125,
+          0.69140625,
+          0.3056640625
+        ],
+        "cpu_pressure": "some avg10=13.27 avg60=7.28 avg300=2.58 total=1377399264\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1521257 3555 980849 170993848 51208 0 178992 0 0 0",
+        "children_cpu_s": 201.079397
+      },
+      "after": {
+        "time": 1791533592.6890373,
+        "loadavg": [
+          1.94970703125,
+          0.71337890625,
+          0.31494140625
+        ],
+        "cpu_pressure": "some avg10=13.27 avg60=7.28 avg300=2.58 total=1377414436\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1521606 3555 980864 170994159 51209 0 179000 0 0 0",
+        "children_cpu_s": 204.49240899999998
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        3
+      ],
+      "before": {
+        "time": 1791533592.6892917,
+        "loadavg": [
+          1.94970703125,
+          0.71337890625,
+          0.31494140625
+        ],
+        "cpu_pressure": "some avg10=13.27 avg60=7.28 avg300=2.58 total=1377414436\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1521606 3555 980864 170994159 51209 0 179000 0 0 0",
+        "children_cpu_s": 204.49240899999998
+      },
+      "after": {
+        "time": 1791533596.0335565,
+        "loadavg": [
+          1.94970703125,
+          0.71337890625,
+          0.31494140625
+        ],
+        "cpu_pressure": "some avg10=8.89 avg60=6.81 avg300=2.55 total=1377418814\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1521960 3555 980883 170995118 51209 0 179006 0 0 0",
+        "children_cpu_s": 207.841449
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        3
+      ],
+      "before": {
+        "time": 1791533596.033786,
+        "loadavg": [
+          1.94970703125,
+          0.71337890625,
+          0.31494140625
+        ],
+        "cpu_pressure": "some avg10=8.89 avg60=6.81 avg300=2.55 total=1377418814\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1521960 3555 980883 170995118 51209 0 179006 0 0 0",
+        "children_cpu_s": 207.841449
+      },
+      "after": {
+        "time": 1791533599.3677723,
+        "loadavg": [
+          1.87353515625,
+          0.71826171875,
+          0.31884765625
+        ],
+        "cpu_pressure": "some avg10=5.96 avg60=6.37 avg300=2.51 total=1377421061\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1522306 3555 980893 170996088 51209 0 179012 0 0 0",
+        "children_cpu_s": 211.178902
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        3
+      ],
+      "before": {
+        "time": 1791533599.3679664,
+        "loadavg": [
+          1.87353515625,
+          0.71826171875,
+          0.31884765625
+        ],
+        "cpu_pressure": "some avg10=5.96 avg60=6.37 avg300=2.51 total=1377421061\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1522306 3555 980893 170996088 51209 0 179012 0 0 0",
+        "children_cpu_s": 211.178902
+      },
+      "after": {
+        "time": 1791533601.145911,
+        "loadavg": [
+          1.87353515625,
+          0.71826171875,
+          0.31884765625
+        ],
+        "cpu_pressure": "some avg10=8.14 avg60=6.75 avg300=2.62 total=1377790424\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1522659 3555 980900 170996437 51209 0 179014 0 0 0",
+        "children_cpu_s": 214.622549
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        3
+      ],
+      "before": {
+        "time": 1791533601.146127,
+        "loadavg": [
+          1.87353515625,
+          0.71826171875,
+          0.31884765625
+        ],
+        "cpu_pressure": "some avg10=8.14 avg60=6.75 avg300=2.62 total=1377790424\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1522659 3555 980900 170996437 51209 0 179014 0 0 0",
+        "children_cpu_s": 214.622549
+      },
+      "after": {
+        "time": 1791533602.9861872,
+        "loadavg": [
+          2.4443359375,
+          0.85595703125,
+          0.36572265625
+        ],
+        "cpu_pressure": "some avg10=9.02 avg60=6.96 avg300=2.69 total=1378060476\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1523021 3555 980913 170996794 51209 0 179017 0 0 0",
+        "children_cpu_s": 218.09061400000002
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        3
+      ],
+      "before": {
+        "time": 1791533602.9864235,
+        "loadavg": [
+          2.4443359375,
+          0.85595703125,
+          0.36572265625
+        ],
+        "cpu_pressure": "some avg10=9.02 avg60=6.96 avg300=2.69 total=1378060476\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1523021 3555 980913 170996794 51209 0 179017 0 0 0",
+        "children_cpu_s": 218.09061400000002
+      },
+      "after": {
+        "time": 1791533605.0259986,
+        "loadavg": [
+          2.4443359375,
+          0.85595703125,
+          0.36572265625
+        ],
+        "cpu_pressure": "some avg10=7.93 avg60=6.83 avg300=2.69 total=1378126245\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1523376 3555 980921 170997242 51209 0 179019 0 0 0",
+        "children_cpu_s": 221.55109000000002
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        3
+      ],
+      "before": {
+        "time": 1791533605.0262516,
+        "loadavg": [
+          2.4443359375,
+          0.85595703125,
+          0.36572265625
+        ],
+        "cpu_pressure": "some avg10=7.93 avg60=6.83 avg300=2.69 total=1378126245\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1523376 3555 980921 170997242 51209 0 179019 0 0 0",
+        "children_cpu_s": 221.55109000000002
+      },
+      "after": {
+        "time": 1791533607.025978,
+        "loadavg": [
+          2.4443359375,
+          0.85595703125,
+          0.36572265625
+        ],
+        "cpu_pressure": "some avg10=7.04 avg60=6.70 avg300=2.69 total=1378189476\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1523733 3555 980930 170997673 51209 0 179021 0 0 0",
+        "children_cpu_s": 225.018528
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        3
+      ],
+      "before": {
+        "time": 1791533607.0261722,
+        "loadavg": [
+          2.4443359375,
+          0.85595703125,
+          0.36572265625
+        ],
+        "cpu_pressure": "some avg10=7.04 avg60=6.70 avg300=2.69 total=1378189476\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1523733 3555 980930 170997673 51209 0 179021 0 0 0",
+        "children_cpu_s": 225.018528
+      },
+      "after": {
+        "time": 1791533609.4315913,
+        "loadavg": [
+          2.40869140625,
+          0.875,
+          0.37451171875
+        ],
+        "cpu_pressure": "some avg10=5.76 avg60=6.48 avg300=2.67 total=1378198795\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1524081 3555 980942 170998271 51210 0 179027 0 0 0",
+        "children_cpu_s": 228.37189099999998
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        4
+      ],
+      "before": {
+        "time": 1791533609.431826,
+        "loadavg": [
+          2.40869140625,
+          0.875,
+          0.37451171875
+        ],
+        "cpu_pressure": "some avg10=5.76 avg60=6.48 avg300=2.67 total=1378198795\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1524081 3555 980942 170998271 51210 0 179027 0 0 0",
+        "children_cpu_s": 228.37189099999998
+      },
+      "after": {
+        "time": 1791533611.392713,
+        "loadavg": [
+          2.40869140625,
+          0.875,
+          0.37451171875
+        ],
+        "cpu_pressure": "some avg10=4.90 avg60=6.30 avg300=2.66 total=1378220234\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1524438 3555 980948 170998687 51210 0 179030 0 0 0",
+        "children_cpu_s": 231.862436
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        4
+      ],
+      "before": {
+        "time": 1791533611.392937,
+        "loadavg": [
+          2.40869140625,
+          0.875,
+          0.37451171875
+        ],
+        "cpu_pressure": "some avg10=4.90 avg60=6.30 avg300=2.66 total=1378220234\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1524438 3555 980948 170998687 51210 0 179030 0 0 0",
+        "children_cpu_s": 231.862436
+      },
+      "after": {
+        "time": 1791533613.3744338,
+        "loadavg": [
+          2.29541015625,
+          0.87744140625,
+          0.3779296875
+        ],
+        "cpu_pressure": "some avg10=4.55 avg60=6.20 avg300=2.67 total=1378290922\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1524793 3555 980957 170999112 51211 0 179032 0 0 0",
+        "children_cpu_s": 235.31286400000002
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        4
+      ],
+      "before": {
+        "time": 1791533613.3746512,
+        "loadavg": [
+          2.29541015625,
+          0.87744140625,
+          0.3779296875
+        ],
+        "cpu_pressure": "some avg10=4.55 avg60=6.20 avg300=2.67 total=1378290922\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1524793 3555 980957 170999112 51211 0 179032 0 0 0",
+        "children_cpu_s": 235.31286400000002
+      },
+      "after": {
+        "time": 1791533615.112398,
+        "loadavg": [
+          2.29541015625,
+          0.87744140625,
+          0.3779296875
+        ],
+        "cpu_pressure": "some avg10=6.08 avg60=6.42 avg300=2.74 total=1378551956\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1525142 3555 980964 170999450 51211 0 179034 0 0 0",
+        "children_cpu_s": 238.72936600000003
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        4
+      ],
+      "before": {
+        "time": 1791533615.112591,
+        "loadavg": [
+          2.29541015625,
+          0.87744140625,
+          0.3779296875
+        ],
+        "cpu_pressure": "some avg10=6.08 avg60=6.42 avg300=2.74 total=1378551956\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1525142 3555 980964 170999450 51211 0 179034 0 0 0",
+        "children_cpu_s": 238.72936600000003
+      },
+      "after": {
+        "time": 1791533616.9147005,
+        "loadavg": [
+          2.29541015625,
+          0.87744140625,
+          0.3779296875
+        ],
+        "cpu_pressure": "some avg10=7.15 avg60=6.60 avg300=2.80 total=1378802556\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1525494 3555 980970 170999810 51211 0 179036 0 0 0",
+        "children_cpu_s": 242.16662
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        4
+      ],
+      "before": {
+        "time": 1791533616.9148989,
+        "loadavg": [
+          2.29541015625,
+          0.87744140625,
+          0.3779296875
+        ],
+        "cpu_pressure": "some avg10=7.15 avg60=6.60 avg300=2.80 total=1378802556\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1525494 3555 980970 170999810 51211 0 179036 0 0 0",
+        "children_cpu_s": 242.16662
+      },
+      "after": {
+        "time": 1791533620.2600338,
+        "loadavg": [
+          2.271484375,
+          0.896484375,
+          0.38671875
+        ],
+        "cpu_pressure": "some avg10=5.86 avg60=6.39 avg300=2.78 total=1378805891\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1525844 3555 980984 171000780 51211 0 179041 0 0 0",
+        "children_cpu_s": 245.514298
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        4
+      ],
+      "before": {
+        "time": 1791533620.2603352,
+        "loadavg": [
+          2.271484375,
+          0.896484375,
+          0.38671875
+        ],
+        "cpu_pressure": "some avg10=5.86 avg60=6.39 avg300=2.78 total=1378805891\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1525844 3555 980984 171000780 51211 0 179041 0 0 0",
+        "children_cpu_s": 245.514298
+      },
+      "after": {
+        "time": 1791533623.6025968,
+        "loadavg": [
+          2.16943359375,
+          0.8984375,
+          0.39013671875
+        ],
+        "cpu_pressure": "some avg10=3.92 avg60=5.97 avg300=2.74 total=1378811364\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1526201 3555 981002 171001736 51211 0 179050 0 0 0",
+        "children_cpu_s": 248.861651
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        4
+      ],
+      "before": {
+        "time": 1791533623.6027865,
+        "loadavg": [
+          2.16943359375,
+          0.8984375,
+          0.39013671875
+        ],
+        "cpu_pressure": "some avg10=3.92 avg60=5.97 avg300=2.74 total=1378811364\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1526201 3555 981002 171001736 51211 0 179050 0 0 0",
+        "children_cpu_s": 248.861651
+      },
+      "after": {
+        "time": 1791533625.3179593,
+        "loadavg": [
+          2.16943359375,
+          0.8984375,
+          0.39013671875
+        ],
+        "cpu_pressure": "some avg10=3.21 avg60=5.78 avg300=2.72 total=1378818897\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1526552 3555 981010 171002061 51211 0 179060 0 0 0",
+        "children_cpu_s": 252.295751
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        4
+      ],
+      "before": {
+        "time": 1791533625.3181853,
+        "loadavg": [
+          2.16943359375,
+          0.8984375,
+          0.39013671875
+        ],
+        "cpu_pressure": "some avg10=3.21 avg60=5.78 avg300=2.72 total=1378818897\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1526552 3555 981010 171002061 51211 0 179060 0 0 0",
+        "children_cpu_s": 252.295751
+      },
+      "after": {
+        "time": 1791533627.0140324,
+        "loadavg": [
+          2.16943359375,
+          0.8984375,
+          0.39013671875
+        ],
+        "cpu_pressure": "some avg10=2.63 avg60=5.59 avg300=2.70 total=1378838741\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1526897 3555 981021 171002377 51211 0 179071 0 0 0",
+        "children_cpu_s": 255.6915
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        4
+      ],
+      "before": {
+        "time": 1791533627.0142713,
+        "loadavg": [
+          2.16943359375,
+          0.8984375,
+          0.39013671875
+        ],
+        "cpu_pressure": "some avg10=2.63 avg60=5.59 avg300=2.70 total=1378838741\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1526897 3555 981021 171002377 51211 0 179071 0 0 0",
+        "children_cpu_s": 255.6915
+      },
+      "after": {
+        "time": 1791533627.9154613,
+        "loadavg": [
+          2.31640625,
+          0.9501953125,
+          0.40966796875
+        ],
+        "cpu_pressure": "some avg10=2.63 avg60=5.59 avg300=2.70 total=1378868124\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1527248 3555 981024 171002383 51211 0 179071 0 0 0",
+        "children_cpu_s": 259.167072
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        4
+      ],
+      "before": {
+        "time": 1791533627.9156973,
+        "loadavg": [
+          2.31640625,
+          0.9501953125,
+          0.40966796875
+        ],
+        "cpu_pressure": "some avg10=2.63 avg60=5.59 avg300=2.70 total=1378868124\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1527248 3555 981024 171002384 51211 0 179071 0 0 0",
+        "children_cpu_s": 259.167072
+      },
+      "after": {
+        "time": 1791533628.8061101,
+        "loadavg": [
+          2.31640625,
+          0.9501953125,
+          0.40966796875
+        ],
+        "cpu_pressure": "some avg10=2.63 avg60=5.59 avg300=2.70 total=1378892780\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1527595 3555 981028 171002388 51212 0 179071 0 0 0",
+        "children_cpu_s": 262.630906
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        4
+      ],
+      "before": {
+        "time": 1791533628.8063855,
+        "loadavg": [
+          2.31640625,
+          0.9501953125,
+          0.40966796875
+        ],
+        "cpu_pressure": "some avg10=2.63 avg60=5.59 avg300=2.70 total=1378892780\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1527595 3555 981028 171002388 51212 0 179071 0 0 0",
+        "children_cpu_s": 262.630906
+      },
+      "after": {
+        "time": 1791533629.71695,
+        "loadavg": [
+          2.31640625,
+          0.9501953125,
+          0.40966796875
+        ],
+        "cpu_pressure": "some avg10=3.06 avg60=5.57 avg300=2.72 total=1379628865\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1527950 3555 981033 171002392 51212 0 179071 0 0 0",
+        "children_cpu_s": 266.09604199999995
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        4
+      ],
+      "before": {
+        "time": 1791533629.7171476,
+        "loadavg": [
+          2.31640625,
+          0.9501953125,
+          0.40966796875
+        ],
+        "cpu_pressure": "some avg10=3.06 avg60=5.57 avg300=2.72 total=1379628865\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1527950 3555 981033 171002392 51212 0 179071 0 0 0",
+        "children_cpu_s": 266.09604199999995
+      },
+      "after": {
+        "time": 1791533630.5989752,
+        "loadavg": [
+          2.31640625,
+          0.9501953125,
+          0.40966796875
+        ],
+        "cpu_pressure": "some avg10=3.06 avg60=5.57 avg300=2.72 total=1380453018\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1528294 3555 981036 171002397 51212 0 179071 0 0 0",
+        "children_cpu_s": 269.536065
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        4
+      ],
+      "before": {
+        "time": 1791533630.5991936,
+        "loadavg": [
+          2.31640625,
+          0.9501953125,
+          0.40966796875
+        ],
+        "cpu_pressure": "some avg10=3.06 avg60=5.57 avg300=2.72 total=1380453018\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1528294 3555 981036 171002397 51212 0 179071 0 0 0",
+        "children_cpu_s": 269.536065
+      },
+      "after": {
+        "time": 1791533633.9509938,
+        "loadavg": [
+          2.2109375,
+          0.951171875,
+          0.4130859375
+        ],
+        "cpu_pressure": "some avg10=12.88 avg60=7.52 avg300=3.18 total=1380463753\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1528665 3555 981059 171003335 51212 0 179080 0 0 0",
+        "children_cpu_s": 272.88966999999997
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        4
+      ],
+      "before": {
+        "time": 1791533633.9512472,
+        "loadavg": [
+          2.2109375,
+          0.951171875,
+          0.4130859375
+        ],
+        "cpu_pressure": "some avg10=12.88 avg60=7.52 avg300=3.18 total=1380463753\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1528665 3555 981059 171003335 51212 0 179080 0 0 0",
+        "children_cpu_s": 272.88966999999997
+      },
+      "after": {
+        "time": 1791533637.289121,
+        "loadavg": [
+          2.11376953125,
+          0.9521484375,
+          0.41650390625
+        ],
+        "cpu_pressure": "some avg10=8.63 avg60=7.03 avg300=3.13 total=1380470464\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1529011 3555 981070 171004309 51212 0 179086 0 0 0",
+        "children_cpu_s": 276.232898
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        4
+      ],
+      "before": {
+        "time": 1791533637.289417,
+        "loadavg": [
+          2.11376953125,
+          0.9521484375,
+          0.41650390625
+        ],
+        "cpu_pressure": "some avg10=8.63 avg60=7.03 avg300=3.13 total=1380470464\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1529011 3555 981070 171004309 51212 0 179086 0 0 0",
+        "children_cpu_s": 276.232898
+      },
+      "after": {
+        "time": 1791533639.719305,
+        "loadavg": [
+          2.11376953125,
+          0.9521484375,
+          0.41650390625
+        ],
+        "cpu_pressure": "some avg10=7.07 avg60=6.80 avg300=3.11 total=1380483493\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1529366 3555 981084 171004906 51212 0 179093 0 0 0",
+        "children_cpu_s": 279.61292499999996
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        4
+      ],
+      "before": {
+        "time": 1791533639.7195203,
+        "loadavg": [
+          2.11376953125,
+          0.9521484375,
+          0.41650390625
+        ],
+        "cpu_pressure": "some avg10=7.07 avg60=6.80 avg300=3.11 total=1380483493\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1529366 3555 981084 171004906 51212 0 179093 0 0 0",
+        "children_cpu_s": 279.61292499999996
+      },
+      "after": {
+        "time": 1791533642.150985,
+        "loadavg": [
+          2.11376953125,
+          0.9521484375,
+          0.41650390625
+        ],
+        "cpu_pressure": "some avg10=5.79 avg60=6.58 avg300=3.09 total=1380492799\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1529716 3555 981096 171005512 51212 0 179101 0 0 0",
+        "children_cpu_s": 283.004337
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        5
+      ],
+      "before": {
+        "time": 1791533642.1512566,
+        "loadavg": [
+          2.11376953125,
+          0.9521484375,
+          0.41650390625
+        ],
+        "cpu_pressure": "some avg10=5.79 avg60=6.58 avg300=3.09 total=1380492799\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1529716 3555 981096 171005512 51212 0 179101 0 0 0",
+        "children_cpu_s": 283.004337
+      },
+      "after": {
+        "time": 1791533644.1360323,
+        "loadavg": [
+          2.26513671875,
+          1.0029296875,
+          0.43603515625
+        ],
+        "cpu_pressure": "some avg10=4.92 avg60=6.40 avg300=3.08 total=1380525530\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1530074 3555 981106 171005936 51213 0 179103 0 0 0",
+        "children_cpu_s": 286.487345
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        5
+      ],
+      "before": {
+        "time": 1791533644.1362634,
+        "loadavg": [
+          2.26513671875,
+          1.0029296875,
+          0.43603515625
+        ],
+        "cpu_pressure": "some avg10=4.92 avg60=6.40 avg300=3.08 total=1380525530\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1530074 3555 981106 171005936 51213 0 179103 0 0 0",
+        "children_cpu_s": 286.487345
+      },
+      "after": {
+        "time": 1791533646.5460968,
+        "loadavg": [
+          2.26513671875,
+          1.0029296875,
+          0.43603515625
+        ],
+        "cpu_pressure": "some avg10=4.03 avg60=6.19 avg300=3.06 total=1380536386\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1530421 3555 981113 171006540 51213 0 179111 0 0 0",
+        "children_cpu_s": 289.859125
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        5
+      ],
+      "before": {
+        "time": 1791533646.546327,
+        "loadavg": [
+          2.26513671875,
+          1.0029296875,
+          0.43603515625
+        ],
+        "cpu_pressure": "some avg10=4.03 avg60=6.19 avg300=3.06 total=1380536386\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1530421 3555 981113 171006540 51213 0 179111 0 0 0",
+        "children_cpu_s": 289.859125
+      },
+      "after": {
+        "time": 1791533648.9707596,
+        "loadavg": [
+          2.16357421875,
+          1.00244140625,
+          0.439453125
+        ],
+        "cpu_pressure": "some avg10=2.70 avg60=5.79 avg300=3.01 total=1380549261\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1530770 3555 981125 171007146 51213 0 179117 0 0 0",
+        "children_cpu_s": 293.237303
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        5
+      ],
+      "before": {
+        "time": 1791533648.97095,
+        "loadavg": [
+          2.16357421875,
+          1.00244140625,
+          0.439453125
+        ],
+        "cpu_pressure": "some avg10=2.70 avg60=5.79 avg300=3.01 total=1380549261\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1530770 3555 981125 171007146 51213 0 179117 0 0 0",
+        "children_cpu_s": 293.237303
+      },
+      "after": {
+        "time": 1791533652.3107357,
+        "loadavg": [
+          2.0703125,
+          1.001953125,
+          0.44287109375
+        ],
+        "cpu_pressure": "some avg10=2.21 avg60=5.60 avg300=2.99 total=1380556203\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1531125 3555 981146 171008098 51213 0 179125 0 0 0",
+        "children_cpu_s": 296.581375
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        5
+      ],
+      "before": {
+        "time": 1791533652.3109624,
+        "loadavg": [
+          2.0703125,
+          1.001953125,
+          0.44287109375
+        ],
+        "cpu_pressure": "some avg10=2.21 avg60=5.60 avg300=2.99 total=1380556203\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1531125 3555 981146 171008098 51213 0 179125 0 0 0",
+        "children_cpu_s": 296.581375
+      },
+      "after": {
+        "time": 1791533655.660978,
+        "loadavg": [
+          2.0703125,
+          1.001953125,
+          0.44287109375
+        ],
+        "cpu_pressure": "some avg10=1.48 avg60=5.24 avg300=2.95 total=1380558560\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1531472 3555 981155 171009075 51213 0 179132 0 0 0",
+        "children_cpu_s": 299.933026
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        5
+      ],
+      "before": {
+        "time": 1791533655.6612537,
+        "loadavg": [
+          2.0703125,
+          1.001953125,
+          0.44287109375
+        ],
+        "cpu_pressure": "some avg10=1.48 avg60=5.24 avg300=2.95 total=1380558560\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1531472 3555 981155 171009075 51213 0 179132 0 0 0",
+        "children_cpu_s": 299.933026
+      },
+      "after": {
+        "time": 1791533656.570941,
+        "loadavg": [
+          2.0703125,
+          1.001953125,
+          0.44287109375
+        ],
+        "cpu_pressure": "some avg10=1.48 avg60=5.24 avg300=2.95 total=1381256165\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1531826 3555 981160 171009079 51213 0 179132 0 0 0",
+        "children_cpu_s": 303.417085
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        5
+      ],
+      "before": {
+        "time": 1791533656.571145,
+        "loadavg": [
+          2.0703125,
+          1.001953125,
+          0.44287109375
+        ],
+        "cpu_pressure": "some avg10=1.48 avg60=5.24 avg300=2.95 total=1381256165\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1531826 3555 981160 171009079 51213 0 179132 0 0 0",
+        "children_cpu_s": 303.417085
+      },
+      "after": {
+        "time": 1791533657.454858,
+        "loadavg": [
+          2.54541015625,
+          1.1181640625,
+          0.48388671875
+        ],
+        "cpu_pressure": "some avg10=10.45 avg60=6.74 avg300=3.28 total=1382042002\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1532172 3555 981162 171009084 51213 0 179132 0 0 0",
+        "children_cpu_s": 306.88394700000003
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        5
+      ],
+      "before": {
+        "time": 1791533657.455068,
+        "loadavg": [
+          2.54541015625,
+          1.1181640625,
+          0.48388671875
+        ],
+        "cpu_pressure": "some avg10=10.45 avg60=6.74 avg300=3.28 total=1382042002\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1532172 3555 981162 171009084 51213 0 179132 0 0 0",
+        "children_cpu_s": 306.88394700000003
+      },
+      "after": {
+        "time": 1791533658.3602529,
+        "loadavg": [
+          2.54541015625,
+          1.1181640625,
+          0.48388671875
+        ],
+        "cpu_pressure": "some avg10=10.45 avg60=6.74 avg300=3.28 total=1382095849\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1532525 3555 981166 171009089 51213 0 179132 0 0 0",
+        "children_cpu_s": 310.335407
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        5
+      ],
+      "before": {
+        "time": 1791533658.360457,
+        "loadavg": [
+          2.54541015625,
+          1.1181640625,
+          0.48388671875
+        ],
+        "cpu_pressure": "some avg10=10.45 avg60=6.74 avg300=3.28 total=1382095849\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1532525 3555 981166 171009089 51213 0 179132 0 0 0",
+        "children_cpu_s": 310.335407
+      },
+      "after": {
+        "time": 1791533659.2611966,
+        "loadavg": [
+          2.54541015625,
+          1.1181640625,
+          0.48388671875
+        ],
+        "cpu_pressure": "some avg10=13.45 avg60=7.40 avg300=3.44 total=1382116057\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1532875 3555 981168 171009097 51213 0 179133 0 0 0",
+        "children_cpu_s": 313.825219
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        5
+      ],
+      "before": {
+        "time": 1791533659.261437,
+        "loadavg": [
+          2.54541015625,
+          1.1181640625,
+          0.48388671875
+        ],
+        "cpu_pressure": "some avg10=13.45 avg60=7.40 avg300=3.44 total=1382116057\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1532875 3555 981168 171009097 51213 0 179133 0 0 0",
+        "children_cpu_s": 313.825219
+      },
+      "after": {
+        "time": 1791533660.9487476,
+        "loadavg": [
+          2.54541015625,
+          1.1181640625,
+          0.48388671875
+        ],
+        "cpu_pressure": "some avg10=11.01 avg60=7.16 avg300=3.42 total=1382126040\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1533219 3555 981178 171009415 51213 0 179138 0 0 0",
+        "children_cpu_s": 317.199072
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        5
+      ],
+      "before": {
+        "time": 1791533660.9489577,
+        "loadavg": [
+          2.54541015625,
+          1.1181640625,
+          0.48388671875
+        ],
+        "cpu_pressure": "some avg10=11.01 avg60=7.16 avg300=3.42 total=1382126040\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1533219 3555 981178 171009415 51213 0 179138 0 0 0",
+        "children_cpu_s": 317.199072
+      },
+      "after": {
+        "time": 1791533662.6438496,
+        "loadavg": [
+          2.50146484375,
+          1.1328125,
+          0.4921875
+        ],
+        "cpu_pressure": "some avg10=11.01 avg60=7.16 avg300=3.42 total=1382137977\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1533568 3555 981188 171009731 51214 0 179145 0 0 0",
+        "children_cpu_s": 320.590373
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        5
+      ],
+      "before": {
+        "time": 1791533662.6440437,
+        "loadavg": [
+          2.50146484375,
+          1.1328125,
+          0.4921875
+        ],
+        "cpu_pressure": "some avg10=11.01 avg60=7.16 avg300=3.42 total=1382137977\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1533568 3555 981188 171009731 51214 0 179145 0 0 0",
+        "children_cpu_s": 320.590373
+      },
+      "after": {
+        "time": 1791533665.9904509,
+        "loadavg": [
+          2.50146484375,
+          1.1328125,
+          0.4921875
+        ],
+        "cpu_pressure": "some avg10=7.38 avg60=6.69 avg300=3.37 total=1382143235\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1533921 3555 981202 171010696 51214 0 179153 0 0 0",
+        "children_cpu_s": 323.94246499999997
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        5
+      ],
+      "before": {
+        "time": 1791533665.9906704,
+        "loadavg": [
+          2.50146484375,
+          1.1328125,
+          0.4921875
+        ],
+        "cpu_pressure": "some avg10=7.38 avg60=6.69 avg300=3.37 total=1382143235\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1533921 3555 981202 171010696 51214 0 179153 0 0 0",
+        "children_cpu_s": 323.94246499999997
+      },
+      "after": {
+        "time": 1791533669.3579714,
+        "loadavg": [
+          2.380859375,
+          1.13037109375,
+          0.4951171875
+        ],
+        "cpu_pressure": "some avg10=4.95 avg60=6.26 avg300=3.33 total=1382156404\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1534278 3555 981221 171011655 51214 0 179161 0 0 0",
+        "children_cpu_s": 327.30915600000003
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        5
+      ],
+      "before": {
+        "time": 1791533669.3581774,
+        "loadavg": [
+          2.380859375,
+          1.13037109375,
+          0.4951171875
+        ],
+        "cpu_pressure": "some avg10=4.95 avg60=6.26 avg300=3.33 total=1382156404\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1534278 3555 981221 171011655 51214 0 179161 0 0 0",
+        "children_cpu_s": 327.30915600000003
+      },
+      "after": {
+        "time": 1791533671.1736317,
+        "loadavg": [
+          2.380859375,
+          1.13037109375,
+          0.4951171875
+        ],
+        "cpu_pressure": "some avg10=6.59 avg60=6.52 avg300=3.40 total=1382433788\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1534640 3555 981230 171012007 51214 0 179164 0 0 0",
+        "children_cpu_s": 330.84959499999997
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        5
+      ],
+      "before": {
+        "time": 1791533671.1738648,
+        "loadavg": [
+          2.380859375,
+          1.13037109375,
+          0.4951171875
+        ],
+        "cpu_pressure": "some avg10=6.59 avg60=6.52 avg300=3.40 total=1382433788\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1534640 3555 981230 171012007 51214 0 179164 0 0 0",
+        "children_cpu_s": 330.84959499999997
+      },
+      "after": {
+        "time": 1791533673.0313294,
+        "loadavg": [
+          2.8310546875,
+          1.24462890625,
+          0.53564453125
+        ],
+        "cpu_pressure": "some avg10=8.29 avg60=6.83 avg300=3.49 total=1382751285\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1534998 3555 981240 171012379 51214 0 179165 0 0 0",
+        "children_cpu_s": 334.34223199999997
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        5
+      ],
+      "before": {
+        "time": 1791533673.0315404,
+        "loadavg": [
+          2.8310546875,
+          1.24462890625,
+          0.53564453125
+        ],
+        "cpu_pressure": "some avg10=8.29 avg60=6.83 avg300=3.49 total=1382751285\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1534998 3555 981240 171012379 51214 0 179165 0 0 0",
+        "children_cpu_s": 334.34223199999997
+      },
+      "after": {
+        "time": 1791533675.0209396,
+        "loadavg": [
+          2.8310546875,
+          1.24462890625,
+          0.53564453125
+        ],
+        "cpu_pressure": "some avg10=6.79 avg60=6.60 avg300=3.46 total=1382768893\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1535356 3555 981248 171012805 51215 0 179168 0 0 0",
+        "children_cpu_s": 337.831869
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        6
+      ],
+      "before": {
+        "time": 1791533675.0211911,
+        "loadavg": [
+          2.8310546875,
+          1.24462890625,
+          0.53564453125
+        ],
+        "cpu_pressure": "some avg10=6.79 avg60=6.60 avg300=3.46 total=1382768893\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1535356 3555 981248 171012805 51215 0 179168 0 0 0",
+        "children_cpu_s": 337.831869
+      },
+      "after": {
+        "time": 1791533676.9665534,
+        "loadavg": [
+          2.8310546875,
+          1.24462890625,
+          0.53564453125
+        ],
+        "cpu_pressure": "some avg10=8.64 avg60=6.94 avg300=3.55 total=1383132071\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1535708 3555 981254 171013223 51215 0 179171 0 0 0",
+        "children_cpu_s": 341.290915
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        6
+      ],
+      "before": {
+        "time": 1791533676.9667606,
+        "loadavg": [
+          2.8310546875,
+          1.24462890625,
+          0.53564453125
+        ],
+        "cpu_pressure": "some avg10=8.64 avg60=6.94 avg300=3.55 total=1383132071\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1535708 3555 981254 171013223 51215 0 179171 0 0 0",
+        "children_cpu_s": 341.290915
+      },
+      "after": {
+        "time": 1791533678.7317584,
+        "loadavg": [
+          3.3251953125,
+          1.37353515625,
+          0.58154296875
+        ],
+        "cpu_pressure": "some avg10=8.64 avg60=6.94 avg300=3.55 total=1383454473\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1536059 3555 981259 171013572 51215 0 179172 0 0 0",
+        "children_cpu_s": 344.74405199999995
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        6
+      ],
+      "before": {
+        "time": 1791533678.731952,
+        "loadavg": [
+          3.3251953125,
+          1.37353515625,
+          0.58154296875
+        ],
+        "cpu_pressure": "some avg10=8.64 avg60=6.94 avg300=3.55 total=1383454473\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1536059 3555 981259 171013573 51215 0 179172 0 0 0",
+        "children_cpu_s": 344.74405199999995
+      },
+      "after": {
+        "time": 1791533682.0792823,
+        "loadavg": [
+          3.3251953125,
+          1.37353515625,
+          0.58154296875
+        ],
+        "cpu_pressure": "some avg10=8.16 avg60=7.00 avg300=3.61 total=1383460334\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1536414 3555 981273 171014536 51215 0 179178 0 0 0",
+        "children_cpu_s": 348.093597
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        6
+      ],
+      "before": {
+        "time": 1791533682.079489,
+        "loadavg": [
+          3.3251953125,
+          1.37353515625,
+          0.58154296875
+        ],
+        "cpu_pressure": "some avg10=8.16 avg60=7.00 avg300=3.61 total=1383460334\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1536414 3555 981273 171014536 51215 0 179178 0 0 0",
+        "children_cpu_s": 348.093597
+      },
+      "after": {
+        "time": 1791533685.4278338,
+        "loadavg": [
+          3.138671875,
+          1.3671875,
+          0.583984375
+        ],
+        "cpu_pressure": "some avg10=5.47 avg60=6.55 avg300=3.56 total=1383464661\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1536767 3555 981290 171015496 51216 0 179184 0 0 0",
+        "children_cpu_s": 351.44813700000003
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        6
+      ],
+      "before": {
+        "time": 1791533685.428083,
+        "loadavg": [
+          3.138671875,
+          1.3671875,
+          0.583984375
+        ],
+        "cpu_pressure": "some avg10=5.47 avg60=6.55 avg300=3.56 total=1383464661\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1536767 3555 981290 171015496 51216 0 179184 0 0 0",
+        "children_cpu_s": 351.44813700000003
+      },
+      "after": {
+        "time": 1791533687.1278543,
+        "loadavg": [
+          3.138671875,
+          1.3671875,
+          0.583984375
+        ],
+        "cpu_pressure": "some avg10=4.48 avg60=6.34 avg300=3.54 total=1383466200\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1537107 3555 981296 171015826 51216 0 179190 0 0 0",
+        "children_cpu_s": 354.850092
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        6
+      ],
+      "before": {
+        "time": 1791533687.1280446,
+        "loadavg": [
+          3.138671875,
+          1.3671875,
+          0.583984375
+        ],
+        "cpu_pressure": "some avg10=4.48 avg60=6.34 avg300=3.54 total=1383466200\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1537107 3555 981296 171015826 51216 0 179190 0 0 0",
+        "children_cpu_s": 354.850092
+      },
+      "after": {
+        "time": 1791533688.8261533,
+        "loadavg": [
+          3.04736328125,
+          1.3779296875,
+          0.591796875
+        ],
+        "cpu_pressure": "some avg10=4.48 avg60=6.34 avg300=3.54 total=1383473785\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1537455 3555 981305 171016144 51216 0 179199 0 0 0",
+        "children_cpu_s": 358.256574
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        6
+      ],
+      "before": {
+        "time": 1791533688.8263779,
+        "loadavg": [
+          3.04736328125,
+          1.3779296875,
+          0.591796875
+        ],
+        "cpu_pressure": "some avg10=4.48 avg60=6.34 avg300=3.54 total=1383473785\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1537455 3555 981305 171016144 51216 0 179199 0 0 0",
+        "children_cpu_s": 358.256574
+      },
+      "after": {
+        "time": 1791533689.7773025,
+        "loadavg": [
+          3.04736328125,
+          1.3779296875,
+          0.591796875
+        ],
+        "cpu_pressure": "some avg10=3.67 avg60=6.13 avg300=3.52 total=1383563290\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1537824 3555 981310 171016149 51216 0 179199 0 0 0",
+        "children_cpu_s": 361.858767
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        6
+      ],
+      "before": {
+        "time": 1791533689.7775633,
+        "loadavg": [
+          3.04736328125,
+          1.3779296875,
+          0.591796875
+        ],
+        "cpu_pressure": "some avg10=3.67 avg60=6.13 avg300=3.52 total=1383563290\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1537824 3555 981310 171016150 51216 0 179199 0 0 0",
+        "children_cpu_s": 361.858767
+      },
+      "after": {
+        "time": 1791533690.6891844,
+        "loadavg": [
+          3.04736328125,
+          1.3779296875,
+          0.591796875
+        ],
+        "cpu_pressure": "some avg10=3.67 avg60=6.13 avg300=3.52 total=1383585503\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1538180 3555 981314 171016155 51216 0 179200 0 0 0",
+        "children_cpu_s": 365.41565099999997
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        6
+      ],
+      "before": {
+        "time": 1791533690.6894403,
+        "loadavg": [
+          3.04736328125,
+          1.3779296875,
+          0.591796875
+        ],
+        "cpu_pressure": "some avg10=3.67 avg60=6.13 avg300=3.52 total=1383585503\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1538180 3555 981314 171016155 51216 0 179200 0 0 0",
+        "children_cpu_s": 365.41565099999997
+      },
+      "after": {
+        "time": 1791533691.5991862,
+        "loadavg": [
+          3.04736328125,
+          1.3779296875,
+          0.591796875
+        ],
+        "cpu_pressure": "some avg10=6.44 avg60=6.55 avg300=3.62 total=1384471190\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1538536 3555 981317 171016159 51216 0 179200 0 0 0",
+        "children_cpu_s": 368.92148899999995
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        6
+      ],
+      "before": {
+        "time": 1791533691.5994356,
+        "loadavg": [
+          3.04736328125,
+          1.3779296875,
+          0.591796875
+        ],
+        "cpu_pressure": "some avg10=6.44 avg60=6.55 avg300=3.62 total=1384471190\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1538536 3555 981317 171016159 51216 0 179200 0 0 0",
+        "children_cpu_s": 368.92148899999995
+      },
+      "after": {
+        "time": 1791533692.5025728,
+        "loadavg": [
+          3.4443359375,
+          1.48828125,
+          0.6318359375
+        ],
+        "cpu_pressure": "some avg10=6.44 avg60=6.55 avg300=3.62 total=1385243653\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1538888 3555 981321 171016164 51216 0 179200 0 0 0",
+        "children_cpu_s": 372.41767999999996
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        6
+      ],
+      "before": {
+        "time": 1791533692.502789,
+        "loadavg": [
+          3.4443359375,
+          1.48828125,
+          0.6318359375
+        ],
+        "cpu_pressure": "some avg10=6.44 avg60=6.55 avg300=3.62 total=1385243653\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1538888 3555 981321 171016164 51216 0 179200 0 0 0",
+        "children_cpu_s": 372.41767999999996
+      },
+      "after": {
+        "time": 1791533695.8553293,
+        "loadavg": [
+          3.4443359375,
+          1.48828125,
+          0.6318359375
+        ],
+        "cpu_pressure": "some avg10=14.55 avg60=8.31 avg300=4.04 total=1385249345\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1539246 3555 981336 171017126 51216 0 179206 0 0 0",
+        "children_cpu_s": 375.772488
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        6
+      ],
+      "before": {
+        "time": 1791533695.8555372,
+        "loadavg": [
+          3.4443359375,
+          1.48828125,
+          0.6318359375
+        ],
+        "cpu_pressure": "some avg10=14.55 avg60=8.31 avg300=4.04 total=1385249345\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1539246 3555 981336 171017126 51216 0 179206 0 0 0",
+        "children_cpu_s": 375.772488
+      },
+      "after": {
+        "time": 1791533699.2020943,
+        "loadavg": [
+          3.24853515625,
+          1.47998046875,
+          0.63427734375
+        ],
+        "cpu_pressure": "some avg10=9.76 avg60=7.78 avg300=3.98 total=1385255870\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1539594 3555 981353 171018088 51216 0 179212 0 0 0",
+        "children_cpu_s": 379.123501
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        6
+      ],
+      "before": {
+        "time": 1791533699.2023442,
+        "loadavg": [
+          3.24853515625,
+          1.47998046875,
+          0.63427734375
+        ],
+        "cpu_pressure": "some avg10=9.76 avg60=7.78 avg300=3.98 total=1385255870\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1539594 3555 981353 171018089 51216 0 179212 0 0 0",
+        "children_cpu_s": 379.123501
+      },
+      "after": {
+        "time": 1791533701.620179,
+        "loadavg": [
+          3.24853515625,
+          1.47998046875,
+          0.63427734375
+        ],
+        "cpu_pressure": "some avg10=7.99 avg60=7.52 avg300=3.96 total=1385264598\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1539944 3555 981365 171018691 51217 0 179221 0 0 0",
+        "children_cpu_s": 382.496131
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        6
+      ],
+      "before": {
+        "time": 1791533701.6204383,
+        "loadavg": [
+          3.24853515625,
+          1.47998046875,
+          0.63427734375
+        ],
+        "cpu_pressure": "some avg10=7.99 avg60=7.52 avg300=3.96 total=1385264598\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1539944 3555 981365 171018691 51217 0 179221 0 0 0",
+        "children_cpu_s": 382.496131
+      },
+      "after": {
+        "time": 1791533704.0405884,
+        "loadavg": [
+          3.068359375,
+          1.4716796875,
+          0.63671875
+        ],
+        "cpu_pressure": "some avg10=6.72 avg60=7.31 avg300=3.94 total=1385285854\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1540297 3555 981379 171019287 51217 0 179227 0 0 0",
+        "children_cpu_s": 385.870447
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        6
+      ],
+      "before": {
+        "time": 1791533704.0408537,
+        "loadavg": [
+          3.068359375,
+          1.4716796875,
+          0.63671875
+        ],
+        "cpu_pressure": "some avg10=6.72 avg60=7.31 avg300=3.94 total=1385285854\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1540297 3555 981379 171019287 51217 0 179227 0 0 0",
+        "children_cpu_s": 385.870447
+      },
+      "after": {
+        "time": 1791533706.0537384,
+        "loadavg": [
+          3.068359375,
+          1.4716796875,
+          0.63671875
+        ],
+        "cpu_pressure": "some avg10=6.05 avg60=7.17 avg300=3.93 total=1385365874\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1540657 3555 981388 171019720 51217 0 179229 0 0 0",
+        "children_cpu_s": 389.38374100000004
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        6
+      ],
+      "before": {
+        "time": 1791533706.0539696,
+        "loadavg": [
+          3.068359375,
+          1.4716796875,
+          0.63671875
+        ],
+        "cpu_pressure": "some avg10=6.05 avg60=7.17 avg300=3.93 total=1385365874\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1540657 3555 981388 171019720 51217 0 179229 0 0 0",
+        "children_cpu_s": 389.38374100000004
+      },
+      "after": {
+        "time": 1791533708.0384429,
+        "loadavg": [
+          3.14306640625,
+          1.513671875,
+          0.65478515625
+        ],
+        "cpu_pressure": "some avg10=5.49 avg60=7.03 avg300=3.92 total=1385427316\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1541016 3555 981397 171020143 51217 0 179232 0 0 0",
+        "children_cpu_s": 392.878666
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        7
+      ],
+      "before": {
+        "time": 1791533708.0387068,
+        "loadavg": [
+          3.14306640625,
+          1.513671875,
+          0.65478515625
+        ],
+        "cpu_pressure": "some avg10=5.49 avg60=7.03 avg300=3.92 total=1385427316\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1541016 3555 981397 171020144 51217 0 179232 0 0 0",
+        "children_cpu_s": 392.878666
+      },
+      "after": {
+        "time": 1791533710.0716417,
+        "loadavg": [
+          3.14306640625,
+          1.513671875,
+          0.65478515625
+        ],
+        "cpu_pressure": "some avg10=5.95 avg60=7.06 avg300=3.95 total=1385807386\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1541381 3555 981409 171020575 51218 0 179235 0 0 0",
+        "children_cpu_s": 396.43677
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        7
+      ],
+      "before": {
+        "time": 1791533710.0718699,
+        "loadavg": [
+          3.14306640625,
+          1.513671875,
+          0.65478515625
+        ],
+        "cpu_pressure": "some avg10=5.95 avg60=7.06 avg300=3.95 total=1385807386\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1541381 3555 981409 171020575 51218 0 179235 0 0 0",
+        "children_cpu_s": 396.43677
+      },
+      "after": {
+        "time": 1791533712.0254116,
+        "loadavg": [
+          3.14306640625,
+          1.513671875,
+          0.65478515625
+        ],
+        "cpu_pressure": "some avg10=7.04 avg60=7.22 avg300=4.01 total=1385844090\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1541734 3555 981418 171020992 51218 0 179239 0 0 0",
+        "children_cpu_s": 399.885879
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        7
+      ],
+      "before": {
+        "time": 1791533712.0256279,
+        "loadavg": [
+          3.14306640625,
+          1.513671875,
+          0.65478515625
+        ],
+        "cpu_pressure": "some avg10=7.04 avg60=7.22 avg300=4.01 total=1385844090\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1541734 3555 981418 171020992 51218 0 179239 0 0 0",
+        "children_cpu_s": 399.885879
+      },
+      "after": {
+        "time": 1791533713.9782968,
+        "loadavg": [
+          3.2119140625,
+          1.55517578125,
+          0.6728515625
+        ],
+        "cpu_pressure": "some avg10=5.95 avg60=7.02 avg300=3.99 total=1385866184\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1542091 3555 981430 171021400 51218 0 179243 0 0 0",
+        "children_cpu_s": 403.354549
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        7
+      ],
+      "before": {
+        "time": 1791533713.978508,
+        "loadavg": [
+          3.2119140625,
+          1.55517578125,
+          0.6728515625
+        ],
+        "cpu_pressure": "some avg10=5.95 avg60=7.02 avg300=3.99 total=1385866184\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1542091 3555 981430 171021400 51218 0 179243 0 0 0",
+        "children_cpu_s": 403.354549
+      },
+      "after": {
+        "time": 1791533716.3974428,
+        "loadavg": [
+          3.2119140625,
+          1.55517578125,
+          0.6728515625
+        ],
+        "cpu_pressure": "some avg10=4.87 avg60=6.79 avg300=3.96 total=1385872983\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1542440 3555 981438 171022007 51218 0 179250 0 0 0",
+        "children_cpu_s": 406.741602
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        7
+      ],
+      "before": {
+        "time": 1791533716.3978493,
+        "loadavg": [
+          3.2119140625,
+          1.55517578125,
+          0.6728515625
+        ],
+        "cpu_pressure": "some avg10=4.87 avg60=6.79 avg300=3.96 total=1385872983\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1542440 3555 981438 171022007 51218 0 179250 0 0 0",
+        "children_cpu_s": 406.741602
+      },
+      "after": {
+        "time": 1791533718.8249245,
+        "loadavg": [
+          3.03466796875,
+          1.5458984375,
+          0.6748046875
+        ],
+        "cpu_pressure": "some avg10=3.99 avg60=6.57 avg300=3.93 total=1385884601\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1542793 3555 981452 171022603 51219 0 179258 0 0 0",
+        "children_cpu_s": 410.12241700000004
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        7
+      ],
+      "before": {
+        "time": 1791533718.8251452,
+        "loadavg": [
+          3.03466796875,
+          1.5458984375,
+          0.6748046875
+        ],
+        "cpu_pressure": "some avg10=3.99 avg60=6.57 avg300=3.93 total=1385884601\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1542793 3555 981452 171022604 51219 0 179258 0 0 0",
+        "children_cpu_s": 410.12241700000004
+      },
+      "after": {
+        "time": 1791533722.1639895,
+        "loadavg": [
+          3.03466796875,
+          1.5458984375,
+          0.6748046875
+        ],
+        "cpu_pressure": "some avg10=2.67 avg60=6.14 avg300=3.88 total=1385887044\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1543140 3555 981465 171023575 51219 0 179265 0 0 0",
+        "children_cpu_s": 413.465525
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        7
+      ],
+      "before": {
+        "time": 1791533722.1642263,
+        "loadavg": [
+          3.03466796875,
+          1.5458984375,
+          0.6748046875
+        ],
+        "cpu_pressure": "some avg10=2.67 avg60=6.14 avg300=3.88 total=1385887044\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1543140 3555 981465 171023575 51219 0 179265 0 0 0",
+        "children_cpu_s": 413.465525
+      },
+      "after": {
+        "time": 1791533725.530095,
+        "loadavg": [
+          2.87158203125,
+          1.53662109375,
+          0.6767578125
+        ],
+        "cpu_pressure": "some avg10=1.79 avg60=5.75 avg300=3.82 total=1385903622\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1543505 3555 981487 171024526 51219 0 179275 0 0 0",
+        "children_cpu_s": 416.832225
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        7
+      ],
+      "before": {
+        "time": 1791533725.5303788,
+        "loadavg": [
+          2.87158203125,
+          1.53662109375,
+          0.6767578125
+        ],
+        "cpu_pressure": "some avg10=1.79 avg60=5.75 avg300=3.82 total=1385903622\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1543505 3555 981487 171024526 51219 0 179275 0 0 0",
+        "children_cpu_s": 416.832225
+      },
+      "after": {
+        "time": 1791533726.4553306,
+        "loadavg": [
+          2.87158203125,
+          1.53662109375,
+          0.6767578125
+        ],
+        "cpu_pressure": "some avg10=1.79 avg60=5.75 avg300=3.82 total=1386574807\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1543863 3555 981495 171024530 51219 0 179276 0 0 0",
+        "children_cpu_s": 420.299445
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        7
+      ],
+      "before": {
+        "time": 1791533726.455536,
+        "loadavg": [
+          2.87158203125,
+          1.53662109375,
+          0.6767578125
+        ],
+        "cpu_pressure": "some avg10=1.79 avg60=5.75 avg300=3.82 total=1386574807\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1543863 3555 981495 171024530 51219 0 179276 0 0 0",
+        "children_cpu_s": 420.299445
+      },
+      "after": {
+        "time": 1791533727.4152963,
+        "loadavg": [
+          3.28271484375,
+          1.64404296875,
+          0.71630859375
+        ],
+        "cpu_pressure": "some avg10=11.06 avg60=7.29 avg300=4.16 total=1387392703\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1544227 3555 981510 171024534 51219 0 179277 0 0 0",
+        "children_cpu_s": 423.758952
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        7
+      ],
+      "before": {
+        "time": 1791533727.4155083,
+        "loadavg": [
+          3.28271484375,
+          1.64404296875,
+          0.71630859375
+        ],
+        "cpu_pressure": "some avg10=11.06 avg60=7.29 avg300=4.16 total=1387392703\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1544227 3555 981510 171024534 51219 0 179277 0 0 0",
+        "children_cpu_s": 423.758952
+      },
+      "after": {
+        "time": 1791533728.333146,
+        "loadavg": [
+          3.28271484375,
+          1.64404296875,
+          0.71630859375
+        ],
+        "cpu_pressure": "some avg10=11.06 avg60=7.29 avg300=4.16 total=1387440792\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1544583 3555 981516 171024538 51219 0 179277 0 0 0",
+        "children_cpu_s": 427.267298
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        7
+      ],
+      "before": {
+        "time": 1791533728.333355,
+        "loadavg": [
+          3.28271484375,
+          1.64404296875,
+          0.71630859375
+        ],
+        "cpu_pressure": "some avg10=11.06 avg60=7.29 avg300=4.16 total=1387440792\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1544583 3555 981516 171024538 51219 0 179277 0 0 0",
+        "children_cpu_s": 427.267298
+      },
+      "after": {
+        "time": 1791533729.2508767,
+        "loadavg": [
+          3.28271484375,
+          1.64404296875,
+          0.71630859375
+        ],
+        "cpu_pressure": "some avg10=13.77 avg60=7.90 avg300=4.31 total=1387509252\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1544939 3555 981522 171024541 51219 0 179278 0 0 0",
+        "children_cpu_s": 430.725171
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        7
+      ],
+      "before": {
+        "time": 1791533729.251063,
+        "loadavg": [
+          3.28271484375,
+          1.64404296875,
+          0.71630859375
+        ],
+        "cpu_pressure": "some avg10=13.77 avg60=7.90 avg300=4.31 total=1387509252\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1544939 3555 981522 171024541 51219 0 179278 0 0 0",
+        "children_cpu_s": 430.725171
+      },
+      "after": {
+        "time": 1791533730.9438355,
+        "loadavg": [
+          3.28271484375,
+          1.64404296875,
+          0.71630859375
+        ],
+        "cpu_pressure": "some avg10=11.45 avg60=7.68 avg300=4.29 total=1387516570\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1545281 3555 981533 171024860 51219 0 179287 0 0 0",
+        "children_cpu_s": 434.107161
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        7
+      ],
+      "before": {
+        "time": 1791533730.944078,
+        "loadavg": [
+          3.28271484375,
+          1.64404296875,
+          0.71630859375
+        ],
+        "cpu_pressure": "some avg10=11.45 avg60=7.68 avg300=4.29 total=1387516570\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1545281 3555 981533 171024860 51219 0 179287 0 0 0",
+        "children_cpu_s": 434.107161
+      },
+      "after": {
+        "time": 1791533732.638867,
+        "loadavg": [
+          3.1796875,
+          1.650390625,
+          0.7236328125
+        ],
+        "cpu_pressure": "some avg10=11.45 avg60=7.68 avg300=4.29 total=1387526400\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1545628 3555 981545 171025176 51220 0 179298 0 0 0",
+        "children_cpu_s": 437.49314599999997
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        7
+      ],
+      "before": {
+        "time": 1791533732.6390996,
+        "loadavg": [
+          3.1796875,
+          1.650390625,
+          0.7236328125
+        ],
+        "cpu_pressure": "some avg10=11.45 avg60=7.68 avg300=4.29 total=1387526400\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1545628 3555 981545 171025176 51220 0 179298 0 0 0",
+        "children_cpu_s": 437.49314599999997
+      },
+      "after": {
+        "time": 1791533735.9934695,
+        "loadavg": [
+          3.1796875,
+          1.650390625,
+          0.7236328125
+        ],
+        "cpu_pressure": "some avg10=7.68 avg60=7.18 avg300=4.23 total=1387530482\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1545980 3555 981560 171026145 51220 0 179304 0 0 0",
+        "children_cpu_s": 440.853145
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        7
+      ],
+      "before": {
+        "time": 1791533735.9937582,
+        "loadavg": [
+          3.1796875,
+          1.650390625,
+          0.7236328125
+        ],
+        "cpu_pressure": "some avg10=7.68 avg60=7.18 avg300=4.23 total=1387530482\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1545980 3555 981560 171026145 51220 0 179304 0 0 0",
+        "children_cpu_s": 440.853145
+      },
+      "after": {
+        "time": 1791533739.3444648,
+        "loadavg": [
+          3.0849609375,
+          1.65625,
+          0.73095703125
+        ],
+        "cpu_pressure": "some avg10=5.15 avg60=6.72 avg300=4.17 total=1387535848\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1546328 3555 981574 171027119 51220 0 179310 0 0 0",
+        "children_cpu_s": 444.206201
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        7
+      ],
+      "before": {
+        "time": 1791533739.3447127,
+        "loadavg": [
+          3.0849609375,
+          1.65625,
+          0.73095703125
+        ],
+        "cpu_pressure": "some avg10=5.15 avg60=6.72 avg300=4.17 total=1387535848\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1546328 3555 981574 171027119 51220 0 179310 0 0 0",
+        "children_cpu_s": 444.206201
+      },
+      "after": {
+        "time": 1791533741.253585,
+        "loadavg": [
+          3.0849609375,
+          1.65625,
+          0.73095703125
+        ],
+        "cpu_pressure": "some avg10=8.20 avg60=7.22 avg300=4.29 total=1387987411\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1546692 3555 981588 171027500 51220 0 179313 0 0 0",
+        "children_cpu_s": 447.664785
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        8
+      ],
+      "before": {
+        "time": 1791533741.2539735,
+        "loadavg": [
+          3.0849609375,
+          1.65625,
+          0.73095703125
+        ],
+        "cpu_pressure": "some avg10=8.20 avg60=7.22 avg300=4.29 total=1387987411\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1546692 3555 981588 171027500 51220 0 179313 0 0 0",
+        "children_cpu_s": 447.664785
+      },
+      "after": {
+        "time": 1791533744.6483722,
+        "loadavg": [
+          2.91796875,
+          1.64501953125,
+          0.732421875
+        ],
+        "cpu_pressure": "some avg10=6.71 avg60=6.98 avg300=4.26 total=1387999500\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1547052 3555 981611 171028466 51221 0 179319 0 0 0",
+        "children_cpu_s": 451.062013
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        8
+      ],
+      "before": {
+        "time": 1791533744.6485877,
+        "loadavg": [
+          2.91796875,
+          1.64501953125,
+          0.732421875
+        ],
+        "cpu_pressure": "some avg10=6.71 avg60=6.98 avg300=4.26 total=1387999500\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1547052 3555 981611 171028466 51221 0 179319 0 0 0",
+        "children_cpu_s": 451.062013
+      },
+      "after": {
+        "time": 1791533748.0277984,
+        "loadavg": [
+          2.76416015625,
+          1.63427734375,
+          0.73388671875
+        ],
+        "cpu_pressure": "some avg10=4.50 avg60=6.53 avg300=4.20 total=1388006194\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1547409 3555 981627 171029440 51221 0 179326 0 0 0",
+        "children_cpu_s": 454.446272
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        8
+      ],
+      "before": {
+        "time": 1791533748.0280507,
+        "loadavg": [
+          2.76416015625,
+          1.63427734375,
+          0.73388671875
+        ],
+        "cpu_pressure": "some avg10=4.50 avg60=6.53 avg300=4.20 total=1388006194\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1547409 3555 981627 171029440 51221 0 179326 0 0 0",
+        "children_cpu_s": 454.446272
+      },
+      "after": {
+        "time": 1791533749.7488759,
+        "loadavg": [
+          2.76416015625,
+          1.63427734375,
+          0.73388671875
+        ],
+        "cpu_pressure": "some avg10=3.68 avg60=6.32 avg300=4.17 total=1388014957\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1547755 3555 981639 171029764 51221 0 179336 0 0 0",
+        "children_cpu_s": 457.889946
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        8
+      ],
+      "before": {
+        "time": 1791533749.7490792,
+        "loadavg": [
+          2.76416015625,
+          1.63427734375,
+          0.73388671875
+        ],
+        "cpu_pressure": "some avg10=3.68 avg60=6.32 avg300=4.17 total=1388014957\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1547755 3555 981639 171029764 51221 0 179336 0 0 0",
+        "children_cpu_s": 457.889946
+      },
+      "after": {
+        "time": 1791533751.4399168,
+        "loadavg": [
+          2.76416015625,
+          1.63427734375,
+          0.73388671875
+        ],
+        "cpu_pressure": "some avg10=3.01 avg60=6.11 avg300=4.15 total=1388019215\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1548102 3555 981651 171030079 51221 0 179342 0 0 0",
+        "children_cpu_s": 461.27357
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        8
+      ],
+      "before": {
+        "time": 1791533751.440149,
+        "loadavg": [
+          2.76416015625,
+          1.63427734375,
+          0.73388671875
+        ],
+        "cpu_pressure": "some avg10=3.01 avg60=6.11 avg300=4.15 total=1388019215\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1548102 3555 981651 171030079 51221 0 179342 0 0 0",
+        "children_cpu_s": 461.27357
+      },
+      "after": {
+        "time": 1791533752.3860219,
+        "loadavg": [
+          2.943359375,
+          1.6904296875,
+          0.7568359375
+        ],
+        "cpu_pressure": "some avg10=3.01 avg60=6.11 avg300=4.15 total=1388155202\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1548464 3555 981656 171030089 51221 0 179342 0 0 0",
+        "children_cpu_s": 464.75386000000003
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        8
+      ],
+      "before": {
+        "time": 1791533752.3862154,
+        "loadavg": [
+          2.943359375,
+          1.6904296875,
+          0.7568359375
+        ],
+        "cpu_pressure": "some avg10=3.01 avg60=6.11 avg300=4.15 total=1388155202\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1548464 3555 981656 171030089 51221 0 179342 0 0 0",
+        "children_cpu_s": 464.75386000000003
+      },
+      "after": {
+        "time": 1791533753.2783816,
+        "loadavg": [
+          2.943359375,
+          1.6904296875,
+          0.7568359375
+        ],
+        "cpu_pressure": "some avg10=3.74 avg60=6.14 avg300=4.16 total=1388168893\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1548814 3555 981658 171030094 51221 0 179342 0 0 0",
+        "children_cpu_s": 468.24946700000004
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        8
+      ],
+      "before": {
+        "time": 1791533753.2786317,
+        "loadavg": [
+          2.943359375,
+          1.6904296875,
+          0.7568359375
+        ],
+        "cpu_pressure": "some avg10=3.74 avg60=6.14 avg300=4.16 total=1388168893\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1548814 3555 981658 171030094 51221 0 179342 0 0 0",
+        "children_cpu_s": 468.24946700000004
+      },
+      "after": {
+        "time": 1791533754.1658757,
+        "loadavg": [
+          2.943359375,
+          1.6904296875,
+          0.7568359375
+        ],
+        "cpu_pressure": "some avg10=3.74 avg60=6.14 avg300=4.16 total=1388960687\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1549161 3555 981660 171030099 51221 0 179342 0 0 0",
+        "children_cpu_s": 471.701538
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        8
+      ],
+      "before": {
+        "time": 1791533754.16608,
+        "loadavg": [
+          2.943359375,
+          1.6904296875,
+          0.7568359375
+        ],
+        "cpu_pressure": "some avg10=3.74 avg60=6.14 avg300=4.16 total=1388960687\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1549161 3555 981660 171030099 51221 0 179342 0 0 0",
+        "children_cpu_s": 471.701538
+      },
+      "after": {
+        "time": 1791533755.0964155,
+        "loadavg": [
+          2.943359375,
+          1.6904296875,
+          0.7568359375
+        ],
+        "cpu_pressure": "some avg10=15.92 avg60=8.26 avg300=4.62 total=1389690284\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1549522 3555 981665 171030105 51221 0 179342 0 0 0",
+        "children_cpu_s": 475.23864799999996
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        8
+      ],
+      "before": {
+        "time": 1791533755.0966654,
+        "loadavg": [
+          2.943359375,
+          1.6904296875,
+          0.7568359375
+        ],
+        "cpu_pressure": "some avg10=15.92 avg60=8.26 avg300=4.62 total=1389690284\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1549522 3555 981665 171030105 51221 0 179342 0 0 0",
+        "children_cpu_s": 475.23864799999996
+      },
+      "after": {
+        "time": 1791533758.4589422,
+        "loadavg": [
+          2.78759765625,
+          1.6787109375,
+          0.75830078125
+        ],
+        "cpu_pressure": "some avg10=13.94 avg60=8.16 avg300=4.62 total=1389693860\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1549878 3555 981680 171031074 51221 0 179349 0 0 0",
+        "children_cpu_s": 478.604201
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        8
+      ],
+      "before": {
+        "time": 1791533758.4591298,
+        "loadavg": [
+          2.78759765625,
+          1.6787109375,
+          0.75830078125
+        ],
+        "cpu_pressure": "some avg10=13.94 avg60=8.16 avg300=4.62 total=1389693860\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1549878 3555 981680 171031074 51221 0 179349 0 0 0",
+        "children_cpu_s": 478.604201
+      },
+      "after": {
+        "time": 1791533761.8035185,
+        "loadavg": [
+          2.78759765625,
+          1.6787109375,
+          0.75830078125
+        ],
+        "cpu_pressure": "some avg10=9.35 avg60=7.63 avg300=4.56 total=1389704398\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1550228 3555 981699 171032035 51221 0 179355 0 0 0",
+        "children_cpu_s": 481.952199
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        8
+      ],
+      "before": {
+        "time": 1791533761.8037848,
+        "loadavg": [
+          2.78759765625,
+          1.6787109375,
+          0.75830078125
+        ],
+        "cpu_pressure": "some avg10=9.35 avg60=7.63 avg300=4.56 total=1389704398\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1550228 3555 981699 171032035 51221 0 179355 0 0 0",
+        "children_cpu_s": 481.952199
+      },
+      "after": {
+        "time": 1791533764.2382216,
+        "loadavg": [
+          2.72412109375,
+          1.68408203125,
+          0.76513671875
+        ],
+        "cpu_pressure": "some avg10=7.65 avg60=7.38 avg300=4.53 total=1389715943\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1550579 3555 981713 171032638 51222 0 179361 0 0 0",
+        "children_cpu_s": 485.34534299999996
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        8
+      ],
+      "before": {
+        "time": 1791533764.238514,
+        "loadavg": [
+          2.72412109375,
+          1.68408203125,
+          0.76513671875
+        ],
+        "cpu_pressure": "some avg10=7.65 avg60=7.38 avg300=4.53 total=1389715943\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1550579 3555 981713 171032638 51222 0 179361 0 0 0",
+        "children_cpu_s": 485.34534299999996
+      },
+      "after": {
+        "time": 1791533766.6627605,
+        "loadavg": [
+          2.72412109375,
+          1.68408203125,
+          0.76513671875
+        ],
+        "cpu_pressure": "some avg10=6.26 avg60=7.14 avg300=4.50 total=1389726195\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1550930 3555 981723 171033240 51222 0 179370 0 0 0",
+        "children_cpu_s": 488.7333
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        8
+      ],
+      "before": {
+        "time": 1791533766.662955,
+        "loadavg": [
+          2.72412109375,
+          1.68408203125,
+          0.76513671875
+        ],
+        "cpu_pressure": "some avg10=6.26 avg60=7.14 avg300=4.50 total=1389726195\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1550930 3555 981723 171033240 51222 0 179370 0 0 0",
+        "children_cpu_s": 488.7333
+      },
+      "after": {
+        "time": 1791533768.6709874,
+        "loadavg": [
+          2.5859375,
+          1.67236328125,
+          0.7666015625
+        ],
+        "cpu_pressure": "some avg10=5.49 avg60=6.97 avg300=4.48 total=1389786913\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1551293 3555 981733 171033667 51222 0 179373 0 0 0",
+        "children_cpu_s": 492.250612
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        8
+      ],
+      "before": {
+        "time": 1791533768.6712031,
+        "loadavg": [
+          2.5859375,
+          1.67236328125,
+          0.7666015625
+        ],
+        "cpu_pressure": "some avg10=5.49 avg60=6.97 avg300=4.48 total=1389786913\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1551293 3555 981733 171033667 51222 0 179373 0 0 0",
+        "children_cpu_s": 492.250612
+      },
+      "after": {
+        "time": 1791533770.6530013,
+        "loadavg": [
+          2.5859375,
+          1.67236328125,
+          0.7666015625
+        ],
+        "cpu_pressure": "some avg10=4.68 avg60=6.78 avg300=4.46 total=1389823934\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1551651 3555 981743 171034087 51222 0 179376 0 0 0",
+        "children_cpu_s": 495.73278899999997
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        8
+      ],
+      "before": {
+        "time": 1791533770.6531887,
+        "loadavg": [
+          2.5859375,
+          1.67236328125,
+          0.7666015625
+        ],
+        "cpu_pressure": "some avg10=4.68 avg60=6.78 avg300=4.46 total=1389823934\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1551651 3555 981743 171034087 51222 0 179376 0 0 0",
+        "children_cpu_s": 495.73278899999997
+      },
+      "after": {
+        "time": 1791533772.4692616,
+        "loadavg": [
+          2.45849609375,
+          1.6611328125,
+          0.76806640625
+        ],
+        "cpu_pressure": "some avg10=6.00 avg60=6.95 avg300=4.51 total=1390150474\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1552013 3555 981754 171034435 51223 0 179380 0 0 0",
+        "children_cpu_s": 499.220529
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        8
+      ],
+      "before": {
+        "time": 1791533772.469465,
+        "loadavg": [
+          2.45849609375,
+          1.6611328125,
+          0.76806640625
+        ],
+        "cpu_pressure": "some avg10=6.00 avg60=6.95 avg300=4.51 total=1390150474\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1552013 3555 981754 171034435 51223 0 179380 0 0 0",
+        "children_cpu_s": 499.220529
+      },
+      "after": {
+        "time": 1791533774.4418442,
+        "loadavg": [
+          2.45849609375,
+          1.6611328125,
+          0.76806640625
+        ],
+        "cpu_pressure": "some avg10=7.09 avg60=7.11 avg300=4.56 total=1390516989\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1552372 3555 981764 171034849 51223 0 179381 0 0 0",
+        "children_cpu_s": 502.73588
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "prequeued",
+        9
+      ],
+      "before": {
+        "time": 1791533774.4420555,
+        "loadavg": [
+          2.45849609375,
+          1.6611328125,
+          0.76806640625
+        ],
+        "cpu_pressure": "some avg10=7.09 avg60=7.11 avg300=4.56 total=1390516989\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1552372 3555 981764 171034849 51223 0 179381 0 0 0",
+        "children_cpu_s": 502.73588
+      },
+      "after": {
+        "time": 1791533777.7986119,
+        "loadavg": [
+          2.34130859375,
+          1.64990234375,
+          0.76953125
+        ],
+        "cpu_pressure": "some avg10=6.23 avg60=6.97 avg300=4.57 total=1390524867\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1552723 3555 981776 171035824 51223 0 179386 0 0 0",
+        "children_cpu_s": 506.094229
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "end_to_end",
+        9
+      ],
+      "before": {
+        "time": 1791533777.7988334,
+        "loadavg": [
+          2.34130859375,
+          1.64990234375,
+          0.76953125
+        ],
+        "cpu_pressure": "some avg10=6.23 avg60=6.97 avg300=4.57 total=1390524867\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1552723 3555 981776 171035824 51223 0 179386 0 0 0",
+        "children_cpu_s": 506.094229
+      },
+      "after": {
+        "time": 1791533779.7085447,
+        "loadavg": [
+          2.34130859375,
+          1.64990234375,
+          0.76953125
+        ],
+        "cpu_pressure": "some avg10=7.82 avg60=7.23 avg300=4.64 total=1390842806\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1553082 3555 981786 171036215 51223 0 179390 0 0 0",
+        "children_cpu_s": 509.593355
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        8,
+        "prequeued",
+        9
+      ],
+      "before": {
+        "time": 1791533779.7087777,
+        "loadavg": [
+          2.34130859375,
+          1.64990234375,
+          0.76953125
+        ],
+        "cpu_pressure": "some avg10=7.82 avg60=7.23 avg300=4.64 total=1390842806\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1553082 3555 981786 171036215 51223 0 179390 0 0 0",
+        "children_cpu_s": 509.593355
+      },
+      "after": {
+        "time": 1791533781.6660209,
+        "loadavg": [
+          2.34130859375,
+          1.64990234375,
+          0.76953125
+        ],
+        "cpu_pressure": "some avg10=9.66 avg60=7.59 avg300=4.73 total=1391201256\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1553442 3555 981796 171036622 51223 0 179396 0 0 0",
+        "children_cpu_s": 513.08618
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "end_to_end",
+        9
+      ],
+      "before": {
+        "time": 1791533781.6662598,
+        "loadavg": [
+          2.34130859375,
+          1.64990234375,
+          0.76953125
+        ],
+        "cpu_pressure": "some avg10=9.66 avg60=7.59 avg300=4.73 total=1391201256\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1553442 3555 981797 171036622 51223 0 179396 0 0 0",
+        "children_cpu_s": 513.08618
+      },
+      "after": {
+        "time": 1791533783.6594937,
+        "loadavg": [
+          2.23388671875,
+          1.638671875,
+          0.77099609375
+        ],
+        "cpu_pressure": "some avg10=8.09 avg60=7.37 avg300=4.70 total=1391222621\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1553802 3555 981809 171037041 51224 0 179403 0 0 0",
+        "children_cpu_s": 516.577704
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        4,
+        "prequeued",
+        9
+      ],
+      "before": {
+        "time": 1791533783.6597533,
+        "loadavg": [
+          2.23388671875,
+          1.638671875,
+          0.77099609375
+        ],
+        "cpu_pressure": "some avg10=8.09 avg60=7.37 avg300=4.70 total=1391222621\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1553802 3555 981809 171037041 51224 0 179403 0 0 0",
+        "children_cpu_s": 516.577704
+      },
+      "after": {
+        "time": 1791533785.6881778,
+        "loadavg": [
+          2.23388671875,
+          1.638671875,
+          0.77099609375
+        ],
+        "cpu_pressure": "some avg10=6.81 avg60=7.16 avg300=4.68 total=1391243648\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1554162 3555 981817 171037480 51224 0 179405 0 0 0",
+        "children_cpu_s": 520.111261
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "end_to_end",
+        9
+      ],
+      "before": {
+        "time": 1791533785.6884,
+        "loadavg": [
+          2.23388671875,
+          1.638671875,
+          0.77099609375
+        ],
+        "cpu_pressure": "some avg10=6.81 avg60=7.16 avg300=4.68 total=1391243648\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1554162 3555 981817 171037480 51224 0 179405 0 0 0",
+        "children_cpu_s": 520.111261
+      },
+      "after": {
+        "time": 1791533788.119213,
+        "loadavg": [
+          2.21484375,
+          1.64501953125,
+          0.77783203125
+        ],
+        "cpu_pressure": "some avg10=5.57 avg60=6.93 avg300=4.65 total=1391261319\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1554516 3555 981833 171038076 51224 0 179414 0 0 0",
+        "children_cpu_s": 523.508773
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        2,
+        "prequeued",
+        9
+      ],
+      "before": {
+        "time": 1791533788.1195192,
+        "loadavg": [
+          2.21484375,
+          1.64501953125,
+          0.77783203125
+        ],
+        "cpu_pressure": "some avg10=5.57 avg60=6.93 avg300=4.65 total=1391261319\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1554516 3555 981833 171038076 51224 0 179414 0 0 0",
+        "children_cpu_s": 523.508773
+      },
+      "after": {
+        "time": 1791533790.5888815,
+        "loadavg": [
+          2.21484375,
+          1.64501953125,
+          0.77783203125
+        ],
+        "cpu_pressure": "some avg10=4.74 avg60=6.73 avg300=4.62 total=1391311414\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1554871 3555 981864 171038660 51224 0 179420 0 0 0",
+        "children_cpu_s": 526.944625
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "end_to_end",
+        9
+      ],
+      "before": {
+        "time": 1791533790.5891132,
+        "loadavg": [
+          2.21484375,
+          1.64501953125,
+          0.77783203125
+        ],
+        "cpu_pressure": "some avg10=4.74 avg60=6.73 avg300=4.62 total=1391311414\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1554871 3555 981864 171038660 51224 0 179420 0 0 0",
+        "children_cpu_s": 526.944625
+      },
+      "after": {
+        "time": 1791533793.9532554,
+        "loadavg": [
+          2.1171875,
+          1.63427734375,
+          0.779296875
+        ],
+        "cpu_pressure": "some avg10=3.48 avg60=6.36 avg300=4.57 total=1391322110\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1555226 3555 981883 171039622 51226 0 179428 0 0 0",
+        "children_cpu_s": 530.313002
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "baseline",
+        1,
+        "prequeued",
+        9
+      ],
+      "before": {
+        "time": 1791533793.9534698,
+        "loadavg": [
+          2.1171875,
+          1.63427734375,
+          0.779296875
+        ],
+        "cpu_pressure": "some avg10=3.48 avg60=6.36 avg300=4.57 total=1391322110\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1555226 3555 981883 171039622 51226 0 179428 0 0 0",
+        "children_cpu_s": 530.313002
+      },
+      "after": {
+        "time": 1791533797.324322,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=2.33 avg60=5.95 avg300=4.51 total=1391326765\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1555575 3555 981894 171040606 51226 0 179434 0 0 0",
+        "children_cpu_s": 533.682699
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "end_to_end",
+        9
+      ],
+      "before": {
+        "time": 1791533797.3245664,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=2.33 avg60=5.95 avg300=4.51 total=1391326765\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1555575 3555 981894 171040606 51226 0 179434 0 0 0",
+        "children_cpu_s": 533.682699
+      },
+      "after": {
+        "time": 1791533798.2550926,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=2.33 avg60=5.95 avg300=4.51 total=1392098314\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1555935 3555 981898 171040612 51226 0 179434 0 0 0",
+        "children_cpu_s": 537.229643
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        8,
+        "prequeued",
+        9
+      ],
+      "before": {
+        "time": 1791533798.2553554,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=2.33 avg60=5.95 avg300=4.51 total=1392098314\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1555935 3555 981898 171040612 51226 0 179434 0 0 0",
+        "children_cpu_s": 537.229643
+      },
+      "after": {
+        "time": 1791533799.1391902,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=14.95 avg60=8.11 avg300=4.97 total=1392886962\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1556280 3555 981902 171040617 51226 0 179434 0 0 0",
+        "children_cpu_s": 540.669368
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "end_to_end",
+        9
+      ],
+      "before": {
+        "time": 1791533799.139415,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=14.95 avg60=8.11 avg300=4.97 total=1392886962\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1556280 3555 981902 171040617 51226 0 179434 0 0 0",
+        "children_cpu_s": 540.669368
+      },
+      "after": {
+        "time": 1791533800.0323257,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=14.95 avg60=8.11 avg300=4.97 total=1392918179\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1556627 3555 981906 171040624 51226 0 179434 0 0 0",
+        "children_cpu_s": 544.119504
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        4,
+        "prequeued",
+        9
+      ],
+      "before": {
+        "time": 1791533800.032562,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=14.95 avg60=8.11 avg300=4.97 total=1392918179\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1556627 3555 981906 171040624 51226 0 179434 0 0 0",
+        "children_cpu_s": 544.119504
+      },
+      "after": {
+        "time": 1791533800.9739296,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=14.05 avg60=8.17 avg300=5.00 total=1392971730\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1556993 3555 981911 171040628 51226 0 179434 0 0 0",
+        "children_cpu_s": 547.711995
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "end_to_end",
+        9
+      ],
+      "before": {
+        "time": 1791533800.9741213,
+        "loadavg": [
+          2.02734375,
+          1.62353515625,
+          0.78076171875
+        ],
+        "cpu_pressure": "some avg10=14.05 avg60=8.17 avg300=5.00 total=1392971730\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1556993 3555 981911 171040628 51226 0 179434 0 0 0",
+        "children_cpu_s": 547.711995
+      },
+      "after": {
+        "time": 1791533802.6733525,
+        "loadavg": [
+          2.02490234375,
+          1.6298828125,
+          0.78759765625
+        ],
+        "cpu_pressure": "some avg10=14.05 avg60=8.17 avg300=5.00 total=1393001931\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1557340 3555 981923 171040944 51226 0 179441 0 0 0",
+        "children_cpu_s": 551.0961070000001
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        2,
+        "prequeued",
+        9
+      ],
+      "before": {
+        "time": 1791533802.6735847,
+        "loadavg": [
+          2.02490234375,
+          1.6298828125,
+          0.78759765625
+        ],
+        "cpu_pressure": "some avg10=14.05 avg60=8.17 avg300=5.00 total=1393001931\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1557340 3555 981923 171040944 51226 0 179441 0 0 0",
+        "children_cpu_s": 551.0961070000001
+      },
+      "after": {
+        "time": 1791533804.3960469,
+        "loadavg": [
+          2.02490234375,
+          1.6298828125,
+          0.78759765625
+        ],
+        "cpu_pressure": "some avg10=11.69 avg60=7.94 avg300=4.98 total=1393011047\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1557686 3555 981935 171041272 51226 0 179451 0 0 0",
+        "children_cpu_s": 554.5393349999999
+      }
+    },
+    {
+      "config": [
+        "heterogeneous",
+        "stealing",
+        1,
+        "end_to_end",
+        9
+      ],
+      "before": {
+        "time": 1791533804.3963099,
+        "loadavg": [
+          2.02490234375,
+          1.6298828125,
+          0.78759765625
+        ],
+        "cpu_pressure": "some avg10=11.69 avg60=7.94 avg300=4.98 total=1393011047\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1557686 3555 981935 171041272 51226 0 179451 0 0 0",
+        "children_cpu_s": 554.5393349999999
+      },
+      "after": {
+        "time": 1791533807.7524097,
+        "loadavg": [
+          1.9423828125,
+          1.619140625,
+          0.7890625
+        ],
+        "cpu_pressure": "some avg10=7.83 avg60=7.43 avg300=4.91 total=1393015292\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n",
+        "proc_stat": "cpu  1558041 3555 981948 171042241 51226 0 179458 0 0 0",
+        "children_cpu_s": 557.898149
+      }
+    }
+  ],
+  "source_head": "2ea3b9a031801069699df6ef19af7ebe5435e5e4",
+  "uncommitted": " M docs/design-decisions.md\n M docs/status.md\n M experiments/l1-job-system/README.md\n M experiments/l1-job-system/benchmark.cpp\n M experiments/l1-job-system/tools/measure.py\n M experiments/l2-allocators/CMakeLists.txt\n M experiments/l2-allocators/README.md\n M experiments/l2-allocators/benchmark.cpp\n M experiments/l2-allocators/tools/measure.py\n?? docs/measurements/2026-10-09-review/\n?? docs/review-2026-10-09.md\n?? experiments/l2-allocators/tail.cpp\n",
+  "load_interpretation": "loadavg is a lagging host average, not a measurement of background work; proc_stat and children CPU are interval evidence, not per-thread attribution",
+  "source_sha256": {
+    "CMakeLists.txt": "17a8022bc52d19989bdd50cd3782380243c7749157fd972919c41e5c163c804e",
+    "experiments/l1-job-system/benchmark.cpp": "09d6aefd803314ae00827c2851b02ab17a9222f1c877a5574c4ff962386ce21b",
+    "experiments/l1-job-system/CMakeLists.txt": "f101972d565ce9661d6471490078ff9a27da58e6e327e5185414588c2547bce1",
+    "experiments/l2-allocators/tests.cpp": "2e9edecd206daf5c95a544c2aae1c01659b9740d489d04eaa09afaa96cdb02ab",
+    "experiments/l2-allocators/reference_arena.hpp": "0ac7858c7faa30bb16eedf6648ec8e20630de49915af9e223a657d28dee5592e",
+    "experiments/l2-allocators/benchmark.cpp": "5330bd176ae12315898ab2d521c7452ae8881254fba5a38255974f4345538d58",
+    "experiments/l2-allocators/tail.cpp": "1022a99cae8b9209d25435d18bef1fa11ff2bc6ff2d06c5a42f8975f28be2e4e",
+    "experiments/l2-allocators/fragmentation.cpp": "73123d6beef3494930312f71b16ac922ab42daf197f2c9ede9b6b8e7e8e0b03a",
+    "experiments/l2-allocators/variable_heap.hpp": "94f2f4d21adbd4ad4c71810f723635d88052416a99ff454977139a532b374fa6",
+    "experiments/l2-allocators/clock_control.cpp": "259dcdca38b0e8e4743a3beced6d6308cdc926d906c87cae3fa0805420767ccb",
+    "experiments/l2-allocators/allocators.hpp": "9cd0cba3175e99607b37b6309b2d37f313069d07800e1c22747fe4fef402a039",
+    "experiments/l2-allocators/CMakeLists.txt": "07b65ddb4fd32f671936ec54f968d5da804d3fbc516adfe6bda1b3e698e21da9",
+    "experiments/l1-job-system/tools/measure.py": "22fffa59f0675909c17ee7ed4aad5f7a2c40ae23b6d347ff91c32329f23e6848",
+    "experiments/l1-job-system/tools/device.py": "22f9fee485311415d3b81f4e37b2f4d53f7f3dd11a558fe5b20c550fbc492672",
+    "experiments/l1-job-system/include/work_queue.hpp": "7d6b9a30978f372edb4070ddc4b006196d136b6a9220381e657d2cfa63b5e30e",
+    "experiments/l1-job-system/include/job_system.hpp": "87457a29a3a919d0653987cd13c4611ceea5ebf3f62ae6043cde2dc6124c6f3e",
+    "experiments/l1-job-system/include/workload.hpp": "1ba60c97a52348ddd762391f6cad1d2dde5fb7556ce7d4111c509409cf8e68a1",
+    "experiments/l1-job-system/tests/steal_test.cpp": "16d1351525ca4fb150a0efcfe3e17b46b8fc88b2475655a385322c405443c4f4",
+    "experiments/l1-job-system/tests/workload_test.cpp": "3f733051e10bb6c36267fcb0b98b3a26c69dc83d21f4ba0bfd8847b962d04382",
+    "experiments/l1-job-system/tests/pool_test.cpp": "c96fc76b57abeb5075e8dd22f2d90eefa8555f48d3101c39ef92d8cc4998f6a3",
+    "experiments/l1-job-system/tests/queue_test.cpp": "ecd258368b1fd2f203b6aee16b5f80b53697d08e394a60926fbd776692cd97bb",
+    "experiments/l2-allocators/tools/measure.py": "7ba00bef9e4e6355f103ce9c45776b1245556a3c23e2f2726d2d8c5cba547a9c"
+  },
+  "executable_sha256": "7c5984bb080ce70cf88320c56fe0ff8ed9eafbdbe90fdf0af755ad7df63afe41",
+  "build_cache": "# This is the CMakeCache file.\n# For build in directory: /home/ubuntu/project/WorkPlan/engine-core-labs/build\n# It was generated by CMake: /usr/bin/cmake\n# You can edit this file to change values found and used by cmake.\n# If you do not want to change any of the values, simply exit the editor.\n# If you do want to change a value, simply edit, save, and exit the editor.\n# The syntax for the file is as follows:\n# KEY:TYPE=VALUE\n# KEY is the name of a variable in the cache.\n# TYPE is a hint to GUIs for the type of VALUE, DO NOT EDIT TYPE!.\n# VALUE is the current value for the KEY.\n\n########################\n# EXTERNAL cache entries\n########################\n\n//Path to a program.\nCMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line\n\n//Path to a program.\nCMAKE_AR:FILEPATH=/usr/bin/ar\n\n//Choose the type of build, options are: None Debug Release RelWithDebInfo\n// MinSizeRel ...\nCMAKE_BUILD_TYPE:STRING=Release\n\n//Enable/Disable color output during build.\nCMAKE_COLOR_MAKEFILE:BOOL=ON\n\n//CXX compiler\nCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++\n\n//A wrapper around 'ar' adding the appropriate '--plugin' option\n// for the GCC compiler\nCMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-13\n\n//A wrapper around 'ranlib' adding the appropriate '--plugin' option\n// for the GCC compiler\nCMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-13\n\n//Flags used by the CXX compiler during all build types.\nCMAKE_CXX_FLAGS:STRING=\n\n//Flags used by the CXX compiler during DEBUG builds.\nCMAKE_CXX_FLAGS_DEBUG:STRING=-g\n\n//Flags used by the CXX compiler during MINSIZEREL builds.\nCMAKE_CXX_FLAGS_MINSIZEREL:STRING=-Os -DNDEBUG\n\n//Flags used by the CXX compiler during RELEASE builds.\nCMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG\n\n//Flags used by the CXX compiler during RELWITHDEBINFO builds.\nCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG\n\n//Path to a program.\nCMAKE_DLLTOOL:FILEPATH=CMAKE_DLLTOOL-NOTFOUND\n\n//Flags used by the linker during all build types.\nCMAKE_EXE_LINKER_FLAGS:STRING=\n\n//Flags used by the linker during DEBUG builds.\nCMAKE_EXE_LINKER_FLAGS_DEBUG:STRING=\n\n//Flags used by the linker during MINSIZEREL builds.\nCMAKE_EXE_LINKER_FLAGS_MINSIZEREL:STRING=\n\n//Flags used by the linker during RELEASE builds.\nCMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=\n\n//Flags used by the linker during RELWITHDEBINFO builds.\nCMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=\n\n//Enable/Disable output of compile commands during generation.\nCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=\n\n//Value Computed by CMake.\nCMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/ubuntu/project/WorkPlan/engine-core-labs/build/CMakeFiles/pkgRedirects\n\n//Install path prefix, prepended onto install directories.\nCMAKE_INSTALL_PREFIX:PATH=/usr/local\n\n//Path to a program.\nCMAKE_LINKER:FILEPATH=/usr/bin/ld\n\n//Path to a program.\nCMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/gmake\n\n//Flags used by the linker during the creation of modules during\n// all build types.\nCMAKE_MODULE_LINKER_FLAGS:STRING=\n\n//Flags used by the linker during the creation of modules during\n// DEBUG builds.\nCMAKE_MODULE_LINKER_FLAGS_DEBUG:STRING=\n\n//Flags used by the linker during the creation of modules during\n// MINSIZEREL builds.\nCMAKE_MODULE_LINKER_FLAGS_MINSIZEREL:STRING=\n\n//Flags used by the linker during the creation of modules during\n// RELEASE builds.\nCMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=\n\n//Flags used by the linker during the creation of modules during\n// RELWITHDEBINFO builds.\nCMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=\n\n//Path to a program.\nCMAKE_NM:FILEPATH=/usr/bin/nm\n\n//Path to a program.\nCMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy\n\n//Path to a program.\nCMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump\n\n//Value Computed by CMake\nCMAKE_PROJECT_DESCRIPTION:STATIC=\n\n//Value Computed by CMake\nCMAKE_PROJECT_HOMEPAGE_URL:STATIC=\n\n//Value Computed by CMake\nCMAKE_PROJECT_NAME:STATIC=engine_core_labs\n\n//Path to a program.\nCMAKE_RANLIB:FILEPATH=/usr/bin/ranlib\n\n//Path to a program.\nCMAKE_READELF:FILEPATH=/usr/bin/readelf\n\n//Flags used by the linker during the creation of shared libraries\n// during all build types.\nCMAKE_SHARED_LINKER_FLAGS:STRING=\n\n//Flags used by the linker during the creation of shared libraries\n// during DEBUG builds.\nCMAKE_SHARED_LINKER_FLAGS_DEBUG:STRING=\n\n//Flags used by the linker during the creation of shared libraries\n// during MINSIZEREL builds.\nCMAKE_SHARED_LINKER_FLAGS_MINSIZEREL:STRING=\n\n//Flags used by the linker during the creation of shared libraries\n// during RELEASE builds.\nCMAKE_SHARED_LINKER_FLAGS_RELEASE:STRING=\n\n//Flags used by the linker during the creation of shared libraries\n// during RELWITHDEBINFO builds.\nCMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO:STRING=\n\n//If set, runtime paths are not added when installing shared libraries,\n// but are added when building.\nCMAKE_SKIP_INSTALL_RPATH:BOOL=NO\n\n//If set, runtime paths are not added when using shared libraries.\nCMAKE_SKIP_RPATH:BOOL=NO\n\n//Flags used by the linker during the creation of static libraries\n// during all build types.\nCMAKE_STATIC_LINKER_FLAGS:STRING=\n\n//Flags used by the linker during the creation of static libraries\n// during DEBUG builds.\nCMAKE_STATIC_LINKER_FLAGS_DEBUG:STRING=\n\n//Flags used by the linker during the creation of static libraries\n// during MINSIZEREL builds.\nCMAKE_STATIC_LINKER_FLAGS_MINSIZEREL:STRING=\n\n//Flags used by the linker during the creation of static libraries\n// during RELEASE builds.\nCMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=\n\n//Flags used by the linker during the creation of static libraries\n// during RELWITHDEBINFO builds.\nCMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=\n\n//Path to a program.\nCMAKE_STRIP:FILEPATH=/usr/bin/strip\n\n//Path to a program.\nCMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND\n\n//If this value is on, makefiles will be generated without the\n// .SILENT directive, and all commands will be echoed to the console\n// during the make.  This is useful for debugging only. With Visual\n// Studio IDE projects all commands are done without /nologo.\nCMAKE_VERBOSE_MAKEFILE:BOOL=FALSE\n\n//none, address, or thread\nENGINE_SANITIZER:STRING=none\n\n//Enable implemented stealing benchmark checks\nUSER_STEAL_IMPLEMENTED:BOOL=ON\n\n//Value Computed by CMake\nengine_core_labs_BINARY_DIR:STATIC=/home/ubuntu/project/WorkPlan/engine-core-labs/build\n\n//Value Computed by CMake\nengine_core_labs_IS_TOP_LEVEL:STATIC=ON\n\n//Value Computed by CMake\nengine_core_labs_SOURCE_DIR:STATIC=/home/ubuntu/project/WorkPlan/engine-core-labs\n\n\n########################\n# INTERNAL cache entries\n########################\n\n//ADVANCED property for variable: CMAKE_ADDR2LINE\nCMAKE_ADDR2LINE-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_AR\nCMAKE_AR-ADVANCED:INTERNAL=1\n//This is the directory where this CMakeCache.txt was created\nCMAKE_CACHEFILE_DIR:INTERNAL=/home/ubuntu/project/WorkPlan/engine-core-labs/build\n//Major version of cmake used to create the current loaded cache\nCMAKE_CACHE_MAJOR_VERSION:INTERNAL=3\n//Minor version of cmake used to create the current loaded cache\nCMAKE_CACHE_MINOR_VERSION:INTERNAL=28\n//Patch version of cmake used to create the current loaded cache\nCMAKE_CACHE_PATCH_VERSION:INTERNAL=3\n//ADVANCED property for variable: CMAKE_COLOR_MAKEFILE\nCMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1\n//Path to CMake executable.\nCMAKE_COMMAND:INTERNAL=/usr/bin/cmake\n//Path to cpack program executable.\nCMAKE_CPACK_COMMAND:INTERNAL=/usr/bin/cpack\n//Path to ctest program executable.\nCMAKE_CTEST_COMMAND:INTERNAL=/usr/bin/ctest\n//ADVANCED property for variable: CMAKE_CXX_COMPILER\nCMAKE_CXX_COMPILER-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_CXX_COMPILER_AR\nCMAKE_CXX_COMPILER_AR-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_CXX_COMPILER_RANLIB\nCMAKE_CXX_COMPILER_RANLIB-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_CXX_FLAGS\nCMAKE_CXX_FLAGS-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_CXX_FLAGS_DEBUG\nCMAKE_CXX_FLAGS_DEBUG-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_CXX_FLAGS_MINSIZEREL\nCMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_CXX_FLAGS_RELEASE\nCMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO\nCMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_DLLTOOL\nCMAKE_DLLTOOL-ADVANCED:INTERNAL=1\n//Executable file format\nCMAKE_EXECUTABLE_FORMAT:INTERNAL=ELF\n//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS\nCMAKE_EXE_LINKER_FLAGS-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_DEBUG\nCMAKE_EXE_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_MINSIZEREL\nCMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELEASE\nCMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO\nCMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_EXPORT_COMPILE_COMMANDS\nCMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1\n//Name of external makefile project generator.\nCMAKE_EXTRA_GENERATOR:INTERNAL=\n//Name of generator.\nCMAKE_GENERATOR:INTERNAL=Unix Makefiles\n//Generator instance identifier.\nCMAKE_GENERATOR_INSTANCE:INTERNAL=\n//Name of generator platform.\nCMAKE_GENERATOR_PLATFORM:INTERNAL=\n//Name of generator toolset.\nCMAKE_GENERATOR_TOOLSET:INTERNAL=\n//Test CMAKE_HAVE_LIBC_PTHREAD\nCMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1\n//Source directory with the top level CMakeLists.txt file for this\n// project\nCMAKE_HOME_DIRECTORY:INTERNAL=/home/ubuntu/project/WorkPlan/engine-core-labs\n//Install .so files without execute permission.\nCMAKE_INSTALL_SO_NO_EXE:INTERNAL=1\n//ADVANCED property for variable: CMAKE_LINKER\nCMAKE_LINKER-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_MAKE_PROGRAM\nCMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS\nCMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG\nCMAKE_MODULE_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL\nCMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELEASE\nCMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO\nCMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_NM\nCMAKE_NM-ADVANCED:INTERNAL=1\n//number of local generators\nCMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3\n//ADVANCED property for variable: CMAKE_OBJCOPY\nCMAKE_OBJCOPY-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_OBJDUMP\nCMAKE_OBJDUMP-ADVANCED:INTERNAL=1\n//Platform information initialized\nCMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_RANLIB\nCMAKE_RANLIB-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_READELF\nCMAKE_READELF-ADVANCED:INTERNAL=1\n//Path to CMake installation.\nCMAKE_ROOT:INTERNAL=/usr/share/cmake-3.28\n//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS\nCMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG\nCMAKE_SHARED_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL\nCMAKE_SHARED_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_RELEASE\nCMAKE_SHARED_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO\nCMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_SKIP_INSTALL_RPATH\nCMAKE_SKIP_INSTALL_RPATH-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_SKIP_RPATH\nCMAKE_SKIP_RPATH-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS\nCMAKE_STATIC_LINKER_FLAGS-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_DEBUG\nCMAKE_STATIC_LINKER_FLAGS_DEBUG-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL\nCMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_RELEASE\nCMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO\nCMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_STRIP\nCMAKE_STRIP-ADVANCED:INTERNAL=1\n//ADVANCED property for variable: CMAKE_TAPI\nCMAKE_TAPI-ADVANCED:INTERNAL=1\n//uname command\nCMAKE_UNAME:INTERNAL=/usr/bin/uname\n//ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE\nCMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1\n//Details about finding Threads\nFIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]\n//linker supports push/pop state\n_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE\n\n",
+  "method": "full workload warmup on same pool; rotated/reversed order; prequeued excludes submission, includes resume/work/future drain; end_to_end includes submission; atomic per-ID exactly-once counts; independently computed sequential sum; SD is not a confidence interval"
+}

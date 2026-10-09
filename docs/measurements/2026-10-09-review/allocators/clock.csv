@@ -1,0 +1,2 @@
+samples,p50_clock_pair_ns,p99_clock_pair_ns,p50_amortized_256_ns
+100000,30,41,0.117188

@@ -36,3 +36,11 @@ cmake --build .local/asan -j2
 sudo env ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 ctest --test-dir .local/asan --output-on-failure
 python3 experiments/l2-allocators/tools/measure.py --output .local/l2-results
 ```
+
+## 单次观测与时钟底噪
+
+新增 `allocator_tail [window_csv]`，10轮 × 两尺寸模式 × 四分配器及一个 clock+write 控制 =100行，每行102400次逐次计时、400个窗口。每次计时包含 allocate、1字节写入和读时钟成本，保存未均摊的 p50/p99/p99.9/max；另存每256次的最大值原始CSV，避免稀释孤立慢操作。控制组采用相同读时钟+写入方式，辨认共同噪声；不能从分位数直接减去控制组分位数，也不能据此分解调度中断与分配器内部停顿。逐次计时会扰动缓存和时序，它是另一个实验，不与batch曲线合并排序。
+
+Arena 每256次分配后实际只有一次 reset。旧的0.117ns来自约30ns计时区域除以256，不是一次reset的真实时间；新版 Arena 的 `reclaim_batch_p50_ns_per_op` 留空，`reclaim_operations=1`，并标注 `unresolved_single_reset`。区域时长只作含时钟的观测值，当前方法未解析出reset本身成本。
+
+不对 Pool / Stack / Arena 作跨机器排序，也不把“均比malloc快”当普遍结论。malloc场景单线程、热身后循环小尺寸（aligned三种、odd五种），每批持有256块再释放，常见分配器缓存容易复用；它不是单一尺寸逐次立即释放，也没有覆盖跨线程释放、长期存活或大对象。通用分配器承担的语义不同，倍数限定到本机此场景。

@@ -1,0 +1,2 @@
+mode,threads,tasks,iterations,distribution,phase,seconds,submit_seconds,tasks_per_second,checksum,exactly_once
+stealing,4,256,100,heterogeneous,prequeued,0.00188996,0.00266506,135452,9344647204134798711,true

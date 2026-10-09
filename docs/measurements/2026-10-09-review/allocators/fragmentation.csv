@@ -1,0 +1,3 @@
+phase,total_free,largest_free,requested,can_allocate,external_fragmentation
+alternating_holes,32768,128,256,false,0.996094
+coalesced,65536,65536,256,true,0

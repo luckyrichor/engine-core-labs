@@ -18,9 +18,9 @@ python3 experiments/l1-job-system/tools/measure.py --output .local/l1-coarse
 python3 experiments/l1-job-system/tools/measure.py --iterations 1 --min-seconds 0 --output .local/l1-overhead
 ```
 
-默认请求 10000 个任务、每任务 50000 次计算、10 轮；粗负载先按最快均衡预入队样本校准到至少 0.2 秒，实际迭代数以 device.json 和 CSV 为准。微任务使用 1 次计算、不校准，专门观察提交 / 同步开销，不作为业务任务加速结论。
+默认包含 balanced / skewed / heterogeneous，默认请求 10000 个任务、每任务 50000 次计算、10 轮；粗负载先按最快均衡预入队样本校准到至少 0.2 秒，实际迭代数以 device.json 和 CSV 为准。微任务使用 1 次计算、不校准，专门观察提交 / 同步开销，不作为业务任务加速结论。
 
-每套 2 分布 × 2 模式 × 4 线程数 × 2 计时阶段 × 10 轮 = 320 次。每次进程内同一个池先完整执行等量负载预热；配置顺序轮转并交替反向。
+完整默认套件 3 分布 × 2 模式 × 4 线程数 × 2 计时阶段 × 10 轮 = 480 次；旧版两分布各 320 次仍对应旧来源。本轮只新增 heterogeneous 的 160 次，命令加 `--distributions heterogeneous`。每次进程内同一个池先完整执行等量负载预热；配置顺序轮转并交替反向。
 
 - `end_to_end`：提交开始到 future 收集 / drain 完成，包含串行提交。
 - `prequeued`：暂停所有 worker，全部提交后才启动计时 / resume，排除入队；仍包含执行、启动屏障、future 等待和 drain，不叫纯调度时间。
@@ -38,3 +38,15 @@ TSAN_OPTIONS=halt_on_error=1 setarch x86_64 -R ctest --test-dir .local/tsan --ou
 ```
 
 TX 的 TSan 需测试进程关闭 ASLR 才避免映射冲突，未更改系统设置。perf 旧版证据见本轮 measurements：基线 b8be686，RelWithDebInfo + frame pointer，4 workers / 1000000 × 1000 / balanced。观察到唤醒路径消耗 CPU，不足以证明旧曲线异常全部由脚手架引起；新的共用 executor 对照减少这一混杂因素。不同负载、构建、计时口径的 perf / 吞吐不能直接作前后百分比比较。
+
+## 计算量不均的中间负载
+
+`heterogeneous` 每个队列分配相同数量的任务，ID 每 128 个有一个任务做 100 倍迭代（10000 个任务中 79 个重任务，占 0.79%）。对 1/2/4/8 workers 的周期映射，重任务集中在 queue0：这是刻意构造的计算量不均，不是随机生产负载。任务迭代数上限 1000000，放大后最多100000000；串行参考也应用同一权重。工作窃取不能拆分已经开始执行的单个重任务，收益仍受重任务粒度、剩余队列与四核机器限制。
+
+```bash
+python3 experiments/l1-job-system/tools/measure.py --distributions heterogeneous --output .local/l1-heterogeneous
+```
+
+## 主机负载的解读
+
+loadavg 是延迟的一分钟主机平均，不标识“后台活动”。旧微任务组仅持续 8.54秒、距粗任务结束约19秒，loadavg 包含前一组影响；不能据此断言有后台争用，也不能断言没有。新版保存每次进程时间区间的 `/proc/stat` 及子进程累计 CPU 时间；这些可辅助区分主机总 CPU 与基准进程使用量，但不是精确的后台归因。微任务旧数据的高噪声和短时长仍在报告中说明，不将中位数变化直接归因于某一把锁或唤醒。
