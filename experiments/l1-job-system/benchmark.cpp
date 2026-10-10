@@ -8,22 +8,22 @@
 
 int main(int argc,char** argv){
  try{
-  if(argc>=4 && argc<=6 && std::string(argv[1])=="reference"){
+  if(argc>=4 && argc<=8 && std::string(argv[1])=="reference"){
    auto tasks=std::stoull(argv[2]),iterations=std::stoull(argv[3]);std::uint64_t expected=0;
    std::string distribution=argc>=5?argv[4]:"balanced";
-   auto seed=argc==6?std::stoull(argv[5]):0ULL;
-   const auto shape=engine_labs::workload_shape(tasks,iterations,distribution,seed);
+   auto seed=argc>=6?std::stoull(argv[5]):0ULL;
+   const auto shape=engine_labs::workload_shape(tasks,iterations,distribution,seed,argc>=7?std::stoull(argv[6]):0,argc>=8?std::stoull(argv[7]):100);
    for(std::size_t i=0;i<tasks;++i)expected+=engine_labs::workload(i,shape.iterations[i]);
    std::cout<<expected<<'\n';return 0;
   }
-  if(argc<6 || argc>8)throw std::invalid_argument("usage: job_benchmark MODE THREADS TASKS ITERATIONS DISTRIBUTION [PHASE [SEED]]");
+  if(argc<6 || argc>10)throw std::invalid_argument("usage: job_benchmark MODE THREADS TASKS ITERATIONS DISTRIBUTION [PHASE [SEED [HEAVY_PERMILLE [MAX_MULTIPLIER]]]]");
   std::string mode=argv[1],distribution=argv[5],phase=argc>=7?argv[6]:"end_to_end";
   if(mode!="baseline"&&mode!="stealing")throw std::invalid_argument("mode");
   if(phase!="prequeued"&&phase!="end_to_end")throw std::invalid_argument("phase");
   auto threads=std::stoull(argv[2]),tasks=std::stoull(argv[3]),iterations=std::stoull(argv[4]);
   if(!threads||threads>256)throw std::invalid_argument("threads");
-  auto seed=argc==8?std::stoull(argv[7]):0ULL;
-  const auto shape=engine_labs::workload_shape(tasks,iterations,distribution,seed);
+  auto seed=argc>=8?std::stoull(argv[7]):0ULL;
+  const auto shape=engine_labs::workload_shape(tasks,iterations,distribution,seed,argc>=9?std::stoull(argv[8]):0,argc>=10?std::stoull(argv[9]):100);
   std::vector<std::size_t> queue_heavy(threads),queue_cost(threads);
   for(std::size_t i=0;i<tasks;++i){auto owner=distribution=="skewed"?0:i%threads;queue_cost[owner]+=shape.iterations[i];if(shape.iterations[i]!=iterations)++queue_heavy[owner];}
   std::vector<std::atomic<unsigned>> seen(tasks);

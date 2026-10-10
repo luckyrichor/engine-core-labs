@@ -64,3 +64,17 @@ python3 experiments/l1-job-system/tools/measure.py --distributions heterogeneous
 两分布 × 两策略 × 四线程数 × 两阶段 × 十轮 =320次。随机版每轮使用不同种子20261009–20261018，策略之间按种子配对；周期版为固定布局十次重复。CSV保留seed、重任务数、布局hash、各队列重任务数与总迭代量；串行参考按种子单独计算，生成布局在计时外。
 
 随机版的标准差包含布局差异及运行噪声，不能把它纯粹解释为同输入时延波动；十个种子也不是完整业务分布。收益按同种子配对比较，不预设“必定更小”或“每个样本都更快”。
+
+### 参数维度扫描
+
+默认 `tools/measure.py` 现含 `heterogeneous_random`；完整矩阵较此前增加十六配置 / 轮。
+
+```bash
+python3 experiments/l1-job-system/tools/scan.py --build build --output .local/l1-scan
+build/experiments/l1-job-system/job_benchmark stealing 4 10000 50000 heterogeneous_random prequeued 20261009 10 100
+build/experiments/l1-job-system/job_benchmark stealing 4 10000 50000 uniform_cost prequeued 20261009 0 10
+```
+
+末两参数为重任务占比（千分数）和倍数上界。`heterogeneous_random` 占比 0 保留历史默认 ceil(tasks/128)，正整数为 ceil(tasks*permille/1000)；重任务等重。`uniform_cost` 忽略占比，每个任务的整数迭代成本在 base..base*倍数间无偏均匀采样。随机形状独立于线程数，在计时外生成；双策略同 seed / 总工作量。布局 hash 现覆盖实际成本值，而非仅重任务位置；不能跨版本将 hash 当作相同布局判据。
+
+scan.py 固定四线程、预入队、10000 任务、十个种子；两点形状 base=50000，均匀成本 base=round(100000/(倍数+1))，使期望平均成本约 50000，扫描占比 0.1% / 1% / 5% 与倍数 10 / 100，另加区间均匀成本 10 / 100。各形状工作量不同，不直接比较吞吐高低；看配对收益以及逐轮范围。仍为合成分布。

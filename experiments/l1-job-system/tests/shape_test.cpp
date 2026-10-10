@@ -17,4 +17,9 @@ int main(){
  }
  bool refused=false;try{workload_shape(1,1000001,"heterogeneous_random",0);}catch(const std::invalid_argument&){refused=true;}
  if(!refused)throw std::runtime_error("overflow guard");
+ auto scan=workload_shape(10000,500,"heterogeneous_random",17,50,10);
+ if(scan.heavy!=500||std::accumulate(scan.iterations.begin(),scan.iterations.end(),std::size_t{})!=500*(10000+9*500))throw std::runtime_error("scan conservation");
+ auto uniform=workload_shape(10000,500,"uniform_cost",17,0,10);
+ if(uniform.iterations!=workload_shape(10000,500,"uniform_cost",17,0,10).iterations)throw std::runtime_error("uniform seed");
+ for(auto n:uniform.iterations)if(n<500||n>5000)throw std::runtime_error("uniform range");
 }

@@ -44,3 +44,11 @@ python3 experiments/l2-allocators/tools/measure.py --output .local/l2-results
 Arena 每256次分配后实际只有一次 reset。旧的0.117ns来自约30ns计时区域除以256，不是一次reset的真实时间；新版 Arena 的 `reclaim_batch_p50_ns_per_op` 留空，`reclaim_operations=1`，并标注 `unresolved_single_reset`。区域时长只作含时钟的观测值，当前方法未解析出reset本身成本。
 
 不对 Pool / Stack / Arena 作跨机器排序，也不把“均比malloc快”当普遍结论。malloc场景单线程、热身后循环小尺寸（aligned三种、odd五种），每批持有256块再释放，常见分配器缓存容易复用；它不是单一尺寸逐次立即释放，也没有覆盖跨线程释放、长期存活或大对象。通用分配器承担的语义不同，倍数限定到本机此场景。
+
+### Linux 冷内存路径（单独于小块热路径）
+
+```bash
+python3 experiments/l2-allocators/tools/cold_measure.py --build build --output .local/l2-cold
+```
+
+十轮，每模式启动新进程；512 个 64 KiB 区域全部保持存活，按系统页大小逐页写入，共 32 MiB。匿名 mmap 新映射首次触页与计时前预触页作控制；malloc_growth 测分配加触页、存活集逐步增长，不保证 sbrk 或 malloc 内部扩容发生。构建/映射不在首次触页时间内，malloc 调用包含在 growth 时间内。每次读钟插桩，rusage 在计时外读取，记录 minor/major faults；原始 CSV 保留个体尾部。不能把此结果称为自定义分配器的固有冷尾延迟或 CPU 冷缓存数据。

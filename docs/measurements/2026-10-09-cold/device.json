@@ -1,0 +1,12 @@
+{
+  "source_head": "bc9c6dbe6baad4f7416c6cbdc0ac96c808880b85",
+  "uncommitted": " M docs/design-decisions.md\n M docs/progress.md\n M docs/status.md\n M experiments/l1-job-system/README.md\n M experiments/l1-job-system/benchmark.cpp\n M experiments/l1-job-system/include/workload_shape.hpp\n M experiments/l1-job-system/tests/shape_test.cpp\n M experiments/l1-job-system/tools/measure.py\n M experiments/l2-allocators/CMakeLists.txt\n M experiments/l2-allocators/README.md\n M experiments/l2-allocators/allocators.hpp\n D experiments/l2-allocators/reference_arena.hpp\n?? docs/measurements/2026-10-09-cold/\n?? docs/measurements/2026-10-09-scan/\n?? experiments/l1-job-system/tools/scan.py\n?? experiments/l2-allocators/cold.cpp\n?? experiments/l2-allocators/tools/cold_measure.py\n",
+  "host": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+  "source_sha256": {
+    "experiments/l2-allocators/cold.cpp": "628b640d012275c018f5d5998b3423e1dc616a7ccaec911b915698844380b433",
+    "/home/ubuntu/project/WorkPlan/engine-core-labs/experiments/l2-allocators/tools/cold_measure.py": "bef3d636fde41d05f3b09582105edc07903f58e612bc1510b006fefc9bb826c3",
+    "experiments/l2-allocators/allocators.hpp": "f943466a3b37d327e7018b2ee6382cd70f42c624eb81f165cd3e9d256ce546f2"
+  },
+  "executable_sha256": "11272136d6121356dfa45c40d8839183eae849778be8adff87a42a67861da3c7",
+  "method": "fresh process per repeat/mode; 512 x 64 KiB retained live (32 MiB); touch every system page; mmap no pretouch vs prefaulted control; malloc allocate + page touch; no promise of sbrk growth, mmap use, or cold CPU caches; rusage outside timed region; ten independent process runs; cannot extrapolate to small custom allocator fast paths"
+}

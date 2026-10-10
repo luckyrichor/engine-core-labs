@@ -1,5 +1,21 @@
 # 进度记录
 
+最后更新：2026-10-09（北京时间）
+
+本文件是 `engine-core-labs` 的进度事实源，汇总到 `workplan-docs/进度总览.md`。
+
+格式：每条记录写明日期、做了什么、验证方式与结果、遇到的问题。**不写计划，只写已发生的事**；失败和返工也要记，那是面试时最有料的部分。
+
+---
+
+## 2026-10-09 成本维度扫描与冷内存路径（Codex）
+
+来源 engine-core-labs@bc9c6db + 本轮工作树修改，精确 SHA256 见 measurements/2026-10-09-scan/ 与 2026-10-09-cold/。确认原随机版只覆盖位置变化，增加重任务占比千分数与倍数参数，以及整数区间均匀成本；默认 measure.py 加入随机布局。scan.py 四线程预入队、六组两档成本（占比0.1%/1%/5%，倍数10/100）加两组均匀成本、十种子配对，共160次，计时0.244–1.684秒，逐ID与同种子串行校验和均通过。配对收益中位数1.025–1.126，多个配置有更慢样本，不作单调收益或生产分布结论。布局hash覆盖成本值，旧hash仅位置，不可跨版本当作相等判据。
+
+新增Linux首次触页 / 预触页控制 / malloc存活集增长，每模式十个新进程、每轮512个64KiB块、逐页写且保持存活，共15360个单次观测。跨轮p50中位数约18.64us / 0.241us / 19.00us；minor faults每轮8195 / 3 / 8195，major为0。记录原始单次、p99、max与缺页；不把页故障叫磁盘IO，不推定每次malloc都发生堆扩容，不建立固定容量分配器冷路径排名。
+
+删除无调用方reference_arena兼容别名，allocators.hpp显式包含algorithm；progress说明恢复到记录前，status合并为当前摘要。Release10/10、TSan10/10及新增uniform smoke、ASan/UBSan/启用泄漏检测10/10；first_touch和malloc_growth另跑sanitizer均通过。TSan仅进程setarch -R，泄漏检测仅sudo测试进程。试跑曾并行采样和设置过重uniform成本，全部丢弃；最终扫描、冷采样、编译与sanitizer顺序进行，源文件SHA256已核对。
+
 ## 2026-10-09 随机重任务布局对照（Codex）
 
 来源 engine-core-labs@0483fc8 + 本轮工作树修改，精确SHA256见measurements/2026-10-09-random/。用户指出周期重任务仍有刻意队列相关性，新增heterogeneous_random；ID%workers是正常轮转，偏斜来自ID%128重任务周期。随机版无放回选79/10000个100倍任务，生成成本向量在计时外，同seed双策略双阶段共享；每轮种子20261009–20261018，记录布局hash、每队列重任务数与总迭代量。
@@ -36,13 +52,7 @@ L2 实现 Arena 对齐 bump / reset；Pool 改为块内空闲链表，保留 liv
 
 来源 engine-core-labs@59c123b + 本次工作树修改。恢复 steal() 并标注 Codex 作者，用户稍后手写替换待办。CMake 默认启用已实现核心验证，新增 stealing smoke；Release 构建、6/6 ctest通过，无skip。48次重复测量、CSV/SVG和设备/源码哈希见 measurements/2026-10-02-codex-reference/，标签 codex-reference-user-exercise-pending，checksum一致。记录为 L1 基本完成、参考实现验证通过，未声称用户手写完成。此前删除临时实现的记录为历史事实，本次是用户改变要求后补回。
 
-最后更新：2026-10-09（北京时间）
 
-本文件是 `engine-core-labs` 的进度事实源，汇总到 `workplan-docs/进度总览.md`。
-
-格式：每条记录写明日期、做了什么、验证方式与结果、遇到的问题。**不写计划，只写已发生的事**；失败和返工也要记，那是面试时最有料的部分。
-
----
 
 
 ## 2026-10-01 W2 维持（Codex）
