@@ -84,3 +84,7 @@ Release CMake 构建通过；ctest **5 passed、1 skipped（user_steal_contract�
 W8 L2工程基本完成：64KiB pool/stack、用户Arena核心TODO、独立CodexReferenceArena验证夹具。临时实现用于继续推进后，用户函数为空并显式抛USER_ARENA_TODO；参考不记用户手写完成。实际30轮7680次分配的p50/p95/p99、内部浪费及外部碎片CSV已记录。
 
 W10维护：禁用缓冲区所有者拷贝/移动，补非法释放、耗尽、对齐、1000次回收等边界验证。Release 7/7 CTest；首次ASan/UBSan因ptrace导致LeakSanitizer全部失败，禁用leak检测后7/7通过；没有完成泄漏检测。用户arena手写、理解与替换复验继续待办。来源engine-core-labs@11c42ae + 本轮工作树，精确SHA256见测量元数据。
+
+## 2026-10-13 L3 资源加载（Codex）
+
+来源 bee55fd + 本轮修改。真实热文件+合成CPU解码，复用L1工作线程；主线程有限提交、在途8上限、重复去重和失败传播。三模式十轮、2880帧，checksum全部一致。p99跨轮中位数sync6.498ms/async1.739ms/preload0.297ms；预加载startup17.679ms，异步缺失资源×帧数48；分别报告代价，不称真实渲染收益。Release/TSan/ASan/UBSan/启用泄漏检测11/11；初次编译发现JobSystem仅future<void>，采用Asset packaged_task封装，未改其已有接口。源码SHA256核对通过，数据见measurements/2026-10-13-l3/，不含GPU上传/冷磁盘。

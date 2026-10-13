@@ -1,0 +1,7 @@
+add_executable(resource_bench benchmark.cpp)
+add_executable(resource_tests tests.cpp)
+foreach(target resource_bench resource_tests)
+ target_include_directories(${target} PRIVATE ../l1-job-system/include)
+ target_compile_options(${target} PRIVATE -Wall -Wextra -Werror)
+endforeach()
+add_test(NAME resource_pipeline COMMAND resource_tests)

@@ -21,3 +21,7 @@ build/experiments/l2-allocators/fragmentation_demo
 ```
 
 详见 [L1 方法](experiments/l1-job-system/README.md)、[L2 方法](experiments/l2-allocators/README.md)、[设计取舍](docs/design-decisions.md)及[历史进度](docs/progress.md)。数据必须核对机器、参数与源码 SHA256；四核虚拟机的八线程结果不能外推到八核物理机。
+
+## L3 资源加载
+
+[资源流水线与三种帧时间对照](experiments/l3-resource-loading/README.md)已实现；原计划L1–L3均有工程验收证据，实验边界见docs/status.md。
