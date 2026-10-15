@@ -1,0 +1,3642 @@
+{
+  "source_head": "9134c1e88e638184fe7e3f9a09654f72a03abaf1",
+  "dirty": " M experiments/l2-allocators/cold.cpp\n M experiments/l2-allocators/tools/cold_measure.py\n M experiments/l3-resource-loading/benchmark.cpp\n M experiments/l3-resource-loading/pipeline.hpp\n M experiments/l3-resource-loading/tests.cpp\n M experiments/l3-resource-loading/tools/measure.py\n?? docs/measurements/2026-10-15-l3/\n?? experiments/l1-job-system/tools/noise.py\n",
+  "host": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+  "logical_cpus": 4,
+  "generated_at": "2026-10-15T10:51:43-0400",
+  "source_sha256": {
+    "experiments/l1-job-system/benchmark.cpp": "56e2edf11adcd8dd68a2579f6f7e4717061356bcc80f7aba77a51a9e6d71de24",
+    "experiments/l2-allocators/tests.cpp": "2e9edecd206daf5c95a544c2aae1c01659b9740d489d04eaa09afaa96cdb02ab",
+    "experiments/l2-allocators/benchmark.cpp": "5330bd176ae12315898ab2d521c7452ae8881254fba5a38255974f4345538d58",
+    "experiments/l2-allocators/tail.cpp": "1022a99cae8b9209d25435d18bef1fa11ff2bc6ff2d06c5a42f8975f28be2e4e",
+    "experiments/l2-allocators/fragmentation.cpp": "73123d6beef3494930312f71b16ac922ab42daf197f2c9ede9b6b8e7e8e0b03a",
+    "experiments/l2-allocators/variable_heap.hpp": "94f2f4d21adbd4ad4c71810f723635d88052416a99ff454977139a532b374fa6",
+    "experiments/l2-allocators/clock_control.cpp": "259dcdca38b0e8e4743a3beced6d6308cdc926d906c87cae3fa0805420767ccb",
+    "experiments/l2-allocators/allocators.hpp": "f943466a3b37d327e7018b2ee6382cd70f42c624eb81f165cd3e9d256ce546f2",
+    "experiments/l2-allocators/cold.cpp": "3e3027d823f4f953dcb1433cdae1e9ecee8d94625e82bed57526504d08473c2f",
+    "experiments/l3-resource-loading/tests.cpp": "cc33dc34e83c2e570ba076c8b4dd222c97ea3975f7fa29615b28b170e76a3784",
+    "experiments/l3-resource-loading/benchmark.cpp": "3938d013f203248ce007934095356555a50cf0d63485a44a0bef440c5908f7c1",
+    "experiments/l3-resource-loading/pipeline.hpp": "fe68110d0ad92e5f36b81fa8cba9b8f4e6d3810af2184e1697f9d82920ca4800",
+    "experiments/l1-job-system/tools/measure.py": "745bda28c7547a7d9d7c81027d13b6b1d33154722b0cc2e3690a245b305dbb5d",
+    "experiments/l1-job-system/tools/scan.py": "f2f1ba6a2fe275dbb9992d3e7398e01d73fce7771e8cfcafa83615a09401ee85",
+    "experiments/l1-job-system/tools/noise.py": "64f25bb22efe88a2d1553be4b8e61d6a0583679744f8e7700a5d88cbf979063d",
+    "experiments/l1-job-system/tools/device.py": "22f9fee485311415d3b81f4e37b2f4d53f7f3dd11a558fe5b20c550fbc492672",
+    "experiments/l1-job-system/include/workload_shape.hpp": "e81b32e6a11142767217093602270c5629bce8aeb6571b72af3535f50d5be486",
+    "experiments/l1-job-system/include/work_queue.hpp": "7d6b9a30978f372edb4070ddc4b006196d136b6a9220381e657d2cfa63b5e30e",
+    "experiments/l1-job-system/include/job_system.hpp": "87457a29a3a919d0653987cd13c4611ceea5ebf3f62ae6043cde2dc6124c6f3e",
+    "experiments/l1-job-system/include/workload.hpp": "1ba60c97a52348ddd762391f6cad1d2dde5fb7556ce7d4111c509409cf8e68a1",
+    "experiments/l1-job-system/tests/steal_test.cpp": "16d1351525ca4fb150a0efcfe3e17b46b8fc88b2475655a385322c405443c4f4",
+    "experiments/l1-job-system/tests/shape_test.cpp": "d1ec3fc1209aa7714c4d44637063c729f851659638d3062acde0b2c1a5d0a7f3",
+    "experiments/l1-job-system/tests/workload_test.cpp": "3f733051e10bb6c36267fcb0b98b3a26c69dc83d21f4ba0bfd8847b962d04382",
+    "experiments/l1-job-system/tests/pool_test.cpp": "c96fc76b57abeb5075e8dd22f2d90eefa8555f48d3101c39ef92d8cc4998f6a3",
+    "experiments/l1-job-system/tests/queue_test.cpp": "ecd258368b1fd2f203b6aee16b5f80b53697d08e394a60926fbd776692cd97bb",
+    "experiments/l2-allocators/tools/measure.py": "7ba00bef9e4e6355f103ce9c45776b1245556a3c23e2f2726d2d8c5cba547a9c",
+    "experiments/l2-allocators/tools/cold_measure.py": "507f4ad62e50bc9233ce7f2925e250fc6a08a9f5ed2ee30b3ae80625eadffa8f",
+    "experiments/l3-resource-loading/tools/measure.py": "776a86d79466e8b215bea11d780f62d6b1061d83f4a0b0346575bcc67886d3b0"
+  },
+  "executable_sha256": "ab0573c8e20fd4598e500456fa602bbae29557eea36eb961e1e0b281c23e0915",
+  "observations": [
+    {
+      "label": "sync_a",
+      "repeat": 0,
+      "before": {
+        "time": 1792075860.261748,
+        "loadavg": [
+          0.16162109375,
+          0.11181640625,
+          0.0810546875
+        ],
+        "cpu_ticks": [
+          4871911,
+          7721,
+          3198012,
+          381257269,
+          120918,
+          0,
+          544022,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.20 avg60=0.11 avg300=0.02 total=4324839828\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075860.8139715,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871923,
+          7721,
+          3198015,
+          381257471,
+          120918,
+          0,
+          544023,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.20 avg60=0.11 avg300=0.02 total=4324843162\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 0,
+      "before": {
+        "time": 1792075860.8143556,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871923,
+          7721,
+          3198015,
+          381257471,
+          120918,
+          0,
+          544023,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.20 avg60=0.11 avg300=0.02 total=4324843162\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075861.3673375,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871936,
+          7721,
+          3198016,
+          381257677,
+          120918,
+          0,
+          544024,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.17 avg60=0.10 avg300=0.02 total=4324845611\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 0,
+      "before": {
+        "time": 1792075861.367677,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871936,
+          7721,
+          3198016,
+          381257677,
+          120918,
+          0,
+          544024,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.17 avg60=0.10 avg300=0.02 total=4324845611\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075861.906845,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871955,
+          7721,
+          3198023,
+          381257865,
+          120918,
+          0,
+          544024,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.17 avg60=0.10 avg300=0.02 total=4324858030\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 0,
+      "before": {
+        "time": 1792075861.9071703,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871955,
+          7721,
+          3198023,
+          381257865,
+          120918,
+          0,
+          544024,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.17 avg60=0.10 avg300=0.02 total=4324858030\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075862.446417,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871967,
+          7721,
+          3198023,
+          381258066,
+          120918,
+          0,
+          544025,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.17 avg60=0.10 avg300=0.02 total=4324865253\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 0,
+      "before": {
+        "time": 1792075862.446749,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871967,
+          7721,
+          3198023,
+          381258066,
+          120918,
+          0,
+          544025,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.17 avg60=0.10 avg300=0.02 total=4324865253\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075862.9853106,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871978,
+          7721,
+          3198025,
+          381258269,
+          120918,
+          0,
+          544026,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.32 avg60=0.13 avg300=0.03 total=4324868048\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 0,
+      "before": {
+        "time": 1792075862.985647,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871978,
+          7721,
+          3198025,
+          381258269,
+          120918,
+          0,
+          544026,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.32 avg60=0.13 avg300=0.03 total=4324868048\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075863.5247562,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871989,
+          7721,
+          3198026,
+          381258471,
+          120918,
+          0,
+          544027,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.32 avg60=0.13 avg300=0.03 total=4324875138\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 0,
+      "before": {
+        "time": 1792075863.5251205,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4871989,
+          7721,
+          3198026,
+          381258471,
+          120918,
+          0,
+          544027,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.32 avg60=0.13 avg300=0.03 total=4324875138\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075864.0663393,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4872008,
+          7721,
+          3198033,
+          381258659,
+          120918,
+          0,
+          544027,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.32 avg60=0.13 avg300=0.03 total=4324886551\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 0,
+      "before": {
+        "time": 1792075864.0666742,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4872008,
+          7721,
+          3198033,
+          381258659,
+          120918,
+          0,
+          544027,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.32 avg60=0.13 avg300=0.03 total=4324886551\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075864.622157,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4872020,
+          7721,
+          3198035,
+          381258867,
+          120918,
+          0,
+          544028,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.32 avg60=0.13 avg300=0.03 total=4324894950\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 1,
+      "before": {
+        "time": 1792075864.6225624,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4872020,
+          7721,
+          3198035,
+          381258867,
+          120918,
+          0,
+          544028,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.32 avg60=0.13 avg300=0.03 total=4324894950\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075865.1735845,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4872031,
+          7721,
+          3198036,
+          381259073,
+          120918,
+          0,
+          544029,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.44 avg60=0.16 avg300=0.03 total=4324898417\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 1,
+      "before": {
+        "time": 1792075865.1739273,
+        "loadavg": [
+          0.1484375,
+          0.10986328125,
+          0.08056640625
+        ],
+        "cpu_ticks": [
+          4872031,
+          7721,
+          3198036,
+          381259073,
+          120918,
+          0,
+          544029,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.44 avg60=0.16 avg300=0.03 total=4324898417\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075865.7395442,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872052,
+          7721,
+          3198041,
+          381259271,
+          120918,
+          0,
+          544030,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.44 avg60=0.16 avg300=0.03 total=4324916934\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 1,
+      "before": {
+        "time": 1792075865.739897,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872052,
+          7721,
+          3198041,
+          381259272,
+          120918,
+          0,
+          544030,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.44 avg60=0.16 avg300=0.03 total=4324916934\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075866.279176,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872063,
+          7721,
+          3198043,
+          381259472,
+          120918,
+          0,
+          544030,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.44 avg60=0.16 avg300=0.03 total=4324919550\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 1,
+      "before": {
+        "time": 1792075866.2795782,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872063,
+          7721,
+          3198043,
+          381259472,
+          120918,
+          0,
+          544030,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.44 avg60=0.16 avg300=0.03 total=4324919550\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075866.8211718,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872085,
+          7721,
+          3198051,
+          381259654,
+          120920,
+          0,
+          544033,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.54 avg60=0.19 avg300=0.04 total=4324935075\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 1,
+      "before": {
+        "time": 1792075866.8216007,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872085,
+          7721,
+          3198051,
+          381259654,
+          120920,
+          0,
+          544033,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.54 avg60=0.19 avg300=0.04 total=4324935075\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075867.362111,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872098,
+          7721,
+          3198054,
+          381259851,
+          120920,
+          0,
+          544034,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.54 avg60=0.19 avg300=0.04 total=4324941097\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 1,
+      "before": {
+        "time": 1792075867.362509,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872098,
+          7721,
+          3198054,
+          381259851,
+          120920,
+          0,
+          544034,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.54 avg60=0.19 avg300=0.04 total=4324941097\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075867.9020941,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872114,
+          7721,
+          3198059,
+          381260044,
+          120920,
+          0,
+          544035,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.54 avg60=0.19 avg300=0.04 total=4324951325\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 1,
+      "before": {
+        "time": 1792075867.902498,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872114,
+          7721,
+          3198059,
+          381260044,
+          120920,
+          0,
+          544035,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.54 avg60=0.19 avg300=0.04 total=4324951325\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075868.4418275,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872127,
+          7721,
+          3198063,
+          381260243,
+          120920,
+          0,
+          544036,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.54 avg60=0.19 avg300=0.04 total=4324955395\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 1,
+      "before": {
+        "time": 1792075868.4422581,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872127,
+          7721,
+          3198063,
+          381260243,
+          120920,
+          0,
+          544036,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.54 avg60=0.19 avg300=0.04 total=4324955395\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075868.9936893,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872138,
+          7721,
+          3198064,
+          381260450,
+          120920,
+          0,
+          544037,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.62 avg60=0.21 avg300=0.05 total=4324957706\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 2,
+      "before": {
+        "time": 1792075868.994093,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872138,
+          7721,
+          3198064,
+          381260450,
+          120920,
+          0,
+          544037,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.62 avg60=0.21 avg300=0.05 total=4324957706\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075869.5330782,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872150,
+          7721,
+          3198067,
+          381260649,
+          120920,
+          0,
+          544038,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.62 avg60=0.21 avg300=0.05 total=4324964810\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 2,
+      "before": {
+        "time": 1792075869.5334792,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872150,
+          7721,
+          3198067,
+          381260649,
+          120920,
+          0,
+          544038,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.62 avg60=0.21 avg300=0.05 total=4324964810\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075870.081494,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872167,
+          7721,
+          3198073,
+          381260842,
+          120920,
+          0,
+          544039,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.62 avg60=0.21 avg300=0.05 total=4324977401\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 2,
+      "before": {
+        "time": 1792075870.081939,
+        "loadavg": [
+          0.216796875,
+          0.125,
+          0.0859375
+        ],
+        "cpu_ticks": [
+          4872167,
+          7721,
+          3198073,
+          381260842,
+          120920,
+          0,
+          544039,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.62 avg60=0.21 avg300=0.05 total=4324977401\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075870.631281,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872179,
+          7721,
+          3198076,
+          381261045,
+          120921,
+          0,
+          544041,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.62 avg60=0.21 avg300=0.05 total=4324981141\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 2,
+      "before": {
+        "time": 1792075870.6316898,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872179,
+          7721,
+          3198076,
+          381261045,
+          120921,
+          0,
+          544041,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.62 avg60=0.21 avg300=0.05 total=4324981141\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075871.1725094,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872191,
+          7721,
+          3198078,
+          381261245,
+          120921,
+          0,
+          544042,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.69 avg60=0.24 avg300=0.05 total=4324985958\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 2,
+      "before": {
+        "time": 1792075871.172906,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872191,
+          7721,
+          3198078,
+          381261245,
+          120921,
+          0,
+          544042,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.69 avg60=0.24 avg300=0.05 total=4324985958\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075871.7114255,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872201,
+          7721,
+          3198080,
+          381261448,
+          120921,
+          0,
+          544042,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.69 avg60=0.24 avg300=0.05 total=4324988084\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 2,
+      "before": {
+        "time": 1792075871.7118247,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872201,
+          7721,
+          3198080,
+          381261448,
+          120921,
+          0,
+          544042,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.69 avg60=0.24 avg300=0.05 total=4324988084\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075872.2739105,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872221,
+          7721,
+          3198085,
+          381261644,
+          120921,
+          0,
+          544043,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.69 avg60=0.24 avg300=0.05 total=4325000753\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 2,
+      "before": {
+        "time": 1792075872.27426,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872221,
+          7721,
+          3198085,
+          381261644,
+          120921,
+          0,
+          544043,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.69 avg60=0.24 avg300=0.05 total=4325000753\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075872.8242176,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872232,
+          7721,
+          3198086,
+          381261851,
+          120921,
+          0,
+          544044,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.75 avg60=0.27 avg300=0.06 total=4325005896\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 2,
+      "before": {
+        "time": 1792075872.8246987,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872232,
+          7721,
+          3198086,
+          381261851,
+          120921,
+          0,
+          544044,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.75 avg60=0.27 avg300=0.06 total=4325005896\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075873.375881,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872243,
+          7721,
+          3198087,
+          381262057,
+          120921,
+          0,
+          544044,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.75 avg60=0.27 avg300=0.06 total=4325008034\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 3,
+      "before": {
+        "time": 1792075873.3763118,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872243,
+          7721,
+          3198087,
+          381262057,
+          120921,
+          0,
+          544044,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.75 avg60=0.27 avg300=0.06 total=4325008034\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075873.9192173,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872255,
+          7721,
+          3198090,
+          381262258,
+          120921,
+          0,
+          544045,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.75 avg60=0.27 avg300=0.06 total=4325015012\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 3,
+      "before": {
+        "time": 1792075873.9195938,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872255,
+          7721,
+          3198090,
+          381262258,
+          120921,
+          0,
+          544045,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.75 avg60=0.27 avg300=0.06 total=4325015012\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075874.4738672,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872273,
+          7721,
+          3198094,
+          381262455,
+          120921,
+          0,
+          544046,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.75 avg60=0.27 avg300=0.06 total=4325024266\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 3,
+      "before": {
+        "time": 1792075874.4743006,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872273,
+          7721,
+          3198094,
+          381262455,
+          120921,
+          0,
+          544046,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.75 avg60=0.27 avg300=0.06 total=4325024266\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075875.027467,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872283,
+          7721,
+          3198096,
+          381262663,
+          120921,
+          0,
+          544047,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.61 avg60=0.26 avg300=0.06 total=4325026612\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 3,
+      "before": {
+        "time": 1792075875.0277896,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872283,
+          7721,
+          3198096,
+          381262663,
+          120921,
+          0,
+          544047,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.61 avg60=0.26 avg300=0.06 total=4325026612\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075875.583409,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872302,
+          7721,
+          3198103,
+          381262857,
+          120922,
+          0,
+          544048,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.61 avg60=0.26 avg300=0.06 total=4325039481\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 3,
+      "before": {
+        "time": 1792075875.583751,
+        "loadavg": [
+          0.19921875,
+          0.12255859375,
+          0.08544921875
+        ],
+        "cpu_ticks": [
+          4872302,
+          7721,
+          3198103,
+          381262857,
+          120922,
+          0,
+          544048,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.61 avg60=0.26 avg300=0.06 total=4325039481\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075876.1247118,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872319,
+          7721,
+          3198108,
+          381263049,
+          120922,
+          0,
+          544049,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.61 avg60=0.26 avg300=0.06 total=4325044408\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 3,
+      "before": {
+        "time": 1792075876.12505,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872319,
+          7721,
+          3198108,
+          381263049,
+          120922,
+          0,
+          544049,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.61 avg60=0.26 avg300=0.06 total=4325044408\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075876.6641228,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872330,
+          7721,
+          3198109,
+          381263252,
+          120922,
+          0,
+          544049,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.61 avg60=0.26 avg300=0.06 total=4325049838\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 3,
+      "before": {
+        "time": 1792075876.6645107,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872330,
+          7721,
+          3198109,
+          381263252,
+          120922,
+          0,
+          544049,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.61 avg60=0.26 avg300=0.06 total=4325049838\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075877.2031457,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872342,
+          7721,
+          3198112,
+          381263451,
+          120922,
+          0,
+          544049,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.68 avg60=0.28 avg300=0.07 total=4325053217\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 3,
+      "before": {
+        "time": 1792075877.2036169,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872342,
+          7721,
+          3198112,
+          381263451,
+          120922,
+          0,
+          544049,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.68 avg60=0.28 avg300=0.07 total=4325053217\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075877.7430134,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872353,
+          7721,
+          3198113,
+          381263653,
+          120922,
+          0,
+          544050,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.68 avg60=0.28 avg300=0.07 total=4325058030\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 4,
+      "before": {
+        "time": 1792075877.7434118,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872353,
+          7721,
+          3198113,
+          381263653,
+          120922,
+          0,
+          544050,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.68 avg60=0.28 avg300=0.07 total=4325058030\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075878.2849402,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872372,
+          7721,
+          3198120,
+          381263842,
+          120922,
+          0,
+          544051,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.68 avg60=0.28 avg300=0.07 total=4325066893\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 4,
+      "before": {
+        "time": 1792075878.2853503,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872372,
+          7721,
+          3198120,
+          381263842,
+          120922,
+          0,
+          544051,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.68 avg60=0.28 avg300=0.07 total=4325066893\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075878.8242545,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872384,
+          7721,
+          3198122,
+          381264044,
+          120922,
+          0,
+          544052,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.68 avg60=0.28 avg300=0.07 total=4325073283\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 4,
+      "before": {
+        "time": 1792075878.824608,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872384,
+          7721,
+          3198122,
+          381264044,
+          120922,
+          0,
+          544052,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.68 avg60=0.28 avg300=0.07 total=4325073283\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075879.3647208,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872396,
+          7721,
+          3198127,
+          381264240,
+          120922,
+          0,
+          544053,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.74 avg60=0.30 avg300=0.07 total=4325080802\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 4,
+      "before": {
+        "time": 1792075879.365102,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872396,
+          7721,
+          3198127,
+          381264240,
+          120922,
+          0,
+          544053,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.74 avg60=0.30 avg300=0.07 total=4325080802\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075879.9208796,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872409,
+          7721,
+          3198129,
+          381264447,
+          120922,
+          0,
+          544053,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.74 avg60=0.30 avg300=0.07 total=4325088068\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 4,
+      "before": {
+        "time": 1792075879.921224,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872410,
+          7721,
+          3198129,
+          381264447,
+          120922,
+          0,
+          544053,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.74 avg60=0.30 avg300=0.07 total=4325088068\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075880.4811742,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872427,
+          7721,
+          3198134,
+          381264645,
+          120923,
+          0,
+          544054,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.74 avg60=0.30 avg300=0.07 total=4325095565\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 4,
+      "before": {
+        "time": 1792075880.4815328,
+        "loadavg": [
+          0.263671875,
+          0.13720703125,
+          0.0908203125
+        ],
+        "cpu_ticks": [
+          4872427,
+          7721,
+          3198134,
+          381264645,
+          120923,
+          0,
+          544054,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.74 avg60=0.30 avg300=0.07 total=4325095565\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075881.0313866,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872437,
+          7721,
+          3198135,
+          381264852,
+          120923,
+          0,
+          544054,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.78 avg60=0.33 avg300=0.08 total=4325097551\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 4,
+      "before": {
+        "time": 1792075881.0317369,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872437,
+          7721,
+          3198135,
+          381264853,
+          120923,
+          0,
+          544054,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.78 avg60=0.33 avg300=0.08 total=4325097551\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075881.5709355,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872450,
+          7721,
+          3198138,
+          381265051,
+          120923,
+          0,
+          544055,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.78 avg60=0.33 avg300=0.08 total=4325106009\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 4,
+      "before": {
+        "time": 1792075881.5713344,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872450,
+          7721,
+          3198138,
+          381265051,
+          120923,
+          0,
+          544055,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.78 avg60=0.33 avg300=0.08 total=4325106009\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075882.111002,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872462,
+          7721,
+          3198139,
+          381265254,
+          120923,
+          0,
+          544055,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.78 avg60=0.33 avg300=0.08 total=4325112975\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 5,
+      "before": {
+        "time": 1792075882.1115072,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872462,
+          7721,
+          3198139,
+          381265254,
+          120923,
+          0,
+          544055,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.78 avg60=0.33 avg300=0.08 total=4325112975\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075882.653666,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872480,
+          7721,
+          3198145,
+          381265445,
+          120923,
+          0,
+          544056,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.78 avg60=0.33 avg300=0.08 total=4325126115\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 5,
+      "before": {
+        "time": 1792075882.654036,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872480,
+          7721,
+          3198145,
+          381265445,
+          120923,
+          0,
+          544056,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.78 avg60=0.33 avg300=0.08 total=4325126115\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075883.1928532,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872490,
+          7721,
+          3198147,
+          381265647,
+          120923,
+          0,
+          544057,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.82 avg60=0.35 avg300=0.09 total=4325132037\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 5,
+      "before": {
+        "time": 1792075883.1933467,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872491,
+          7721,
+          3198147,
+          381265647,
+          120923,
+          0,
+          544057,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.82 avg60=0.35 avg300=0.09 total=4325132037\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075883.7327569,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872508,
+          7721,
+          3198151,
+          381265838,
+          120923,
+          0,
+          544059,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.82 avg60=0.35 avg300=0.09 total=4325141618\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 5,
+      "before": {
+        "time": 1792075883.7330954,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872508,
+          7721,
+          3198151,
+          381265838,
+          120923,
+          0,
+          544059,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.82 avg60=0.35 avg300=0.09 total=4325141618\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075884.2840815,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872521,
+          7721,
+          3198154,
+          381266042,
+          120923,
+          0,
+          544060,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.82 avg60=0.35 avg300=0.09 total=4325144765\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 5,
+      "before": {
+        "time": 1792075884.2844481,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872521,
+          7721,
+          3198154,
+          381266042,
+          120923,
+          0,
+          544060,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.82 avg60=0.35 avg300=0.09 total=4325144765\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075884.8342469,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872534,
+          7721,
+          3198157,
+          381266244,
+          120923,
+          0,
+          544061,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.34 avg300=0.09 total=4325147967\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 5,
+      "before": {
+        "time": 1792075884.8346045,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872534,
+          7721,
+          3198157,
+          381266244,
+          120923,
+          0,
+          544061,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.34 avg300=0.09 total=4325147967\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075885.3883574,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872545,
+          7721,
+          3198160,
+          381266450,
+          120923,
+          0,
+          544061,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.34 avg300=0.09 total=4325157354\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 5,
+      "before": {
+        "time": 1792075885.3887992,
+        "loadavg": [
+          0.2421875,
+          0.134765625,
+          0.09033203125
+        ],
+        "cpu_ticks": [
+          4872545,
+          7721,
+          3198160,
+          381266450,
+          120923,
+          0,
+          544061,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.34 avg300=0.09 total=4325157354\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075885.9282773,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872557,
+          7721,
+          3198161,
+          381266652,
+          120923,
+          0,
+          544062,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.34 avg300=0.09 total=4325160809\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 5,
+      "before": {
+        "time": 1792075885.9286516,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872557,
+          7721,
+          3198161,
+          381266652,
+          120923,
+          0,
+          544062,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.34 avg300=0.09 total=4325160809\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075886.4691784,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872576,
+          7721,
+          3198166,
+          381266842,
+          120923,
+          0,
+          544063,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.34 avg300=0.09 total=4325172034\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 6,
+      "before": {
+        "time": 1792075886.4695733,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872576,
+          7721,
+          3198166,
+          381266842,
+          120923,
+          0,
+          544063,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.34 avg300=0.09 total=4325172034\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075887.0090768,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872587,
+          7721,
+          3198167,
+          381267045,
+          120923,
+          0,
+          544064,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.73 avg60=0.36 avg300=0.09 total=4325174704\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 6,
+      "before": {
+        "time": 1792075887.0094368,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872587,
+          7721,
+          3198167,
+          381267045,
+          120923,
+          0,
+          544064,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.73 avg60=0.36 avg300=0.09 total=4325174704\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075887.565876,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872600,
+          7721,
+          3198170,
+          381267250,
+          120923,
+          0,
+          544064,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.73 avg60=0.36 avg300=0.09 total=4325180939\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 6,
+      "before": {
+        "time": 1792075887.5662482,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872600,
+          7721,
+          3198170,
+          381267250,
+          120923,
+          0,
+          544064,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.73 avg60=0.36 avg300=0.09 total=4325180939\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075888.1158051,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872612,
+          7721,
+          3198172,
+          381267454,
+          120923,
+          0,
+          544065,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.73 avg60=0.36 avg300=0.09 total=4325184877\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 6,
+      "before": {
+        "time": 1792075888.11618,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872612,
+          7721,
+          3198172,
+          381267454,
+          120923,
+          0,
+          544065,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.73 avg60=0.36 avg300=0.09 total=4325184877\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075888.6665142,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872628,
+          7721,
+          3198177,
+          381267651,
+          120923,
+          0,
+          544065,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.73 avg60=0.36 avg300=0.09 total=4325190816\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 6,
+      "before": {
+        "time": 1792075888.6668847,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872628,
+          7721,
+          3198177,
+          381267652,
+          120923,
+          0,
+          544065,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.73 avg60=0.36 avg300=0.09 total=4325190816\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075889.2059536,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872639,
+          7721,
+          3198180,
+          381267852,
+          120923,
+          0,
+          544066,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.35 avg300=0.09 total=4325194963\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 6,
+      "before": {
+        "time": 1792075889.2063243,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872639,
+          7721,
+          3198180,
+          381267852,
+          120923,
+          0,
+          544066,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.35 avg300=0.09 total=4325194963\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075889.7465427,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872654,
+          7721,
+          3198181,
+          381268050,
+          120923,
+          0,
+          544067,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.35 avg300=0.09 total=4325205937\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 6,
+      "before": {
+        "time": 1792075889.7468765,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872654,
+          7721,
+          3198181,
+          381268050,
+          120923,
+          0,
+          544067,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.35 avg300=0.09 total=4325205937\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075890.2858047,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872665,
+          7721,
+          3198183,
+          381268250,
+          120924,
+          0,
+          544067,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.35 avg300=0.09 total=4325208111\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 6,
+      "before": {
+        "time": 1792075890.2861607,
+        "loadavg": [
+          0.22265625,
+          0.13232421875,
+          0.08984375
+        ],
+        "cpu_ticks": [
+          4872665,
+          7721,
+          3198183,
+          381268250,
+          120924,
+          0,
+          544067,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.35 avg300=0.09 total=4325208111\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075890.8251307,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872682,
+          7721,
+          3198187,
+          381268443,
+          120924,
+          0,
+          544068,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.35 avg300=0.09 total=4325218782\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 7,
+      "before": {
+        "time": 1792075890.8256357,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872682,
+          7721,
+          3198187,
+          381268443,
+          120924,
+          0,
+          544069,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.35 avg300=0.09 total=4325218782\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075891.3651154,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872694,
+          7721,
+          3198189,
+          381268644,
+          120924,
+          0,
+          544069,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.37 avg300=0.10 total=4325222018\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 7,
+      "before": {
+        "time": 1792075891.3654926,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872694,
+          7721,
+          3198189,
+          381268644,
+          120924,
+          0,
+          544069,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.37 avg300=0.10 total=4325222018\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075891.9045107,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872705,
+          7721,
+          3198191,
+          381268847,
+          120924,
+          0,
+          544070,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.37 avg300=0.10 total=4325226183\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 7,
+      "before": {
+        "time": 1792075891.9048836,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872705,
+          7721,
+          3198191,
+          381268847,
+          120924,
+          0,
+          544070,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.37 avg300=0.10 total=4325226183\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075892.4439273,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872715,
+          7721,
+          3198193,
+          381269049,
+          120924,
+          0,
+          544071,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.37 avg300=0.10 total=4325228015\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 7,
+      "before": {
+        "time": 1792075892.4442832,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872715,
+          7721,
+          3198193,
+          381269049,
+          120924,
+          0,
+          544071,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.37 avg300=0.10 total=4325228015\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075892.9839182,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872733,
+          7721,
+          3198197,
+          381269242,
+          120924,
+          0,
+          544072,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.36 avg300=0.10 total=4325238590\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 7,
+      "before": {
+        "time": 1792075892.984277,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872733,
+          7721,
+          3198197,
+          381269242,
+          120924,
+          0,
+          544072,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.36 avg300=0.10 total=4325238590\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075893.5245047,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872744,
+          7721,
+          3198198,
+          381269443,
+          120924,
+          0,
+          544073,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.36 avg300=0.10 total=4325243682\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 7,
+      "before": {
+        "time": 1792075893.5248334,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872744,
+          7721,
+          3198198,
+          381269444,
+          120924,
+          0,
+          544073,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.36 avg300=0.10 total=4325243682\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075894.0796392,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872754,
+          7721,
+          3198200,
+          381269652,
+          120924,
+          0,
+          544073,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.36 avg300=0.10 total=4325246499\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 7,
+      "before": {
+        "time": 1792075894.0800183,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872754,
+          7721,
+          3198200,
+          381269652,
+          120924,
+          0,
+          544073,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.36 avg300=0.10 total=4325246499\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075894.632677,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872768,
+          7721,
+          3198203,
+          381269854,
+          120924,
+          0,
+          544074,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.36 avg300=0.10 total=4325251692\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 7,
+      "before": {
+        "time": 1792075894.6330168,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872768,
+          7721,
+          3198203,
+          381269854,
+          120924,
+          0,
+          544074,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.36 avg300=0.10 total=4325251692\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075895.1928527,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872783,
+          7721,
+          3198207,
+          381270057,
+          120924,
+          0,
+          544075,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.63 avg60=0.38 avg300=0.10 total=4325264902\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 8,
+      "before": {
+        "time": 1792075895.1933367,
+        "loadavg": [
+          0.20458984375,
+          0.1298828125,
+          0.08935546875
+        ],
+        "cpu_ticks": [
+          4872784,
+          7721,
+          3198207,
+          381270057,
+          120924,
+          0,
+          544075,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.63 avg60=0.38 avg300=0.10 total=4325264902\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075895.7432501,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872794,
+          7721,
+          3198208,
+          381270263,
+          120924,
+          0,
+          544075,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.63 avg60=0.38 avg300=0.10 total=4325267018\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 8,
+      "before": {
+        "time": 1792075895.7435865,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872794,
+          7721,
+          3198208,
+          381270263,
+          120924,
+          0,
+          544075,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.63 avg60=0.38 avg300=0.10 total=4325267018\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075896.2933059,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872805,
+          7721,
+          3198209,
+          381270469,
+          120924,
+          0,
+          544075,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.63 avg60=0.38 avg300=0.10 total=4325269992\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 8,
+      "before": {
+        "time": 1792075896.2936385,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872805,
+          7721,
+          3198209,
+          381270469,
+          120924,
+          0,
+          544075,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.63 avg60=0.38 avg300=0.10 total=4325269992\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075896.8358727,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872823,
+          7721,
+          3198213,
+          381270663,
+          120924,
+          0,
+          544076,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.51 avg60=0.36 avg300=0.10 total=4325278851\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 8,
+      "before": {
+        "time": 1792075896.8362627,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872823,
+          7721,
+          3198213,
+          381270663,
+          120924,
+          0,
+          544076,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.51 avg60=0.36 avg300=0.10 total=4325278851\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075897.3752568,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872836,
+          7721,
+          3198217,
+          381270861,
+          120924,
+          0,
+          544077,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.51 avg60=0.36 avg300=0.10 total=4325285856\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 8,
+      "before": {
+        "time": 1792075897.3756359,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872836,
+          7721,
+          3198217,
+          381270861,
+          120924,
+          0,
+          544077,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.51 avg60=0.36 avg300=0.10 total=4325285856\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075897.9141884,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872846,
+          7721,
+          3198219,
+          381271063,
+          120924,
+          0,
+          544077,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.51 avg60=0.36 avg300=0.10 total=4325287078\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 8,
+      "before": {
+        "time": 1792075897.9145472,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872846,
+          7721,
+          3198219,
+          381271063,
+          120924,
+          0,
+          544077,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.51 avg60=0.36 avg300=0.10 total=4325287078\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075898.4530542,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872858,
+          7721,
+          3198222,
+          381271263,
+          120924,
+          0,
+          544078,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.51 avg60=0.36 avg300=0.10 total=4325292827\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 8,
+      "before": {
+        "time": 1792075898.4534557,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872858,
+          7721,
+          3198222,
+          381271263,
+          120924,
+          0,
+          544078,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.51 avg60=0.36 avg300=0.10 total=4325292827\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075898.9975898,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872874,
+          7721,
+          3198228,
+          381271455,
+          120924,
+          0,
+          544080,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.39 avg300=0.11 total=4325302892\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 8,
+      "before": {
+        "time": 1792075898.9979956,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872874,
+          7721,
+          3198228,
+          381271455,
+          120924,
+          0,
+          544080,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.39 avg300=0.11 total=4325302892\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075899.5536187,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872887,
+          7721,
+          3198230,
+          381271661,
+          120924,
+          0,
+          544080,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.39 avg300=0.11 total=4325312949\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_a",
+      "repeat": 9,
+      "before": {
+        "time": 1792075899.5540326,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872887,
+          7721,
+          3198230,
+          381271661,
+          120924,
+          0,
+          544080,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.39 avg300=0.11 total=4325312949\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075900.1166208,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872900,
+          7721,
+          3198233,
+          381271868,
+          120925,
+          0,
+          544081,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.39 avg300=0.11 total=4325316897\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "preload",
+      "repeat": 9,
+      "before": {
+        "time": 1792075900.1170635,
+        "loadavg": [
+          0.18798828125,
+          0.12744140625,
+          0.0888671875
+        ],
+        "cpu_ticks": [
+          4872900,
+          7721,
+          3198233,
+          381271868,
+          120925,
+          0,
+          544081,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.39 avg300=0.11 total=4325316897\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075900.6786294,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872914,
+          7721,
+          3198235,
+          381272075,
+          120925,
+          0,
+          544082,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.39 avg300=0.11 total=4325327351\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_3",
+      "repeat": 9,
+      "before": {
+        "time": 1792075900.678992,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872914,
+          7721,
+          3198235,
+          381272076,
+          120925,
+          0,
+          544082,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.60 avg60=0.39 avg300=0.11 total=4325327351\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075901.217709,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872931,
+          7721,
+          3198241,
+          381272266,
+          120925,
+          0,
+          544083,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.41 avg300=0.11 total=4325334857\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "arena_4",
+      "repeat": 9,
+      "before": {
+        "time": 1792075901.2180567,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872931,
+          7721,
+          3198241,
+          381272266,
+          120925,
+          0,
+          544083,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.41 avg300=0.11 total=4325334857\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075901.7570877,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872941,
+          7721,
+          3198242,
+          381272469,
+          120925,
+          0,
+          544084,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.41 avg300=0.11 total=4325339959\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_3",
+      "repeat": 9,
+      "before": {
+        "time": 1792075901.7574503,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872941,
+          7721,
+          3198243,
+          381272469,
+          120925,
+          0,
+          544084,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.41 avg300=0.11 total=4325339959\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075902.2960517,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872952,
+          7721,
+          3198244,
+          381272671,
+          120925,
+          0,
+          544085,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.41 avg300=0.11 total=4325341994\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_b",
+      "repeat": 9,
+      "before": {
+        "time": 1792075902.2964633,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872952,
+          7721,
+          3198244,
+          381272671,
+          120925,
+          0,
+          544085,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.41 avg300=0.11 total=4325341994\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075902.835614,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872964,
+          7721,
+          3198245,
+          381272873,
+          120925,
+          0,
+          544086,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.41 avg300=0.11 total=4325348005\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "async_a",
+      "repeat": 9,
+      "before": {
+        "time": 1792075902.835961,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872964,
+          7721,
+          3198245,
+          381272873,
+          120925,
+          0,
+          544086,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.67 avg60=0.41 avg300=0.11 total=4325348005\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075903.3757875,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872980,
+          7721,
+          3198249,
+          381273067,
+          120925,
+          0,
+          544087,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.39 avg300=0.11 total=4325356860\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    },
+    {
+      "label": "sync_b",
+      "repeat": 9,
+      "before": {
+        "time": 1792075903.3761456,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872980,
+          7721,
+          3198249,
+          381273067,
+          120925,
+          0,
+          544087,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.39 avg300=0.11 total=4325356860\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "after": {
+        "time": 1792075903.9263158,
+        "loadavg": [
+          0.1728515625,
+          0.125,
+          0.08837890625
+        ],
+        "cpu_ticks": [
+          4872991,
+          7721,
+          3198251,
+          381273274,
+          120925,
+          0,
+          544087,
+          0
+        ],
+        "cpu_pressure": "some avg10=0.55 avg60=0.39 avg300=0.11 total=4325360215\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n"
+      },
+      "steal_ticks": 0,
+      "steal_ms": 0.0,
+      "steal_pct": 0.0
+    }
+  ],
+  "iterations": 500000,
+  "method": "32x64KiB warm files; 96 frames paced 5ms, sleep200us base work; demand4/8frames, max8 pending and2 installs/frame; include pool/thread creation in setup/startup; preload latencies occur BEFORE gameplay; frame_ms excludes pacing sleep. 32 per-asset timestamps include main-thread installation and deferred commits, demand includes capacity retries, accepted request excludes them. Two identical sync and async controls, rotated/reversed order. Linux aggregate CPU steal is guest-reported vCPU stolen ticks (not per-thread attribution); zero does not prove no contention. Ratios based on 96-frame order statistic are noisy, not causal proof."
+}

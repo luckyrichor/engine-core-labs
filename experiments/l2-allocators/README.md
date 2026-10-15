@@ -52,3 +52,10 @@ python3 experiments/l2-allocators/tools/cold_measure.py --build build --output .
 ```
 
 十轮，每模式启动新进程；512 个 64 KiB 区域全部保持存活，按系统页大小逐页写入，共 32 MiB。匿名 mmap 新映射首次触页与计时前预触页作控制；malloc_growth 测分配加触页、存活集逐步增长，不保证 sbrk 或 malloc 内部扩容发生。构建/映射不在首次触页时间内，malloc 调用包含在 growth 时间内。每次读钟插桩，rusage 在计时外读取，记录 minor/major faults；原始 CSV 保留个体尾部。不能把此结果称为自定义分配器的固有冷尾延迟或 CPU 冷缓存数据。
+
+
+## 启动触页成本（2026-10-15）
+
+冷路径原先已经有 first_touch / prefaulted，两者分别表示使用时触页和启动时逐页预触。现在额外记录 setup_ns / setup_minor_faults / setup_major_faults，以及 setup_plus_touches_ns（初始化加 512 次触页计时之和，不含 rusage 和输出）。每轮 setup 字段在原始行中重复，汇总时只取一次，不能累加 512 遍。这样不会把预触页成本藏在计时外。
+
+`python3 experiments/l2-allocators/tools/cold_measure.py --output .local/cold`：十轮新进程、32MiB 保持存活集。匿名 mmap 只建立映射；prefaulted 用写触页提前取得物理页，未调用 mlock，不保证页永久驻留或跨平台的 Windows commit 语义。first_touch 之后测量的 allocate_and_touch_ns 仍包含触页；malloc_growth 无每次系统堆增长保证。不要用这组结果推断所有实际分配器或长时间内存压力下的行为。

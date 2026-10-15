@@ -1,0 +1,35 @@
+{
+  "source_head": "9134c1e88e638184fe7e3f9a09654f72a03abaf1",
+  "dirty": " M README.md\n M experiments/l1-job-system/README.md\n M experiments/l2-allocators/README.md\n M experiments/l2-allocators/cold.cpp\n M experiments/l2-allocators/tools/cold_measure.py\n M experiments/l3-resource-loading/README.md\n M experiments/l3-resource-loading/benchmark.cpp\n M experiments/l3-resource-loading/pipeline.hpp\n M experiments/l3-resource-loading/tests.cpp\n M experiments/l3-resource-loading/tools/measure.py\n?? docs/measurements/2026-10-15-l3/\n?? docs/measurements/2026-10-15-noise/\n?? experiments/l1-job-system/tools/noise.py\n",
+  "host": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+  "logical_cpus": 4,
+  "args": {
+    "build": "build",
+    "output": "docs/measurements/2026-10-15-noise",
+    "threads": [
+      3,
+      4
+    ],
+    "tasks": 10000,
+    "iterations": 50000,
+    "repeats": 10
+  },
+  "source_sha256": {
+    "experiments/l1-job-system/benchmark.cpp": "56e2edf11adcd8dd68a2579f6f7e4717061356bcc80f7aba77a51a9e6d71de24",
+    "experiments/l1-job-system/tools/measure.py": "745bda28c7547a7d9d7c81027d13b6b1d33154722b0cc2e3690a245b305dbb5d",
+    "experiments/l1-job-system/tools/scan.py": "f2f1ba6a2fe275dbb9992d3e7398e01d73fce7771e8cfcafa83615a09401ee85",
+    "experiments/l1-job-system/tools/noise.py": "64f25bb22efe88a2d1553be4b8e61d6a0583679744f8e7700a5d88cbf979063d",
+    "experiments/l1-job-system/tools/device.py": "22f9fee485311415d3b81f4e37b2f4d53f7f3dd11a558fe5b20c550fbc492672",
+    "experiments/l1-job-system/include/workload_shape.hpp": "e81b32e6a11142767217093602270c5629bce8aeb6571b72af3535f50d5be486",
+    "experiments/l1-job-system/include/work_queue.hpp": "7d6b9a30978f372edb4070ddc4b006196d136b6a9220381e657d2cfa63b5e30e",
+    "experiments/l1-job-system/include/job_system.hpp": "87457a29a3a919d0653987cd13c4611ceea5ebf3f62ae6043cde2dc6124c6f3e",
+    "experiments/l1-job-system/include/workload.hpp": "1ba60c97a52348ddd762391f6cad1d2dde5fb7556ce7d4111c509409cf8e68a1",
+    "experiments/l1-job-system/tests/steal_test.cpp": "16d1351525ca4fb150a0efcfe3e17b46b8fc88b2475655a385322c405443c4f4",
+    "experiments/l1-job-system/tests/shape_test.cpp": "d1ec3fc1209aa7714c4d44637063c729f851659638d3062acde0b2c1a5d0a7f3",
+    "experiments/l1-job-system/tests/workload_test.cpp": "3f733051e10bb6c36267fcb0b98b3a26c69dc83d21f4ba0bfd8847b962d04382",
+    "experiments/l1-job-system/tests/pool_test.cpp": "c96fc76b57abeb5075e8dd22f2d90eefa8555f48d3101c39ef92d8cc4998f6a3",
+    "experiments/l1-job-system/tests/queue_test.cpp": "ecd258368b1fd2f203b6aee16b5f80b53697d08e394a60926fbd776692cd97bb"
+  },
+  "executable_sha256": "2210f8525f2103c8b12e782fcea21b8fac2467e3992213f4051f5ebb0f7ea8c9",
+  "method": "balanced identical baseline A/A, fixed input; alternating label order, same full-workload warmup as benchmark; independent reference and exactly-once; Linux aggregate steal ticks not per-thread evidence; pair ratios are noise observations, not confidence intervals"
+}
