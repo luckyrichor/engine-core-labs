@@ -38,10 +38,10 @@
 2. 第 3 阶段起逐条做故事，每条九项齐全，按 A 节规则重复、配对、测 A/A。
 
 **待所有者决定**
-- Windows 大页：是否授予 SeLockMemoryPrivilege（脚本 `scripts/windows/lock-memory-privilege.ps1`，已有 Status/Grant/Revoke）。未授予前，S5 的 Windows 大页组不能做。
 - tx swap：第 5 阶段正式实验前，由所有者决定何时临时关闭，实施者不得自行关闭。
 
 **已知坑**
+- luowindows 已授予 SeLockMemoryPrivilege（2026-10-24）。程序须先 AdjustTokenPrivileges 启用；64 MiB 以内的大页可申请，128 MiB 在空闲内存 4.4 GB 时失败（错误 1450）。
 - 后台长任务要用 `systemd-run --user`（tx 已开 Linger），否则飞书 bridge 一轮结束时会连同子进程一起回收。
 - luowindows 偶尔关机属正常；SSH 连不上时告知所有者开机，不要改网络配置。
 - PowerShell 脚本保持纯 ASCII（PS 5.1 读非 ASCII 的 .ps1 需要 BOM）；经 SSH 传长命令用 `-EncodedCommand`（UTF-16LE base64）。
@@ -136,6 +136,6 @@ bash workplan-docs/scripts/run-on-tx.sh agent-memory 'docker compose up -d postg
 
 ## 更新日志
 
-- 2026-10-24 Claude Code：飞书建项目概览与开发记录；第 1 阶段检查点处理（tcmalloc 修复、许可决定、Windows 大页脚本）；新增“面试级完善方案：当前进度”交接节。
+- 2026-10-24 Claude Code：luowindows 授予锁定内存页权限并实测大页；飞书建项目概览与开发记录；第 1 阶段检查点处理（tcmalloc 修复、许可决定、Windows 大页脚本）；新增“面试级完善方案：当前进度”交接节。
 - 2026-10-23 Claude Code：第 1 阶段核验完成。
 - 2026-10-09：分工改为算法全部由助手完成。

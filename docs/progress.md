@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-10-24 luowindows 授予 SeLockMemoryPrivilege（Claude Code）
+
+所有者 2026-10-24 同意后，经 SSH 执行 `lock-memory-privilege.ps1 -Action Grant`，`LUOWINDOWS\shnh2` 已拥有 SeLockMemoryPrivilege。新 SSH 会话 `whoami /priv` 可见该权限（默认未启用）；程序内 AdjustTokenPrivileges 启用成功。用 `tools/windows-probes/large_page_probe.c` 实测 MEM_LARGE_PAGES：2/4/8/16/32/64 MiB 均成功，128 MiB 失败，错误 1450（ERROR_NO_SYSTEM_RESOURCES），当时空闲物理内存 4.42 GB。推断是物理内存碎片导致凑不出连续的 2 MiB 页，尚未验证。S5 Windows 大页组：每轮记录空闲物理内存，申请失败的轮次单独列出、不计入汇总，区域大小先限制在 64 MiB 以内。撤销用 `-Action Revoke`。
+
 ## 2026-10-24 第 1 阶段检查点处理（Claude Code）
 
 所有者决定：google/tcmalloc 尽量修好；glTF 受限许可模型个人非商业用途全部可用；方案数字以实测为准；luowindows 连不上时告知所有者开机。
