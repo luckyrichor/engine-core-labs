@@ -1,0 +1,39 @@
+{
+  "commit": "8f492390ddc7a2ae221a1369ef560589cf8c70fb",
+  "models": 150,
+  "files": 2482,
+  "total_bytes": 1433321625,
+  "model_bytes": {
+    "min": 13757,
+    "p50": 1797720,
+    "p90": 32424500,
+    "max": 89170738
+  },
+  "file_bytes": {
+    "min": 36,
+    "p50": 20053,
+    "p90": 1300661,
+    "p99": 8966700,
+    "max": 42977928
+  },
+  "licenses": {
+    "CC0-1.0": 62,
+    "CC-BY-4.0": 45,
+    "LicenseRef-LegalMark-Khronos AND CC0-1.0": 16,
+    "CC-BY-4.0 AND LicenseRef-LegalMark-Khronos": 7,
+    "CC-BY-4.0 AND LicenseRef-LegalMark-Cesium": 4,
+    "CC-BY-4.0 AND CC0-1.0": 3,
+    "LicenseRef-Stanford-Graphics AND CC0-1.0": 2,
+    "CC0-1.0 AND LicenseRef-LegalMark-UX3D": 1,
+    "CC0-1.0 AND LicenseRef-LegalMark-Khronos": 1,
+    "LicenseRef-Poser-EULA": 1,
+    "CC-BY-4.0 AND LicenseRef-LegalMark-Khronos AND LicenseRef-LegalMark-DGG": 1,
+    "CC-BY-4.0 AND CC-BY-NC-4.0": 1,
+    "SCEA": 1,
+    "LicenseRef-Adobe-Stock": 1,
+    "CC0-1.0 AND CC-BY-4.0": 1,
+    "CC-BY-NC-SA-4.0": 1,
+    "LicenseRef-CRYENGINE-Agreement": 1,
+    "LicenseRef-3DRT-Testing": 1
+  }
+}

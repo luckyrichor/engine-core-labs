@@ -1,0 +1,7 @@
+lib,file,meshes,mesh_instances,nodes,unique_mesh_triangles,instanced_triangles,load_seconds,peak_rss_kb
+ufbx-v0.23.1,BistroInterior.fbx,1186,1186,1192,1046609,1046609,0.418,189448
+ufbx-v0.23.1,BistroInterior_Wine.fbx,1415,1415,1470,1320323,1320323,0.477,212152
+ufbx-v0.23.1,BistroExterior.fbx,1296,1296,1300,2832120,2832120,1.093,600344
+assimp-v6.0.5,BistroInterior.fbx,2062,2062,-,1046609,1046609,0.826,447996
+assimp-v6.0.5,BistroInterior_Wine.fbx,2289,2289,-,1320323,1320323,1.034,533860
+assimp-v6.0.5,BistroExterior.fbx,1591,1591,-,2832120,2832120,2.171,1148208

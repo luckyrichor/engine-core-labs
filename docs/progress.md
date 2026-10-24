@@ -1,12 +1,26 @@
 # 进度记录
 
-最后更新：2026-10-15（北京时间）
+最后更新：2026-10-23（北京时间）
 
 本文件是 `engine-core-labs` 的进度事实源，汇总到 `workplan-docs/进度总览.md`。
 
 格式：每条记录写明日期、做了什么、验证方式与结果、遇到的问题。**不写计划，只写已发生的事**；失败和返工也要记，那是面试时最有料的部分。
 
 ---
+
+## 2026-10-23 面试级方案第 1 阶段：核验（Claude Code）
+
+来源 engine-core-labs@c7ca348，与方案附录 A 基线一致；tx 上 Release ctest 11/11。方案原文存入 docs/，逐项结果见 docs/phase1-verification.md。原始数据与库源码放仓库外 `~/data/engine-core-labs`；仓库只保存下载脚本、校验和与统计。
+
+Bistro 用 `scripts/data/fetch_bistro.sh` 完整下载（每次重新解析签名地址，断点续传），894,377,473 字节，ZIP CRC 通过，SHA256 已写进脚本。实际速率约 2 MB/s，不是方案记录的 45 KB/s，6.5 分钟下完。ufbx v0.23.1 与 Assimp v6.0.5（只开 FBX 导入器）都能解析三个 FBX，三角形数两库一致；Interior 与 Exterior 与页面一致，Interior_Wine 实测 1,320,323，页面写 1,293,691，以文件为准。选定 ufbx：速度约快一倍，内存约一半。
+
+glTF Sample Assets@8f49239 浅克隆：不使用 LFS，150 模型 / 2482 文件 / 1.43 GB，逐模型许可全部有标注，其中 9 个受限。页缓存清理确认生效（Cached 4.08 GiB→0.92 GiB；冷读 0.487 s，热读 0.035 s）。fio 3.36 已安装，strace 可用，判断不需要 clang。外部库按最新标签固定到提交号（third_party/versions.md），两台机器都用源码构建。
+
+google/tcmalloc 没有版本标签：Bazel 9.3.1 因 aspect_bazel_lib 不兼容失败，Bazel 8.4.2 因 protobuf/abseil 兼容级别冲突失败，两次都在构建前就失败；实验性 CMake 能配置，在编译整套依赖，本条记录时尚未结束。
+
+luowindows 第一次 SSH 超时（Tailscale rx 0），稍后恢复。性能核为逻辑线程 0–15（8 核，带超线程），能效核为 16–31。E 盘剩余 175.9 GB，大于 F 盘的 94.4 GB，已建 `E:\engine-core-labs-ue5-comparison`。CMake 采用 VS2022 自带的 3.31.6。用 MSVC 编译探测程序确认：`PageFaultCount` 能统计首次触碰的缺页（64 MiB 增加 16416）；大页因缺 SeLockMemoryPrivilege 失败（错误 1314）。电源计划当前为“平衡”，未改动。
+
+第 1 阶段检查点：已停下等所有者决定 tcmalloc 取舍、受限许可模型的用法、Windows 大页权限。
 
 
 ## 2026-10-15 评审补齐：A/A、启动触页、资源安装延迟与缓冲复用（Codex）

@@ -1,0 +1,151 @@
+model,files,bytes,license
+ABeautifulGame,44,85802264,CC-BY-4.0
+AlphaBlendModeTest,21,6917741,CC-BY-4.0
+AnimatedColorsCube,9,948918,CC0-1.0
+AnimatedCube,8,1092012,CC0-1.0
+AnimatedMorphCube,10,123526,CC0-1.0
+AnimatedTriangle,11,65979,CC0-1.0
+AnimationPointerUVs,23,20406475,CC-BY-4.0
+AnisotropyBarnLamp,31,27339593,CC-BY-4.0
+AnisotropyDiscTest,10,720631,CC0-1.0
+AnisotropyRotationTest,17,2741125,CC-BY-4.0
+AnisotropyStrengthTest,10,466196,CC0-1.0
+AntiqueCamera,15,35216202,CC0-1.0 AND LicenseRef-LegalMark-UX3D
+AttenuationTest,12,767581,CC-BY-4.0
+Avocado,21,32424500,CC0-1.0
+BarramundiFish,16,37386694,CC0-1.0
+BoomBox,19,32053653,CC0-1.0
+BoomBoxWithAxes,13,9878683,CC0-1.0
+Box,11,16461,CC-BY-4.0
+Box With Spaces,11,178714,CC0-1.0 AND LicenseRef-LegalMark-Khronos
+BoxAnimated,10,106514,CC-BY-4.0
+BoxInterleaved,9,14111,CC-BY-4.0
+BoxTextured,10,36309,CC-BY-4.0 AND LicenseRef-LegalMark-Cesium
+BoxTexturedNonPowerOfTwo,10,33271,CC-BY-4.0 AND LicenseRef-LegalMark-Cesium
+BoxVertexColors,9,15771,CC0-1.0
+BrainStem,15,14680514,LicenseRef-Poser-EULA
+Cameras,9,29692,CC0-1.0
+CarConcept,95,66107824,CC-BY-4.0 AND LicenseRef-LegalMark-Khronos
+CarbonFibre,13,1528001,CC-BY-4.0
+CesiumMan,13,2279943,CC-BY-4.0 AND LicenseRef-LegalMark-Cesium
+CesiumMilkTruck,13,1501099,CC-BY-4.0 AND LicenseRef-LegalMark-Cesium
+ChairDamaskPurplegold,18,4603143,CC-BY-4.0
+ChronographWatch,61,36998706,CC-BY-4.0 AND LicenseRef-LegalMark-Khronos AND LicenseRef-LegalMark-DGG
+ClearCoatCarPaint,11,714876,CC0-1.0
+ClearCoatTest,17,849389,CC-BY-4.0
+ClearcoatWicker,13,3090074,CC0-1.0
+CommercialRefrigerator,41,45264904,CC-BY-4.0
+CompareAlphaCoverage,15,8472594,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareAmbientOcclusion,12,10161936,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareAnisotropy,14,2766270,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareBaseColor,11,3456968,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareClearcoat,11,796569,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareDispersion,11,422894,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareEmissiveStrength,10,655400,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareIor,13,780442,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareIridescence,12,891743,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareMetallic,11,758356,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareNormal,10,843711,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareRoughness,11,832583,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareSheen,12,2415606,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareSpecular,11,3291769,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareTransmission,13,934426,LicenseRef-LegalMark-Khronos AND CC0-1.0
+CompareVolume,13,1078623,LicenseRef-LegalMark-Khronos AND CC0-1.0
+Corset,16,40050121,CC0-1.0
+Cube,8,581919,CC0-1.0
+CubeVisibility,8,240488,CC0-1.0
+DamagedHelmet,14,12616020,CC-BY-4.0 AND CC-BY-NC-4.0
+DiffuseTransmissionPlant,17,12374156,CC-BY-4.0 AND CC0-1.0
+DiffuseTransmissionTeacup,17,9805842,CC0-1.0
+DiffuseTransmissionTest,13,1186443,CC-BY-4.0 AND LicenseRef-LegalMark-Khronos
+DirectionalLight,9,1222280,CC0-1.0
+DispersionTest,11,6103134,CC-BY-4.0
+DragonAttenuation,22,19207816,LicenseRef-Stanford-Graphics AND CC0-1.0
+DragonDispersion,12,13377627,LicenseRef-Stanford-Graphics AND CC0-1.0
+Duck,16,532987,SCEA
+EmissiveStrengthTest,12,293623,CC-BY-4.0
+EnvironmentTest,14,1994748,LicenseRef-Adobe-Stock
+FlightHelmet,39,82363671,CC0-1.0
+Fox,9,366108,CC0-1.0 AND CC-BY-4.0
+GlamVelvetSofa,16,7907338,CC-BY-4.0
+GlassBrokenWindow,14,2630059,CC-BY-4.0
+GlassHurricaneCandleHolder,13,6688909,CC-BY-4.0 AND LicenseRef-LegalMark-Khronos
+GlassVaseFlowers,13,4249729,CC0-1.0
+IORTestGrid,10,5675053,CC0-1.0
+InterpolationTest,9,138779,CC0-1.0
+IridescenceAbalone,14,20856386,CC-BY-4.0
+IridescenceDielectricSpheres,9,740662,CC0-1.0
+IridescenceLamp,14,9061555,CC-BY-4.0
+IridescenceMetallicSpheres,9,1015848,CC0-1.0
+IridescenceSuzanne,10,1145729,CC0-1.0
+IridescentDishWithOlives,26,15138338,CC-BY-4.0
+Lantern,24,38002660,CC0-1.0
+LightVisibility,8,147744,CC0-1.0
+LightsPunctualLamp,18,10316543,CC-BY-4.0
+MandarinOrange,14,6729439,CC-BY-4.0
+MaterialsVariantsShoe,14,16252778,CC-BY-4.0
+MeshPrimitiveModes,8,13757,CC0-1.0
+MeshoptCubeTest,30,311777,CC0-1.0
+MetalRoughSpheres,11,37545824,CC-BY-4.0
+MetalRoughSpheresNoTextures,8,739917,CC0-1.0
+MorphPrimitivesTest,12,187264,CC-BY-4.0
+MorphStressTest,15,1825662,CC-BY-4.0
+MosquitoInAmber,14,48567653,CC-BY-4.0
+MultiUVTest,11,212804,CC-BY-4.0 AND LicenseRef-LegalMark-Khronos
+MultipleScenes,9,28150,CC0-1.0
+NegativeScaleTest,14,511361,CC-BY-4.0
+NodePerformanceTest,109,89170738,CC0-1.0
+NodeVisibilityTest,19,161561,CC0-1.0
+NormalTangentMirrorTest,16,4126444,CC-BY-4.0
+NormalTangentTest,15,4084830,CC0-1.0
+OrientationTest,10,262600,CC-BY-4.0
+PlaysetLightTest,29,33200132,CC-BY-NC-SA-4.0
+PointLightIntensityTest,10,234719,CC0-1.0
+PotOfCoals,18,10261698,CC-BY-4.0 AND LicenseRef-LegalMark-Khronos
+PotOfCoalsAnimationPointer,22,16260586,CC-BY-4.0 AND LicenseRef-LegalMark-Khronos
+PrimitiveModeNormalsTest,12,2046320,CC0-1.0
+RecursiveSkeletons,9,1665671,CC-BY-4.0
+RiggedFigure,11,337623,CC-BY-4.0
+RiggedSimple,11,142725,CC-BY-4.0
+ScatteringSkull,10,18020630,CC0-1.0
+SciFiHelmet,11,30299782,CC0-1.0
+SheenChair,18,10383586,CC0-1.0
+SheenCloth,14,4421789,CC0-1.0
+SheenTestGrid,12,4262402,CC0-1.0
+SheenWoodLeatherSofa,23,21162648,CC-BY-4.0 AND CC0-1.0
+SimpleInstancing,9,42883,CC0-1.0
+SimpleMaterial,9,77865,CC0-1.0
+SimpleMeshes,9,36656,CC0-1.0
+SimpleMorph,10,46991,CC0-1.0
+SimpleSkin,15,2146858,CC0-1.0
+SimpleSparseAccessor,10,112255,CC-BY-4.0
+SimpleTexture,9,86246,CC0-1.0
+SpecGlossVsMetalRough,18,20027961,CC-BY-4.0
+SpecularSilkPouf,12,9496877,CC-BY-4.0
+SpecularTest,14,1168797,CC-BY-4.0
+Sponza,77,53611071,LicenseRef-CRYENGINE-Agreement
+StainedGlassLamp,81,62366512,CC-BY-4.0
+SunglassesKhronos,25,4933413,CC-BY-4.0 AND LicenseRef-LegalMark-Khronos
+Suzanne,9,1797720,CC0-1.0
+TextureCoordinateTest,10,76935,CC0-1.0
+TextureEncodingTest,18,321086,CC0-1.0
+TextureLinearInterpolationTest,12,81286,CC0-1.0
+TextureSettingsTest,12,198963,CC-BY-4.0
+TextureTransformMultiTest,17,1286664,CC-BY-4.0
+TextureTransformTest,12,53818,CC0-1.0
+ToyCar,17,11557538,CC0-1.0
+TrafficCone,14,4135210,CC-BY-4.0 AND CC0-1.0
+TransmissionOrderTest,14,5814723,CC0-1.0
+TransmissionRoughnessTest,15,2168492,CC-BY-4.0
+TransmissionTest,18,3515193,CC0-1.0
+TransmissionThinwallTestGrid,10,2588899,CC0-1.0
+Triangle,9,27005,CC0-1.0
+TriangleWithoutIndices,9,18065,CC0-1.0
+TwoSidedPlane,10,98570,CC0-1.0
+USDShaderBallForGltf,16,3543516,CC-BY-4.0
+Unicode❤♻Test,9,27478,CC0-1.0
+UnlitTest,10,54515,CC-BY-4.0
+VertexColorTest,11,117820,CC-BY-4.0
+VirtualCity,51,14179258,LicenseRef-3DRT-Testing
+WaterBottle,18,26808984,CC0-1.0
+XmpMetadataRoundedCube,11,269338,CC-BY-4.0
