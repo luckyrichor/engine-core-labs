@@ -1,0 +1,216 @@
+{
+  "answer_budget_validation": {
+    "budget_met": true,
+    "budget_seconds": 1800,
+    "code_version": "engine-core-labs@a452624 + uncommitted phase C changes",
+    "command": "python3 -m bench.workload generate workloads/bistro/bistro-interior-triangles.json --out \"$ECL_DATA/scratch/bistro-interior-triangles\"",
+    "exit_status": 0,
+    "machine": "tx",
+    "max_rss_kib": 628216,
+    "method": "/usr/bin/time -v; max_rss is maximum across parent/waited children, not simultaneous summed RSS",
+    "platform": "Linux; GCC 13.3 Release; Python 3.12.3",
+    "scope": "whole Python generation plus C++ oracle child",
+    "wall_seconds": 6.17,
+    "wall_time_hms": "0:06.17"
+  },
+  "format_version": 1,
+  "interior_triangle_workload": {
+    "amplification": {
+      "factor": 1,
+      "method": "none"
+    },
+    "answer": {
+      "object_count": 1046609,
+      "overlap_pairs": 12329092
+    },
+    "answer_method": "independent_cpp_grid_bvh",
+    "cell_size": 0.037285804748535156,
+    "cell_size_rule": "4*max_axis_upper_median_extent; all_zero=1",
+    "copy_grid_side": 1,
+    "descriptor": {
+      "amplification": {
+        "factor": 1,
+        "method": "none"
+      },
+      "dataset": {
+        "checksum": {
+          "$ECL_DATA/bistro/aabb/BistroInterior.triangles.bin": "fd50bb813e4552bdcd3d401995cfef65716225f43d8506401d41b5cdea1158c9"
+        },
+        "name": "NVIDIA ORCA Bistro",
+        "version": "v5_2; ufbx 0.23.1"
+      },
+      "filter": {},
+      "generator": "ecl-v1",
+      "kind": "aabb_scene",
+      "name": "bistro-interior-triangles",
+      "params": {
+        "answer_backend": "cpp",
+        "input": "$ECL_DATA/bistro/aabb/BistroInterior.triangles.bin"
+      },
+      "scale": 1046609,
+      "seed": 1
+    },
+    "files": {
+      "bistro-interior-triangles.bin": "fd50bb813e4552bdcd3d401995cfef65716225f43d8506401d41b5cdea1158c9"
+    },
+    "format_version": 1,
+    "grid_spacing": 65536,
+    "inputs": {
+      "$ECL_DATA/bistro/aabb/BistroInterior.triangles.bin": "fd50bb813e4552bdcd3d401995cfef65716225f43d8506401d41b5cdea1158c9"
+    },
+    "kind": "aabb_scene",
+    "max_cells_per_box": 512,
+    "name": "bistro-interior-triangles",
+    "oversized_boxes": 5042,
+    "oversized_fallback": "static_median_bvh_leaf16",
+    "scale": 1046609,
+    "workload_fingerprint": "3e64b4a89b29f7c1"
+  },
+  "purpose": "offline preprocessing and independent-answer correctness; no experiment performance conclusions",
+  "scenes": [
+    {
+      "files": {
+        "BistroInterior.instances.bin": "a0475de1488a40271b7645f1c9a9e77dbe356da72201915a0495c6fb57adedc6",
+        "BistroInterior.triangles.bin": "fd50bb813e4552bdcd3d401995cfef65716225f43d8506401d41b5cdea1158c9"
+      },
+      "format": "little_endian_float32_min_xyz_max_xyz",
+      "instance_answer_check": {
+        "methods_agree": [
+          "python_brute_force",
+          "python_adaptive_grid_bvh",
+          "independent_cpp_grid_bvh"
+        ],
+        "oracle_settings": {
+          "answer_method": "independent_cpp_grid_bvh",
+          "cell_size": 0.5841894149780273,
+          "cell_size_rule": "4*max_axis_upper_median_extent; all_zero=1",
+          "max_cells_per_box": 512,
+          "oversized_boxes": 17,
+          "oversized_fallback": "static_median_bvh_leaf16"
+        },
+        "overlap_pairs": 6393
+      },
+      "object_count": 1186,
+      "overall_aabb": [
+        -2.06215429,
+        0.226773262,
+        -13.9418201,
+        13.5626945,
+        7.51110125,
+        5.47057724
+      ],
+      "source": "BistroInterior.fbx",
+      "source_sha256": "f18aea42854112e59752f14596e557c3d011e3526caf6a1bd55ce0e51881c11e",
+      "transform": "geometry_to_world",
+      "triangle_count": 1046609,
+      "triangle_union_aabb": [
+        -2.06215429,
+        0.226773262,
+        -13.9418201,
+        13.5626945,
+        7.51110125,
+        5.47057724
+      ],
+      "triangle_union_matches": true,
+      "ufbx_header_version": 23001,
+      "ufbx_source_version": 23001,
+      "ufbx_version": "0.23.1"
+    },
+    {
+      "files": {
+        "BistroInterior_Wine.instances.bin": "1bcdf74919e0478f2df5a52f680afacf1ae6ba49744303da42f2a673c3123544",
+        "BistroInterior_Wine.triangles.bin": "bcae2d68d3c342ab3b3783a4aff647255f1a9360af6bdd20b1e3a572917b0c6c"
+      },
+      "format": "little_endian_float32_min_xyz_max_xyz",
+      "instance_answer_check": {
+        "methods_agree": [
+          "python_brute_force",
+          "python_adaptive_grid_bvh",
+          "independent_cpp_grid_bvh"
+        ],
+        "oracle_settings": {
+          "answer_method": "independent_cpp_grid_bvh",
+          "cell_size": 0.5421338081359863,
+          "cell_size_rule": "4*max_axis_upper_median_extent; all_zero=1",
+          "max_cells_per_box": 512,
+          "oversized_boxes": 24,
+          "oversized_fallback": "static_median_bvh_leaf16"
+        },
+        "overlap_pairs": 7355
+      },
+      "object_count": 1415,
+      "overall_aabb": [
+        -2.94780755,
+        0.298315734,
+        -20.3479996,
+        19.8800964,
+        10.9407187,
+        8.01351357
+      ],
+      "source": "BistroInterior_Wine.fbx",
+      "source_sha256": "e5f4549548b0ec05c1f534551dcc7053d5286e0b48c9798c985ac1a7fa87cb1c",
+      "transform": "geometry_to_world",
+      "triangle_count": 1320323,
+      "triangle_union_aabb": [
+        -2.94780755,
+        0.298315734,
+        -20.3479996,
+        19.8800964,
+        10.9407187,
+        8.01351357
+      ],
+      "triangle_union_matches": true,
+      "ufbx_header_version": 23001,
+      "ufbx_source_version": 23001,
+      "ufbx_version": "0.23.1"
+    },
+    {
+      "files": {
+        "BistroExterior.instances.bin": "a51203ccb34f7476d89b9f66c005484c44df317dc1fbbdf22bf3ef03454345c4",
+        "BistroExterior.triangles.bin": "9ee3e838fbec14233bfbc99df48ba8f27e4272b37c41ebe128608c6a411433ba"
+      },
+      "format": "little_endian_float32_min_xyz_max_xyz",
+      "instance_answer_check": {
+        "methods_agree": [
+          "python_brute_force",
+          "python_adaptive_grid_bvh",
+          "independent_cpp_grid_bvh"
+        ],
+        "oracle_settings": {
+          "answer_method": "independent_cpp_grid_bvh",
+          "cell_size": 6.565483212471008,
+          "cell_size_rule": "4*max_axis_upper_median_extent; all_zero=1",
+          "max_cells_per_box": 512,
+          "oversized_boxes": 1,
+          "oversized_fallback": "static_median_bvh_leaf16"
+        },
+        "overlap_pairs": 10054
+      },
+      "object_count": 1296,
+      "overall_aabb": [
+        -62.4582443,
+        -7.56187582,
+        -87.9369812,
+        111.301956,
+        43.5323524,
+        96.4814758
+      ],
+      "source": "BistroExterior.fbx",
+      "source_sha256": "471991629c7e35a88338c48f3565390ad19cc5d1d7c7e067fc2a60b4f3b5f195",
+      "transform": "geometry_to_world",
+      "triangle_count": 2832120,
+      "triangle_union_aabb": [
+        -62.4582443,
+        -7.56187582,
+        -87.9369812,
+        111.301956,
+        43.5323524,
+        96.4814758
+      ],
+      "triangle_union_matches": true,
+      "ufbx_header_version": 23001,
+      "ufbx_source_version": 23001,
+      "ufbx_version": "0.23.1"
+    }
+  ]
+}

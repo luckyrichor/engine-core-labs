@@ -5,12 +5,14 @@ import io
 import json
 import os
 import struct
+import subprocess
+import tempfile
 import zipfile
 from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urlsplit
 
 from . import fingerprint, integer, load, sha256
-from .formats import AABB, TASK, brute_pairs, grid_pairs, read_aabbs, trace_answer
+from .formats import AABB, TASK, brute_pairs, grid_pairs, grid_parameters, read_aabbs, trace_answer
 from .prng import Random
 
 
@@ -119,11 +121,36 @@ def generate(path, out):
                 # Round to binary32 BEFORE computing reference answer.
                 expanded.append(AABB.unpack(AABB.pack(*(v + offset[k % 3] for k, v in enumerate(box)))))
         boxes = expanded
-        reference = brute_pairs if len(boxes) <= 20000 else grid_pairs
-        answer = dict(object_count=len(boxes), overlap_pairs=reference(boxes))
-        details = dict(answer_method='brute_force' if len(boxes) <= 20000 else 'grid_hash',
-                       grid_spacing=spacing, copy_grid_side=side)
         data = b''.join(AABB.pack(*box) for box in boxes)
+        details = dict(grid_spacing=spacing, copy_grid_side=side)
+        if p.get('answer_backend', 'python') == 'cpp':
+            executable = os.environ.get('ECL_AABB_REFERENCE')
+            if not executable:
+                root = resolve('$ECL_DATA')
+                executable = str(root/'tools/bin'/('aabb_reference.exe' if os.name == 'nt' else 'aabb_reference'))
+            scratch = resolve('$ECL_DATA')/'scratch'
+            scratch.mkdir(parents=True, exist_ok=True)
+            with tempfile.TemporaryDirectory(dir=scratch) as temp:
+                source_file = Path(temp)/'answer.bin'
+                source_file.write_bytes(data)
+                try:
+                    result = subprocess.run([executable, str(source_file)], check=True,
+                                            capture_output=True, text=True, timeout=1800)
+                except (subprocess.SubprocessError, OSError) as exc:
+                    raise ValueError(f'C++ answer oracle failed: {exc}') from exc
+            native = json.loads(result.stdout)
+            if native.pop('object_count') != len(boxes):
+                raise ValueError('C++ answer oracle count mismatch')
+            answer = dict(object_count=len(boxes), overlap_pairs=native.pop('overlap_pairs'))
+            details.update(native)
+        elif p.get('answer_backend', 'python') == 'python':
+            reference = brute_pairs if len(boxes) <= 20000 else grid_pairs
+            answer = dict(object_count=len(boxes), overlap_pairs=reference(boxes))
+            details.update(answer_method='brute_force' if len(boxes) <= 20000 else 'grid_hash')
+            if len(boxes) > 20000:
+                details.update(grid_parameters(boxes))
+        else:
+            raise ValueError('unsupported answer_backend')
     elif kind == 'alloc_trace':
         method({'none', 'repeat'})
         threads = integer(p.get('threads', 2), 'threads', 1, (1 << 32)-1)

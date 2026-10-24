@@ -27,3 +27,6 @@ target_include_directories(workload_reader_test PRIVATE "${CMAKE_SOURCE_DIR}/exp
 add_test(NAME bench_workload_cpp
   COMMAND ${Python3_EXECUTABLE} -m bench.tests.test_workload_cpp $<TARGET_FILE:workload_reader_test>)
 set_tests_properties(bench_workload_cpp PROPERTIES WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+
+set(ECL_DATA "$ENV{ECL_DATA}" CACHE PATH "External dataset and third-party root")
+add_subdirectory(tools/bistro-aabb)

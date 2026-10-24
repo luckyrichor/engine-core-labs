@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/clock_control.dir/clock_control.cpp.o -o clock_control 

@@ -1,0 +1,23 @@
+{
+  "name": "bistro-interior-triangles",
+  "kind": "aabb_scene",
+  "dataset": {
+    "name": "NVIDIA ORCA Bistro",
+    "version": "v5_2; ufbx 0.23.1",
+    "checksum": {
+      "$ECL_DATA/bistro/aabb/BistroInterior.triangles.bin": "fd50bb813e4552bdcd3d401995cfef65716225f43d8506401d41b5cdea1158c9"
+    }
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "input": "$ECL_DATA/bistro/aabb/BistroInterior.triangles.bin",
+    "answer_backend": "cpp"
+  },
+  "seed": 1,
+  "scale": 1046609,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}

@@ -42,31 +42,73 @@ def brute_pairs(boxes):
     return sum(overlaps(a, boxes[j]) for i, a in enumerate(boxes) for j in range(i))
 
 
-def grid_pairs(boxes, cell_size=16):
-    """Independent spatial reference. Inclusive faces, unique candidate ownership.
+def grid_parameters(boxes):
+    """Upper median, including zero widths; exact binary64 differences of float32."""
+    size = max((sorted(b[k+3]-b[k] for b in boxes)[len(boxes)//2]
+                for k in range(3)), default=0) if boxes else 0
+    return dict(cell_size=4*size if size > 0 else 1,
+                cell_size_rule='4*max_axis_upper_median_extent; all_zero=1',
+                max_cells_per_box=512, oversized_fallback='static_median_bvh_leaf16')
 
-    Very large boxes use an all-pairs fallback against previous boxes rather
-    than materializing an unbounded number of grid cells.
+
+def grid_pairs(boxes, cell_size=None):
+    """Independent spatial oracle, with bounded-cell insertion and tree fallback.
+
+    The static median tree limits storage to O(n), avoids unconditional all-pairs
+    scans for outliers, and prunes non-overlapping subtrees. Dense true overlaps
+    can still require quadratic work (no subquadratic worst-case claim).
     """
+    if cell_size is None:
+        cell_size = grid_parameters(boxes)['cell_size']
     if not math.isfinite(cell_size) or cell_size <= 0:
         raise ValueError('cell_size must be positive')
-    grid, large, answer = {}, [], 0
-    for i, box in enumerate(boxes):
-        lo = [math.floor(v / cell_size) for v in box[:3]]
-        hi = [math.floor(v / cell_size) for v in box[3:]]
-        cells = math.prod(hi[k] - lo[k] + 1 for k in range(3))
-        if cells > 4096:
-            answer += sum(overlaps(box, boxes[j]) for j in range(i))
+    ranges, large = [], []
+    for i, b in enumerate(boxes):
+        lo = tuple(math.floor(v/cell_size) for v in b[:3])
+        hi = tuple(math.floor(v/cell_size) for v in b[3:])
+        big = math.prod(hi[k]-lo[k]+1 for k in range(3)) > 512
+        ranges.append((lo, hi, big))
+        if big:
             large.append(i)
+
+    def build(ids):
+        if not ids:
+            return None
+        bound = tuple(min(boxes[i][k] for i in ids) for k in range(3)) + tuple(
+            max(boxes[i][k] for i in ids) for k in range(3, 6))
+        if len(ids) <= 16:
+            return bound, min(ids), ids, None, None
+        axis = max(range(3), key=lambda k: bound[k+3]-bound[k])
+        ids.sort(key=lambda i: (boxes[i][axis]+boxes[i][axis+3], i))
+        mid = len(ids)//2
+        return bound, min(ids), None, build(ids[:mid]), build(ids[mid:])
+
+    def query(node, box, before):
+        if node is None or node[1] >= before or not overlaps(box, node[0]):
+            return 0
+        if node[2] is not None:
+            return sum(j < before and overlaps(box, boxes[j]) for j in node[2])
+        return query(node[3], box, before) + query(node[4], box, before)
+
+    large_tree = build(large)
+    full_tree = build(list(range(len(boxes)))) if large else None
+    grid, answer = {}, 0
+    for i, box in enumerate(boxes):
+        lo, hi, big = ranges[i]
+        if big:
+            answer += query(full_tree, box, i)
             continue
-        keys = [(x, y, z) for x in range(lo[0], hi[0]+1)
-                for y in range(lo[1], hi[1]+1) for z in range(lo[2], hi[2]+1)]
-        candidates = set(large)
-        for key in keys:
-            candidates.update(grid.get(key, ()))
-        answer += sum(overlaps(box, boxes[j]) for j in candidates)
-        for key in keys:
-            grid.setdefault(key, []).append(i)
+        answer += query(large_tree, box, i)
+        for x in range(lo[0], hi[0]+1):
+            for y in range(lo[1], hi[1]+1):
+                for z in range(lo[2], hi[2]+1):
+                    key = (x,y,z)
+                    bucket = grid.setdefault(key, [])
+                    for j in bucket:
+                        other = ranges[j][0]
+                        if (x,y,z) == tuple(max(lo[k], other[k]) for k in range(3)):
+                            answer += overlaps(box, boxes[j])
+                    bucket.append(i)
     return answer
 
 

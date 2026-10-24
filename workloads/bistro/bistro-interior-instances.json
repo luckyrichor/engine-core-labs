@@ -1,0 +1,23 @@
+{
+  "name": "bistro-interior-instances",
+  "kind": "aabb_scene",
+  "dataset": {
+    "name": "NVIDIA ORCA Bistro",
+    "version": "v5_2; ufbx 0.23.1",
+    "checksum": {
+      "$ECL_DATA/bistro/aabb/BistroInterior.instances.bin": "a0475de1488a40271b7645f1c9a9e77dbe356da72201915a0495c6fb57adedc6"
+    }
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "input": "$ECL_DATA/bistro/aabb/BistroInterior.instances.bin",
+    "answer_backend": "python"
+  },
+  "seed": 1,
+  "scale": 1186,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}

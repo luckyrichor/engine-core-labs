@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/bistro_aabb.dir/main.cpp.o -o /home/ubuntu/data/engine-core-labs/tools/bin/bistro_aabb  libbistro_ufbx.a 

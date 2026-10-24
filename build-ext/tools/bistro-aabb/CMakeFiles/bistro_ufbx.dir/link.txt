@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbistro_ufbx.a "CMakeFiles/bistro_ufbx.dir/home/ubuntu/data/engine-core-labs/third_party/ufbx-v0.23.1/ufbx.c.o"
+/usr/bin/ranlib libbistro_ufbx.a

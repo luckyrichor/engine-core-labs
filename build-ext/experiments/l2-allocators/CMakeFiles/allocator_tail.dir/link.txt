@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/allocator_tail.dir/tail.cpp.o -o allocator_tail 

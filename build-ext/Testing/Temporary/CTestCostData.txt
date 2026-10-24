@@ -1,0 +1,15 @@
+bench_unittest 1 9.1509
+bench_workload_cpp 1 0.119597
+owner_queue 1 0.00260729
+workload_contract 1 0.00283926
+pool_lifecycle 1 0.0248163
+steal_contract 1 0.00775683
+benchmark_baseline_smoke 1 0.00454722
+benchmark_stealing_smoke 1 0.00486417
+workload_shape 1 0.00858816
+allocator_boundaries 1 0.00269082
+variable_fragmentation 1 0.002386
+cold_payload 1 0.0182654
+resource_pipeline 1 0.0125063
+bench_aabb_reference 1 3.75105
+---

@@ -82,9 +82,17 @@ these are format fixtures, not renderable assets.
   of side ceil(cuberoot(factor)); spacing and grid side are recorded. Copy
   separation is caller-controlled and need not eliminate inter-copy overlaps.
   Touching faces count as overlapping. Up to 20000 final boxes use brute force;
-  larger scenes use the independent grid hash (cell size 16). A box spanning
-  over 4096 cells falls back to checking previous boxes, avoiding cell blowup.
-  Dense scenes can still require quadratic work; this is a reference answer.
+  larger scenes use an independent adaptive grid hash. Cell size is four times
+  the maximum of the three per-axis upper median extents (including zero
+  widths), or 1 if all medians are zero. Over 512 cells per box uses a static
+  median BVH fallback, avoiding grid explosion and unconditional scans of
+  previous boxes. Dense true overlaps can still require quadratic work.
+  Metadata records the rule and fallback. `params.answer_backend=cpp` selects
+  the independent oracle in `tools/bistro-aabb/`, located by
+  `ECL_AABB_REFERENCE` or `$ECL_DATA/tools/bin/aabb_reference[.exe]`. It has a
+  1800-second subprocess timeout; the default backend remains Python.
+  Real-data descriptors are under `workloads/bistro/`, separate from the small
+  self-contained fixtures used by default tests. See [Bistro preprocessing](bistro-aabb.md).
 - Resources: `files_csv` is the extra output of `scripts/data/gltf_inventory.py`;
   `root` is the glTF checkout; optional `bistro_zip` contributes zip entry sizes
   without extraction. Either or both input sources may be used. glTF/GLB JSON

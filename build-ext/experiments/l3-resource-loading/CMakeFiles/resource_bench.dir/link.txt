@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/resource_bench.dir/benchmark.cpp.o -o resource_bench 

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/workload_reader_test.dir/bench/tests/workload_reader.cpp.o -o workload_reader_test 
