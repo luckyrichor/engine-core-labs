@@ -127,3 +127,21 @@ W10维护：禁用缓冲区所有者拷贝/移动，补非法释放、耗尽、�
 ## 2026-10-13 L3 资源加载（Codex）
 
 来源 bee55fd + 本轮修改。真实热文件+合成CPU解码，复用L1工作线程；主线程有限提交、在途8上限、重复去重和失败传播。三模式十轮、2880帧，checksum全部一致。p99跨轮中位数sync6.498ms/async1.739ms/preload0.297ms；预加载startup17.679ms，异步缺失资源×帧数48；分别报告代价，不称真实渲染收益。Release/TSan/ASan/UBSan/启用泄漏检测11/11；初次编译发现JobSystem仅future<void>，采用Asset packaged_task封装，未改其已有接口。源码SHA256核对通过，数据见measurements/2026-10-13-l3/，不含GPU上传/冷磁盘。
+
+## 2026-10-24 第 2 阶段 D：外部基线构建与适配（Codex 自检，待独立验收）
+
+来源 engine-core-labs@432370a + 未提交修改。用户在本群要求读取全局记忆与聊天后继续；前序 A/B/C 已由 Claude 验收。D 此前因 SSH 连续三次关闭停下，本轮通过已有 CONNECT 代理按 SSH 获取固定版本，未修改系统网络配置。
+
+补齐 scripts/third_party 的六库固定版本构建、用户目录 autotools；experiments/common 的调度/分配接口、各库实现、调度校验器、同源码分配回放、CTest 驱动；根 CMake 接入和 docs/baselines.md。build.sh all 最终成功，源码外 Release 构建 CTest 35/35、无跳过。五种调度在 1/2/4 线程执行 2000 任务并核对每个 ID 恰好一次；六种分配器验证 32 alloc/32 free、峰值存活 5221 字节、字节模式、零存活、实际分配归属；错误答案、损坏数据、释放不存在对象和遗漏最终释放必须失败。
+
+修正过的失败：缺少 autoconf/m4 与 config.guess/config.sub；CMake UTF-8 版本表读取与 Threads 目标作用域；mimalloc 纯 C 配置和版本化头文件目录；Google Ownership 强枚举、静态依赖导出及 .inc/.def；jemalloc 源码外构建报告 missing_version（用已核实标签与 HEAD 显式设置版本）。构建目录一度触及历史已跟踪 build-ext，已恢复本轮生成的改动，最终产物移到 ECL_DATA/build-adapters。
+
+本轮未做性能测量、无性能结论；Windows/MSVC 未验证；trace 回放尚为串行；Google 依赖第 1 阶段 CMake 缓存。完整日志在 ECL_DATA/logs-stage-d-all-final.log、logs-stage-d-external-final.log、logs-stage-d-ctest-final.log。按执行说明交回 D，待 Claude 独立验收后才继续第 3 阶段。未提交、未推送，未关闭 swap，未使用 sudo。交接状态同步到 AGENTS.md（依据用户全局交接要求）。
+
+## 2026-10-24 后续由用户本人接手
+
+Codex · 2026-10-24 22:33:12（北京时间）。用户在本群明确“后续部分由我来处理，跟 Claude 无关了”。本条取代此前等待 Claude 独立验收和继续派活的安排，后续由用户本人处理。D 保持 Codex 自检 35/35、独立验收未完成的事实；代码基线仍为 engine-core-labs@432370a + 未提交修改。未新增开发、测试、提交或推送；代码与既有验证产物保留。交接入口 AGENTS.md，复现命令 docs/baselines.md。
+
+## 2026-10-24 第 2 阶段验收与收尾
+
+Codex · 2026-10-24 22:37:41（北京时间）。用户明确“审核过了，没有问题”，授权提交并完成阶段 2 收尾；该结论取代此前 D 待复核状态，验收人为用户，Claude 不再参与。核对 D 的 16 个源文件与上次 35/35 通过的 SHA256 快照完全一致；本轮仅补交接和公开状态文档，没有新代码变更，未重复运行功能测试。README、AGENTS、status、design-decisions 与 baselines 同步完成状态和既有限制；A/B/C 保留原提交及作者记录。第 3 阶段尚未开始。

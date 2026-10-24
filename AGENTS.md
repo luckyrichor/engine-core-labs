@@ -12,7 +12,7 @@
 
 **当前状态：L1 / L2 / L3 核心均由 Codex 实现，已取消用户手写 TODO。当前验证、测量与边界见 docs/status.md；历史记录不代表当前分工。**
 
-**2026-10-23 起按《engine-core-labs 面试级完善方案》推进（Claude Code 主导），进度见下一节。**
+**2026-10-23 起按《engine-core-labs 面试级完善方案》推进；2026-10-24 用户明确后续由本人接手，Claude 不再参与。进度见下一节。**
 
 ## 面试级完善方案：当前进度（交接）
 
@@ -21,8 +21,18 @@
 | 阶段 | 状态 |
 |---|---|
 | 1 核验 | **已完成**（2026-10-23/24），检查点已过，所有者决定见 docs/phase1-verification.md |
-| 2 基础设施（负载生成器、外部基线适配层、结果格式、一键重跑） | 下一步，未开始 |
+| 2 基础设施（负载生成器、外部基线适配层、结果格式、一键重跑） | A/B/C 已由 Claude 验收并提交；D 已由 Codex 实现并通过 tx 验证（35/35）；用户于 2026-10-24 审核通过，阶段 2 已完成 |
 | 3–9 | 未开始 |
+
+**第 2 阶段交接（2026-10-24，Codex）**
+- A/B/C 提交分别为 `ef9ded8` / `a452624` / `432370a`；实现由 Codex 完成，Claude 独立验收，证据在 `.agent-tasks/2026-10-24-第2阶段基础设施.md`。旧表“未开始”已过时。
+- D 在 `engine-core-labs@432370a` 基线上实现；续做修复 SSH 获取路径，补齐 `scripts/third_party/`、`experiments/common/{scheduler_adapter.hpp,alloc_adapter.hpp,adapters/}`、根 CMake 与 `docs/baselines.md`。
+- 六库均已按固定提交成功执行 `bash scripts/third_party/build.sh all`。tx 外部 Release 构建 CTest **35/35 通过，无跳过**；默认构建 **25 通过 / 6 明确跳过**；五种调度 × 1/2/4 线程，六种分配器（含 glibc、本地变长堆）通过相同负载独立答案、实际分配器归属及损坏输入拒绝校验。Windows/MSVC 未运行，未作性能测量，尚无性能结论。
+- 源码与构建步骤见 [docs/baselines.md](docs/baselines.md)。最终外部构建目录 `$ECL_DATA/build-adapters`；完整日志 `$ECL_DATA/logs-stage-d-{all-final,external-final,ctest-final}.log`。旧 `build-ext/` 已有跟踪产物不在本轮清理范围，避免再次向它写构建结果。
+- GitHub 直连 SSH 因 fake-IP 地址而关闭；本轮单进程 `GIT_SSH_COMMAND` 通过现有 `127.0.0.1:7890` CONNECT 代理成功，不改 SSH/网络配置。见 baselines.md 的可复制命令。
+- Ubuntu 缺少 autotools 时，脚本将固定版本 Debian 工具包仅解到 `$ECL_DATA/build-tools/`，无 sudo/系统安装。jemalloc 显式使用已核实的标签/提交生成版本字符串；Google 静态链接导出包含传递依赖与 .inc/.def 头文件。
+- 分配回放目前按时间戳串行执行，仅核对 trace 的线程标签；多线程回放留给 S4。Google 构建复用第 1 阶段 CMake 缓存，空机器完整重建仍未支持。
+- **用户验收（2026-10-24）**：用户明确“审核过了，没有问题”，并授权提交和完成阶段 2 收尾。阶段 2 已验收完成；D 由 Codex 实现，验收人为用户，不记作 Claude 验收。Claude 不再参与后续；本轮范围止于阶段 2 归档与发布，不启动第 3 阶段。
 
 **第 1 阶段已验证的事实**（详见 docs/phase1-verification.md）
 - 基线提交 c7ca348 与方案一致；Release ctest 11/11。
@@ -34,8 +44,8 @@
 **数据与第三方源码的位置（不进仓库）**：`$ECL_DATA`，默认 `~/data/engine-core-labs`（tx）。其下有 `bistro/`（zip、SHA256SUMS、manifest、extracted/）、`gltf-sample-assets/`、`third_party/`（ufbx、assimp、tcmalloc-src、tcmalloc-cmake、bazelisk）、`inventory/`、`logs/`。Windows 临时目录 `E:\ecl-scratch`。
 
 **下一步（按顺序）**
-1. 第 2 阶段：按方案 D 节与附录 B，实现负载描述文件与生成器（同指纹字节级一致，带独立答案）、外部基线适配层（先接 oneTBB、Taskflow、各分配器）、统一的 raw.csv / summary.csv / device.json 格式与汇总脚本（“无显著提升”判定只在一处定义）、一键重跑脚本。验收：同指纹字节一致；外部库与自研实现通过同一校验；现有 11/11 测试仍通过。
-2. 第 3 阶段起逐条做故事，每条九项齐全，按 A 节规则重复、配对、测 A/A。
+1. 阶段 2 已通过用户审核，后续从第 3 阶段 S1/S2/S3 开始；实施时间与安排以用户指令为准，不再依赖 Claude。
+2. 第 3 阶段起逐条做故事，每条九项齐全，按 A 节规则重复、配对、测 A/A；Windows 补测与各阶段明确限制继续如实记录。
 
 **待所有者决定**
 - tx swap：第 5 阶段正式实验前，由所有者决定何时临时关闭，实施者不得自行关闭。
@@ -135,6 +145,12 @@ bash workplan-docs/scripts/run-on-tx.sh agent-memory 'docker compose up -d postg
 写进「环境与踩坑记录」时，用 **［实测］**／**［预警］** 标注区分「已验证的事实」和「未触发的已知风险」，不要把推断写成结论。
 
 ## 更新日志
+
+- 2026-10-24 Codex：用户审核通过阶段 2，授权提交推送；收尾状态同步到 AGENTS、README、status、design-decisions、progress 与飞书开发记录，保留 Windows/串行回放/Google 缓存依赖等已知限制。
+
+- 2026-10-24 Codex：按用户最新决定将后续责任改为用户本人接手，撤销 Claude 的验收与派活依赖；保留代码、现有自检结果和历史作者记录，未启动新开发。
+
+- 2026-10-24 Codex：读取全局记忆与本群完整记录后续做 D；修复源码获取、补齐外部库与适配校验，外部 Release 35/35 通过；A/B/C 状态依据已验收提交回填。D 尚待 Claude 独立验收，未提交推送。
 
 - 2026-10-24 Claude Code：luowindows 授予锁定内存页权限并实测大页；飞书建项目概览与开发记录；第 1 阶段检查点处理（tcmalloc 修复、许可决定、Windows 大页脚本）；新增“面试级完善方案：当前进度”交接节。
 - 2026-10-23 Claude Code：第 1 阶段核验完成。

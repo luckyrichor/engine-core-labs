@@ -1,6 +1,6 @@
 # engine-core-labs
 
-最后更新：2026-10-15（北京时间）
+最后更新：2026-10-24（北京时间）
 
 游戏引擎非渲染通用模块的可复现实验，对应岗位 02。当前实现和边界见 [一页摘要](docs/status.md)。
 
@@ -21,6 +21,15 @@ build/experiments/l2-allocators/fragmentation_demo
 ```
 
 详见 [L1 方法](experiments/l1-job-system/README.md)、[L2 方法](experiments/l2-allocators/README.md)、[设计取舍](docs/design-decisions.md)及[历史进度](docs/progress.md)。数据必须核对机器、参数与源码 SHA256；四核虚拟机的八线程结果不能外推到八核物理机。
+
+## 面试级完善方案进度
+
+第 1 阶段核验、第 2 阶段基础设施已完成；阶段 2 于 2026-10-24 通过用户审核。
+新增统一结果格式/判定/运行器、五类确定性负载生成器、Bistro AABB 预处理与独立答案、六个固定版本外部库及调度/分配适配层。
+完整外部 Release 构建 CTest 35/35 通过；默认构建 25 通过、6 项外部库明确跳过。
+这轮验证功能与一致性，未产生新的性能结论。Windows/MSVC 未验证；trace 回放目前串行；Google tcmalloc 依赖第 1 阶段已有 CMake 缓存。
+
+入口：[结果与运行器](docs/bench-infrastructure.md)、[负载](docs/workloads.md)、[Bistro 预处理](docs/bistro-aabb.md)、[外部基线与复现](docs/baselines.md)。第 3 阶段尚未开始，当前交接见 [AGENTS.md](AGENTS.md)。
 
 ## L3 资源加载
 

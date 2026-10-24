@@ -30,3 +30,5 @@ set_tests_properties(bench_workload_cpp PROPERTIES WORKING_DIRECTORY "${CMAKE_SO
 
 set(ECL_DATA "$ENV{ECL_DATA}" CACHE PATH "External dataset and third-party root")
 add_subdirectory(tools/bistro-aabb)
+
+add_subdirectory(experiments/common/adapters)
