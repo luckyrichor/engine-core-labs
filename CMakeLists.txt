@@ -16,3 +16,8 @@ enable_testing()
 add_subdirectory(experiments/l1-job-system)
 add_subdirectory(experiments/l2-allocators)
 add_subdirectory(experiments/l3-resource-loading)
+
+find_package(Python3 3.12 COMPONENTS Interpreter REQUIRED)
+add_test(NAME bench_unittest
+  COMMAND ${Python3_EXECUTABLE} -m unittest discover -s bench/tests -v)
+set_tests_properties(bench_unittest PROPERTIES WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
