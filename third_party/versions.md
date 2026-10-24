@@ -10,12 +10,12 @@
 | jemalloc | S4 分配器基线 | 5.4.0 | 7a34f18502e7 | BSD-2-Clause | apt 版 5.3.0 不用 |
 | mimalloc | S4 分配器基线 | v3.5.4 | f8401befa675 | MIT | Linux 用 LD_PRELOAD，Windows 用重定向 DLL |
 | tcmalloc（gperftools） | S4 分配器基线（默认） | gperftools-2.19.1 | d8b459be774d | BSD-3-Clause（构建时核对 COPYING） | 结果表头写 `tcmalloc-gperftools` |
-| tcmalloc（google/tcmalloc） | S4 分配器基线（可选，仅 tx） | 无标签 | 7aaa4776b419 | Apache-2.0 | 是否采用待所有者决定，见 docs/phase1-verification.md |
+| tcmalloc（google/tcmalloc） | S4 分配器基线（可选，仅 tx） | 无标签 | 7aaa4776b419 | Apache-2.0 | 只构建 `tcmalloc_tcmalloc` 目标（全量构建的一个测试在 gcc 13 下报错），静态链接；表头写 `tcmalloc-google` |
 | ufbx | Bistro 预处理（只在 tools/） | v0.23.1 | 26a482ae6687 | MIT 或公有领域 | 第 1 阶段选定，取代 Assimp |
 | Box2D | S7 的 2D 对照 | v3.2.0 | 178495ba3569 | MIT | |
 | box2d-benchmarks | S7 的 2D 场景 | 无标签 | 2d2f9c39f849 | MIT | |
 | mimalloc-bench | S4 trace 采集程序来源 | 无标签 | 391382606681 | MIT（bench/ 各自许可） | 仅 Unix |
-| Tracy | luowindows 剖析（可选） | v0.14.1 | 30997d5ca6bb | 构建时核对 | |
+| Tracy | luowindows 剖析（可选） | v0.14.1 | 30997d5ca6bb | BSD-3-Clause | |
 
 数据集：
 

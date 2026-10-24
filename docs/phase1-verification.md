@@ -38,7 +38,7 @@
 - 〔事实〕不使用 LFS（`.gitattributes` 只有换行规则）。浅克隆检出 1.43 GB，另有 .git 985 MB。
 - 〔事实〕150 个模型目录、2482 个文件、1,433,321,625 字节。模型大小 p50 1.8 MB、p90 32.4 MB、最大 89.2 MB；单文件 p50 20 KB、p99 9.0 MB、最大 43.0 MB。
 - 〔事实〕150 个模型在 REUSE.toml 中都有逐模型许可。其中 9 个是受限或非标准许可：BrainStem（Poser EULA）、DamagedHelmet（含 CC-BY-NC）、DragonAttenuation 与 DragonDispersion（Stanford）、Duck（SCEA）、EnvironmentTest（Adobe Stock）、PlaysetLightTest（CC-BY-NC-SA）、Sponza（CRYENGINE 协议）、VirtualCity（3DRT Testing）。
-- 建议：资源清单的**大小分布**用全部 150 个模型（只统计，不分发）；需要实际加载内容的实验只用 CC0 / CC-BY 系列。待所有者确认。
+- 所有者决定（2026-10-24）：本项目为个人非商业用途，150 个模型全部可用。约束：模型文件不进仓库、不再分发，仓库和报告只出现统计数字；models.csv 保留逐模型许可。
 
 ## tx 环境
 
@@ -50,8 +50,9 @@
 **google/tcmalloc**（HEAD 7aaa4776b419，仓库无版本标签）
 - 〔事实〕Bazel 9.3.1（bazelisk 默认）：依赖 aspect_bazel_lib 与 Bazel 9 不兼容，分析阶段失败。
 - 〔事实〕Bazel 8.4.2：protobuf 与 abseil 的兼容级别冲突，依赖解析失败。
-- 〔事实〕实验性 CMake：能配置，并编完 abseil、protobuf 等依赖；但在 tcmalloc 自己的 `mock_huge_page_static_forwarder.h:306` 处 gcc 13 报错（forming pointer to reference type），exit 2。
-- 结论：该提交在 tx 上三条构建路径都不通。建议 S4 只用 gperftools 版 tcmalloc；若要 google/tcmalloc，需另找可构建的旧提交，由所有者决定。
+- 〔事实〕实验性 CMake：能配置并编完依赖。全量构建失败在**测试程序** `huge_page_aware_allocator_test`：其中 `mock_huge_page_static_forwarder.h:306` 的自定义分配器被 abseil `raw_hash_set::insert(T&&)` 的模板替换以 `T = PageId&` 实例化，gcc 13 把“指向引用的指针”当硬错误（上游 CI 用 clang，因此没暴露）。库本身不受影响。
+- 〔事实〕修复（2026-10-24）：不做全量构建，只构建 `tcmalloc_tcmalloc` 与 `tcmalloc_testing_hello_main` 两个目标，exit 0；hello_main 运行时通过 tcmalloc 自己的 MallocExtension 打印出 heap size，说明分配确实走了 tcmalloc。
+- 结论：google/tcmalloc 可用，纳入 S4，仅 tx。结果表头写 `tcmalloc-google@7aaa4776b419`，与 `tcmalloc-gperftools` 区分。它只能静态链接，不能 LD_PRELOAD，适配方式在第 2 阶段确定。
 
 ## luowindows
 
@@ -65,9 +66,15 @@
 - 〔事实〕大页：`VirtualAlloc(MEM_LARGE_PAGES)` 失败，错误 1314（缺 SeLockMemoryPrivilege），最小大页 2 MiB。需要所有者决定是否授予该权限（Home 版没有 secpol.msc）。
 - 〔事实〕当前电源计划为“平衡”。按方案只在测量期间切到高性能，结束后恢复。
 
-## 待所有者决定
+## 第 1 阶段检查点的决定（所有者，2026-10-24）
 
-1. google/tcmalloc 是否纳入（结果见下）。
-2. glTF 的 9 个受限许可模型：是否只用于大小统计。
-3. Windows 大页：是否授予 SeLockMemoryPrivilege；不授予则 S5 的 Windows 大页组列为不可行。
-4. tx swap：第 5 阶段正式实验前再确认关闭时机（本阶段不需要）。
+1. google/tcmalloc：要求尽量修好；已修好（见上），纳入。
+2. glTF 受限许可模型：个人非商业用途，全部可用，不再分发。
+3. 方案数字与实测不一致：以实测为准。
+4. luowindows：偶尔关机属正常；连不上时告知所有者开机。
+5. Windows 大页：授权脚本 `scripts/windows/lock-memory-privilege.ps1`（Status / Grant / Revoke），只读 Status 已验证可运行，当前 `LUOWINDOWS\shnh2` 未拥有该权限。是否授予待所有者执行或授权。授予后，S5 的程序还须在进程内用 AdjustTokenPrivileges 启用该权限才能申请大页。
+6. tx swap：第 5 阶段正式实验前再确认关闭时机。
+
+## Tracy
+
+- 〔事实〕v0.14.1（30997d5ca6bb）LICENSE 为 3 条款 BSD，可用。

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-最后更新：2026-10-09（北京时间）
+最后更新：2026-10-24（北京时间）
 
 本文件为在本仓库工作的编码 agent 提供指引（Claude Code 读 `CLAUDE.md`、Codex 读 `AGENTS.md`，两者都指向这里）。
 
@@ -11,6 +11,44 @@
 三个月求职计划六项目之一（原编号 ⑤），对应岗位 **02**（腾讯《灰境行者》游戏引擎开发，通用向）。总计划见 [workplan-docs](https://github.com/luckyrichor/workplan-docs)。
 
 **当前状态：L1 / L2 / L3 核心均由 Codex 实现，已取消用户手写 TODO。当前验证、测量与边界见 docs/status.md；历史记录不代表当前分工。**
+
+**2026-10-23 起按《engine-core-labs 面试级完善方案》推进（Claude Code 主导），进度见下一节。**
+
+## 面试级完善方案：当前进度（交接）
+
+方案原文：[`docs/engine-core-labs 面试级完善方案.md`](docs/engine-core-labs%20面试级完善方案.md)（所有者 2026-10-18 定稿）。共 9 个阶段、8 条优化故事 S1–S8。**强制检查点**只有三处：第 1 阶段结束后；第 5 阶段正式实验前，以及每次需要关 swap 的实验前；第 9 阶段结束后。其余阶段做完直接进入下一阶段，只在 docs/progress.md 追加记录。
+
+| 阶段 | 状态 |
+|---|---|
+| 1 核验 | **已完成**（2026-10-23/24），检查点已过，所有者决定见 docs/phase1-verification.md |
+| 2 基础设施（负载生成器、外部基线适配层、结果格式、一键重跑） | 下一步，未开始 |
+| 3–9 | 未开始 |
+
+**第 1 阶段已验证的事实**（详见 docs/phase1-verification.md）
+- 基线提交 c7ca348 与方案一致；Release ctest 11/11。
+- Bistro_v5_2.zip 已下载校验（SHA256 写在 `scripts/data/fetch_bistro.sh`）；FBX 用 ufbx v0.23.1 解析。
+- glTF Sample Assets@8f49239，150 个模型全部可用（个人非商业用途，不再分发）。
+- 外部库版本固定在 [`third_party/versions.md`](third_party/versions.md)，两台机器都从源码构建。google/tcmalloc 只能构建 `tcmalloc_tcmalloc` 目标（全量构建的一个测试在 gcc 13 下报错）。
+- luowindows：性能核为逻辑线程 0–15，能效核 16–31；CMake 用 VS2022 自带的 3.31.6；UE 对照目录 `E:\engine-core-labs-ue5-comparison`；Windows 缺页用 `GetProcessMemoryInfo().PageFaultCount`。
+
+**数据与第三方源码的位置（不进仓库）**：`$ECL_DATA`，默认 `~/data/engine-core-labs`（tx）。其下有 `bistro/`（zip、SHA256SUMS、manifest、extracted/）、`gltf-sample-assets/`、`third_party/`（ufbx、assimp、tcmalloc-src、tcmalloc-cmake、bazelisk）、`inventory/`、`logs/`。Windows 临时目录 `E:\ecl-scratch`。
+
+**下一步（按顺序）**
+1. 第 2 阶段：按方案 D 节与附录 B，实现负载描述文件与生成器（同指纹字节级一致，带独立答案）、外部基线适配层（先接 oneTBB、Taskflow、各分配器）、统一的 raw.csv / summary.csv / device.json 格式与汇总脚本（“无显著提升”判定只在一处定义）、一键重跑脚本。验收：同指纹字节一致；外部库与自研实现通过同一校验；现有 11/11 测试仍通过。
+2. 第 3 阶段起逐条做故事，每条九项齐全，按 A 节规则重复、配对、测 A/A。
+
+**待所有者决定**
+- Windows 大页：是否授予 SeLockMemoryPrivilege（脚本 `scripts/windows/lock-memory-privilege.ps1`，已有 Status/Grant/Revoke）。未授予前，S5 的 Windows 大页组不能做。
+- tx swap：第 5 阶段正式实验前，由所有者决定何时临时关闭，实施者不得自行关闭。
+
+**已知坑**
+- 后台长任务要用 `systemd-run --user`（tx 已开 Linger），否则飞书 bridge 一轮结束时会连同子进程一起回收。
+- luowindows 偶尔关机属正常；SSH 连不上时告知所有者开机，不要改网络配置。
+- PowerShell 脚本保持纯 ASCII（PS 5.1 读非 ASCII 的 .ps1 需要 BOM）；经 SSH 传长命令用 `-EncodedCommand`（UTF-16LE base64）。
+- SSH 会话里 `$env:USERDOMAIN` 不一定与账号对应，取当前身份用 `WindowsIdentity::GetCurrent()`。
+- tx 上 perf 硬件计数器不可信，只用软件事件。
+
+**飞书文档**：我的文档库 › WorkPlan › engine-core-labs（链接见本节末尾，创建后补）。
 
 ## 分工模式：实现与原理说明
 
@@ -92,3 +130,9 @@ bash workplan-docs/scripts/run-on-tx.sh agent-memory 'docker compose up -d postg
 | 岗位要求本身 | `workplan-docs/岗位要求原文.md`（唯一事实来源，不要在别处改写） |
 
 写进「环境与踩坑记录」时，用 **［实测］**／**［预警］** 标注区分「已验证的事实」和「未触发的已知风险」，不要把推断写成结论。
+
+## 更新日志
+
+- 2026-10-24 Claude Code：第 1 阶段检查点处理（tcmalloc 修复、许可决定、Windows 大页脚本）；新增“面试级完善方案：当前进度”交接节。
+- 2026-10-23 Claude Code：第 1 阶段核验完成。
+- 2026-10-09：分工改为算法全部由助手完成。

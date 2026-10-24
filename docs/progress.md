@@ -8,6 +8,14 @@
 
 ---
 
+## 2026-10-24 第 1 阶段检查点处理（Claude Code）
+
+所有者决定：google/tcmalloc 尽量修好；glTF 受限许可模型个人非商业用途全部可用；方案数字以实测为准；luowindows 连不上时告知所有者开机。
+
+google/tcmalloc 全量 CMake 构建失败的原因查明：只坏在测试 huge_page_aware_allocator_test，gcc 13 把 abseil insert(T&&) 替换出的 `PageId&*` 当硬错误。改为只构建 tcmalloc_tcmalloc 与 hello_main，exit 0，hello_main 输出的 heap size 来自 tcmalloc 自身统计，确认生效，纳入 S4（仅 tx，静态链接）。Tracy v0.14.1 许可为 BSD-3-Clause。
+
+新增 scripts/windows/lock-memory-privilege.ps1（调用 LSA API 授予或撤销 SeLockMemoryPrivilege，家庭版无 secpol.msc）。第一次 Status 失败（SSH 会话里 USERDOMAIN 与账号不符，IdentityNotMappedException），改为默认取当前身份 SID 后通过；当前未授予，等所有者决定，未改动 Windows 设置。
+
 ## 2026-10-23 面试级方案第 1 阶段：核验（Claude Code）
 
 来源 engine-core-labs@c7ca348，与方案附录 A 基线一致；tx 上 Release ctest 11/11。方案原文存入 docs/，逐项结果见 docs/phase1-verification.md。原始数据与库源码放仓库外 `~/data/engine-core-labs`；仓库只保存下载脚本、校验和与统计。
