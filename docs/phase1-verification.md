@@ -50,7 +50,8 @@
 **google/tcmalloc**（HEAD 7aaa4776b419，仓库无版本标签）
 - 〔事实〕Bazel 9.3.1（bazelisk 默认）：依赖 aspect_bazel_lib 与 Bazel 9 不兼容，分析阶段失败。
 - 〔事实〕Bazel 8.4.2：protobuf 与 abseil 的兼容级别冲突，依赖解析失败。
-- 〔事实〕实验性 CMake：可以配置，会下载并编译 abseil、protobuf、antlr 等整套依赖，构建结果见下方“未决”。
+- 〔事实〕实验性 CMake：能配置，并编完 abseil、protobuf 等依赖；但在 tcmalloc 自己的 `mock_huge_page_static_forwarder.h:306` 处 gcc 13 报错（forming pointer to reference type），exit 2。
+- 结论：该提交在 tx 上三条构建路径都不通。建议 S4 只用 gperftools 版 tcmalloc；若要 google/tcmalloc，需另找可构建的旧提交，由所有者决定。
 
 ## luowindows
 
@@ -70,7 +71,3 @@
 2. glTF 的 9 个受限许可模型：是否只用于大小统计。
 3. Windows 大页：是否授予 SeLockMemoryPrivilege；不授予则 S5 的 Windows 大页组列为不可行。
 4. tx swap：第 5 阶段正式实验前再确认关闭时机（本阶段不需要）。
-
-## 未决
-
-- google/tcmalloc 的 CMake 构建结果：见 docs/progress.md 本阶段条目的最终记录。
