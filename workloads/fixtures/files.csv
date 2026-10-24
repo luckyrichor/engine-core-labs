@@ -1,0 +1,4 @@
+path,bytes,extension,model
+mesh.bin,4,.bin,fixture
+model.gltf,107,.gltf,fixture
+texture.txt,30,.txt,fixture

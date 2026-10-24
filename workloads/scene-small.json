@@ -1,0 +1,23 @@
+{
+  "name": "scene-small",
+  "kind": "aabb_scene",
+  "dataset": {
+    "name": "synthetic",
+    "version": "1",
+    "checksum": "synthetic"
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "distribution": "clustered",
+    "extent_ticks": 2048,
+    "max_size_ticks": 512,
+    "grid_spacing": 100
+  },
+  "seed": 42,
+  "scale": 64,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "constructive-small",
+  "kind": "constructive",
+  "dataset": {
+    "name": "synthetic",
+    "version": "1",
+    "checksum": "synthetic"
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "layout": "false-sharing-positive-control"
+  },
+  "seed": 42,
+  "scale": 1,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}

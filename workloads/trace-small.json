@@ -1,0 +1,22 @@
+{
+  "name": "trace-small",
+  "kind": "alloc_trace",
+  "dataset": {
+    "name": "synthetic",
+    "version": "1",
+    "checksum": "synthetic"
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "threads": 2,
+    "batch": 8,
+    "max_size": 1024
+  },
+  "seed": 42,
+  "scale": 32,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}

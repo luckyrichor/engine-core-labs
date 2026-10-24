@@ -21,3 +21,9 @@ find_package(Python3 3.12 COMPONENTS Interpreter REQUIRED)
 add_test(NAME bench_unittest
   COMMAND ${Python3_EXECUTABLE} -m unittest discover -s bench/tests -v)
 set_tests_properties(bench_unittest PROPERTIES WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+
+add_executable(workload_reader_test bench/tests/workload_reader.cpp)
+target_include_directories(workload_reader_test PRIVATE "${CMAKE_SOURCE_DIR}/experiments/common")
+add_test(NAME bench_workload_cpp
+  COMMAND ${Python3_EXECUTABLE} -m bench.tests.test_workload_cpp $<TARGET_FILE:workload_reader_test>)
+set_tests_properties(bench_workload_cpp PROPERTIES WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")

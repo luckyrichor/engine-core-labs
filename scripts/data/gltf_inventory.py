@@ -6,7 +6,7 @@ models without such an annotation are reported as "unannotated" rather than
 inheriting the repository-wide default, because licenses differ per model.
 
 Usage: gltf_inventory.py <checkout> <out_dir>
-Writes models.csv, extensions.csv and summary.json into out_dir.
+Writes models.csv, extensions.csv, summary.json and additional files.csv into out_dir.
 """
 import csv
 import json
@@ -45,6 +45,7 @@ def main() -> None:
     licenses = model_licenses(root)
 
     rows, ext_count, ext_bytes, file_sizes = [], Counter(), Counter(), []
+    file_rows = []
     for model in sorted(p for p in (root / "Models").iterdir() if p.is_dir()):
         files = [f for f in model.rglob("*") if f.is_file()]
         size = sum(f.stat().st_size for f in files)
@@ -53,6 +54,8 @@ def main() -> None:
             ext_count[ext] += 1
             ext_bytes[ext] += f.stat().st_size
             file_sizes.append(f.stat().st_size)
+            file_rows.append({"path": f.relative_to(root).as_posix(),
+                              "bytes": f.stat().st_size, "extension": ext, "model": model.name})
         lic = licenses.get(model.name)
         rows.append({"model": model.name, "files": len(files), "bytes": size,
                      "license": ";".join(sorted(set(lic))) if lic else "unannotated"})
@@ -66,6 +69,12 @@ def main() -> None:
         w.writerow(["extension", "files", "bytes"])
         for ext, n in ext_count.most_common():
             w.writerow([ext, n, ext_bytes[ext]])
+
+    with open(out_dir / "files.csv", "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=["path", "bytes", "extension", "model"],
+                           lineterminator="\n")
+        w.writeheader()
+        w.writerows(sorted(file_rows, key=lambda row: row["path"]))
 
     model_sizes = sorted(r["bytes"] for r in rows)
     file_sizes.sort()

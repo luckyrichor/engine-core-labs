@@ -1,0 +1,24 @@
+{
+  "name": "tasks-small",
+  "kind": "task_costs",
+  "dataset": {
+    "name": "synthetic",
+    "version": "1",
+    "checksum": "synthetic"
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "distribution": "two_tier",
+    "light": 10,
+    "heavy": 1000,
+    "heavy_numerator": 1,
+    "heavy_denominator": 10
+  },
+  "seed": 42,
+  "scale": 2000,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}

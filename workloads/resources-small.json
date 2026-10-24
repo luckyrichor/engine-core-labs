@@ -1,0 +1,26 @@
+{
+  "name": "resources-small",
+  "kind": "resource_manifest",
+  "dataset": {
+    "name": "local-fixture",
+    "version": "1",
+    "checksum": {
+      "fixtures/files.csv": "96c85d4405d80f4b7981c76d63cda73653fb90c1455a599778fa229b6ea6a16a"
+    }
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "files_csv": "fixtures/files.csv",
+    "root": "fixtures",
+    "content_checksums": {
+      "model.gltf": "952d72bac3928ff2b90f8720a4c28bc4750f469db31930ef8eddd4e2d01efcdd"
+    }
+  },
+  "seed": 42,
+  "scale": 3,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}
