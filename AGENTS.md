@@ -48,7 +48,10 @@
 - SSH 会话里 `$env:USERDOMAIN` 不一定与账号对应，取当前身份用 `WindowsIdentity::GetCurrent()`。
 - tx 上 perf 硬件计数器不可信，只用软件事件。
 
-**飞书文档**：我的文档库 › WorkPlan › engine-core-labs（链接见本节末尾，创建后补）。
+**飞书文档**（我的文档库 › WorkPlan › engine-core-labs：线程调度、内存分配与资源加载实验）
+- 项目节点（Codex 2026-10-13 写的旧介绍，不改）：https://kcn0pbn0hwo0.feishu.cn/wiki/GdU8webePivmECkXi1icCqgCnsh
+- engine-core-labs 项目概览（2026-10-24）：https://kcn0pbn0hwo0.feishu.cn/wiki/EktVwBcJBiEk0qkfrhLckJoWnjf
+- engine-core-labs 开发记录（每次同步在文末追加一节）：https://kcn0pbn0hwo0.feishu.cn/wiki/IJ3swdgKAigHlUkY1WTcspQ0nVB
 
 ## 分工模式：实现与原理说明
 
@@ -133,6 +136,6 @@ bash workplan-docs/scripts/run-on-tx.sh agent-memory 'docker compose up -d postg
 
 ## 更新日志
 
-- 2026-10-24 Claude Code：第 1 阶段检查点处理（tcmalloc 修复、许可决定、Windows 大页脚本）；新增“面试级完善方案：当前进度”交接节。
+- 2026-10-24 Claude Code：飞书建项目概览与开发记录；第 1 阶段检查点处理（tcmalloc 修复、许可决定、Windows 大页脚本）；新增“面试级完善方案：当前进度”交接节。
 - 2026-10-23 Claude Code：第 1 阶段核验完成。
 - 2026-10-09：分工改为算法全部由助手完成。
