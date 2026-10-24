@@ -27,8 +27,8 @@ int main() {
 // Stress both policies with identity checks, multi-producer submission, repeated
 // pause/resume barriers and closed submission. No timing-dependent success test.
 void executor_contracts(){
-  for(bool steal:{false,true}) {
-   engine_labs::JobSystem pool(4,steal,true);
+  for(bool steal:{false,true}) for(bool conditional:{false,true}) {
+   engine_labs::JobSystem pool(4,steal,true,conditional);
    std::vector<std::atomic<int>> seen(4000);
    std::vector<std::thread> producers;
    for(int p=0;p<4;++p)producers.emplace_back([&,p]{for(int i=0;i<1000;++i){int id=p*1000+i;pool.submit([&,id]{++seen[id];},0);}});

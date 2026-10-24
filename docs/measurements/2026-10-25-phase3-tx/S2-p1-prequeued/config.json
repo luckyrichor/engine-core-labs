@@ -1,0 +1,148 @@
+{
+  "story": "S2-p1-prequeued",
+  "baseline": "legacy",
+  "rounds": 10,
+  "warmup_rounds": 1,
+  "mode": "prequeued",
+  "threads": [
+    4
+  ],
+  "compiler": [
+    "c++",
+    "--version"
+  ],
+  "compile_options": [
+    "Release",
+    "-O3",
+    "-DNDEBUG",
+    "C++20"
+  ],
+  "dataset_checksums": {
+    "cost_histogram": "f591fb85ec05d731edc982461f1099980ecc32fb451e7663317b0a40be6443ca",
+    "BistroInterior.fbx": "f18aea42854112e59752f14596e557c3d011e3526caf6a1bd55ce0e51881c11e"
+  },
+  "external_libraries": {
+    "Taskflow-v4.1.0": {
+      "name": "Taskflow",
+      "tag": "v4.1.0",
+      "commit": "45366fe5bc4f2f8ec9aa590b40c504e296886865",
+      "build_type": "Release",
+      "release_flags": {
+        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG"
+      },
+      "options": [
+        "-DTF_BUILD_TESTS=OFF",
+        "-DTF_BUILD_EXAMPLES=OFF",
+        "-DTF_BUILD_BENCHMARKS=OFF"
+      ],
+      "source": "/home/ubuntu/data/engine-core-labs/third_party/src/Taskflow",
+      "build": "/home/ubuntu/data/engine-core-labs/third_party/build/Taskflow-v4.1.0",
+      "install": "/home/ubuntu/data/engine-core-labs/third_party/install/Taskflow-v4.1.0",
+      "jobs": 2,
+      "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "dependencies": {},
+      "build_tools": {
+        "packages": [
+          "autoconf=2.71-3",
+          "automake=1:1.16.5-1.3ubuntu1",
+          "libtool=2.4.7-7build1",
+          "m4=1.4.19-4build1",
+          "autotools-dev=20220109.1"
+        ],
+        "root": "/home/ubuntu/data/engine-core-labs/build-tools/root",
+        "sha256": {
+          "autoconf_2.71-3_all.deb": "cc3f9f7a1e576173fb59c36652c0a67c6426feae752b352404ba92dfcb1b26c9",
+          "automake_1%3a1.16.5-1.3ubuntu1_all.deb": "5ae9a98e73545002cd891f028859941af2a3c760cb6190e635c7ef36953912de",
+          "autotools-dev_20220109.1_all.deb": "d909f0327b09d9a9136239caca975df89782fa28efd721c4eb4caea422d3fc5a",
+          "libtool_2.4.7-7build1_all.deb": "9d1d707179675d38e024bb13613b1d99e0d33fa6c45e5f3bcba19340781781d3",
+          "m4_1.4.19-4build1_amd64.deb": "30ea715845a1863abd55d11e47ab91513130bf347852d4cdeae69e9d98fa795c"
+        }
+      },
+      "built_at": "2026-10-24T13:54:00.685389+00:00"
+    },
+    "oneTBB-v2023.1.0": {
+      "name": "oneTBB",
+      "tag": "v2023.1.0",
+      "commit": "3046c8b0c29df995980003ea24f4d78c80ec0c8d",
+      "build_type": "Release",
+      "release_flags": {
+        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG",
+        "CMAKE_C_FLAGS_RELEASE": "-O3 -DNDEBUG"
+      },
+      "options": [
+        "-DTBB_TEST=OFF"
+      ],
+      "source": "/home/ubuntu/data/engine-core-labs/third_party/src/oneTBB",
+      "build": "/home/ubuntu/data/engine-core-labs/third_party/build/oneTBB-v2023.1.0",
+      "install": "/home/ubuntu/data/engine-core-labs/third_party/install/oneTBB-v2023.1.0",
+      "jobs": 2,
+      "compiler": "c++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "dependencies": {},
+      "build_tools": {
+        "packages": [
+          "autoconf=2.71-3",
+          "automake=1:1.16.5-1.3ubuntu1",
+          "libtool=2.4.7-7build1",
+          "m4=1.4.19-4build1",
+          "autotools-dev=20220109.1"
+        ],
+        "root": "/home/ubuntu/data/engine-core-labs/build-tools/root",
+        "sha256": {
+          "autoconf_2.71-3_all.deb": "cc3f9f7a1e576173fb59c36652c0a67c6426feae752b352404ba92dfcb1b26c9",
+          "automake_1%3a1.16.5-1.3ubuntu1_all.deb": "5ae9a98e73545002cd891f028859941af2a3c760cb6190e635c7ef36953912de",
+          "autotools-dev_20220109.1_all.deb": "d909f0327b09d9a9136239caca975df89782fa28efd721c4eb4caea422d3fc5a",
+          "libtool_2.4.7-7build1_all.deb": "9d1d707179675d38e024bb13613b1d99e0d33fa6c45e5f3bcba19340781781d3",
+          "m4_1.4.19-4build1_amd64.deb": "30ea715845a1863abd55d11e47ab91513130bf347852d4cdeae69e9d98fa795c"
+        }
+      },
+      "built_at": "2026-10-24T13:53:59.022334+00:00"
+    }
+  },
+  "timeout_seconds": 90,
+  "workload_files": [
+    "/home/ubuntu/project/WorkPlan/engine-core-labs/workloads/phase3/real-100000.json"
+  ],
+  "output_dir": "/home/ubuntu/project/WorkPlan/engine-core-labs/docs/measurements/2026-10-25-phase3-tx/S2-p1-prequeued",
+  "implementations": [
+    {
+      "name": "legacy",
+      "command": [
+        "/home/ubuntu/data/engine-core-labs/build-phase3/experiments/l1-job-system/phase3/phase3_bench",
+        "--meta",
+        "/home/ubuntu/data/engine-core-labs/phase3/workloads/{workload_name}/{workload_name}.meta.json",
+        "--impl",
+        "legacy",
+        "--threads",
+        "{threads}",
+        "--mode",
+        "{mode}",
+        "--fingerprint",
+        "{workload_fingerprint}",
+        "--producers",
+        "1",
+        "--block",
+        "1"
+      ]
+    },
+    {
+      "name": "sleepers",
+      "command": [
+        "/home/ubuntu/data/engine-core-labs/build-phase3/experiments/l1-job-system/phase3/phase3_bench",
+        "--meta",
+        "/home/ubuntu/data/engine-core-labs/phase3/workloads/{workload_name}/{workload_name}.meta.json",
+        "--impl",
+        "sleepers",
+        "--threads",
+        "{threads}",
+        "--mode",
+        "{mode}",
+        "--fingerprint",
+        "{workload_fingerprint}",
+        "--producers",
+        "1",
+        "--block",
+        "1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "groups": 13,
+  "raw_rows": 41940,
+  "invalid_rows": 0,
+  "invalid_executions": 0,
+  "invalid_reasons": [],
+  "source_hashes": [
+    "5d01e5cbb103ef40ecd03c6bb44bb19a44c2562c15a75bcaabad5bfe1e9081af"
+  ],
+  "current_source_hash": "5d01e5cbb103ef40ecd03c6bb44bb19a44c2562c15a75bcaabad5bfe1e9081af",
+  "workload_fingerprints": {
+    "real-100000": "bc4582301823149d",
+    "uniform-100000": "ea4cc170246c38ba",
+    "real-1000000": "81d86943c6cb5c7a",
+    "grain-64": "5ee309ac9b93827a",
+    "grain-256": "58b236a345bc537a",
+    "grain-1024": "fdcfac7fd7d292c6",
+    "grain-4096": "62e87113fefba5b8",
+    "grain-16384": "94b0cf564ef4c10b",
+    "grain-65536": "c0a9ddf248cf5f61",
+    "grain-262144": "35b11c0dceba6b8c",
+    "grain-524288": "f434a5d44ad35704"
+  },
+  "minimum_valid_throughput_rounds": 10,
+  "stub_rows": 0
+}

@@ -1,0 +1,47 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 979  of event 'cpu-clock'
+# Event count (approx.): 1961923832
+#
+# Overhead  Command       Shared Object         Symbol
+# ........  ............  ....................  ....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+#
+    23.70%  phase3_bench  phase3_bench          [.] engine_labs::phase3::work(unsigned long, unsigned int)
+     8.27%  phase3_bench  libc.so.6             [.] pthread_mutex_lock
+     7.87%  phase3_bench  phase3_bench          [.] std::thread::_State_impl<std::thread::_Invoker<std::tuple<main::{lambda()#1}> > >::_M_run()
+     6.74%  phase3_bench  phase3_bench          [.] engine_labs::JobSystem::run(unsigned long)
+     3.68%  phase3_bench  phase3_bench          [.] std::_Function_handler<void (), engine_labs::JobSystem::submit(std::function<void ()>, std::optional<unsigned long>, engine_labs::SubmissionTiming*)::{lambda()#2}>::_M_invoke(std::_Any_data const&)
+     3.58%  phase3_bench  [kernel.kallsyms]     [k] futex_wake
+     2.55%  phase3_bench  libc.so.6             [.] 0x00000000000a9d41
+     2.04%  phase3_bench  libc.so.6             [.] 0x00000000000a1fda
+     2.04%  phase3_bench  phase3_bench          [.] ecl::workload::sha256[abi:cxx11](std::vector<unsigned char, std::allocator<unsigned char> > const&)
+     1.94%  phase3_bench  [kernel.kallsyms]     [k] _raw_spin_unlock_irqrestore
+     1.84%  phase3_bench  [kernel.kallsyms]     [k] do_syscall_64
+     1.84%  phase3_bench  libc.so.6             [.] pthread_mutex_unlock
+     1.74%  phase3_bench  libc.so.6             [.] malloc
+     1.63%  phase3_bench  [kernel.kallsyms]     [k] finish_task_switch.isra.0
+     1.33%  phase3_bench  libc.so.6             [.] 0x00000000000a9ce6
+     1.33%  phase3_bench  phase3_bench          [.] std::future<void>::get()
+     1.12%  phase3_bench  libc.so.6             [.] cfree
+     1.12%  phase3_bench  libc.so.6             [.] pthread_rwlock_unlock
+     1.02%  phase3_bench  [kernel.kallsyms]     [k] _raw_spin_lock
+     0.92%  phase3_bench  phase3_bench          [.] ecl::workload::read_bytes(std::filesystem::__cxx11::path const&)
+     0.82%  phase3_bench  libc.so.6             [.] 0x00000000000a9be1
+     0.72%  phase3_bench  [kernel.kallsyms]     [k] futex_hash
+     0.61%  phase3_bench  [kernel.kallsyms]     [k] clear_page_rep
+     0.61%  phase3_bench  [kernel.kallsyms]     [k] irqentry_exit_to_user_mode
+     0.61%  phase3_bench  libc.so.6             [.] 0x00000000000a1f78
+     0.61%  phase3_bench  libc.so.6             [.] 0x00000000000a9bdb
+     0.61%  phase3_bench  phase3_bench          [.] std::_Function_handler<void (), main::{lambda()#1}::operator()() const::{lambda()#1}>::_M_invoke(std::_Any_data const&)
+     0.51%  phase3_bench  [kernel.kallsyms]     [k] __x64_sys_futex
+     0.51%  phase3_bench  libc.so.6             [.] pthread_rwlock_rdlock
+     0.51%  phase3_bench  libc.so.6             [.] 0x00000000000a9d75
+     0.51%  phase3_bench  libc.so.6             [.] 0x00000000000abb18
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

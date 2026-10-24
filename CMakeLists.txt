@@ -32,3 +32,4 @@ set(ECL_DATA "$ENV{ECL_DATA}" CACHE PATH "External dataset and third-party root"
 add_subdirectory(tools/bistro-aabb)
 
 add_subdirectory(experiments/common/adapters)
+add_subdirectory(experiments/l1-job-system/phase3)

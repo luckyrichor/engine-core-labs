@@ -1,0 +1,13 @@
+metric,value,unit,better,valid,invalid_reason,stub
+throughput,1435639.4919731242,tasks/s,higher,1,,0
+elapsed_ns,69655370,ns,lower,1,,0
+submitted_tasks,100000,count,lower,1,,0
+submit_ns,69654819,ns,lower,1,,0
+static_imbalance,1.0073743255736713,ratio,lower,1,,0
+submit_batch_p50,34103,ns,lower,1,,0
+submit_batch_p99,1370866,ns,lower,1,,0
+submit_batch_samples,3128,count,higher,1,,0
+profile_gate_ns,5717398,ns,lower,1,,0
+profile_prepare_ns,51655895,ns,lower,1,,0
+profile_enqueue_ns,72164056,ns,lower,1,,0
+profile_wake_ns,84161602,ns,lower,1,,0

@@ -1,0 +1,14 @@
+# started on Sat Oct 24 14:27:22 2026
+
+
+ Performance counter stats for '/home/ubuntu/data/engine-core-labs/build-phase3/experiments/l1-job-system/phase3/phase3_bench --meta /home/ubuntu/data/engine-core-labs/phase3/workloads/real-100000/real-100000.meta.json --impl sleepers --threads 4 --producers 4':
+
+            165.71 msec task-clock                       #    2.008 CPUs utilized
+               883      context-switches                 #    5.329 K/sec
+                18      cpu-migrations                   #  108.623 /sec
+              5564      page-faults                      #   33.577 K/sec
+
+       0.082522444 seconds time elapsed
+
+       0.126959000 seconds user
+       0.040255000 seconds sys

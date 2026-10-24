@@ -2,6 +2,7 @@
 #include "work_queue.hpp"
 #include <atomic>
 #include <condition_variable>
+#include <chrono>
 #include <future>
 #include <memory>
 #include <shared_mutex>
@@ -13,11 +14,12 @@ namespace engine_labs {
 // Mutex deques plus per-worker sleep notifications. Both policies use the same
 // executor; only cross-queue stealing differs. shutdown/wait must be called by
 // an external thread, never by a task waiting for its own completion.
+struct SubmissionTiming { double gate_ns{},prepare_ns{},enqueue_ns{},wake_ns{}; };
 class JobSystem {
-    struct Wake { std::mutex mutex; std::condition_variable cv; std::size_t generation{}; };
+    struct Wake { std::mutex mutex; std::condition_variable cv; std::size_t generation{}; bool sleeping{}; };
 public:
-    explicit JobSystem(std::size_t count, bool stealing=false, bool paused=false)
-      : stealing_(stealing), started_(!paused) {
+    explicit JobSystem(std::size_t count, bool stealing=false, bool paused=false, bool wake_sleepers_only=false)
+      : stealing_(stealing), wake_sleepers_only_(wake_sleepers_only), started_(!paused) {
         if(!count || count>256) throw std::invalid_argument("threads must be 1..256");
         for(std::size_t i=0;i<count;++i) {
             queues_.push_back(std::make_unique<WorkQueue>());
@@ -29,22 +31,29 @@ public:
     ~JobSystem(){shutdown();}
     JobSystem(const JobSystem&)=delete;
     JobSystem& operator=(const JobSystem&)=delete;
-    std::future<void> submit(Job job,std::optional<std::size_t> target=std::nullopt) {
+    std::future<void> submit(Job job,std::optional<std::size_t> target=std::nullopt, SubmissionTiming* timing=nullptr) {
+        using ProfileClock=std::chrono::steady_clock;
+        auto previous=timing ? ProfileClock::now() : ProfileClock::time_point{};
+        auto sample=[&](double& field){auto now=ProfileClock::now();field+=std::chrono::duration<double,std::nano>(now-previous).count();previous=now;};
         // Lifecycle gate excludes shutdown; completion never acquires it.
         std::shared_lock gate(lifecycle_);
+        if(timing)sample(timing->gate_ns);
         if(stopping_.load())throw std::logic_error("pool is closed");
         auto owner=target?*target:next_.fetch_add(1)%queues_.size();
         if(owner>=queues_.size())throw std::out_of_range("target queue");
         auto task=std::make_shared<std::packaged_task<void()>>(std::move(job));
         auto result=task->get_future();
         pending_.fetch_add(1);
+        if(timing)sample(timing->prepare_ns);
         try {queues_[owner]->push([task]{(*task)();});}
         catch(...) {complete();throw;}
+        if(timing)sample(timing->enqueue_ns);
         signal(owner);
         if(stealing_) {
             auto thief=wake_cursor_.fetch_add(1)%queues_.size();
             if(thief!=owner)signal(thief);
         }
+        if(timing)sample(timing->wake_ns);
         return result;
     }
     void pause(){
@@ -70,8 +79,12 @@ public:
 private:
     void signal(std::size_t worker){
         auto& wake=*wakes_[worker];
-        {std::lock_guard lock(wake.mutex);++wake.generation;}
-        wake.cv.notify_one();
+        bool notify;
+        {std::lock_guard lock(wake.mutex);++wake.generation;notify=!wake_sleepers_only_ || wake.sleeping;}
+        // Always publish a generation, even when not notifying: a worker between
+        // scan and wait must see the pending signal in the predicate. sleeping
+        // is set under this same mutex before wait atomically releases it.
+        if(notify)wake.cv.notify_one();
     }
     void complete(){
         if(pending_.fetch_sub(1)==1){
@@ -100,10 +113,12 @@ private:
             if(job){(*job)();complete();continue;}
             std::unique_lock lock(wake.mutex);
             if(stopping_.load() && pending_.load()==0)return;
+            wake.sleeping=true;
             wake.cv.wait(lock,[this,&wake,observed]{return !started_.load() || wake.generation!=observed || (stopping_.load()&&pending_.load()==0);});
+            wake.sleeping=false;
         }
     }
-    bool stealing_;
+    bool stealing_,wake_sleepers_only_;
     std::atomic<bool> started_;
     std::size_t parked_{};
     std::shared_mutex lifecycle_;

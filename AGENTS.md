@@ -1,6 +1,6 @@
 # AGENTS.md
 
-最后更新：2026-10-24（北京时间）
+最后更新：2026-10-25（北京时间）
 
 本文件为在本仓库工作的编码 agent 提供指引（Claude Code 读 `CLAUDE.md`、Codex 读 `AGENTS.md`，两者都指向这里）。
 
@@ -12,7 +12,7 @@
 
 **当前状态：L1 / L2 / L3 核心均由 Codex 实现，已取消用户手写 TODO。当前验证、测量与边界见 docs/status.md；历史记录不代表当前分工。**
 
-**2026-10-23 起按《engine-core-labs 面试级完善方案》推进；2026-10-24 用户明确后续由本人接手，Claude 不再参与。进度见下一节。**
+**2026-10-23 起按《engine-core-labs 面试级完善方案》推进；后续由用户直接安排、Codex 执行，Claude 不再参与。进度见下一节。**
 
 ## 面试级完善方案：当前进度（交接）
 
@@ -22,7 +22,18 @@
 |---|---|
 | 1 核验 | **已完成**（2026-10-23/24），检查点已过，所有者决定见 docs/phase1-verification.md |
 | 2 基础设施（负载生成器、外部基线适配层、结果格式、一键重跑） | A/B/C 已由 Claude 验收并提交；D 已由 Codex 实现并通过 tx 验证（35/35）；用户于 2026-10-24 审核通过，阶段 2 已完成 |
-| 3–9 | 未开始 |
+| 3 L1 故事（S1/S2/S3） | **已完成（2026-10-25）**：Release37/37，自研队列/执行器TSan通过；13组、5940次正式运行、41940指标行，均有效；三条九项故事与曲线齐全 |
+| 4–9 | 未开始 |
+
+**第 3 阶段交接（2026-10-25，Codex 独立执行）**
+- 代码：`experiments/l1-job-system/phase3/` 含 SC 固定容量 Chase-Lev、共用 inbox 调度实验池、逐ID压力测试、核心之外的分块接口、几何成本采集器和统一实验入口；`job_system.hpp` 增加可选提交阶段插桩与默认关闭的条件通知，原默认策略保留。
+- 数据：`docs/datasets/bistro-costs/` 冻结1186真实Bistro网格实例的成本中位数与直方图；16倍时间压缩、整数循环校准后重采样，明确为CPU代理，不是实际引擎吞吐。`workloads/phase3/` 有真实派生10k/100k/1m、均匀控制及8粒度描述。
+- 验证：完整外部Release **37/37**、无跳过；TSan覆盖自研队列、四生产者、末元素竞争、回绕、条件唤醒与暂停恢复/关闭，外部库仅验证Release一致性。精确范围在结果目录的validation/README.md，不能称所有37项均跑过TSan。
+- 结果：`docs/measurements/2026-10-25-phase3-tx/`，13组、5940次正式进程、41940指标行；invalid=0、stub=0，每个吞吐配置10个有效轮次，13组单一源码SHA256与当前实现一致。各组原始CSV、summary、device、配置和复现入口保留。
+- 结论：S1 real100k/4T的Chase预入队1.162倍与A/A重叠，判无显著提升；端到端0.741倍显著变慢。S2六组吞吐/提交p99均无显著改善，条件通知默认仍关闭。S3显示小粒度分块可摊薄开销，但大块使任务数不足时收益消失；不声称通用临界ns。
+- 完整九项故事在 `docs/stories/S1.md`、`S2.md`、`S3.md`；`phase3-method.md` 解释自研实验池与原JobSystem的区别、SC内存序、外部库计时边界、共享VM/A-A噪声与估计量局限。
+- 一键入口：`python3 -m bench.phase3 prepare`；`python3 -m bench.phase3 measure --suite all --output docs/measurements/<新目录>-phase3-tx`；`python3 -m bench.phase3_report <目录>`，图表加 `--plots` 需matplotlib，本轮3.11.2。构建目录 `$ECL_DATA/build-phase3`，TSan `$ECL_DATA/build-phase3-tsan`。
+- 没有关swap或修改perf/ASLR全局设置；profiling只对测试进程使用sudo，TSan只对测试进程setarch -R。Windows/UE未验证，按方案阶段8补测。阶段4尚未启动，后台测量任务已结束。
 
 **第 2 阶段交接（2026-10-24，Codex）**
 - A/B/C 提交分别为 `ef9ded8` / `a452624` / `432370a`；实现由 Codex 完成，Claude 独立验收，证据在 `.agent-tasks/2026-10-24-第2阶段基础设施.md`。旧表“未开始”已过时。
@@ -32,7 +43,7 @@
 - GitHub 直连 SSH 因 fake-IP 地址而关闭；本轮单进程 `GIT_SSH_COMMAND` 通过现有 `127.0.0.1:7890` CONNECT 代理成功，不改 SSH/网络配置。见 baselines.md 的可复制命令。
 - Ubuntu 缺少 autotools 时，脚本将固定版本 Debian 工具包仅解到 `$ECL_DATA/build-tools/`，无 sudo/系统安装。jemalloc 显式使用已核实的标签/提交生成版本字符串；Google 静态链接导出包含传递依赖与 .inc/.def 头文件。
 - 分配回放目前按时间戳串行执行，仅核对 trace 的线程标签；多线程回放留给 S4。Google 构建复用第 1 阶段 CMake 缓存，空机器完整重建仍未支持。
-- **用户验收（2026-10-24）**：用户明确“审核过了，没有问题”，并授权提交和完成阶段 2 收尾。阶段 2 已验收完成；D 由 Codex 实现，验收人为用户，不记作 Claude 验收。Claude 不再参与后续；本轮范围止于阶段 2 归档与发布，不启动第 3 阶段。
+- **用户验收（2026-10-24）**：用户明确“审核过了，没有问题”，并授权提交和完成阶段 2 收尾。阶段 2 已验收完成；D 由 Codex 实现，验收人为用户，不记作 Claude 验收。Claude 不再参与后续；阶段 2 收尾已提交 2c29cd2；2026-10-25 用户进一步授权 Codex 开始阶段 3。
 
 **第 1 阶段已验证的事实**（详见 docs/phase1-verification.md）
 - 基线提交 c7ca348 与方案一致；Release ctest 11/11。
@@ -44,8 +55,8 @@
 **数据与第三方源码的位置（不进仓库）**：`$ECL_DATA`，默认 `~/data/engine-core-labs`（tx）。其下有 `bistro/`（zip、SHA256SUMS、manifest、extracted/）、`gltf-sample-assets/`、`third_party/`（ufbx、assimp、tcmalloc-src、tcmalloc-cmake、bazelisk）、`inventory/`、`logs/`。Windows 临时目录 `E:\ecl-scratch`。
 
 **下一步（按顺序）**
-1. 阶段 2 已通过用户审核，后续从第 3 阶段 S1/S2/S3 开始；实施时间与安排以用户指令为准，不再依赖 Claude。
-2. 第 3 阶段起逐条做故事，每条九项齐全，按 A 节规则重复、配对、测 A/A；Windows 补测与各阶段明确限制继续如实记录。
+1. 阶段3完成；下一阶段为S8伪共享/亲和性（阶段4）。开始前读 `docs/stories/phase3-method.md` 与原方案S8，保持正向对照微基准和软件事件边界。
+2. 后续故事仍须每条九项齐全，按 A 节规则重复、配对、测 A/A；Windows 补测与各阶段明确限制继续如实记录。
 
 **待所有者决定**
 - tx swap：第 5 阶段正式实验前，由所有者决定何时临时关闭，实施者不得自行关闭。
@@ -145,6 +156,8 @@ bash workplan-docs/scripts/run-on-tx.sh agent-memory 'docker compose up -d postg
 写进「环境与踩坑记录」时，用 **［实测］**／**［预警］** 标注区分「已验证的事实」和「未触发的已知风险」，不要把推断写成结论。
 
 ## 更新日志
+
+- 2026-10-25 Codex：完成阶段3 S1/S2/S3；SC Chase-Lev、条件通知候选、分块接口和真实成本采集；Release37/37、TSan自研路径；13组5940次正式运行与三条九项报告，保留负面结果，未进入阶段4。
 
 - 2026-10-24 Codex：用户审核通过阶段 2，授权提交推送；收尾状态同步到 AGENTS、README、status、design-decisions、progress 与飞书开发记录，保留 Windows/串行回放/Google 缓存依赖等已知限制。
 

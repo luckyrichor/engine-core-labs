@@ -1,0 +1,23 @@
+{
+  "name": "real-100000",
+  "kind": "task_costs",
+  "dataset": {
+    "name": "BistroInterior-world-mesh-bounds-costs",
+    "version": "Bistro_v5_2-ufbx0.23.1",
+    "checksum": {
+      "../../docs/datasets/bistro-costs/histogram.json": "f591fb85ec05d731edc982461f1099980ecc32fb451e7663317b0a40be6443ca"
+    }
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "distribution": "histogram",
+    "histogram": "../../docs/datasets/bistro-costs/histogram.json"
+  },
+  "seed": 20261025,
+  "scale": 100000,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}

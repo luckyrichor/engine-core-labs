@@ -1,0 +1,247 @@
+    PID COMMAND         %CPU %MEM
+2798674 codex           12.5  3.2
+2730229 YDService        2.5  0.8
+2754343 python3          1.5  0.2
+2446490 barad_agent      1.0  0.1
+4015006 grafana          0.8  0.9
+ 198477 mihomo           0.7  0.6
+1801407 jaeger-linux     0.7  0.2
+2680545 codex            0.6  2.7
+ 761078 grafana          0.5  1.8
+   1285 dockerd          0.4  1.1
+   1015 containerd       0.4  0.5
+2798666 MainThread       0.4  0.6
+4014601 redis-server     0.4  0.0
+ 760513 mysqld           0.3  5.2
+ 760600 redis-server     0.3  0.0
+1767883 python3          0.3  1.9
+4014817 prometheus       0.2  0.5
+1542258 containerd-shim  0.2  0.1
+4014879 containerd-shim  0.2  0.1
+ 760425 prometheus       0.1  0.4
+4014575 containerd-shim  0.1  0.1
+1811212 MainThread       0.1  5.1
+ 765535 service          0.1  0.1
+1404264 uvicorn          0.1  0.1
+1326133 uvicorn          0.1  0.1
+3757495 python           0.0  0.1
+2446489 barad_agent      0.0  0.1
+ 760489 containerd-shim  0.0  0.1
+ 761052 containerd-shim  0.0  0.1
+ 765315 containerd-shim  0.0  0.1
+ 765511 containerd-shim  0.0  0.1
+ 760572 containerd-shim  0.0  0.1
+ 765411 containerd-shim  0.0  0.1
+1499033 containerd-shim  0.0  0.1
+ 760402 containerd-shim  0.0  0.1
+4014716 otelcol-contrib  0.0  0.3
+1333052 tailscaled       0.0  0.4
+     17 rcu_preempt      0.0  0.0
+1542283 postgres         0.0  0.0
+    326 systemd-journal  0.0  2.0
+1404359 python           0.0  0.6
+2709098 kworker/2:2-eve  0.0  0.0
+   2343 YDLive           0.0  0.1
+2720463 kworker/0:3-mm_  0.0  0.0
+ 849096 MainThread       0.0  1.1
+2782472 kworker/3:0-eve  0.0  0.0
+4014906 postgres         0.0  0.1
+2681351 codex-code-mode  0.0  0.2
+2662200 kworker/3:2-cgr  0.0  0.0
+      1 systemd          0.0  0.1
+1499060 service          0.0  0.1
+2707012 kworker/1:1-mm_  0.0  0.0
+   2615 sh               0.0  0.0
+ 972140 MainThread       0.0  1.1
+2711199 kworker/u8:4-ex  0.0  0.0
+2667025 kworker/0:1-cgr  0.0  0.0
+2603516 kworker/u8:3-fl  0.0  0.0
+2273339 kworker/u8:2-ev  0.0  0.0
+2486120 kworker/u8:0-fl  0.0  0.0
+ 765339 service          0.0  0.1
+ 765437 service          0.0  0.1
+    961 dbus-daemon      0.0  0.0
+    251 jbd2/vda2-8      0.0  0.0
+3458139 python3          0.0  0.3
+   1096 rsyslogd         0.0  0.0
+4014940 docker-proxy     0.0  0.0
+    376 multipathd       0.0  0.3
+2704943 kworker/3:1-eve  0.0  0.0
+     16 ksoftirqd/0      0.0  0.0
+1801383 containerd-shim  0.0  0.0
+     30 ksoftirqd/2      0.0  0.0
+     36 ksoftirqd/3      0.0  0.0
+     24 ksoftirqd/1      0.0  0.0
+4014688 containerd-shim  0.0  0.1
+4014974 containerd-shim  0.0  0.1
+4014792 containerd-shim  0.0  0.1
+     47 kcompactd0       0.0  0.0
+1499100 docker-proxy     0.0  0.0
+   1044 tat_agent        0.0  0.0
+    972 polkitd          0.0  0.0
+    991 udisksd          0.0  0.0
+2680538 MainThread       0.0  0.6
+   1123 systemd          0.0  0.1
+     65 kswapd0          0.0  0.0
+4015015 postgres         0.0  0.0
+    671 systemd-resolve  0.0  0.0
+ 761251 gpx_grafana-lok  0.0  0.0
+4015013 postgres         0.0  0.0
+    985 systemd-logind   0.0  0.0
+ 198456 systemd-network  0.0  0.1
+2446488 barad_agent      0.0  0.0
+4015016 postgres         0.0  0.0
+1300801 gpg-agent        0.0  0.0
+1337689 dbus-daemon      0.0  0.0
+1542371 postgres         0.0  0.0
+4143710 MainThread       0.0  0.1
+   2242 sgagent          0.0  0.0
+    960 cron             0.0  0.0
+     18 migration/0      0.0  0.0
+     23 migration/1      0.0  0.0
+     29 migration/2      0.0  0.0
+     35 migration/3      0.0  0.0
+     50 khugepaged       0.0  0.0
+1542370 postgres         0.0  0.0
+1542368 postgres         0.0  0.0
+1387509 adb              0.0  0.0
+4015012 postgres         0.0  0.0
+    130 kworker/3:1H-kb  0.0  0.0
+   1004 sshd             0.0  0.0
+     76 kworker/0:1H-kb  0.0  0.0
+     64 kworker/1:1H-kb  0.0  0.0
+    156 kworker/2:1H-kb  0.0  0.0
+    398 systemd-udevd    0.0  0.0
+    970 networkd-dispat  0.0  0.1
+ 760546 docker-proxy     0.0  0.0
+3116438 sshd             0.0  0.0
+2391983 nginx            0.0  0.1
+2391982 nginx            0.0  0.1
+2391984 nginx            0.0  0.1
+2391985 nginx            0.0  0.1
+1767882 python3          0.0  0.2
+1801490 docker-proxy     0.0  0.0
+1542327 docker-proxy     0.0  0.0
+1801457 docker-proxy     0.0  0.0
+1801474 docker-proxy     0.0  0.0
+      2 kthreadd         0.0  0.0
+ 765569 docker-proxy     0.0  0.0
+ 765486 docker-proxy     0.0  0.0
+ 761276 gpx_grafana-pro  0.0  0.0
+ 761267 gpx_grafana-ope  0.0  0.0
+ 761262 gpx_grafana-mys  0.0  0.0
+ 761241 gpx_grafana_inf  0.0  0.0
+4014749 docker-proxy     0.0  0.0
+   1074 chronyd          0.0  0.0
+ 761291 gpx_grafana-zip  0.0  0.0
+ 761286 gpx_grafana-tem  0.0  0.0
+ 761281 gpx_grafana_clo  0.0  0.0
+ 761257 gpx_grafana-mss  0.0  0.0
+ 761246 gpx_grafana-jae  0.0  0.0
+ 761236 gpx_grafana-pyr  0.0  0.0
+ 761231 gpx_grafana_pos  0.0  0.0
+ 761225 gpx_grafana_ela  0.0  0.0
+ 760656 docker-proxy     0.0  0.0
+4014637 docker-proxy     0.0  0.0
+ 765470 docker-proxy     0.0  0.0
+ 765388 docker-proxy     0.0  0.0
+ 765373 docker-proxy     0.0  0.0
+4015045 docker-proxy     0.0  0.0
+4014852 docker-proxy     0.0  0.0
+4014766 docker-proxy     0.0  0.0
+ 765586 docker-proxy     0.0  0.0
+     42 khungtaskd       0.0  0.0
+ 761119 docker-proxy     0.0  0.0
+ 760465 docker-proxy     0.0  0.0
+   1127 ModemManager     0.0  0.0
+1499117 docker-proxy     0.0  0.0
+1542372 postgres         0.0  0.0
+4015017 postgres         0.0  0.0
+  27882 upowerd          0.0  0.0
+1542367 postgres         0.0  0.0
+   1078 unattended-upgr  0.0  0.0
+   1033 nginx            0.0  0.0
+ 203980 bash             0.0  0.0
+   1924 login            0.0  0.0
+     69 scsi_eh_0        0.0  0.0
+      3 pool_workqueue_  0.0  0.0
+      4 kworker/R-rcu_g  0.0  0.0
+      5 kworker/R-rcu_p  0.0  0.0
+      6 kworker/R-slub_  0.0  0.0
+      7 kworker/R-netns  0.0  0.0
+     12 kworker/R-mm_pe  0.0  0.0
+     13 rcu_tasks_kthre  0.0  0.0
+     14 rcu_tasks_rude_  0.0  0.0
+     15 rcu_tasks_trace  0.0  0.0
+     19 idle_inject/0    0.0  0.0
+     20 cpuhp/0          0.0  0.0
+     21 cpuhp/1          0.0  0.0
+     22 idle_inject/1    0.0  0.0
+     26 kworker/1:0H-ev  0.0  0.0
+     27 cpuhp/2          0.0  0.0
+     28 idle_inject/2    0.0  0.0
+     32 kworker/2:0H-ev  0.0  0.0
+     33 cpuhp/3          0.0  0.0
+     34 idle_inject/3    0.0  0.0
+     38 kworker/3:0H-ev  0.0  0.0
+     39 kdevtmpfs        0.0  0.0
+     40 kworker/R-inet_  0.0  0.0
+     41 kauditd          0.0  0.0
+     43 oom_reaper       0.0  0.0
+     45 kworker/R-write  0.0  0.0
+     48 ksmd             0.0  0.0
+     51 kworker/R-kinte  0.0  0.0
+     52 kworker/R-kbloc  0.0  0.0
+     53 kworker/R-blkcg  0.0  0.0
+     54 irq/9-acpi       0.0  0.0
+     56 kworker/R-tpm_d  0.0  0.0
+     57 kworker/R-ata_s  0.0  0.0
+     58 kworker/R-md     0.0  0.0
+     59 kworker/R-md_bi  0.0  0.0
+     60 kworker/R-edac-  0.0  0.0
+     61 kworker/R-devfr  0.0  0.0
+     62 watchdogd        0.0  0.0
+     63 kworker/R-quota  0.0  0.0
+     66 ecryptfs-kthrea  0.0  0.0
+     67 kworker/R-kthro  0.0  0.0
+     68 kworker/R-acpi_  0.0  0.0
+     70 kworker/R-scsi_  0.0  0.0
+     71 scsi_eh_1        0.0  0.0
+     72 kworker/R-scsi_  0.0  0.0
+     75 kworker/R-mld    0.0  0.0
+     77 kworker/R-ipv6_  0.0  0.0
+     84 kworker/R-kstrp  0.0  0.0
+     86 kworker/u9:0     0.0  0.0
+     91 kworker/R-crypt  0.0  0.0
+    103 kworker/R-charg  0.0  0.0
+    206 kworker/R-raid5  0.0  0.0
+    252 kworker/R-ext4-  0.0  0.0
+    365 kworker/R-kmpat  0.0  0.0
+    366 kworker/R-kmpat  0.0  0.0
+    510 psimon           0.0  0.0
+    936 kworker/R-cfg80  0.0  0.0
+   1082 chronyd          0.0  0.0
+   1132 (sd-pam)         0.0  0.0
+   1899 agetty           0.0  0.0
+   2917 kworker/R-ib-co  0.0  0.0
+   2918 kworker/R-ib-co  0.0  0.0
+   2919 kworker/R-ib_mc  0.0  0.0
+   2920 kworker/R-ib_nl  0.0  0.0
+ 419334 kworker/R-tls-s  0.0  0.0
+ 760814 kworker/R-dio/o  0.0  0.0
+ 803850 psimon           0.0  0.0
+1138313 kworker/0:0H     0.0  0.0
+1811464 systemd-inhibit  0.0  0.0
+1811466 sleep            0.0  0.0
+2607387 sshd             0.0  0.1
+2607389 sshd             0.0  0.0
+2735699 kworker/2:1-cgr  0.0  0.0
+2738301 kworker/1:0-cgr  0.0  0.0
+2743091 kworker/u8:1-fl  0.0  0.0
+2745610 kworker/0:0      0.0  0.0
+2766671 kworker/u8:5     0.0  0.0
+2766853 kworker/0:2-cgr  0.0  0.0
+2770770 kworker/1:2-eve  0.0  0.0
+2784042 kworker/2:0-eve  0.0  0.0
+2799617 ps               0.0  0.0
+3115964 sshd             0.0  0.1

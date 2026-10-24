@@ -1,6 +1,6 @@
 # engine-core-labs
 
-最后更新：2026-10-24（北京时间）
+最后更新：2026-10-25（北京时间）
 
 游戏引擎非渲染通用模块的可复现实验，对应岗位 02。当前实现和边界见 [一页摘要](docs/status.md)。
 
@@ -27,9 +27,9 @@ build/experiments/l2-allocators/fragmentation_demo
 第 1 阶段核验、第 2 阶段基础设施已完成；阶段 2 于 2026-10-24 通过用户审核。
 新增统一结果格式/判定/运行器、五类确定性负载生成器、Bistro AABB 预处理与独立答案、六个固定版本外部库及调度/分配适配层。
 完整外部 Release 构建 CTest 35/35 通过；默认构建 25 通过、6 项外部库明确跳过。
-这轮验证功能与一致性，未产生新的性能结论。Windows/MSVC 未验证；trace 回放目前串行；Google tcmalloc 依赖第 1 阶段已有 CMake 缓存。
+第2阶段只验证功能与一致性，没有性能结论。Windows/MSVC 未验证；trace 回放目前串行；Google tcmalloc 依赖第 1 阶段已有 CMake 缓存。
 
-入口：[结果与运行器](docs/bench-infrastructure.md)、[负载](docs/workloads.md)、[Bistro 预处理](docs/bistro-aabb.md)、[外部基线与复现](docs/baselines.md)。第 3 阶段尚未开始，当前交接见 [AGENTS.md](AGENTS.md)。
+入口：[结果与运行器](docs/bench-infrastructure.md)、[负载](docs/workloads.md)、[Bistro 预处理](docs/bistro-aabb.md)、[外部基线与复现](docs/baselines.md)。第 3 阶段 S1/S2/S3 已完成：Release37/37、TSan自研路径通过，13组5940次正式运行；[三条故事与数据](docs/measurements/2026-10-25-phase3-tx/README.md)、[S3曲线](docs/measurements/2026-10-25-phase3-tx/s3-speedup.svg)。S1部分策略显著变慢、S2无显著改善，未将候选通知设为默认；S3分块收益有任务数量边界。第4阶段尚未开始，当前交接见 [AGENTS.md](AGENTS.md)。
 
 ## L3 资源加载
 

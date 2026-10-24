@@ -1,0 +1,1 @@
+{"source_sha256":"f18aea42854112e59752f14596e557c3d011e3526caf6a1bd55ce0e51881c11e","ufbx_version":"0.23.1","operation":"world_mesh_bounds_all_vertices","warmup_per_mesh":2,"samples_per_mesh":5,"instances":1186,"ns_per_work_unit":1.8844345,"time_compression":16,"checksum":107076.68363291606}

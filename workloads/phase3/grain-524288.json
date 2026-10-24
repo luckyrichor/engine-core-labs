@@ -1,0 +1,22 @@
+{
+  "name": "grain-524288",
+  "kind": "task_costs",
+  "dataset": {
+    "name": "synthetic-uniform-control",
+    "version": "1",
+    "checksum": "synthetic"
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "distribution": "uniform",
+    "min": 524288,
+    "max": 524288
+  },
+  "seed": 20261025,
+  "scale": 16,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}
