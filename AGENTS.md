@@ -33,7 +33,7 @@
 - 正向微基准4T分行吞吐配对6.327倍（未逐worker绑核）/7.455倍（固定workers），均显著；单线程和冷字段无显著收益；实际队列/计数器/统计块与纯绑核各线程档均无显著吞吐差异，默认布局保留。九项报告`docs/stories/S8.md`明确为tx部分结果。
 - Windows同源快照已准备在`$ECL_DATA/phase4/windows-source.zip`，内含逐文件指纹与真实来源`source-snapshot.json`；仅在tx编辑，Windows只编译/运行。接手前核对快照与当前源码指纹一致，若改代码要重新生成；不要把旧快照当当前HEAD。
 - Windows未连通，2026-10-25已请求开机；保持阶段4进行中，不得把阶段4明确要求的Windows数据一律延期到阶段8。未关闭swap。
-- 飞书待同步：2026-10-25 阶段4 tx代码/测试/1360次测量与Windows离线状态；本轮收尾时追加既有开发记录。
+- 飞书已同步：2026-10-25以codex profile/用户身份追加开发记录revision9，来源engine-core-labs@913de2d；已回读1360次/9520行与Windows待上线内容，并回查仍归档于既有项目节点。链接见下方飞书文档节。
 
 **第 3 阶段交接（2026-10-25，Codex 独立执行）**
 - 代码：`experiments/l1-job-system/phase3/` 含 SC 固定容量 Chase-Lev、共用 inbox 调度实验池、逐ID压力测试、核心之外的分块接口、几何成本采集器和统一实验入口；`job_system.hpp` 增加可选提交阶段插桩与默认关闭的条件通知，原默认策略保留。
