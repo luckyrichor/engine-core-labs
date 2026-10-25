@@ -1,0 +1,50 @@
+{
+  "cache_line": 64,
+  "cache_source": "sysfs-L1-data-coherency_line_size",
+  "counter_offsets": {
+    "packed": [
+      392,
+      288,
+      296,
+      304
+    ],
+    "pending": [
+      512,
+      320,
+      384,
+      392
+    ],
+    "next": [
+      512,
+      288,
+      320,
+      384
+    ],
+    "wake": [
+      512,
+      288,
+      296,
+      320
+    ]
+  },
+  "queue_metadata_bytes": {
+    "packed": 40,
+    "separated": 192
+  },
+  "stats_layout": {
+    "packed": [
+      640,
+      48,
+      544
+    ],
+    "separated": [
+      640,
+      64,
+      576
+    ]
+  },
+  "positive_stride": {
+    "packed": 8,
+    "separated": 64
+  }
+}

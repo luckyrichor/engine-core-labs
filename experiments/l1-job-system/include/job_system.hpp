@@ -1,5 +1,8 @@
 #pragma once
 #include "work_queue.hpp"
+#include "../../common/cache_cell.hpp"
+#include <array>
+#include <cstdint>
 #include <atomic>
 #include <condition_variable>
 #include <chrono>
@@ -15,10 +18,12 @@ namespace engine_labs {
 // executor; only cross-queue stealing differs. shutdown/wait must be called by
 // an external thread, never by a task waiting for its own completion.
 struct SubmissionTiming { double gate_ns{},prepare_ns{},enqueue_ns{},wake_ns{}; };
-class JobSystem {
+template<int PaddedCounter=0>
+class BasicJobSystem {
+    static_assert(PaddedCounter>=0 && PaddedCounter<=3);
     struct Wake { std::mutex mutex; std::condition_variable cv; std::size_t generation{}; bool sleeping{}; };
 public:
-    explicit JobSystem(std::size_t count, bool stealing=false, bool paused=false, bool wake_sleepers_only=false)
+    explicit BasicJobSystem(std::size_t count, bool stealing=false, bool paused=false, bool wake_sleepers_only=false)
       : stealing_(stealing), wake_sleepers_only_(wake_sleepers_only), started_(!paused) {
         if(!count || count>256) throw std::invalid_argument("threads must be 1..256");
         for(std::size_t i=0;i<count;++i) {
@@ -28,9 +33,9 @@ public:
         try {for(std::size_t i=0;i<count;++i)workers_.emplace_back([this,i]{run(i);});if(paused)pause();}
         catch(...) {shutdown();throw;}
     }
-    ~JobSystem(){shutdown();}
-    JobSystem(const JobSystem&)=delete;
-    JobSystem& operator=(const JobSystem&)=delete;
+    ~BasicJobSystem(){shutdown();}
+    BasicJobSystem(const BasicJobSystem&)=delete;
+    BasicJobSystem& operator=(const BasicJobSystem&)=delete;
     std::future<void> submit(Job job,std::optional<std::size_t> target=std::nullopt, SubmissionTiming* timing=nullptr) {
         using ProfileClock=std::chrono::steady_clock;
         auto previous=timing ? ProfileClock::now() : ProfileClock::time_point{};
@@ -55,6 +60,15 @@ public:
         }
         if(timing)sample(timing->wake_ns);
         return result;
+    }
+    void configure_workers(const std::function<void(std::thread::native_handle_type,std::size_t)>& configure) {
+        if(started_.load() || stopping_.load())throw std::logic_error("worker setup requires paused pool");
+        for(std::size_t i=0;i<workers_.size();++i)configure(workers_[i].native_handle(),i);
+    }
+    std::array<std::size_t,4> counter_layout() const {
+        const auto base=reinterpret_cast<std::uintptr_t>(this);
+        return {sizeof(*this),reinterpret_cast<std::uintptr_t>(&pending_)-base,
+                reinterpret_cast<std::uintptr_t>(&next_)-base,reinterpret_cast<std::uintptr_t>(&wake_cursor_)-base};
     }
     void pause(){
         std::unique_lock lock(start_mutex_);started_.store(false);
@@ -124,10 +138,13 @@ private:
     std::shared_mutex lifecycle_;
     std::mutex start_mutex_,idle_mutex_,shutdown_mutex_;
     std::condition_variable start_cv_,idle_;
-    std::atomic<std::size_t> pending_{0},next_{0},wake_cursor_{0};
+    AtomicCell<std::size_t,PaddedCounter==1> pending_{0};
+    AtomicCell<std::size_t,PaddedCounter==2> next_{0};
+    AtomicCell<std::size_t,PaddedCounter==3> wake_cursor_{0};
     std::atomic<bool> stopping_{false};
     std::vector<std::unique_ptr<WorkQueue>> queues_;
     std::vector<std::unique_ptr<Wake>> wakes_;
     std::vector<std::thread> workers_;
 };
+using JobSystem=BasicJobSystem<0>;
 }

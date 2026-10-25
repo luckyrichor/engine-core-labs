@@ -33,3 +33,4 @@ add_subdirectory(tools/bistro-aabb)
 
 add_subdirectory(experiments/common/adapters)
 add_subdirectory(experiments/l1-job-system/phase3)
+add_subdirectory(experiments/l1-job-system/phase4)

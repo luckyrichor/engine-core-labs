@@ -23,7 +23,17 @@
 | 1 核验 | **已完成**（2026-10-23/24），检查点已过，所有者决定见 docs/phase1-verification.md |
 | 2 基础设施（负载生成器、外部基线适配层、结果格式、一键重跑） | A/B/C 已由 Claude 验收并提交；D 已由 Codex 实现并通过 tx 验证（35/35）；用户于 2026-10-24 审核通过，阶段 2 已完成 |
 | 3 L1 故事（S1/S2/S3） | **已完成（2026-10-25）**：Release37/37，自研队列/执行器TSan通过；13组、5940次正式运行、41940指标行，均有效；三条九项故事与曲线齐全 |
-| 4–9 | 未开始 |
+| 4 S8 伪共享/亲和性 | **进行中（2026-10-25）**：可选布局/跨平台绑核与采集入口已实现，Release38/38、TSan定向4/4；tx五组1360次/9520行全有效，Windows离线待开机；不能标记双机验收完成 |
+| 5–9 | 未开始 |
+
+**第 4 阶段交接（进行中，2026-10-25）**
+- 方法与重跑：`docs/stories/phase4-method.md`，`python3 -m bench.phase4 prepare/measure`，`bench.phase4_report`；二进制在`$ECL_DATA/build-phase4`，TSan在`build-phase4-tsan`。
+- 新增`experiments/l1-job-system/phase4/`、`common/cache_cell.hpp`，原执行器/队列/统计池仅增加可选模板布局与启动前线程配置；默认布局保留，原Chase-Lev已对齐。
+- 完整Release38/38、TSan定向4/4；正式tx数据`docs/measurements/2026-10-25-phase4-tx/`：5组、1360次进程、9520行指标，invalid=0/stub=0，各配置10有效轮，两套A/A；源码SHA256 fd1e81c30451b94e58e8a80e3e8e17513ae569522c3a4ed0fdcc98f757989c24。
+- 正向微基准4T分行吞吐配对6.327倍（未逐worker绑核）/7.455倍（固定workers），均显著；单线程和冷字段无显著收益；实际队列/计数器/统计块与纯绑核各线程档均无显著吞吐差异，默认布局保留。九项报告`docs/stories/S8.md`明确为tx部分结果。
+- Windows同源快照已准备在`$ECL_DATA/phase4/windows-source.zip`，内含逐文件指纹与真实来源`source-snapshot.json`；仅在tx编辑，Windows只编译/运行。接手前核对快照与当前源码指纹一致，若改代码要重新生成；不要把旧快照当当前HEAD。
+- Windows未连通，2026-10-25已请求开机；保持阶段4进行中，不得把阶段4明确要求的Windows数据一律延期到阶段8。未关闭swap。
+- 飞书待同步：2026-10-25 阶段4 tx代码/测试/1360次测量与Windows离线状态；本轮收尾时追加既有开发记录。
 
 **第 3 阶段交接（2026-10-25，Codex 独立执行）**
 - 代码：`experiments/l1-job-system/phase3/` 含 SC 固定容量 Chase-Lev、共用 inbox 调度实验池、逐ID压力测试、核心之外的分块接口、几何成本采集器和统一实验入口；`job_system.hpp` 增加可选提交阶段插桩与默认关闭的条件通知，原默认策略保留。
@@ -55,7 +65,7 @@
 **数据与第三方源码的位置（不进仓库）**：`$ECL_DATA`，默认 `~/data/engine-core-labs`（tx）。其下有 `bistro/`（zip、SHA256SUMS、manifest、extracted/）、`gltf-sample-assets/`、`third_party/`（ufbx、assimp、tcmalloc-src、tcmalloc-cmake、bazelisk）、`inventory/`、`logs/`。Windows 临时目录 `E:\ecl-scratch`。
 
 **下一步（按顺序）**
-1. 阶段3完成；下一阶段为S8伪共享/亲和性（阶段4）。开始前读 `docs/stories/phase3-method.md` 与原方案S8，保持正向对照微基准和软件事件边界。
+1. 阶段4正在执行：读 `docs/stories/phase4-method.md`，tx五组10轮+两套A/A已经完成；luowindows SSH超时，已请求用户开机。Windows尚须MSVC构建/契约测试、cacheline与P/E核核验、接电和电源方案恢复、主矩阵及VS CPU采样，双机齐备才能结束阶段4。
 2. 后续故事仍须每条九项齐全，按 A 节规则重复、配对、测 A/A；Windows 补测与各阶段明确限制继续如实记录。
 
 **待所有者决定**
@@ -156,6 +166,8 @@ bash workplan-docs/scripts/run-on-tx.sh agent-memory 'docker compose up -d postg
 写进「环境与踩坑记录」时，用 **［实测］**／**［预警］** 标注区分「已验证的事实」和「未触发的已知风险」，不要把推断写成结论。
 
 ## 更新日志
+
+- 2026-10-25 Codex：阶段4已完成tx实现/验证与5组1360次正式测量；正向微基准有效、实际结构无显著收益，Windows离线待补，阶段4保持进行中。
 
 - 2026-10-25 Codex：完成阶段3 S1/S2/S3；SC Chase-Lev、条件通知候选、分块接口和真实成本采集；Release37/37、TSan自研路径；13组5940次正式运行与三条九项报告，保留负面结果，未进入阶段4。
 

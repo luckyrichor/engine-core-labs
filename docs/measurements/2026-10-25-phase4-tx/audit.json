@@ -1,0 +1,18 @@
+{
+  "groups": [
+    "cold",
+    "counters",
+    "positive",
+    "queue",
+    "stats"
+  ],
+  "raw_rows": 9520,
+  "invalid_rows": 0,
+  "executions": 1360,
+  "stub_rows": 0,
+  "source_hashes": [
+    "fd1e81c30451b94e58e8a80e3e8e17513ae569522c3a4ed0fdcc98f757989c24"
+  ],
+  "invalid_reasons": [],
+  "minimum_valid_throughput_rounds": 10
+}

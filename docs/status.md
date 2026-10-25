@@ -11,6 +11,14 @@ A/B/C 的实现由 Codex 完成、Claude 验收；D 由 Codex 完成、用户审
 
 阶段 2 没有正式性能测量。Windows/MSVC 未验证；分配回放串行；Google tcmalloc 构建复用第 1 阶段缓存。这些边界不视为已完成的跨平台或多线程性能证据。阶段2复现见 [baselines.md](baselines.md)；阶段3最新状态见下一节。
 
+## 阶段4：S8进行中，tx结果已交付（2026-10-25）
+
+可选布局、逐worker亲和性设置与读回、Linux受控窗口软件迁移事件已实现，默认布局不变。完整Release38/38、TSan定向4/4。tx五组1360次正式运行、9520行指标，invalid=0/stub=0，每配置10有效轮及两套A/A；[原始证据](measurements/2026-10-25-phase4-tx/README.md)、[九项S8报告](stories/S8.md)、[方法](stories/phase4-method.md)。
+
+最坏伪共享正向对照4T分行吞吐比值6.327（未逐worker绑核）/7.455（固定workers），均显著提升；单线程及冷字段控制无显著收益。实际队列、三个计数器、统计块和纯绑核的1/2/4/8线程配置均无显著吞吐差异；不把微基准收益外推为执行器收益。原Chase-Lev已经对齐，packed只作为反事实。迁移事件含producer/main，不能解释成缓存失效。
+
+**阶段4未完成**：luowindows离线，已请求用户开机；同源MSVC构建/正确性、缓存行与P/E核、电源恢复、Windows10轮矩阵和Visual Studio CPU采样待补。不能一律延期到阶段8。未进入阶段5，未关闭swap。
+
 ## 阶段3：S1/S2/S3（2026-10-25）
 
 已完成实现与tx验证：Release37/37，自研队列/执行器TSan通过；13组、5940次正式进程运行、41940指标行，invalid=0/stub=0，每配置10个有效轮次。源码指纹全组一致，见[审计与复现](measurements/2026-10-25-phase3-tx/README.md)。

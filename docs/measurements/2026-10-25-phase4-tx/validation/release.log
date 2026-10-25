@@ -1,0 +1,82 @@
+Internal ctest changing into directory: /home/ubuntu/data/engine-core-labs/build-phase4
+Test project /home/ubuntu/data/engine-core-labs/build-phase4
+      Start  1: bench_unittest
+ 1/38 Test  #1: bench_unittest ......................   Passed    8.95 sec
+      Start  2: bench_workload_cpp
+ 2/38 Test  #2: bench_workload_cpp ..................   Passed    0.09 sec
+      Start  3: owner_queue
+ 3/38 Test  #3: owner_queue .........................   Passed    0.00 sec
+      Start  4: workload_contract
+ 4/38 Test  #4: workload_contract ...................   Passed    0.00 sec
+      Start  5: pool_lifecycle
+ 5/38 Test  #5: pool_lifecycle ......................   Passed    0.04 sec
+      Start  6: steal_contract
+ 6/38 Test  #6: steal_contract ......................   Passed    0.01 sec
+      Start  7: benchmark_baseline_smoke
+ 7/38 Test  #7: benchmark_baseline_smoke ............   Passed    0.00 sec
+      Start  8: benchmark_stealing_smoke
+ 8/38 Test  #8: benchmark_stealing_smoke ............   Passed    0.00 sec
+      Start  9: workload_shape
+ 9/38 Test  #9: workload_shape ......................   Passed    0.00 sec
+      Start 10: allocator_boundaries
+10/38 Test #10: allocator_boundaries ................   Passed    0.00 sec
+      Start 11: variable_fragmentation
+11/38 Test #11: variable_fragmentation ..............   Passed    0.00 sec
+      Start 12: cold_payload
+12/38 Test #12: cold_payload ........................   Passed    0.01 sec
+      Start 13: resource_pipeline
+13/38 Test #13: resource_pipeline ...................   Passed    0.01 sec
+      Start 14: bench_aabb_reference
+14/38 Test #14: bench_aabb_reference ................   Passed    3.30 sec
+      Start 15: adapter_scheduler_jobs-steal_1
+15/38 Test #15: adapter_scheduler_jobs-steal_1 ......   Passed    0.06 sec
+      Start 16: adapter_scheduler_jobs-steal_2
+16/38 Test #16: adapter_scheduler_jobs-steal_2 ......   Passed    0.06 sec
+      Start 17: adapter_scheduler_jobs-steal_4
+17/38 Test #17: adapter_scheduler_jobs-steal_4 ......   Passed    0.07 sec
+      Start 18: adapter_scheduler_jobs-no-steal_1
+18/38 Test #18: adapter_scheduler_jobs-no-steal_1 ...   Passed    0.06 sec
+      Start 19: adapter_scheduler_jobs-no-steal_2
+19/38 Test #19: adapter_scheduler_jobs-no-steal_2 ...   Passed    0.06 sec
+      Start 20: adapter_scheduler_jobs-no-steal_4
+20/38 Test #20: adapter_scheduler_jobs-no-steal_4 ...   Passed    0.07 sec
+      Start 21: adapter_scheduler_std-async_1
+21/38 Test #21: adapter_scheduler_std-async_1 .......   Passed    0.06 sec
+      Start 22: adapter_scheduler_std-async_2
+22/38 Test #22: adapter_scheduler_std-async_2 .......   Passed    0.06 sec
+      Start 23: adapter_scheduler_std-async_4
+23/38 Test #23: adapter_scheduler_std-async_4 .......   Passed    0.06 sec
+      Start 24: adapter_scheduler_oneTBB_1
+24/38 Test #24: adapter_scheduler_oneTBB_1 ..........   Passed    0.06 sec
+      Start 25: adapter_scheduler_oneTBB_2
+25/38 Test #25: adapter_scheduler_oneTBB_2 ..........   Passed    0.06 sec
+      Start 26: adapter_scheduler_oneTBB_4
+26/38 Test #26: adapter_scheduler_oneTBB_4 ..........   Passed    0.06 sec
+      Start 27: adapter_scheduler_Taskflow_1
+27/38 Test #27: adapter_scheduler_Taskflow_1 ........   Passed    0.06 sec
+      Start 28: adapter_scheduler_Taskflow_2
+28/38 Test #28: adapter_scheduler_Taskflow_2 ........   Passed    0.05 sec
+      Start 29: adapter_scheduler_Taskflow_4
+29/38 Test #29: adapter_scheduler_Taskflow_4 ........   Passed    0.06 sec
+      Start 30: adapter_alloc_libc
+30/38 Test #30: adapter_alloc_libc ..................   Passed    0.05 sec
+      Start 31: adapter_alloc_local
+31/38 Test #31: adapter_alloc_local .................   Passed    0.05 sec
+      Start 32: adapter_alloc_jemalloc
+32/38 Test #32: adapter_alloc_jemalloc ..............   Passed    0.06 sec
+      Start 33: adapter_alloc_mimalloc
+33/38 Test #33: adapter_alloc_mimalloc ..............   Passed    0.06 sec
+      Start 34: adapter_alloc_gperftools
+34/38 Test #34: adapter_alloc_gperftools ............   Passed    0.07 sec
+      Start 35: adapter_alloc_google
+35/38 Test #35: adapter_alloc_google ................   Passed    0.07 sec
+      Start 36: phase3_queue_contract
+36/38 Test #36: phase3_queue_contract ...............   Passed    0.06 sec
+      Start 37: phase3_benchmark_contract
+37/38 Test #37: phase3_benchmark_contract ...........   Passed    0.27 sec
+      Start 38: phase4_layout_contract
+38/38 Test #38: phase4_layout_contract ..............   Passed    0.22 sec
+
+100% tests passed, 0 tests failed out of 38
+
+Total Test time (real) =  14.24 sec

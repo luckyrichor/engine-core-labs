@@ -1,0 +1,55 @@
+{
+  "case": "counters",
+  "threads": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "entries": [
+    "packed",
+    "pending",
+    "next",
+    "wake",
+    "packed-pinned",
+    "pending-pinned",
+    "next-pinned",
+    "wake-pinned",
+    "packed@aa",
+    "packed-pinned@aa"
+  ],
+  "rounds": 10,
+  "warmup_rounds": 1,
+  "descriptor": {
+    "name": "s8-counters",
+    "kind": "constructive",
+    "dataset": {
+      "name": "constructive-S8-layout",
+      "version": "1",
+      "checksum": "constructive"
+    },
+    "filter": {},
+    "generator": "ecl-v1",
+    "params": {
+      "case": "counters",
+      "iterations": 50000,
+      "work_units": 128
+    },
+    "seed": 20261025,
+    "scale": 50000,
+    "amplification": {
+      "factor": 1,
+      "method": "none"
+    }
+  },
+  "workload_fingerprint": "1ab3eb5def8ce2b2",
+  "eligible_cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "binary": "/home/ubuntu/data/engine-core-labs/build-phase4/experiments/l1-job-system/phase4/phase4_bench",
+  "perf": true,
+  "design": "all layout and worker-binding cells interleaved in each round; two baseline A/A groups"
+}

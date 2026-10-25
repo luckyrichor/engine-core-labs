@@ -16,7 +16,7 @@ SOURCE_SUFFIXES = {'.py', '.c', '.cc', '.cpp', '.cxx', '.h', '.hh', '.hpp',
 
 def command_output(command, cwd=None):
     try:
-        return subprocess.check_output(command, cwd=cwd, text=True,
+        return subprocess.check_output(command, cwd=cwd, text=True, errors="replace",
                                        stderr=subprocess.DEVNULL, timeout=15).strip()
     except (OSError, subprocess.SubprocessError):
         return None

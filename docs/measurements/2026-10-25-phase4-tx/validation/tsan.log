@@ -1,0 +1,14 @@
+Internal ctest changing into directory: /home/ubuntu/data/engine-core-labs/build-phase4-tsan
+Test project /home/ubuntu/data/engine-core-labs/build-phase4-tsan
+    Start  5: pool_lifecycle
+1/4 Test  #5: pool_lifecycle ...................   Passed    0.21 sec
+    Start 32: phase3_queue_contract
+2/4 Test #32: phase3_queue_contract ............   Passed    1.40 sec
+    Start 33: phase3_benchmark_contract
+3/4 Test #33: phase3_benchmark_contract ........   Passed    1.23 sec
+    Start 34: phase4_layout_contract
+4/4 Test #34: phase4_layout_contract ...........   Passed    1.37 sec
+
+100% tests passed, 0 tests failed out of 4
+
+Total Test time (real) =   4.22 sec

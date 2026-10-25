@@ -1,0 +1,22 @@
+{
+  "name": "s8-cold",
+  "kind": "constructive",
+  "dataset": {
+    "name": "constructive-S8-layout",
+    "version": "1",
+    "checksum": "constructive"
+  },
+  "filter": {},
+  "generator": "ecl-v1",
+  "params": {
+    "case": "cold",
+    "iterations": 100000,
+    "work_units": 64
+  },
+  "seed": 20261025,
+  "scale": 100000,
+  "amplification": {
+    "factor": 1,
+    "method": "none"
+  }
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include <atomic>
+#include "../../common/cache_cell.hpp"
 #include <bit>
 #include <cstdint>
 #include <memory>
@@ -12,14 +13,15 @@ namespace engine_labs::phase3 {
 // are SC atomics: no relaxed-memory fence assumptions, no non-atomic slot race.
 // Bounded ring: never resize/reclaim while thieves exist. IDs reference immutable
 // task storage retained until join. External producers must use an inbox.
-class ChaseLev {
+template<bool SeparateIndices=true>
+class BasicChaseLev {
     using Index = std::int64_t;
     const std::size_t capacity_, mask_;
     std::unique_ptr<std::atomic<std::size_t>[]> ring_;
-    alignas(64) std::atomic<Index> top_{0};
-    alignas(64) std::atomic<Index> bottom_{0};
+    AtomicCell<Index,SeparateIndices> top_{0};
+    AtomicCell<Index,SeparateIndices> bottom_{0};
 public:
-    explicit ChaseLev(std::size_t capacity)
+    explicit BasicChaseLev(std::size_t capacity)
       : capacity_(std::bit_ceil(capacity+1)), mask_(capacity_-1),
         ring_(std::make_unique<std::atomic<std::size_t>[]>(capacity_)) {
         if(capacity > (std::size_t{1}<<30)) throw std::invalid_argument("deque too large");
@@ -52,4 +54,5 @@ public:
         return id;
     }
 };
+using ChaseLev=BasicChaseLev<true>;
 }
