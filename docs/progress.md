@@ -183,3 +183,5 @@ Windows同源正式五组1360次/8160行指标全部有效，每指标10轮和�
 失败与处理：Windows Start-Process子进程未持续运行，改为SSH前台等待测量；matrix期间连接曾短时超时，恢复后确认进程仍运行。ZIP用Windows反斜杠存路径，首次按POSIX路径查找失败，安全规范化路径后取回，未改CSV。采样输入上传因连接再次中断未完成；随后SSH与Tailscale ping多次超时，已发消息请用户保持唤醒联网。VSDiagnostics/CpuUsageHigh/TraceEvent3.1.9确认存在，但没有执行成功的采样或.diagsession，不能标记阶段4完成。未改网络配置、未关swap、未进入阶段5。
 
 S8双机报告/方法、公开状态和AGENTS交接已更新，采样续做步骤及尚未执行的输入生成器留在Windows结果profiling/；飞书开发记录本轮收尾同步。WorkPlan总览有其他项目33行既有未提交修改，本轮只追加/提交engine-core-labs进展，保留他人修改。
+
+本轮Windows矩阵与交接提交cc5bb71；飞书开发记录追加revision10（codex profile/用户身份），回读内容和项目父节点归档均确认。GitHub22端口/原代理命令连接异常后，采用临时ssh.github.com:443+既有CONNECT代理命令，沿用已知github.com主机密钥校验，未改SSH或网络配置。

@@ -35,7 +35,7 @@
 - Windows于2026-10-28完成同源MSVC19.44.35228构建、S8契约CTest1/1与5组1360次/8160行正式矩阵，均有效、各指标10轮；数据`docs/measurements/2026-10-28-phase4-windows/`。Windows没有Linux迁移指标，不虚构为0。L1数据缓存行64，P核LP0–15/E核16–31，双方资格集合均为每个P核一个LP（0,2,…14）。接电、高性能设置与finally恢复原平衡方案已核对。
 - Windows正向4T分行5.620/7.894倍，均显著；实际结构各档无显著布局收益。cold1T纯绑核0.896倍显著变慢；positive8T绑核A/A受长样本影响至335.326，不能把中位16.177倍当收益，保留全部数据。长样本原因未证实。
 - **唯一阶段4剩余：VS CPU采样与热点分析。** 已确认VSDiagnostics/CPUUsageHigh及TraceEvent3.1.9存在，采样前SSH/Tailscale持续超时，已请用户保持唤醒联网；不改网络配置。步骤、未执行输入脚本与解析API见`docs/measurements/2026-10-28-phase4-windows/profiling/README.md`；没有.diagsession，不能称采样完成。Windows工作目录`E:\ecl-scratch\phase4-20261028`，原电源方案最后确认已恢复。未关闭swap，未启动阶段5正式实验。
-- 飞书待同步：2026-10-28 Windows矩阵/验证、否定结果、已恢复电源及VS采样连接阻塞。
+- 飞书已同步：2026-10-28以codex profile/用户身份追加开发记录revision10，来源engine-core-labs@cc5bb71；已回读2720次/17680行、Windows结果与采样待补状态，并回查原项目节点归档。
 - 飞书已同步：2026-10-25以codex profile/用户身份追加开发记录revision9，来源engine-core-labs@913de2d；已回读1360次/9520行与Windows待上线内容，并回查仍归档于既有项目节点。链接见下方飞书文档节。
 
 **第 3 阶段交接（2026-10-25，Codex 独立执行）**
