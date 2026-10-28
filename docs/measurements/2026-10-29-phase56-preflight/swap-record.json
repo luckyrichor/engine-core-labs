@@ -1,0 +1,32 @@
+{
+  "host": "VM-0-15-ubuntu",
+  "authorization": "User 2026-10-28: swapoff now; keep disabled through stages5/6 and until explicit restore instruction",
+  "before": {
+    "time": "2026-10-29T03:01:46.457587+08:00",
+    "total_bytes": 8058511360,
+    "available_bytes": 4914937856,
+    "swap_total_bytes": 2084564992,
+    "swap_used_bytes": 1785430016,
+    "swaps": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/swap.img                               file\t\t2035708\t\t1743584\t\t-2\n",
+    "vmstat": {
+      "pswpin": 1392056,
+      "pswpout": 3140453
+    }
+  },
+  "reserve_bytes": 2147483648,
+  "returncode": 124,
+  "stderr": "",
+  "elapsed_seconds": 32.69524008221924,
+  "after": {
+    "time": "2026-10-29T03:02:19.154392+08:00",
+    "total_bytes": 8058511360,
+    "available_bytes": 3244851200,
+    "swap_total_bytes": 2084564992,
+    "swap_used_bytes": 102526976,
+    "swaps": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/swap.img                               file\t\t2035708\t\t100124\t\t-2\n",
+    "vmstat": {
+      "pswpin": 1798541,
+      "pswpout": 3140453
+    }
+  }
+}
