@@ -1,0 +1,421 @@
+{
+  "pdb_guid": "5f4b0268-6930-4f9d-bdc1-ca8e3b897346",
+  "pid": 20004,
+  "case": "counters",
+  "exit_status": 0,
+  "pdb": "E:\\ecl-scratch\\phase4-20261028\\build\\Release\\phase4_bench.pdb",
+  "process": "phase4_bench",
+  "total_samples": 4196,
+  "project_leaf_samples": 1162,
+  "stack_samples": 4192,
+  "unresolved_project_leaf": 0,
+  "events_lost": 0,
+  "pdb_age": 1,
+  "sample_interval_ms": 0.25,
+  "inclusive_project": [
+    {
+      "function": "phase4_bench!engine_labs::BasicJobSystem<0>::run",
+      "samples": 3026,
+      "percent": 72.1163012392755
+    },
+    {
+      "function": "phase4_bench!std::thread::_Invoke<std::tuple<`engine_labs::BasicJobSystem<0>::BasicJobSystem<0>'::`8'::<lambda_1> >,0>",
+      "samples": 3026,
+      "percent": 72.1163012392755
+    },
+    {
+      "function": "phase4_bench!__scrt_common_main_seh",
+      "samples": 1127,
+      "percent": 26.858913250714966
+    },
+    {
+      "function": "phase4_bench!main",
+      "samples": 1125,
+      "percent": 26.811248808388942
+    },
+    {
+      "function": "phase4_bench!counter_case<0>",
+      "samples": 1123,
+      "percent": 26.76358436606292
+    },
+    {
+      "function": "phase4_bench!engine_labs::BasicJobSystem<0>::submit",
+      "samples": 829,
+      "percent": 19.756911344137272
+    },
+    {
+      "function": "phase4_bench!engine_labs::phase3::work",
+      "samples": 318,
+      "percent": 7.578646329837941
+    },
+    {
+      "function": "phase4_bench!std::_Packaged_state<void __cdecl(void)>::_Call_immediate",
+      "samples": 260,
+      "percent": 6.196377502383222
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`counter_case<1>'::`5'::<lambda_2>,void>::_Do_call",
+      "samples": 224,
+      "percent": 5.338417540514776
+    },
+    {
+      "function": "phase4_bench!engine_labs::WorkQueue::push",
+      "samples": 182,
+      "percent": 4.337464251668256
+    },
+    {
+      "function": "phase4_bench!operator new",
+      "samples": 165,
+      "percent": 3.932316491897045
+    },
+    {
+      "function": "phase4_bench!verify",
+      "samples": 152,
+      "percent": 3.6224976167778835
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`engine_labs::BasicJobSystem<1>::submit'::`11'::<lambda_2>,void>::_Delete_this",
+      "samples": 130,
+      "percent": 3.098188751191611
+    },
+    {
+      "function": "phase4_bench!std::packaged_task<void __cdecl(void)>::packaged_task<void __cdecl(void)><std::function<void __cdecl(void)>,0>",
+      "samples": 125,
+      "percent": 2.979027645376549
+    },
+    {
+      "function": "phase4_bench!engine_labs::BasicJobSystem<0>::signal",
+      "samples": 97,
+      "percent": 2.311725452812202
+    },
+    {
+      "function": "phase4_bench!std::_Ref_count_obj2<std::packaged_task<void __cdecl(void)> >::`scalar deleting destructor'",
+      "samples": 83,
+      "percent": 1.9780743565300285
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`engine_labs::BasicJobSystem<1>::submit'::`11'::<lambda_2>,void>::_Do_call",
+      "samples": 54,
+      "percent": 1.286939942802669
+    },
+    {
+      "function": "phase4_bench!std::_Packaged_state<void __cdecl(void)>::`scalar deleting destructor'",
+      "samples": 32,
+      "percent": 0.7626310772163966
+    },
+    {
+      "function": "phase4_bench!std::_Associated_state<int>::_Set_value",
+      "samples": 31,
+      "percent": 0.7387988560533841
+    },
+    {
+      "function": "phase4_bench!std::_Ref_count_obj2<std::packaged_task<void __cdecl(void)> >::_Destroy",
+      "samples": 29,
+      "percent": 0.6911344137273594
+    },
+    {
+      "function": "phase4_bench!std::_Associated_state<int>::_Abandon",
+      "samples": 21,
+      "percent": 0.5004766444232602
+    },
+    {
+      "function": "phase4_bench!std::_Associated_state<int>::_Get_value",
+      "samples": 20,
+      "percent": 0.47664442326024786
+    },
+    {
+      "function": "phase4_bench!std::make_unique<Checked [0],0>",
+      "samples": 17,
+      "percent": 0.4051477597712107
+    },
+    {
+      "function": "phase4_bench!std::deque<std::function<void __cdecl(void)>,std::allocator<std::function<void __cdecl(void)> > >::pop_back",
+      "samples": 10,
+      "percent": 0.23832221163012393
+    },
+    {
+      "function": "phase4_bench!std::_Func_class<void>::_Reset_move",
+      "samples": 8,
+      "percent": 0.19065776930409914
+    },
+    {
+      "function": "phase4_bench!_Mtx_lock",
+      "samples": 5,
+      "percent": 0.11916110581506197
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`engine_labs::BasicJobSystem<0>::submit'::`11'::<lambda_2>,void>::_Move",
+      "samples": 4,
+      "percent": 0.09532888465204957
+    },
+    {
+      "function": "phase4_bench!_Mtx_unlock",
+      "samples": 3,
+      "percent": 0.07149666348903717
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`counter_case<2>'::`5'::<lambda_2>,void>::_Delete_this",
+      "samples": 2,
+      "percent": 0.047664442326024785
+    },
+    {
+      "function": "phase4_bench!operator delete",
+      "samples": 2,
+      "percent": 0.047664442326024785
+    },
+    {
+      "function": "phase4_bench!std::vector<std::thread,std::allocator<std::thread> >::_Emplace_reallocate<`engine_labs::BasicJobSystem<0>::BasicJobSystem<0>'::`8'::<lambda_1> >",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!__security_check_cookie",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!pre_cpp_initialization",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!std::_Destroy_range<std::allocator<std::future<void> > >",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!engine_labs::BasicJobSystem<0>::BasicJobSystem<0>",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!__ExceptionPtrCreate",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!std::_Default_allocator_traits<std::allocator<std::thread> >::construct<std::thread,`engine_labs::BasicJobSystem<0>::BasicJobSystem<0>'::`8'::<lambda_1> >",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`counter_case<0>'::`5'::<lambda_2>,void>::_Copy",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!__ExceptionPtrDestroy",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!std::operator<<<std::char_traits<char> >",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    }
+  ],
+  "self_project": [
+    {
+      "function": "phase4_bench!engine_labs::phase3::work",
+      "samples": 317,
+      "percent": 7.554814108674928
+    },
+    {
+      "function": "phase4_bench!engine_labs::BasicJobSystem<0>::run",
+      "samples": 296,
+      "percent": 7.0543374642516685
+    },
+    {
+      "function": "phase4_bench!engine_labs::BasicJobSystem<0>::submit",
+      "samples": 272,
+      "percent": 6.482364156339371
+    },
+    {
+      "function": "phase4_bench!counter_case<0>",
+      "samples": 64,
+      "percent": 1.5252621544327931
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`counter_case<1>'::`5'::<lambda_2>,void>::_Do_call",
+      "samples": 58,
+      "percent": 1.3822688274547188
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`engine_labs::BasicJobSystem<1>::submit'::`11'::<lambda_2>,void>::_Do_call",
+      "samples": 52,
+      "percent": 1.2392755004766445
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`engine_labs::BasicJobSystem<1>::submit'::`11'::<lambda_2>,void>::_Delete_this",
+      "samples": 21,
+      "percent": 0.5004766444232602
+    },
+    {
+      "function": "phase4_bench!engine_labs::BasicJobSystem<0>::signal",
+      "samples": 15,
+      "percent": 0.3574833174451859
+    },
+    {
+      "function": "phase4_bench!std::deque<std::function<void __cdecl(void)>,std::allocator<std::function<void __cdecl(void)> > >::pop_back",
+      "samples": 10,
+      "percent": 0.23832221163012393
+    },
+    {
+      "function": "phase4_bench!std::_Ref_count_obj2<std::packaged_task<void __cdecl(void)> >::_Destroy",
+      "samples": 8,
+      "percent": 0.19065776930409914
+    },
+    {
+      "function": "phase4_bench!std::_Packaged_state<void __cdecl(void)>::_Call_immediate",
+      "samples": 5,
+      "percent": 0.11916110581506197
+    },
+    {
+      "function": "phase4_bench!_Mtx_lock",
+      "samples": 5,
+      "percent": 0.11916110581506197
+    },
+    {
+      "function": "phase4_bench!std::packaged_task<void __cdecl(void)>::packaged_task<void __cdecl(void)><std::function<void __cdecl(void)>,0>",
+      "samples": 4,
+      "percent": 0.09532888465204957
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`engine_labs::BasicJobSystem<0>::submit'::`11'::<lambda_2>,void>::_Move",
+      "samples": 4,
+      "percent": 0.09532888465204957
+    },
+    {
+      "function": "phase4_bench!std::make_unique<Checked [0],0>",
+      "samples": 4,
+      "percent": 0.09532888465204957
+    },
+    {
+      "function": "phase4_bench!engine_labs::WorkQueue::push",
+      "samples": 4,
+      "percent": 0.09532888465204957
+    },
+    {
+      "function": "phase4_bench!_Mtx_unlock",
+      "samples": 3,
+      "percent": 0.07149666348903717
+    },
+    {
+      "function": "phase4_bench!std::_Func_class<void>::_Reset_move",
+      "samples": 3,
+      "percent": 0.07149666348903717
+    },
+    {
+      "function": "phase4_bench!std::_Packaged_state<void __cdecl(void)>::`scalar deleting destructor'",
+      "samples": 3,
+      "percent": 0.07149666348903717
+    },
+    {
+      "function": "phase4_bench!operator delete",
+      "samples": 2,
+      "percent": 0.047664442326024785
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`counter_case<2>'::`5'::<lambda_2>,void>::_Delete_this",
+      "samples": 2,
+      "percent": 0.047664442326024785
+    },
+    {
+      "function": "phase4_bench!std::_Associated_state<int>::_Get_value",
+      "samples": 2,
+      "percent": 0.047664442326024785
+    },
+    {
+      "function": "phase4_bench!std::_Associated_state<int>::_Set_value",
+      "samples": 2,
+      "percent": 0.047664442326024785
+    },
+    {
+      "function": "phase4_bench!std::_Func_impl_no_alloc<`counter_case<0>'::`5'::<lambda_2>,void>::_Copy",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!__security_check_cookie",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!__ExceptionPtrDestroy",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!std::_Destroy_range<std::allocator<std::future<void> > >",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!operator new",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "function": "phase4_bench!__ExceptionPtrCreate",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    }
+  ],
+  "self_by_module": [
+    {
+      "module": "ntdll",
+      "samples": 2643,
+      "percent": 62.988560533841756
+    },
+    {
+      "module": "phase4_bench",
+      "samples": 1162,
+      "percent": 27.6930409914204
+    },
+    {
+      "module": "msvcp140",
+      "samples": 199,
+      "percent": 4.7426120114394665
+    },
+    {
+      "module": "ntoskrnl",
+      "samples": 148,
+      "percent": 3.5271687321258343
+    },
+    {
+      "module": "sysdiag",
+      "samples": 16,
+      "percent": 0.3813155386081983
+    },
+    {
+      "module": "vcruntime140",
+      "samples": 11,
+      "percent": 0.2621544327931363
+    },
+    {
+      "module": "kernel32",
+      "samples": 6,
+      "percent": 0.14299332697807435
+    },
+    {
+      "module": "ucrtbase",
+      "samples": 4,
+      "percent": 0.09532888465204957
+    },
+    {
+      "module": "fltmgr",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "module": "ntfs",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    },
+    {
+      "module": "netwtw14",
+      "samples": 1,
+      "percent": 0.023832221163012392
+    }
+  ]
+}

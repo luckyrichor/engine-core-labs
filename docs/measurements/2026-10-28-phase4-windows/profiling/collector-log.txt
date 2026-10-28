@@ -1,0 +1,62 @@
+
+Microsoft (R) VS Standard Collector
+
+Session 599045b6-96a1-4aaf-bc90-bcc66848b858: {599045b6-96a1-4aaf-bc90-bcc66848b858}
+  Running
+
+Microsoft (R) VS Standard Collector
+
+Collection result moved to 'E:\ecl-scratch\phase4-20261028\profiling\positive.diagsession'.
+Session 599045b6-96a1-4aaf-bc90-bcc66848b858: {599045b6-96a1-4aaf-bc90-bcc66848b858}
+  Stopped
+{
+    "Name":  "positive.diagsession",
+    "Length":  3059346
+}
+
+
+Microsoft (R) VS Standard Collector
+
+Session c7a5e2bd-38eb-4513-8d07-eb56afdbf16a: {c7a5e2bd-38eb-4513-8d07-eb56afdbf16a}
+  Running
+
+Microsoft (R) VS Standard Collector
+
+Collection result moved to 'E:\ecl-scratch\phase4-20261028\profiling\queue.diagsession'.
+Session c7a5e2bd-38eb-4513-8d07-eb56afdbf16a: {c7a5e2bd-38eb-4513-8d07-eb56afdbf16a}
+  Stopped
+{
+    "Name":  "queue.diagsession",
+    "Length":  2998466
+}
+
+Microsoft (R) VS Standard Collector
+
+Session 5adf01a5-8e73-4bc4-96c7-edfd2b59e64c: {5adf01a5-8e73-4bc4-96c7-edfd2b59e64c}
+  Running
+
+Microsoft (R) VS Standard Collector
+
+Collection result moved to 'E:\ecl-scratch\phase4-20261028\profiling\counters.diagsession'.
+Session 5adf01a5-8e73-4bc4-96c7-edfd2b59e64c: {5adf01a5-8e73-4bc4-96c7-edfd2b59e64c}
+  Stopped
+{
+    "Name":  "counters.diagsession",
+    "Length":  2990022
+}
+
+Microsoft (R) VS Standard Collector
+
+Session 34e92b64-8e93-409d-8a32-cd18c9fdd3f4: {34e92b64-8e93-409d-8a32-cd18c9fdd3f4}
+  Running
+
+Microsoft (R) VS Standard Collector
+
+Collection result moved to 'E:\ecl-scratch\phase4-20261028\profiling\stats.diagsession'.
+Session 34e92b64-8e93-409d-8a32-cd18c9fdd3f4: {34e92b64-8e93-409d-8a32-cd18c9fdd3f4}
+  Stopped
+{
+    "Name":  "stats.diagsession",
+    "Length":  3063609
+}
+

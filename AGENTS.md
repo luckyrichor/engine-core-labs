@@ -23,10 +23,10 @@
 | 1 核验 | **已完成**（2026-10-23/24），检查点已过，所有者决定见 docs/phase1-verification.md |
 | 2 基础设施（负载生成器、外部基线适配层、结果格式、一键重跑） | A/B/C 已由 Claude 验收并提交；D 已由 Codex 实现并通过 tx 验证（35/35）；用户于 2026-10-24 审核通过，阶段 2 已完成 |
 | 3 L1 故事（S1/S2/S3） | **已完成（2026-10-25）**：Release37/37，自研队列/执行器TSan通过；13组、5940次正式运行、41940指标行，均有效；三条九项故事与曲线齐全 |
-| 4 S8 伪共享/亲和性 | **进行中（2026-10-28）**：tx/Windows五组矩阵均完成，合计2720次/17680行全有效；Windows MSVC与S8契约1/1通过，电源已恢复；VS CPU采样前连接中断待补，未验收完成 |
+| 4 S8 伪共享/亲和性 | **已完成（2026-10-28）**：双机2720次/17680行全有效；VS四组26927样本、匹配PDB热点分析完成；电源恢复，阶段5正式实验待swap决定 |
 | 5–9 | 未开始 |
 
-**第 4 阶段交接（进行中，2026-10-28）**
+**第 4 阶段交接（已完成，2026-10-28）**
 - 方法与重跑：`docs/stories/phase4-method.md`，`python3 -m bench.phase4 prepare/measure`，`bench.phase4_report`；二进制在`$ECL_DATA/build-phase4`，TSan在`build-phase4-tsan`。
 - 新增`experiments/l1-job-system/phase4/`、`common/cache_cell.hpp`，原执行器/队列/统计池仅增加可选模板布局与启动前线程配置；默认布局保留，原Chase-Lev已对齐。
 - 完整Release38/38、TSan定向4/4；正式tx数据`docs/measurements/2026-10-25-phase4-tx/`：5组、1360次进程、9520行指标，invalid=0/stub=0，各配置10有效轮，两套A/A；源码SHA256 fd1e81c30451b94e58e8a80e3e8e17513ae569522c3a4ed0fdcc98f757989c24。
@@ -34,7 +34,9 @@
 - Windows同源快照已准备在`$ECL_DATA/phase4/windows-source.zip`，内含逐文件指纹与真实来源`source-snapshot.json`；仅在tx编辑，Windows只编译/运行。接手前核对快照与当前源码指纹一致，若改代码要重新生成；不要把旧快照当当前HEAD。
 - Windows于2026-10-28完成同源MSVC19.44.35228构建、S8契约CTest1/1与5组1360次/8160行正式矩阵，均有效、各指标10轮；数据`docs/measurements/2026-10-28-phase4-windows/`。Windows没有Linux迁移指标，不虚构为0。L1数据缓存行64，P核LP0–15/E核16–31，双方资格集合均为每个P核一个LP（0,2,…14）。接电、高性能设置与finally恢复原平衡方案已核对。
 - Windows正向4T分行5.620/7.894倍，均显著；实际结构各档无显著布局收益。cold1T纯绑核0.896倍显著变慢；positive8T绑核A/A受长样本影响至335.326，不能把中位16.177倍当收益，保留全部数据。长样本原因未证实。
-- **唯一阶段4剩余：VS CPU采样与热点分析。** 已确认VSDiagnostics/CPUUsageHigh及TraceEvent3.1.9存在，采样前SSH/Tailscale持续超时，已请用户保持唤醒联网；不改网络配置。步骤、未执行输入脚本与解析API见`docs/measurements/2026-10-28-phase4-windows/profiling/README.md`；没有.diagsession，不能称采样完成。Windows工作目录`E:\ecl-scratch\phase4-20261028`，原电源方案最后确认已恢复。未关闭swap，未启动阶段5正式实验。
+- VS CPU采样与热点分析已完成：四份目标进程exit0、26927样本、EventsLost均0、项目叶未解析均0。匹配原Release PDB，项目self/inclusive与模块分布、脚本、哈希见Windows结果profiling/README.md；全进程放大诊断不与正式CSV混用。原始trace在两机外部目录，不提交系统原始数据。
+- 失联排查：08:57空闲触发Modern Standby，后续事件证实低功耗驻留，17:37电源键唤醒；未查到资源耗尽事件，当前CPU4%/可用3.22GiB，历史无连续资源采样，不能彻底排除其他因素。见Windows结果outage-analysis.md。采样时临时保活，finally释放，原平衡方案另行读回确认。没有修改网络/永久睡眠设置。
+- 飞书待同步：2026-10-28 阶段4完成、四份VS热点证据与Windows待机失联排查。
 - 飞书已同步：2026-10-28以codex profile/用户身份追加开发记录revision10，来源engine-core-labs@cc5bb71；已回读2720次/17680行、Windows结果与采样待补状态，并回查原项目节点归档。
 - 飞书已同步：2026-10-25以codex profile/用户身份追加开发记录revision9，来源engine-core-labs@913de2d；已回读1360次/9520行与Windows待上线内容，并回查仍归档于既有项目节点。链接见下方飞书文档节。
 
@@ -68,7 +70,7 @@
 **数据与第三方源码的位置（不进仓库）**：`$ECL_DATA`，默认 `~/data/engine-core-labs`（tx）。其下有 `bistro/`（zip、SHA256SUMS、manifest、extracted/）、`gltf-sample-assets/`、`third_party/`（ufbx、assimp、tcmalloc-src、tcmalloc-cmake、bazelisk）、`inventory/`、`logs/`。Windows 临时目录 `E:\ecl-scratch`。
 
 **下一步（按顺序）**
-1. 阶段4正在执行：读 `docs/stories/phase4-method.md`，两机矩阵均完成；Windows尚须VS CPU采样与热点分析，恢复连接后按Windows结果profiling/README.md执行，完成后才结束阶段4。
+1. 阶段4已完成。阶段5正式实验前等待用户决定tx临时关闭swap时机；不得自行关闭或先跑正式内存实验。阶段5实现/预检应按既有方案，不重跑阶段4矩阵。
 2. 后续故事仍须每条九项齐全，按 A 节规则重复、配对、测 A/A；Windows 补测与各阶段明确限制继续如实记录。
 
 **待所有者决定**
@@ -169,6 +171,8 @@ bash workplan-docs/scripts/run-on-tx.sh agent-memory 'docker compose up -d postg
 写进「环境与踩坑记录」时，用 **［实测］**／**［预警］** 标注区分「已验证的事实」和「未触发的已知风险」，不要把推断写成结论。
 
 ## 更新日志
+
+- 2026-10-28 Codex：完成四组VS CPU采样/匹配PDB热点分析，26927样本、丢失事件0；排查到空闲待机证据，保留历史资源占用未知与长样本归因限制；恢复电源并完成阶段4。
 
 - 2026-10-28 Codex：完成Windows MSVC/S8契约1/1、5组1360次/8160行矩阵；同源双机结果与电源恢复核对；VS采样前连接再次中断，阶段4仍进行中，交接采样步骤。
 

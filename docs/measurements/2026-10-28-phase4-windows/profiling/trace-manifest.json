@@ -1,0 +1,29 @@
+{
+  "binary_sha256": "0e439a29a60318dfa858d939d29adb5611c9a2842af82af3ea5cb24bfeaa9555",
+  "files": [
+    {
+      "sha256": "c668396102f9bd78ec2e1a60aaaed632baaafb0e9f362c1b8c7fbae1cb2184f9",
+      "name": "counters.diagsession",
+      "bytes": 2989242
+    },
+    {
+      "sha256": "ae5c1c77052c5c878adf5030a602bc03f0e3abb70db38e5cb1f9536cdf3984a1",
+      "name": "positive.diagsession",
+      "bytes": 3058568
+    },
+    {
+      "sha256": "5e171bbd5a5f531fd2b7d0951f92bf78901fb73d9491d40f4796d7c3a03cf944",
+      "name": "queue.diagsession",
+      "bytes": 2997687
+    },
+    {
+      "sha256": "297b5726c2cc0e37f1901928e8c8ee3552f9ca13d0a540f5ccccf4114ed1700e",
+      "name": "stats.diagsession",
+      "bytes": 3062830
+    }
+  ],
+  "restored_power": "381b4222-f694-41f0-9685-ff5bb260df2e",
+  "pdb_sha256": "39e1a289de556811fdde2d1b0d767a540c1c34dd6dec08809df7cfa37425fc76",
+  "created": "2026-10-28T19:46:15.0031628+08:00",
+  "original_power": "381b4222-f694-41f0-9685-ff5bb260df2e"
+}

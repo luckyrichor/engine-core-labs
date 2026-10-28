@@ -1,6 +1,6 @@
 # 进度记录
 
-最后更新：2026-10-23（北京时间）
+最后更新：2026-10-28（北京时间）
 
 本文件是 `engine-core-labs` 的进度事实源，汇总到 `workplan-docs/进度总览.md`。
 
@@ -185,3 +185,12 @@ Windows同源正式五组1360次/8160行指标全部有效，每指标10轮和�
 S8双机报告/方法、公开状态和AGENTS交接已更新，采样续做步骤及尚未执行的输入生成器留在Windows结果profiling/；飞书开发记录本轮收尾同步。WorkPlan总览有其他项目33行既有未提交修改，本轮只追加/提交engine-core-labs进展，保留他人修改。
 
 本轮Windows矩阵与交接提交cc5bb71；飞书开发记录追加revision10（codex profile/用户身份），回读内容和项目父节点归档均确认。GitHub22端口/原代理命令连接异常后，采用临时ssh.github.com:443+既有CONNECT代理命令，沿用已知github.com主机密钥校验，未改SSH或网络配置。
+
+
+## 2026-10-28 阶段4收尾：失联排查、VS CPU热点（Codex）
+
+用户确认Windows可连接后，核对主机/身份，查询电源事件XML和资源状态。发现08:57 Idle Timeout进入Modern Standby、实际低功耗驻留及17:37电源键唤醒；未查到资源耗尽事件，当前CPU4%/空闲物理内存3.22GiB。缺少历史连续资源监测，不把待机解释成CPU/内存满，不将正式长样本的原因补写为已证实。
+
+原同源Release EXE/PDB未改，四组VS CPUUsageHigh独立采样，目标均exit0；positive5764、queue3779、counters4196、stats13188，合计26927样本，EventsLost均0、项目叶未解析均0。TraceEvent3.1.9匹配PDB导出项目self/inclusive和模块分布；系统符号不冒称已解析。采样独立放大输入、覆盖全进程，不与正式矩阵混用。四包跨机SHA256核对通过，原始系统trace仅放两机外部目录。
+
+临时SetThreadExecutionState保活已释放，原平衡电源方案finally恢复且另行读回；无遗留实验进程。完整证据在measurements/2026-10-28-phase4-windows/profiling/，失联分析在outage-analysis.md；S8九项报告、方法和交接同步。阶段4完成；阶段5正式实验未开始，未关闭swap。

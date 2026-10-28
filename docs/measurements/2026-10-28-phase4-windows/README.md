@@ -1,6 +1,6 @@
-# S8 Windows正式矩阵（CPU采样待补）
+# S8 Windows正式矩阵与CPU采样
 
-2026-10-28（北京时间）· Codex。luowindows / i9-13900HX，MSVC 19.44.35228、CMake3.31.6、Python3.14.3，Release C++20。独立同源快照构建，tx为唯一编辑端。Windows主矩阵已完成；Visual Studio CPU采样尚未完成，不标记阶段4验收通过。
+2026-10-28（北京时间）· Codex。luowindows / i9-13900HX，MSVC 19.44.35228、CMake3.31.6、Python3.14.3，Release C++20。独立同源快照构建，tx为唯一编辑端。Windows主矩阵已完成；Visual Studio四组CPU采样及匹配PDB热点分析已完成，阶段4完成，证据见[profiling](profiling/README.md)。失联排查见[outage-analysis](outage-analysis.md)。
 
 ## 数据与判定
 
@@ -16,7 +16,7 @@
 
 源码SHA256为`fd1e81c30451b94e58e8a80e3e8e17513ae569522c3a4ed0fdcc98f757989c24`，五组逐文件清单与tx矩阵及engine-core-labs@3701d67的实现一致。快照源自2026-10-25的8be95f4+dirty工作树，source-snapshot.json核对后才运行；device.git保留这一真实来源，未伪称Windows执行过git checkout。源码无需修改即MSVC编译通过。
 
-Windows S8契约CTest1/1，覆盖五组12变体、1/4workers×绑核开关、逐ID恰好一次/独立摘要及非法CPU拒绝。不是Windows全仓库38项测试，不称Windows跑过TSan。validation保存配置、构建、测试和采集日志，以及实际CMakeCache。MSVC使用/O2 /Ob2 /DNDEBUG /Zi，链接/DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF，PDB留待CPU采样；调试符号不代表Debug优化级别。
+Windows S8契约CTest1/1，覆盖五组12变体、1/4workers×绑核开关、逐ID恰好一次/独立摘要及非法CPU拒绝。不是Windows全仓库38项测试，不称Windows跑过TSan。validation保存配置、构建、测试和采集日志，以及实际CMakeCache。MSVC使用/O2 /Ob2 /DNDEBUG /Zi，链接/DEBUG /INCREMENTAL:NO /OPT:REF /OPT:ICF，PDB用于CPU采样符号解析；调试符号不代表Debug优化级别。
 
 接电后启用高性能方案，最终finally恢复并读回原平衡方案`381b4222-f694-41f0-9685-ff5bb260df2e`，original-power-plan.txt与restored-power-plan.txt完全相同，STATUS.json记录complete/power_plan_restored=true。未并行进行构建、采样或其他实验；常驻服务/系统调度噪声不声称隔离，A/A揭示波动。
 
@@ -31,4 +31,4 @@ python -m bench.phase4 prepare
 python -m bench.phase4 measure --binary E:\ecl-scratch\phase4-20261028\build\Release\phase4_bench.exe --output <新的结果目录> --no-perf
 ```
 
-报告在tx上用`python -m bench.phase4_report <结果目录> --plots`生成，matplotlib版本保存在plot-version.json。完整方法见[phase4-method](../../stories/phase4-method.md)；阶段4剩余VS CPU采样先确认Windows保持联网/唤醒，避免中断。
+报告在tx上用`python -m bench.phase4_report <结果目录> --plots`生成，matplotlib版本保存在plot-version.json。完整方法见[phase4-method](../../stories/phase4-method.md)；CPU采样使用临时保活、独立诊断放大负载与全进程口径，未混入正式CSV，见profiling/README.md。

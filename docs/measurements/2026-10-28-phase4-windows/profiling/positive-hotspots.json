@@ -1,0 +1,121 @@
+{
+  "pdb_guid": "5f4b0268-6930-4f9d-bdc1-ca8e3b897346",
+  "pid": 43856,
+  "case": "positive",
+  "exit_status": 0,
+  "pdb": "E:\\ecl-scratch\\phase4-20261028\\build\\Release\\phase4_bench.pdb",
+  "process": "phase4_bench",
+  "total_samples": 5764,
+  "project_leaf_samples": 5710,
+  "stack_samples": 5764,
+  "unresolved_project_leaf": 0,
+  "events_lost": 0,
+  "pdb_age": 1,
+  "sample_interval_ms": 0.25,
+  "inclusive_project": [
+    {
+      "function": "phase4_bench!`thread_run<`positive<0>'::`2'::<lambda_1> >'::`4'::<lambda_1>::operator()",
+      "samples": 5720,
+      "percent": 99.23664122137404
+    },
+    {
+      "function": "phase4_bench!std::thread::_Invoke<std::tuple<`thread_run<`positive<0>'::`2'::<lambda_1> >'::`4'::<lambda_1> >,0>",
+      "samples": 5720,
+      "percent": 99.23664122137404
+    },
+    {
+      "function": "phase4_bench!__scrt_common_main_seh",
+      "samples": 5,
+      "percent": 0.08674531575294935
+    },
+    {
+      "function": "phase4_bench!main",
+      "samples": 4,
+      "percent": 0.06939625260235947
+    },
+    {
+      "function": "phase4_bench!std::basic_ifstream<char,std::char_traits<char> >::basic_ifstream<char,std::char_traits<char> >",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    },
+    {
+      "function": "phase4_bench!ecl::workload::read_bytes",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    },
+    {
+      "function": "phase4_bench!positive<0>",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    },
+    {
+      "function": "phase4_bench!thread_run<`positive<0>'::`2'::<lambda_1> >",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    },
+    {
+      "function": "phase4_bench!std::latch::wait",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    },
+    {
+      "function": "phase4_bench!std::_Default_allocator_traits<std::allocator<std::thread> >::construct<std::thread,`thread_run<`positive<0>'::`2'::<lambda_1> >'::`4'::<lambda_1> >",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    },
+    {
+      "function": "phase4_bench!ecl::workload::read_meta",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    },
+    {
+      "function": "phase4_bench!ecl::workload::verify_meta",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    },
+    {
+      "function": "phase4_bench!std::vector<std::thread,std::allocator<std::thread> >::_Emplace_reallocate<`thread_run<`positive<0>'::`2'::<lambda_1> >'::`4'::<lambda_1> >",
+      "samples": 1,
+      "percent": 0.01734906315058987
+    }
+  ],
+  "self_project": [
+    {
+      "function": "phase4_bench!`thread_run<`positive<0>'::`2'::<lambda_1> >'::`4'::<lambda_1>::operator()",
+      "samples": 5710,
+      "percent": 99.06315058986814
+    }
+  ],
+  "self_by_module": [
+    {
+      "module": "phase4_bench",
+      "samples": 5710,
+      "percent": 99.06315058986814
+    },
+    {
+      "module": "ntoskrnl",
+      "samples": 30,
+      "percent": 0.520471894517696
+    },
+    {
+      "module": "sysdiag",
+      "samples": 14,
+      "percent": 0.24288688410825815
+    },
+    {
+      "module": "ntdll",
+      "samples": 6,
+      "percent": 0.1040943789035392
+    },
+    {
+      "module": "fltmgr",
+      "samples": 2,
+      "percent": 0.03469812630117974
+    },
+    {
+      "module": "ntfs",
+      "samples": 2,
+      "percent": 0.03469812630117974
+    }
+  ]
+}

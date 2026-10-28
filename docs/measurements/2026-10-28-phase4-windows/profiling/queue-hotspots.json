@@ -1,0 +1,216 @@
+{
+  "pdb_guid": "5f4b0268-6930-4f9d-bdc1-ca8e3b897346",
+  "pid": 6888,
+  "case": "queue",
+  "exit_status": 0,
+  "pdb": "E:\\ecl-scratch\\phase4-20261028\\build\\Release\\phase4_bench.pdb",
+  "process": "phase4_bench",
+  "total_samples": 3779,
+  "project_leaf_samples": 3086,
+  "stack_samples": 3766,
+  "unresolved_project_leaf": 0,
+  "events_lost": 0,
+  "pdb_age": 1,
+  "sample_interval_ms": 0.25,
+  "inclusive_project": [
+    {
+      "function": "phase4_bench!`queue_case<0>'::`2'::<lambda_2>::operator()",
+      "samples": 3416,
+      "percent": 90.39428420216989
+    },
+    {
+      "function": "phase4_bench!std::thread::_Invoke<std::tuple<`thread_run<`queue_case<0>'::`2'::<lambda_2> >'::`4'::<lambda_1> >,0>",
+      "samples": 3416,
+      "percent": 90.39428420216989
+    },
+    {
+      "function": "phase4_bench!`thread_run<`queue_case<0>'::`2'::<lambda_2> >'::`4'::<lambda_1>::operator()",
+      "samples": 3416,
+      "percent": 90.39428420216989
+    },
+    {
+      "function": "phase4_bench!engine_labs::phase3::work",
+      "samples": 452,
+      "percent": 11.960836200052924
+    },
+    {
+      "function": "phase4_bench!__scrt_common_main_seh",
+      "samples": 311,
+      "percent": 8.229690394284201
+    },
+    {
+      "function": "phase4_bench!main",
+      "samples": 311,
+      "percent": 8.229690394284201
+    },
+    {
+      "function": "phase4_bench!queue_case<0>",
+      "samples": 302,
+      "percent": 7.991532151362795
+    },
+    {
+      "function": "phase4_bench!verify",
+      "samples": 203,
+      "percent": 5.3717914792273085
+    },
+    {
+      "function": "phase4_bench!`queue_case<0>'::`2'::<lambda_1>::operator()",
+      "samples": 101,
+      "percent": 2.6726647261180205
+    },
+    {
+      "function": "phase4_bench!std::make_unique<Checked [0],0>",
+      "samples": 77,
+      "percent": 2.0375760783276
+    },
+    {
+      "function": "phase4_bench!_Thrd_yield",
+      "samples": 14,
+      "percent": 0.37046837787774545
+    },
+    {
+      "function": "phase4_bench!std::make_unique<std::atomic<unsigned __int64> [0],0>",
+      "samples": 7,
+      "percent": 0.18523418893887272
+    },
+    {
+      "function": "phase4_bench!std::operator<<<std::char_traits<char> >",
+      "samples": 6,
+      "percent": 0.15877216194760518
+    },
+    {
+      "function": "phase4_bench!ecl::workload::JsonParser::string",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    },
+    {
+      "function": "phase4_bench!ecl::workload::verify_meta",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    },
+    {
+      "function": "phase4_bench!ecl::workload::JsonParser::parse_value",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    },
+    {
+      "function": "phase4_bench!ecl::workload::read_meta",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    }
+  ],
+  "self_project": [
+    {
+      "function": "phase4_bench!`queue_case<0>'::`2'::<lambda_2>::operator()",
+      "samples": 2550,
+      "percent": 67.4781688277322
+    },
+    {
+      "function": "phase4_bench!engine_labs::phase3::work",
+      "samples": 447,
+      "percent": 11.828526065096586
+    },
+    {
+      "function": "phase4_bench!`queue_case<0>'::`2'::<lambda_1>::operator()",
+      "samples": 49,
+      "percent": 1.2966393225721091
+    },
+    {
+      "function": "phase4_bench!std::make_unique<Checked [0],0>",
+      "samples": 19,
+      "percent": 0.502778512834083
+    },
+    {
+      "function": "phase4_bench!_Thrd_yield",
+      "samples": 14,
+      "percent": 0.37046837787774545
+    },
+    {
+      "function": "phase4_bench!verify",
+      "samples": 6,
+      "percent": 0.15877216194760518
+    },
+    {
+      "function": "phase4_bench!ecl::workload::JsonParser::string",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    }
+  ],
+  "self_by_module": [
+    {
+      "module": "phase4_bench",
+      "samples": 3086,
+      "percent": 81.6618152950516
+    },
+    {
+      "module": "ntoskrnl",
+      "samples": 416,
+      "percent": 11.008203228367293
+    },
+    {
+      "module": "ntdll",
+      "samples": 186,
+      "percent": 4.92193702037576
+    },
+    {
+      "module": "vcruntime140",
+      "samples": 31,
+      "percent": 0.8203228367292935
+    },
+    {
+      "module": "sysdiag",
+      "samples": 14,
+      "percent": 0.37046837787774545
+    },
+    {
+      "module": "kernelbase",
+      "samples": 12,
+      "percent": 0.31754432389521037
+    },
+    {
+      "module": "nvlddmkm",
+      "samples": 5,
+      "percent": 0.13231013495633764
+    },
+    {
+      "module": "ntfs",
+      "samples": 5,
+      "percent": 0.13231013495633764
+    },
+    {
+      "module": "hdaudbus",
+      "samples": 3,
+      "percent": 0.07938608097380259
+    },
+    {
+      "module": "igdkmdn64",
+      "samples": 2,
+      "percent": 0.05292405398253506
+    },
+    {
+      "module": "ucrtbase",
+      "samples": 2,
+      "percent": 0.05292405398253506
+    },
+    {
+      "module": "ucpd",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    },
+    {
+      "module": "win32kbase",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    },
+    {
+      "module": "bam",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    },
+    {
+      "module": "msvcp140",
+      "samples": 1,
+      "percent": 0.02646202699126753
+    }
+  ]
+}

@@ -1,20 +1,41 @@
-# VS CPU采样待完成：交接入口
+# VS CPU采样与热点分析（2026-10-28，已完成）
 
-截至2026-10-28（北京时间），正式矩阵已取回；VSDiagnostics和CPUUsageHigh配置、TraceEvent3.1.9已确认存在，但采样前Tailscale ping与SSH持续超时。没有生成或分析.diagsession，不写成“采样通过”。prepare-inputs.py是已准备、**尚未在Windows执行**的诊断输入生成器；正式矩阵使用原workloads/phase4，不使用诊断放大输入。
+Codex在luowindows使用VS2022 VSDiagnostics/CpuUsageHigh采集四份独立trace，并用同机VS内置TraceEvent 3.1.9读取ETL、以本次Release PDB解析项目符号。源实现指纹仍为fd1e81c30451b94e58e8a80e3e8e17513ae569522c3a4ed0fdcc98f757989c24，与双机正式矩阵一致；未修改或重编译实验实现。阶段4剩余采样项已完成。
 
-Windows工作目录E:\ecl-scratch\phase4-20261028，source为同源快照，build\Release保存phase4_bench.exe与PDB。恢复连接后先hostname确认LUOWINDOWS、核对AC及当前电源方案；当前最后已确认原平衡方案恢复。不要修改网络/防火墙来掩盖暂时不可达。
+## 实际样本
 
-1. 在快照根设置PYTHONPATH为source，PYTHONUTF8=1；执行本目录prepare-inputs.py，生成profiling下的独立descriptor/meta。诊断正向10M次自增、queue/stats各1M任务、counters300k任务，比正式负载放大，不能将其耗时混入正式CSV。
-2. 用Visual Studio自带采样器：
+| 诊断负载 | CPU样本 | 有栈样本 | 项目模块叶样本 | 项目叶未解析 |
+|---|---|---|---|---|
+| positive | 5764 | 5764 | 5710 | 0 |
+| queue | 3779 | 3766 | 3086 | 0 |
+| counters | 4196 | 4192 | 1162 | 0 |
+| stats | 13188 | 13185 | 1763 | 0 |
 
-```text
-F:\VS\IDE\Team Tools\DiagnosticsHub\Collector\VSDiagnostics.exe start <新的GUID> /launch:E:\ecl-scratch\phase4-20261028\build\Release\phase4_bench.exe "/launchArgs:--meta <诊断meta> --impl packed --threads 4 --pin 1 --cpus 0,2,4,6,8,10,12,14 --require-ac 1" "/loadConfig:F:\VS\IDE\Team Tools\DiagnosticsHub\Collector\AgentConfigs\CpuUsageHigh.json"
-VSDiagnostics.exe stop <同一GUID> /output:<case>.diagsession
-```
+四进程exit_status均0，TraceEvent EventsLost均0；合计26927样本。请求/ETL记录间隔0.25ms，不能推断每个时刻均精确采到4000次。PDB GUID 5f4b0268-6930-4f9d-bdc1-ca8e3b897346、Age1，签名与本机PDB匹配；二进制/PDB/trace SHA256见[manifest](trace-manifest.json)。少数样本无栈，未将其补成项目样本。JSON只导出目标进程，系统模块保留聚合名，不公开内核地址；原始解析日志与trace仅在两机外部目录。
 
-   每个case独立会话，正向/queue/counters/stats至少各一份，记录实际命令与返回码。开始前保存电源方案，接电后高性能，try/finally恢复并读回原方案；不要与正式矩阵并行。实际命令尚未运行成功，先用一份验证流程，再扩展其余。
-3. 打开Visual Studio CPU视图，或`expandDiagSession`提取ETL后用本机VS PrivateAssemblies中的Microsoft.Diagnostics.Tracing.TraceEvent.dll读取。DLL版本3.1.9，TraceLog.OpenOrConvert(string,TraceLogOptions)、TraceCodeAddresses.LookupSymbolsForModule(SymbolReader,TraceModuleFile)已用反射确认；实际解析尚未实施。SymbolReader与该DLL配套，不下载替换现有程序集。
-4. 使用本次PDB解析engine函数，只导出本项目目标进程的样本/热点。采样覆盖全进程准备、计时与验证，不能称其百分比是纯调度路径计时占比；没有单独时窗标记时应明确边界。确认样本数量/符号解析，不把空trace或未解析地址说成热点结论。
-5. 原始.diagsession/ETL可能包含系统其他进程信息，不提交public仓库；保存在两机ECL_DATA或scratch，仓库只留目标进程导出表、SHA256、命令、工具版本、方法和结论。然后更新S8九项报告、AGENTS/status/progress、WorkPlan总览及既有飞书开发记录，最后才能标记阶段4完成。
+## 热点与解释
 
-官方使用方式：[Visual Studio命令行采样](https://learn.microsoft.com/en-us/visualstudio/profiling/profile-apps-from-command-line?view=visualstudio)。CPUUsageHigh配置实测4000 samples/second，是请求采样率，不能当作实际采样数量。[TraceEvent官方指南](https://github.com/microsoft/perfview/blob/main/documentation/TraceEvent/TraceEventProgrammersGuide.md)用于后续解析。阶段5正式实验前的swap检查点仍不能越过。
+- positive：原子自增工作线程lambda占self 5710/5764（99.06%），inclusive 5720（99.24%）。优化编译内联，函数级采样无法把单条原子指令或缓存一致性成本单独量化；正式布局对照才是性能收益证据。
+- queue：消费者lambda self2550/3779（67.48%），work self447（11.83%）；消费者inclusive3416（90.39%）。原子队列、done、验证槽、yield可能内联在同一函数，不能把整个lambda百分比称为steal或伪共享成本。
+- counters：JobSystem::run self296/4196（7.05%）、inclusive3026（72.12%），submit self272（6.48%），work self317（7.55%）。相当多叶样本归于ntdll；系统符号未下载解析，不能进一步断言具体锁/堆函数，更不能把run inclusive解释为pending字段成本。
+- stats：BasicScheduler::run self859/13188（6.51%）、inclusive10220（77.49%），大量叶样本在ntdll/msvcp140。该定位显示运行循环下存在项目外执行成本，但没有把统计更新的边际成本分离出来；仍维持正式矩阵“无显著布局收益”和原默认。
+
+每份*-hotspots.json有项目self/inclusive函数完整表及目标进程模块分布。inclusive每样本对同一函数只计一次，不同函数可重叠，不能相加当总占比。系统模块只有模块级归属，未冒称全部系统符号已解析。
+
+## 口径与复现
+
+Windows目录E:\ecl-scratch\phase4-20261028；source为历史8be95f4+dirty同源快照，build\Release保留原EXE/PDB。prepare-inputs.py从原descriptor生成独立诊断数据：positive每worker10M次（正式2M，5倍），queue/stats各1M任务（正式100k，10倍），counters300k（正式50k，6倍）；原工作单元不变。独立名称/meta与正式矩阵分开，不能混入正式CSV。
+
+在source根设置PYTHONPATH=source、PYTHONUTF8=1，运行prepare-inputs.py（需将脚本复制到scratch根），然后用[collect-positive.ps1](collect-positive.ps1)、[collect-rest.ps1](collect-rest.ps1)执行前台采集。脚本仅用于本轮固定scratch；再次运行请改新目录/输出文件，勿覆盖证据。使用新GUID启动VSDiagnostics /launch /launchArgs /loadConfig，等待目标退出再stop，实际会话GUID与命令返回结果见collector-log.txt。
+
+采集时接电、高性能、4workers逐个绑至P核，资格集合0,2,4,6,8,10,12,14；用SetThreadExecutionState临时请求系统/显示保持唤醒，finally释放，不更改永久睡眠/网络配置。原/恢复方案均381b4222-f694-41f0-9685-ff5bb260df2e，并另行SSH读回平衡方案；没有残留实验/采集进程。
+
+[export-hotspots.ps1](export-hotspots.ps1)用expandDiagSession提取ETL，TraceLog.OpenOrConvert及GetCallStackForEvent枚举目标进程SampledProfileTraceData。仅对项目模块调用LookupSymbolsForModule；SymbolReader只允许本轮scratch内本地产物。导出脚本的原始JSON包含系统地址，不能直接提交；本仓库JSON已仅保留项目函数和系统模块聚合。
+
+采样覆盖**完整目标进程**（准备、执行、校验、销毁），不是正式计时时窗；放大输入减少采样不足，不能用这些百分比量化正式负载的净调度成本。每case一份诊断样本，没有采样A/A，不据此给出新的加速比、缓存命中率或因果结论。正式矩阵及其负面结果保持不变。
+
+## 原始证据位置
+
+四份.diagsession保存在Windows上述profiling目录及tx的$ECL_DATA/phase4-windows-20261028/profiling；已逐一核对跨机SHA256。ETL/ETLX及原始解析日志不进public仓库。expandDiagSession可能调整会话包，manifest记录的是展开后实际保留并传回的包哈希；collector-log里的最初大小因此可能不同，不能按最初大小误判传输损坏。
+
+参考：[微软VSDiagnostics说明](https://learn.microsoft.com/en-us/visualstudio/profiling/profile-apps-from-command-line?view=visualstudio)、[微软TraceEvent样例](https://github.com/microsoft/perfview/blob/main/src/TraceEvent/Samples/41_TraceLogMonitor.cs)。
