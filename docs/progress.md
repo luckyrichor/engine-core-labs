@@ -194,3 +194,8 @@ S8双机报告/方法、公开状态和AGENTS交接已更新，采样续做步�
 原同源Release EXE/PDB未改，四组VS CPUUsageHigh独立采样，目标均exit0；positive5764、queue3779、counters4196、stats13188，合计26927样本，EventsLost均0、项目叶未解析均0。TraceEvent3.1.9匹配PDB导出项目self/inclusive和模块分布；系统符号不冒称已解析。采样独立放大输入、覆盖全进程，不与正式矩阵混用。四包跨机SHA256核对通过，原始系统trace仅放两机外部目录。
 
 临时SetThreadExecutionState保活已释放，原平衡电源方案finally恢复且另行读回；无遗留实验进程。完整证据在measurements/2026-10-28-phase4-windows/profiling/，失联分析在outage-analysis.md；S8九项报告、方法和交接同步。阶段4完成；阶段5正式实验未开始，未关闭swap。
+
+
+## 2026-10-28 用户确认Windows电源失联原因与后续规则（Codex）
+
+用户确认测试切换后为10分钟熄屏/睡眠并导致SSH不可达。已将接电不熄屏/不睡眠、切方案后显式核对、保存恢复所有改过的交流超时及原方案写入全局AGENTS与项目AGENTS、失联分析补充。原采集证据保持不变，用户提供的信息单独注明。历史脚本需在再次运行前补齐保护；本次只更新记录，未开始新测试或修改Windows设置。

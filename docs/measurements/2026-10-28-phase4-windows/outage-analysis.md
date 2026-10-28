@@ -18,3 +18,10 @@
 本轮采样仅使用进程生命周期内SetThreadExecutionState(ES_CONTINUOUS|ES_SYSTEM_REQUIRED|ES_DISPLAY_REQUIRED)，finally释放；没有修改永久睡眠、Tailscale、SSH、防火墙设置。四份采样及符号分析完成，原平衡电源方案另行读回确认。正式positive8T两个长样本的具体起止没有同一时钟的电源/资源标记，仍保留“原因未证实”，没有因本次查到待机就把它们删除或归因。
 
 资料：[微软系统电源状态](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/system-power-states)、[睡眠与SetThreadExecutionState](https://learn.microsoft.com/en-us/windows/win32/power/system-sleep-criteria)、[资源耗尽事件2004](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/troubleshoot-application-service-memory-leaks)。
+
+
+## 用户确认补充（2026-10-28）
+
+用户随后确认：性能测试切换电源设置后变为10分钟熄屏、10分钟睡眠，导致SSH不可达。此项为用户核实后提供的信息；前文保留的是当时只读排查结果与不确定性，不回写成当时已采集到10分钟值。
+
+后续测试按用户要求：接电时不熄屏、不睡眠，先保存原活动方案以及原/测试方案中将被修改的交流显示、睡眠超时，切高性能后显式设置为0并读回；测试结束或失败时恢复全部修改值及原方案，再逐项读回。SetThreadExecutionState仅作补充，不能替代超时设置；只恢复GUID也不足以确认完整恢复。历史runner/采样脚本尚未加入超时值保存恢复，再次执行前须先补齐。此次仅更新约定，没有远程修改当前电源设置。
