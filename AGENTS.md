@@ -33,7 +33,7 @@
 - 03:01:46前可用4914937856B、总8058511360B、swap已用1785430016B，余量检查通过（扣除后>2GiB）。swapoff触发30秒超时，32.695秒返回124，03:02:19即时swap总2084564992B、已用102526976B、可用3244851200B。**swap仍启用，未成功关闭**；没有重试或调用swapon。退出后不应误称已恢复swap。
 - 阶段5/6正式实验与本阶段验收未开始，未进入7。慢的根因未验证，不声称OOM或主机卡死。等待用户处理决定；不可自动延长/重试。证据docs/measurements/2026-10-29-phase56-preflight/。
 - 后续若获准继续：阶段5完成至少3条真实trace、ASan/LSan/UBSan等全部验收后才能进6；每轮记录swap/pswpin/out、换页轮作废；冷盘记录页缓存前后；结束给S4/S5/S6报告、progress、每故事summary/device、验证与来源、swap/缓存记录、外部库配置和败项、未验证列表的可打开链接，swap保持关闭等用户恢复指令。
-- 飞书待同步：2026-10-29 阶段5/6授权与swapoff超时前置阻塞。
+- 飞书已同步：2026-10-29 阶段5/6授权与swapoff超时前置阻塞，来源engine-core-labs@6cd782f，revision13正文及原项目父节点回查通过。
 
 **第 4 阶段交接（已完成，2026-10-28）**
 - 方法与重跑：`docs/stories/phase4-method.md`，`python3 -m bench.phase4 prepare/measure`，`bench.phase4_report`；二进制在`$ECL_DATA/build-phase4`，TSan在`build-phase4-tsan`。
