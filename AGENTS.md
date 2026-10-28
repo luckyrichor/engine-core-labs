@@ -36,7 +36,7 @@
 - Windows正向4T分行5.620/7.894倍，均显著；实际结构各档无显著布局收益。cold1T纯绑核0.896倍显著变慢；positive8T绑核A/A受长样本影响至335.326，不能把中位16.177倍当收益，保留全部数据。长样本原因未证实。
 - VS CPU采样与热点分析已完成：四份目标进程exit0、26927样本、EventsLost均0、项目叶未解析均0。匹配原Release PDB，项目self/inclusive与模块分布、脚本、哈希见Windows结果profiling/README.md；全进程放大诊断不与正式CSV混用。原始trace在两机外部目录，不提交系统原始数据。
 - 失联排查：08:57空闲触发Modern Standby，后续事件证实低功耗驻留，17:37电源键唤醒；未查到资源耗尽事件，当前CPU4%/可用3.22GiB，历史无连续资源采样，不能彻底排除其他因素。见Windows结果outage-analysis.md。采样时临时保活，finally释放，原平衡方案另行读回确认。没有修改网络/永久睡眠设置。
-- 飞书待同步：2026-10-28 阶段4完成、四份VS热点证据与Windows待机失联排查。
+- 飞书已同步：2026-10-28以codex profile/用户身份追加开发记录revision11，来源engine-core-labs@014e87e；已回读26927样本、阶段4完成/待机排查并回查既有项目父节点。
 - 飞书已同步：2026-10-28以codex profile/用户身份追加开发记录revision10，来源engine-core-labs@cc5bb71；已回读2720次/17680行、Windows结果与采样待补状态，并回查原项目节点归档。
 - 飞书已同步：2026-10-25以codex profile/用户身份追加开发记录revision9，来源engine-core-labs@913de2d；已回读1360次/9520行与Windows待上线内容，并回查仍归档于既有项目节点。链接见下方飞书文档节。
 
