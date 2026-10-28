@@ -1,0 +1,55 @@
+{
+  "case": "queue",
+  "threads": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "entries": [
+    "packed",
+    "separated",
+    "packed-pinned",
+    "separated-pinned",
+    "packed@aa",
+    "packed-pinned@aa"
+  ],
+  "rounds": 10,
+  "warmup_rounds": 1,
+  "descriptor": {
+    "name": "s8-queue",
+    "kind": "constructive",
+    "dataset": {
+      "name": "constructive-S8-layout",
+      "version": "1",
+      "checksum": "constructive"
+    },
+    "filter": {},
+    "generator": "ecl-v1",
+    "params": {
+      "case": "queue",
+      "iterations": 100000,
+      "work_units": 64
+    },
+    "seed": 20261025,
+    "scale": 100000,
+    "amplification": {
+      "factor": 1,
+      "method": "none"
+    }
+  },
+  "workload_fingerprint": "35a19d276ae771af",
+  "eligible_cpus": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14
+  ],
+  "binary": "E:\\ecl-scratch\\phase4-20261028\\build\\Release\\phase4_bench.exe",
+  "perf": false,
+  "design": "all layout and worker-binding cells interleaved in each round; two baseline A/A groups"
+}

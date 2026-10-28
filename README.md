@@ -1,7 +1,7 @@
 # engine-core-labs
 
 
-当前进展（2026-10-25）：阶段3已完成；阶段4 S8的tx实现、Release38/38、TSan定向4/4及5组1360次测量完成，Windows离线待补，**阶段4尚未完成**。见[当前状态](docs/status.md)、[S8报告](docs/stories/S8.md)。
+当前进展（2026-10-28）：阶段3已完成；阶段4 S8的tx/Windows双机矩阵2720次测量完成，Windows MSVC与S8契约通过，原电源方案已恢复；VS CPU采样前连接再次中断，**阶段4尚未完成**。见[当前状态](docs/status.md)、[S8报告](docs/stories/S8.md)。
 最后更新：2026-10-25（北京时间）
 
 游戏引擎非渲染通用模块的可复现实验，对应岗位 02。当前实现和边界见 [一页摘要](docs/status.md)。

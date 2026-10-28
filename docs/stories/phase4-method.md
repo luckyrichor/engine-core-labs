@@ -1,6 +1,6 @@
 # 阶段4 S8：布局与线程亲和性的方法
 
-2026-10-25 · Codex。阶段4要求tx与Windows各自实测；Windows未上线之前只能交付部分结果。阶段5正式实验前仍须用户决定swap，不能越过检查点。
+2026-10-28更新 · Codex。阶段4要求tx与Windows各自实测；两机正式矩阵均完成，Windows VS CPU采样仍待补，阶段4未验收完成。阶段5正式实验前仍须用户决定swap，不能越过检查点。
 
 ## 对照与布局
 
@@ -20,7 +20,7 @@
 
 两种模式保留相同CPU资格集合。tx继承进程可用CPU0–3；pinned模式worker i固定到eligible[i % count]，8线程超订。设置后读取线程亲和性精确核对；自建线程另采样首尾CPU。池在线程启动闸门释放前通过native handle设置并读回。生产者/main没有单独绑核。
 
-Windows主矩阵计划从API实测的最高EfficiencyClass中每个物理P核取一个逻辑CPU，双方保持同一进程资格掩码，再单独切换worker绑核；**unbound仅指未逐worker固定，并非允许混跑P/E**。不把混合核变化当作绑核收益。当前实现只支持单处理器组内的资格掩码，不支持跨组主矩阵。
+Windows主矩阵从API实测的最高EfficiencyClass中每个物理P核取一个逻辑CPU，双方保持同一进程资格掩码，再单独切换worker绑核；**unbound仅指未逐worker固定，并非允许混跑P/E**。不把混合核变化当作绑核收益。当前实现只支持单处理器组内的资格掩码，不支持跨组主矩阵。
 
 线程创建、亲和性设置与输入准备在计时外；自建线程的闸门释放/完成协调在计时内，join在外。JobSystem计时resume、提交和wait，future取回及池销毁在外；统计池计时resume、提交、join。组内边界一致，不跨case比较绝对吞吐。
 
@@ -32,7 +32,7 @@ Linux仅采perf软件事件cpu-migrations，perf启动为disabled，通过FIFO e
 
 summary.csv以packed/unbound为基线，只有未绑核的布局比较及packed-pinned的纯绑核比较是单因素。summary-pinned.csv以packed-pinned为基线，用于固定worker后的布局比较。报告脚本只展示这些单因素比值；不能把separated-pinned相对packed的组合变化叫作单一布局收益。全部判定复用bench.verdict，无新增阈值。
 
-selected_layout_bytes是相应对象或活动槽字节数：positive/cold为活动槽，queue为队列元数据，counters为整个JobSystem对象，stats为Worker大小×worker数；**不是RSS或进程总内存**。原始数据、设备、逐文件源码SHA256、布局偏移、每次绑核读回证据、轮次顺序均随结果保留。Windows保存原电源方案、要求接电、启用高性能，并在finally恢复和读回；该路径尚待Windows实机验证。Windows Visual Studio CPU采样亦待实机完成。
+selected_layout_bytes是相应对象或活动槽字节数：positive/cold为活动槽，queue为队列元数据，counters为整个JobSystem对象，stats为Worker大小×worker数；**不是RSS或进程总内存**。原始数据、设备、逐文件源码SHA256、布局偏移、每次绑核读回证据、轮次顺序均随结果保留。Windows保存原电源方案、要求接电、启用高性能，并在finally恢复和读回；该路径已在2026-10-28实测，恢复后另行SSH读回原平衡方案；Windows Visual Studio CPU采样尚未完成。
 
 ## 复现
 
@@ -47,4 +47,4 @@ python3 -m bench.phase4_report docs/measurements/<新的日期>-phase4-tx
 # 有matplotlib时可加 --plots，图表为独立SVG。
 ```
 
-Windows可将同源快照复制到E:\ecl-scratch，在vcvars64环境中对`experiments/l1-job-system/phase4`单独CMake构建，随后在快照根执行相同Python入口。源码快照须保留experiments/bench/tools及workloads/phase4，source-snapshot.json记录真实git来源和源码SHA256，runner先核对指纹；原仓库不在Windows并行编辑。不将未验证的Windows命令成功与否预写成事实。
+Windows本轮已将同源快照复制到E:\ecl-scratch，在vcvars64环境中对`experiments/l1-job-system/phase4`单独CMake构建，随后在快照根执行相同Python入口。源码快照须保留experiments/bench/tools及workloads/phase4，source-snapshot.json记录真实git来源和源码SHA256，runner先核对指纹；原仓库不在Windows并行编辑。2026-10-28实机在E:\ecl-scratch\phase4-20261028构建并运行成功，工具链、flags与契约日志见Windows结果目录validation；VS CPU采样未验证。

@@ -170,3 +170,16 @@ tx正式5组、1/2/4/8workers、layout×binding、10轮+两套A/A，共1360进�
 阶段4仍进行中：Windows缓存行/P/E核、接电与电源方案恢复、MSVC/正确性、10轮矩阵、Visual Studio CPU采样待补。Windows上线后先核对同源快照，再完成双机验收；未启动阶段5正式实验，swap决定仍由用户做。
 
 代码与数据提交913de2d并已推送；飞书既有开发记录追加revision9，用户身份/codex profile，来源913de2d。已回读新增内容及核对项目节点归档位置；后续只清理SVG自动生成的行末空格并更新同步状态，不改变测量源码或结果。
+
+
+## 2026-10-28 阶段4续做：Windows矩阵完成，采样前连接中断（Codex）
+
+2026-10-28 09:08:16（北京时间）。用户回复“已开机”后，SSH核对LUOWINDOWS\shnh2，确认AC；在E:\ecl-scratch\phase4-20261028独立快照构建，不改Windows原仓库。tx git pull --ff-only已成功，源指纹与旧快照及当前3701d67一致。MSVC19.44.35228/VS2022 x64/Release C++20保留PDB，S8契约CTest1/1通过，覆盖五组12变体/1与4workers/绑定开关/独立答案与非法CPU拒绝；未声称全仓或Windows TSan。
+
+Windows同源正式五组1360次/8160行指标全部有效，每指标10轮和两套A/A。计时前实测L1数据缓存行64，P核LP0–15、E核16–31，两种绑定模式均限每个P核一个LP（0,2,…14），再单独比较worker固定。原平衡方案381b4222-f694-41f0-9685-ff5bb260df2e在finally恢复并读回，随后SSH独立核对；完整日志、实际CMakeCache和原始数据已取回docs/measurements/2026-10-28-phase4-windows。
+
+4T正向分行5.620/7.894倍均显著；实际结构各线程档无显著布局收益，默认不变。cold1T纯绑核0.896倍显著变慢；positive8T绑核组8.358秒/52.870秒长样本保留，A/A至335.326，判无显著差异，未查明原因，不猜测为休眠或网络因果。Windows没有Linux迁移指标，不用0补齐。两机合计2720次/17680行，5+5组源码逐文件指纹完全相同。
+
+失败与处理：Windows Start-Process子进程未持续运行，改为SSH前台等待测量；matrix期间连接曾短时超时，恢复后确认进程仍运行。ZIP用Windows反斜杠存路径，首次按POSIX路径查找失败，安全规范化路径后取回，未改CSV。采样输入上传因连接再次中断未完成；随后SSH与Tailscale ping多次超时，已发消息请用户保持唤醒联网。VSDiagnostics/CpuUsageHigh/TraceEvent3.1.9确认存在，但没有执行成功的采样或.diagsession，不能标记阶段4完成。未改网络配置、未关swap、未进入阶段5。
+
+S8双机报告/方法、公开状态和AGENTS交接已更新，采样续做步骤及尚未执行的输入生成器留在Windows结果profiling/；飞书开发记录本轮收尾同步。WorkPlan总览有其他项目33行既有未提交修改，本轮只追加/提交engine-core-labs进展，保留他人修改。

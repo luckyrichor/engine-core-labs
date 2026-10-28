@@ -1,0 +1,50 @@
+{
+  "cache_line": 64,
+  "cache_source": "GetLogicalProcessorInformationEx-RelationCache",
+  "counter_offsets": {
+    "packed": [
+      512,
+      408,
+      416,
+      424
+    ],
+    "pending": [
+      640,
+      448,
+      512,
+      520
+    ],
+    "next": [
+      640,
+      408,
+      448,
+      512
+    ],
+    "wake": [
+      640,
+      408,
+      416,
+      448
+    ]
+  },
+  "queue_metadata_bytes": {
+    "packed": 40,
+    "separated": 192
+  },
+  "stats_layout": {
+    "packed": [
+      704,
+      48,
+      608
+    ],
+    "separated": [
+      704,
+      64,
+      640
+    ]
+  },
+  "positive_stride": {
+    "packed": 8,
+    "separated": 64
+  }
+}

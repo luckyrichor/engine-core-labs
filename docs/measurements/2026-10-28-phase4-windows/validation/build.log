@@ -1,0 +1,7 @@
+适用于 .NET Framework MSBuild 版本 17.14.51+25f168cee
+
+  1>Checking Build System
+  Building Custom Rule E:/ecl-scratch/phase4-20261028/source/experiments/l1-job-system/phase4/CMakeLists.txt
+  benchmark.cpp
+  phase4_bench.vcxproj -> E:\ecl-scratch\phase4-20261028\build\Release\phase4_bench.exe
+  Building Custom Rule E:/ecl-scratch/phase4-20261028/source/experiments/l1-job-system/phase4/CMakeLists.txt

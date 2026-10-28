@@ -1,6 +1,6 @@
 # 现状与边界（一页）
 
-最后更新：2026-10-25（北京时间），Codex。当前源码版本与运行参数以各轮 device.json 的 SHA256 为准；历史数据不代表当前源码。
+最后更新：2026-10-28（北京时间），Codex。当前源码版本与运行参数以各轮 device.json 的 SHA256 为准；历史数据不代表当前源码。
 
 ## 面试级完善方案
 
@@ -11,13 +11,15 @@ A/B/C 的实现由 Codex 完成、Claude 验收；D 由 Codex 完成、用户审
 
 阶段 2 没有正式性能测量。Windows/MSVC 未验证；分配回放串行；Google tcmalloc 构建复用第 1 阶段缓存。这些边界不视为已完成的跨平台或多线程性能证据。阶段2复现见 [baselines.md](baselines.md)；阶段3最新状态见下一节。
 
-## 阶段4：S8进行中，tx结果已交付（2026-10-25）
+## 阶段4：S8双机矩阵完成，VS采样待补（2026-10-28）
 
 可选布局、逐worker亲和性设置与读回、Linux受控窗口软件迁移事件已实现，默认布局不变。完整Release38/38、TSan定向4/4。tx五组1360次正式运行、9520行指标，invalid=0/stub=0，每配置10有效轮及两套A/A；[原始证据](measurements/2026-10-25-phase4-tx/README.md)、[九项S8报告](stories/S8.md)、[方法](stories/phase4-method.md)。
 
 最坏伪共享正向对照4T分行吞吐比值6.327（未逐worker绑核）/7.455（固定workers），均显著提升；单线程及冷字段控制无显著收益。实际队列、三个计数器、统计块和纯绑核的1/2/4/8线程配置均无显著吞吐差异；不把微基准收益外推为执行器收益。原Chase-Lev已经对齐，packed只作为反事实。迁移事件含producer/main，不能解释成缓存失效。
 
-**阶段4未完成**：luowindows离线，已请求用户开机；同源MSVC构建/正确性、缓存行与P/E核、电源恢复、Windows10轮矩阵和Visual Studio CPU采样待补。不能一律延期到阶段8。未进入阶段5，未关闭swap。
+Windows在用户开机后完成同源MSVC19.44构建、独立S8契约1/1、5组1360次/8160行有效矩阵，各指标10轮与两套A/A。L1数据缓存行64、P核LP0–15/E核16–31，双方主矩阵都限每个P核一个LP；原平衡电源方案已恢复并另行读回。Windows4T正向分行5.620/7.894倍，实际结构各档无显著布局收益；cold1T纯绑核0.896倍显著变慢，positive8T绑核A/A有335倍长尾，不作为优化成果。数据见[Windows结果](measurements/2026-10-28-phase4-windows/README.md)。
+
+**阶段4未完成**：唯一剩余是Visual Studio CPU采样和热点分析。采样前Windows SSH/Tailscale再次持续超时，已请用户保持唤醒联网；没有trace，不称采样完成。两机合计2720次/17680行全有效，源码指纹相同。续做见Windows结果profiling/README.md。未进入阶段5，未关闭swap。
 
 ## 阶段3：S1/S2/S3（2026-10-25）
 
